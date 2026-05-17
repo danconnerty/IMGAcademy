@@ -783,11 +783,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           Every athlete at every Elevate academy.
                       </h2>
                       <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-                          Elevate is IMG's B2B vehicle into outside schools and academies. Every one of those
-                          campuses has a roster of athletes who never made an NCSA profile, never took a
-                          sport-specific assessment, and never showed up in a college coach's search. We bundle
-                          both into the Elevate license - turning each academy deal into hundreds of
-                          recruiting-ready profiles on day one.
+                          Elevate already sells IMG curriculum into outside academies. Bundle an NCSA profile
+                          and a sport-specific assessment into that license, and every academy deal becomes
+                          hundreds of recruiting-ready athletes on day one.
                       </p>
                   </div>
               </section>
@@ -818,7 +816,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       </p>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
                       <div className="bg-[#070707] p-6 sm:p-7">
                           <p className="text-3xl sm:text-4xl font-semibold text-emerald-400 tracking-tight mb-2 tabular-nums">80+</p>
                           <p className="text-white text-sm sm:text-base font-semibold mb-1">Nord Anglia campuses</p>
@@ -834,49 +832,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           <p className="text-white text-sm sm:text-base font-semibold mb-1">Net-new sales motion</p>
                           <p className="text-gray-500 text-sm leading-relaxed">Rides Elevate's existing B2B-to-schools pipeline. No separate NCSA outbound, no per-family conversion funnel.</p>
                       </div>
-                  </div>
-              </section>
-
-              {/* MULTILINGUAL FOOTPRINT */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="mb-10 sm:mb-12 max-w-2xl">
-                      <p className="text-sm font-medium text-emerald-400 mb-3">Already internationally portable</p>
-                      <h3 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
-                          Eight languages live today.
-                      </h3>
-                      <p className="text-lg text-gray-400 leading-relaxed">
-                          The assessment ships in eight European languages out of the box - a Madrid, Frankfurt,
-                          or Stockholm deal doesn't wait on a localization SOW. Additional languages added on
-                          call. Every major language live by year-end.
-                      </p>
-                  </div>
-
-                  <div className="bg-[#070707] border border-white/10 rounded-2xl p-7 sm:p-9">
-                      <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-5">
-                          Live today
-                      </p>
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                          {[
-                              { name: 'English', code: 'EN' },
-                              { name: 'Spanish', code: 'ES' },
-                              { name: 'French', code: 'FR' },
-                              { name: 'German', code: 'DE' },
-                              { name: 'Italian', code: 'IT' },
-                              { name: 'Portuguese', code: 'PT' },
-                              { name: 'Dutch', code: 'NL' },
-                              { name: 'Swedish', code: 'SV' },
-                          ].map((lang) => (
-                              <div key={lang.code} className="flex items-center gap-3 rounded-lg border border-white/10 bg-black/40 px-3.5 py-3">
-                                  <span className="text-[10px] font-bold text-emerald-300 tracking-widest tabular-nums">{lang.code}</span>
-                                  <span className="text-sm text-white font-medium">{lang.name}</span>
-                              </div>
-                          ))}
+                      <div className="bg-[#070707] p-6 sm:p-7">
+                          <p className="text-3xl sm:text-4xl font-semibold text-emerald-400 tracking-tight mb-2 tabular-nums">8</p>
+                          <p className="text-white text-sm sm:text-base font-semibold mb-1">European languages live</p>
+                          <p className="text-gray-500 text-sm leading-relaxed">Madrid, Frankfurt, Stockholm - addressable day one. Every major language live by year-end.</p>
                       </div>
-                      <p className="text-[12px] text-gray-500 leading-relaxed mt-5 pt-5 border-t border-white/5">
-                          <span className="text-emerald-300 font-semibold">Roadmap:</span> Mandarin, Japanese,
-                          Korean, Arabic and others shipping through 2026 - or on demand when an Elevate deal
-                          pulls one through ahead of schedule.
-                      </p>
                   </div>
               </section>
 
@@ -920,23 +880,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   </div>
               </section>
 
-              {/* WHY IMG WANTS THIS */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="rounded-2xl border border-emerald-500/30 bg-gradient-to-b from-emerald-500/[0.08] to-transparent p-7 sm:p-10">
-                      <div className="max-w-3xl">
-                          <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-3">Why IMG wants the bundle on every Elevate contract</p>
-                          <h3 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight mb-5">
-                              A second growth lever on Elevate.
-                          </h3>
-                          <ul className="space-y-3">
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> NCSA volume that doesn't depend on consumer marketing spend</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Higher Elevate ASP - the recruiting bundle becomes a real differentiator vs. competing B2B sport curricula</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Internationally portable - same bundle ships into Nord Anglia and overseas markets without a US-only dependency</li>
-                          </ul>
-                      </div>
-                  </div>
-              </section>
-
               {/* CLOSER */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
                   <div className="rounded-3xl border border-emerald-400/30 bg-gradient-to-b from-emerald-400/[0.08] via-emerald-400/[0.02] to-transparent p-7 sm:p-10">
@@ -955,8 +898,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               </p>
                               <p className="text-base text-gray-400 leading-relaxed">
                                   Each Elevate academy deal becomes a hundreds-of-profiles-a-year subscription to NCSA,
-                                  sold once at the institutional level instead of one family at a time. That's the
-                                  play the EQT &times; Nord Anglia thesis was built to fund.
+                                  sold once at the institutional level instead of one family at a time -
+                                  NCSA volume that doesn't depend on consumer marketing spend, a higher Elevate
+                                  ASP, and a bundle that ships internationally without a US-only dependency.
+                                  That's the play the EQT &times; Nord Anglia thesis was built to fund.
                               </p>
                           </div>
                       </div>
