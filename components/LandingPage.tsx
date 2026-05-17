@@ -506,18 +506,90 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   </div>
               </section>
 
-              {/* DASHBOARD MOCKUP PLACEHOLDER */}
+              {/* INSIDE THE NCSA PROFILE - native integration mockup */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#070707] shadow-[0_30px_80px_rgba(0,0,0,0.5)] ring-1 ring-white/5">
-                      <img
-                          src="/Recruitingdashboardmockup.png"
-                          alt="IMG Academy Collegiate Dashboard - coach view"
-                          className="w-full h-auto block"
-                      />
+                  <div className="mb-10 sm:mb-12 max-w-2xl">
+                      <p className="text-sm font-medium text-emerald-400 mb-3">Inside the NCSA profile</p>
+                      <h3 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
+                          This is your NCSA profile with NTangible inside.
+                      </h3>
+                      <p className="text-lg text-gray-400 leading-relaxed">
+                          Two surfaces NCSA already ships - the athlete card families share with coaches,
+                          and the match analysis the coach sees on their end. Both extend with a Clutch Factor
+                          score and a Coach&ndash;Player Alignment Index that live native to the existing chrome.
+                      </p>
                   </div>
-                  <p className="text-xs text-gray-600 mt-4 text-center sm:text-left">
-                      One login. Every verified IMG Academy athlete, filterable by sport, position, state, grad year, and fit.
-                  </p>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
+                      {/* Athlete card with Clutch Factor injected */}
+                      <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-8">
+                          <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-4">
+                              Athlete profile card
+                          </p>
+                          <div className="relative rounded-xl overflow-hidden bg-white">
+                              <img
+                                  src="/get-noticed-1.png"
+                                  alt="NCSA athlete profile card for Marcus Copeland"
+                                  className="w-full h-auto block"
+                              />
+                              {/* Clutch Factor chip overlay - positioned just below the stat row, inside the phone frame */}
+                              <div className="absolute" style={{ left: '52%', right: '6%', top: '94%' }}>
+                                  <div className="rounded-md border-2 border-emerald-400 bg-[#0b1d4d] shadow-[0_8px_24px_rgba(0,0,0,0.5)] px-2 py-1.5 flex items-center justify-between gap-2">
+                                      <div className="flex items-center gap-1.5">
+                                          <Activity size={11} className="text-emerald-300" />
+                                          <span className="text-[8px] sm:text-[9px] font-bold text-emerald-200 tracking-widest uppercase">Clutch Factor</span>
+                                      </div>
+                                      <div className="flex items-baseline gap-1">
+                                          <span className="text-sm sm:text-base font-bold text-white tabular-nums leading-none">823</span>
+                                          <span className="text-[8px] sm:text-[9px] font-semibold text-emerald-300 uppercase">Exceptional</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div className="mt-5 pt-5 border-t border-white/5">
+                              <p className="text-sm text-gray-300 leading-relaxed">
+                                  <span className="text-white font-semibold">What we add:</span> a Clutch Factor
+                                  score sitting alongside GPA, SAT, and ACT - the recruiting signal college
+                                  coaches don't have today. Athletes scoring above 750 commit D1 at twice the
+                                  rate of athletes below the threshold.
+                              </p>
+                          </div>
+                      </div>
+
+                      {/* Match analysis extended with Alignment Index */}
+                      <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-8">
+                          <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-4">
+                              Match analysis (coach view)
+                          </p>
+                          <div className="relative rounded-xl overflow-hidden bg-white">
+                              <img
+                                  src="/match-analysis.png"
+                                  alt="NCSA match analysis showing a 74% match score"
+                                  className="w-full h-auto block"
+                              />
+                              {/* Alignment Index callout - positioned at top-right corner of the analysis card */}
+                              <div className="absolute" style={{ left: '4%', right: '38%', top: '4%' }}>
+                                  <div className="rounded-md border-2 border-emerald-400 bg-[#0b1d4d] shadow-[0_8px_24px_rgba(0,0,0,0.5)] px-2.5 py-1.5">
+                                      <div className="flex items-center justify-between gap-2 mb-1">
+                                          <div className="flex items-center gap-1.5">
+                                              <Target size={10} className="text-emerald-300" />
+                                              <span className="text-[8px] sm:text-[9px] font-bold text-emerald-200 tracking-widest uppercase">Coach&ndash;Player Alignment</span>
+                                          </div>
+                                          <span className="text-sm sm:text-base font-bold text-white tabular-nums leading-none">82%</span>
+                                      </div>
+                                      <p className="text-[8px] sm:text-[9px] font-semibold text-emerald-300 uppercase tracking-wider">Exceptional fit &middot; processes the game like the coach</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div className="mt-5 pt-5 border-t border-white/5">
+                              <p className="text-sm text-gray-300 leading-relaxed">
+                                  <span className="text-white font-semibold">What we add:</span> a Coach&ndash;Player
+                                  Alignment Index that extends NCSA's basic match score with the system, room,
+                                  and pressure-response fit a coach actually wants to know before the first call.
+                              </p>
+                          </div>
+                      </div>
+                  </div>
               </section>
 
               {/* WHAT THE COACH GETS */}
