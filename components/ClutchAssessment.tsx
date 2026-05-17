@@ -862,14 +862,20 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
               className="opacity-80"
               style={{ height: '2.5rem', width: 'auto' }}
             />
-            <span style={{ width: '1px', height: '2rem', background: 'rgba(255,255,255,0.25)' }} aria-hidden="true" />
-            <div style={{ background: '#fff', borderRadius: '0.5rem', padding: '0.35rem 0.6rem', display: 'inline-flex', alignItems: 'center' }}>
-              <img
-                src="/IMG.png"
-                alt="IMG Academy"
-                style={{ height: '2rem', width: 'auto' }}
-              />
-            </div>
+            <span
+              aria-hidden="true"
+              style={{
+                display: 'inline-block',
+                width: 1,
+                height: '2.25rem',
+                background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.35), transparent)',
+              }}
+            />
+            <img
+              src="/IMG.png"
+              alt="IMG Academy"
+              style={{ height: '3rem', width: 'auto', filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.45))' }}
+            />
           </div>
 
           <div className="d-inline-flex align-items-center px-3 py-1 rounded-pill bg-white-5 border border-white-10 mb-5">
@@ -893,7 +899,7 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
           <div className="divider-gradient" />
 
           <p className="text-14px font-tech text-gray-400 text-uppercase tracking-tech fw-medium">
-            NTANGIBLE ASSESSMENT / CLUTCH FACTOR REPORT · IMG ACADEMY
+            NTANGIBLE ASSESSMENT / CLUTCH FACTOR REPORT
           </p>
         </section>
 

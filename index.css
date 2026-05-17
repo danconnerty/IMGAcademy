@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  background-color: #050505;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #f8fafc;
+  -webkit-text-size-adjust: 100%;
+  min-height: 100vh;
+}

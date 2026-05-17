@@ -2,7 +2,7 @@
 import React from 'react';
 
 const logos = [
-    "/Partners/RFK.png",
+    "/TeamLogos/RFK.png",
     "/TeamLogos/Appollon.png",
     "/TeamLogos/BC.png",
     "/TeamLogos/Hofstra.png",

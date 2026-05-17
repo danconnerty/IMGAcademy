@@ -18,6 +18,20 @@ export default defineConfig(({ mode }) => {
         alias: {
           '@': path.resolve(__dirname, '.'),
         }
-      }
+      },
+      build: {
+        target: 'es2020',
+        cssCodeSplit: true,
+        sourcemap: false,
+        rollupOptions: {
+          output: {
+            manualChunks: {
+              'react-vendor': ['react', 'react-dom'],
+              'icons': ['lucide-react'],
+              'genai': ['@google/genai'],
+            },
+          },
+        },
+      },
     };
 });
