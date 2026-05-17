@@ -231,7 +231,7 @@ From the dossiers, the right people:
 - **Dr. Duncan Simpson** — Director of Personal Development. Built the MPA with Kalkbrenner. He is the most likely source of "we already have this" reflex. **Must be co-opted as research partner from day one.** Frame the validation program (§6) as his to lead.
 
 **IMG side — commercial/product org (where the second beachhead is):**
-- **Chris Meade — Co-founder & CEO, SportsRecruits** (acquired by IMG May 2025). **The second existing relationship.** A founder operating inside IMG, ~12 months post-exit. Sits adjacent to or inside the NCSA P&L. He knows the political terrain, he speaks founder, and his deal *was* Branch's and Ciaccio's deal — they have a personal stake in his success. He cares acutely about club/HS distribution (SportsRecruits' core motion), which is exactly the §5B "NCSA-as-distribution-into-non-IMG-schools" thesis. Treat him as the commercial-side internal champion the way Kirstie is the clinical-side champion.
+- **Chris Meade — Co-founder & former Co-CEO, SportsRecruits; now CEO, CURVE Sports.** Acquired into IMG May 2025, departed ~12 months later. **Not an inside operator anymore** — but a recently-departed founder with fresh political context and current relationships with Branch/Ciaccio (his acquisition was their deal). Treat him as a **warm ex-insider intro path and reality-check**, not the commercial-side champion. Strong on the §5B distribution thesis (SportsRecruits' core motion was clubs/HS — he built it). Departure-after-12-months is normal earnout shape but also potentially friction signal; the call should surface which.
 - **Michael Branch — VP Strategic Partnerships** (since Jul 2025). Role created expressly to do deals like this. **Natural warm-intro target via Meade.**
 - **Chris Ciaccio — CCO** (since Oct 2024). Owns NCSA + digital P&L. 26-year IMG veteran. Sponsored the SportsRecruits acquisition — Meade reports up through him or close to him. Commercial sponsor target.
 - **Ted Sullivan — Chief Growth Officer.** Cross-P&L growth across IMG + NCSA.
@@ -257,19 +257,30 @@ they converge on Branch/Ciaccio from two directions at once.
    Brought in by Hamilton, framed as his program to lead, not a
    competitor's.
 
-*Track B — commercial/product (Meade):*
-1. **Chris Meade (post-visit call)** — goal: validate the product and
-   the §5B distribution thesis (clubs, HS, Nord Anglia, every program
-   NCSA + SportsRecruits already touches). He is *exactly* the buyer
-   profile for that thesis — he built SportsRecruits' club/HS motion.
-   Ask: "where does this fit in the product roadmap you're building
-   inside IMG, and who internally would own it." Don't ask him to
-   sell — ask him where the doors are.
-2. **Michael Branch (Strategic Partnerships)** — Meade can intro
-   warmly. Branch's job is literally to do this deal.
+*Track B — commercial/product (Meade, as ex-insider):*
+1. **Chris Meade (post-visit call)** — recalibrated goal: he's no
+   longer inside IMG, so this is reconnaissance + warm intros, not
+   internal champion-building. Questions to get answered:
+   - Who actually owns product decisions in the combined NCSA/
+     SportsRecruits org today? (Is there a new SR head post-Meade?
+     Is everything rolled under Ciaccio? Is there a product VP we
+     don't know about?)
+   - How does the IMG procurement/partnership process actually run
+     in practice — what kills deals, what gets them across the line?
+   - On the §5B thesis: would he have wanted a sport-specific
+     assessment for SportsRecruits' club/HS channel? Does he think
+     the current leadership would?
+   - Would he intro to Branch and/or Ciaccio — and if so, who first?
+   Don't pitch him as a buyer. He has no P&L authority here anymore.
+   Pitch him as a peer founder asking for fresh ground truth.
+2. **Michael Branch (Strategic Partnerships)** — Meade's warm intro
+   is the right path if he offers it. Branch's job is literally to
+   do this deal. If Meade doesn't offer, fall back to outreach via
+   Hamilton/Kirstie (track A convergence).
 3. **Chris Ciaccio (CCO)** or **Ted Sullivan (CGO)** — commercial
    sponsor, brought in by Branch once a deal shape is on the table.
-   Ciaccio sponsored Meade's acquisition; the prior relationship helps.
+   Ciaccio sponsored Meade's acquisition; that relationship is
+   leverageable via Meade if he's willing.
 
 *Converge:*
 4. Tracks A and B meet at Branch/Ciaccio. Clinical air cover from
@@ -328,16 +339,17 @@ or therapeutic language.
    Simpson, (c) the question "what does it take to get Lindsey in the
    next conversation." Don't ask her to sell internally — give her the
    artifacts that let her advocate.
-1b. **Prep the Chris Meade call as a different conversation.** He's
-   commercial/product, not clinical. Walk in with (a) the §5B
-   distribution thesis (NCSA + SportsRecruits as channel into clubs,
-   HS, Nord Anglia, non-IMG schools) — this is his motion, he will
-   recognize it instantly, (b) the build-vs-buy narrowed to sport-
-   specific instruments (§4), (c) the question "where does this fit
-   in the product roadmap, and who internally owns this kind of
-   decision." He's a founder — be direct, skip the build-up, lead
-   with the strategic frame and let him react. Possible ask: warm
-   intro to Branch once he's bought in. Don't ask on day one.
+1b. **Prep the Chris Meade call as ex-insider reconnaissance, not a
+   pitch.** He's no longer at IMG. Walk in with (a) the §5B
+   distribution thesis as the strategic frame — this was his motion
+   at SportsRecruits, he'll recognize it, (b) a short product
+   walkthrough so he can react as a founder peer, (c) the specific
+   questions in §8 Track B (who owns product decisions in the
+   combined NCSA/SR group now, how does IMG procurement actually
+   work, would he intro to Branch/Ciaccio). Don't pitch him as a
+   buyer. Treat him as a peer asking for ground truth on a former
+   employer where he still has relationships. He's a founder; be
+   direct.
 2. **Rewrite the deck for the new thesis.** Lead with the à-la-carte +
    conversion-lift story (§5A). Elevate the NCSA-as-distribution-into-
    non-IMG-schools story (§5B). Build-vs-buy narrowed to sport-specific
