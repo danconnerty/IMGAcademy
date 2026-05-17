@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import {
-    Activity, Brain, ArrowRight, Check, X, FileText, Monitor, Target,
+    Activity, Brain, ArrowRight, Check, X, FileText, Target,
 } from 'lucide-react';
 import { ViewType } from '../types';
 import { preloadDashboard } from '../App';
@@ -549,18 +549,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
               {/* HERO - THESIS */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
                   <div className="max-w-3xl">
-                      <div className="flex flex-wrap items-center gap-2 mb-5">
-                          <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full">
-                              <Target size={13} className="text-emerald-400" />
-                              <span className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest">More than testing</span>
-                          </div>
-                          <div className="inline-flex items-center gap-2 pl-1.5 pr-3 py-1 rounded-full border border-amber-400/25 bg-amber-400/[0.05]">
-                              <img src="/ysbr.png" alt="Youth Sports Business Report" className="h-5 w-5 object-contain rounded-full" />
-                              <span className="text-[11px] font-semibold text-amber-100 tracking-wide">YSBR 2026 Rising Star</span>
-                          </div>
-                      </div>
                       <h2 className="text-4xl sm:text-6xl font-semibold text-white tracking-tight leading-[1.02] mb-6">
-                          Coaches log in. <span className="text-gray-500">Alignment runs against every NCSA and SportsRecruits profile.</span>
+                          Coaches log in.
                       </h2>
                       <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
                           NTangible isn't just an assessment. College coaches integrate directly into the platform
@@ -602,8 +592,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           <p className="text-sm text-gray-300 leading-relaxed mt-5">
                               <span className="text-white font-semibold">What we add:</span> a Clutch Factor
                               score sitting alongside GPA and SAT - the recruiting signal college coaches
-                              don't have today. Athletes scoring above 750 commit D1 at twice the rate of
-                              athletes below the threshold.
+                              don't have today.
                           </p>
                       </div>
 
@@ -619,55 +608,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           />
                           <p className="text-sm text-gray-300 leading-relaxed mt-5">
                               <span className="text-white font-semibold">What we add:</span> a Coach&ndash;Player
-                              Alignment Index that extends NCSA's existing Athletic and Academic comparisons
-                              with the system, room, and pressure-response fit a coach actually wants to know
-                              before the first call.
+                              Alignment Index that extends NCSA's Athletic and Academic comparisons with
+                              system, room, and pressure-response fit.
                           </p>
-                      </div>
-                  </div>
-              </section>
-
-              {/* WHAT THE COACH GETS */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="mb-10 sm:mb-12 max-w-2xl">
-                      <p className="text-sm font-medium text-emerald-400 mb-3">The coach integration</p>
-                      <h3 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
-                          Free dashboard. Alignment scoring on every NCSA + SR profile.
-                      </h3>
-                      <p className="text-lg text-gray-400 leading-relaxed">
-                          College coaches log in for free. The Coach&ndash;Player Alignment Index runs against every
-                          NCSA and SportsRecruits profile in the database - turning the recruiting database
-                          IMG already owns into a scored, filterable, fit-aware prospect pool.
-                      </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-                      <div className="bg-[#070707] p-7 sm:p-9">
-                          <div className="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5">
-                              <Monitor size={20} className="text-emerald-400" />
-                          </div>
-                          <p className="text-[11px] font-semibold text-emerald-400 uppercase tracking-widest mb-2">What the coach gets</p>
-                          <h4 className="text-xl font-semibold text-white tracking-tight mb-4">A live, alignment-scored prospect pool</h4>
-                          <ul className="space-y-2.5">
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Free login from any laptop - alignment updates the moment a profile retests</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Every NCSA and SportsRecruits athlete, searchable by sport, position, state, grad year</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Clutch Factor + Coach&ndash;Player Alignment Index on every athlete card</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Year-round - no event dependency, no rebuilding the list every weekend</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Shareable with the full staff in one link</li>
-                          </ul>
-                      </div>
-                      <div className="bg-[#070707] p-7 sm:p-9">
-                          <div className="w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-5">
-                              <Activity size={20} className="text-blue-400" />
-                          </div>
-                          <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mb-2">What IMG gets</p>
-                          <h4 className="text-xl font-semibold text-white tracking-tight mb-4">Stickier coaches, stickier families</h4>
-                          <ul className="space-y-2.5">
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> A signal college coaches can't get anywhere else - pulls them into NCSA/SR instead of competing platforms</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> Higher coach engagement per profile = higher commit conversion = the metric NCSA already sells on</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> Every alignment view is a touchpoint NCSA can surface to the family</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> Differentiates NCSA + SR against 247, On3, Rivals - they have stats; you'd have fit</li>
-                          </ul>
                       </div>
                   </div>
               </section>
@@ -730,6 +673,33 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               </div>
                           </div>
                       ))}
+                  </div>
+              </section>
+
+              {/* WHY IMG WANTS THIS - single-panel value + dashboard disclaimer */}
+              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
+                  <div className="rounded-2xl border border-blue-500/30 bg-gradient-to-b from-blue-500/[0.08] to-transparent p-7 sm:p-10">
+                      <div className="max-w-3xl">
+                          <div className="w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-5">
+                              <Activity size={20} className="text-blue-400" />
+                          </div>
+                          <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mb-3">Why IMG wants this on every profile</p>
+                          <h3 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight mb-5">
+                              Stickier coaches, stickier families.
+                          </h3>
+                          <ul className="space-y-3 mb-7">
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> A signal college coaches can't get anywhere else - pulls them into NCSA/SR instead of competing platforms</li>
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> Higher coach engagement per profile = higher commit conversion = the metric NCSA already sells on</li>
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> Every alignment view is a touchpoint NCSA can surface to the family</li>
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> Differentiates NCSA + SR against 247, On3, Rivals - they have stats; you'd have fit</li>
+                          </ul>
+                          <p className="text-sm text-gray-500 italic leading-relaxed border-l-2 border-white/10 pl-4">
+                              Heads-up on the visuals: the dashboards and athlete cards shown on this tab are
+                              NTangible's current production product. At integration, the Alignment Index,
+                              Clutch Factor, and workflow surfaces would adopt IMG's design system and ship
+                              native to NCSA + SportsRecruits, not as a separate tool.
+                          </p>
+                      </div>
                   </div>
               </section>
 
