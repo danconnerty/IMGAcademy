@@ -109,26 +109,34 @@ const SampleReportModal = ({ onClose, onViewClutch, onViewNterpret }: { onClose:
 );
 
 // --- ECONOMICS + REVENUE CALCULATOR ---
-const PRICE = 10;
-const IMG_SHARE = 3;
-const AD_SPEND_INCREMENT = 50000;
-const AD_SPEND_PER_INCREMENT = 10000;
-const MAX_PROFILES = 250000;
+type VolumeTier = { min: number; max: number; price: number; imgShare: number; label: string; tone: string };
+
+const VOLUME_TIERS: VolumeTier[] = [
+    { min: 0,       max: 100_000,  price: 10, imgShare: 3, label: 'Entry',            tone: 'text-blue-400' },
+    { min: 100_000, max: 250_000,  price: 8,  imgShare: 3, label: 'Scale',            tone: 'text-blue-400' },
+    { min: 250_000, max: 500_000,  price: 7,  imgShare: 3, label: 'Platform',         tone: 'text-emerald-400' },
+    { min: 500_000, max: Infinity, price: 6,  imgShare: 3, label: 'Full integration', tone: 'text-emerald-400' },
+];
+
+const MAX_PROFILES = 1_000_000;
+
+const tierForVolume = (v: number): VolumeTier =>
+    VOLUME_TIERS.find(t => v >= t.min && v < t.max) ?? VOLUME_TIERS[VOLUME_TIERS.length - 1];
 
 const PricingCalculator = () => {
-    const [profiles, setProfiles] = useState(25000);
+    const [profiles, setProfiles] = useState(150_000);
 
     const clamped = Math.max(0, Math.min(MAX_PROFILES, Number.isFinite(profiles) ? profiles : 0));
-
-    const grossRevenue = clamped * PRICE;
-    const imgRev = clamped * IMG_SHARE;
-
-    const milestones = Math.floor(grossRevenue / AD_SPEND_INCREMENT);
-    const adSpend = milestones * AD_SPEND_PER_INCREMENT;
-    const totalToIMG = imgRev + adSpend;
+    const tier = tierForVolume(clamped);
+    const imgRev = clamped * tier.imgShare;
+    const ntangibleRev = clamped * (tier.price - tier.imgShare);
 
     const fmt = (n: number) => `$${Math.round(n).toLocaleString('en-US')}`;
     const fmtCompact = (n: number) => n >= 1000 ? `${(n / 1000).toLocaleString('en-US')}k` : `${n}`;
+    const fmtRange = (t: VolumeTier) =>
+        t.max === Infinity
+            ? `${fmtCompact(t.min)}+`
+            : `${fmtCompact(t.min)}–${fmtCompact(t.max)}`;
 
     return (
         <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32 scroll-mt-20" id="economics">
@@ -136,62 +144,64 @@ const PricingCalculator = () => {
             <div className="mb-12 sm:mb-16 max-w-2xl">
                 <p className="text-sm font-medium text-blue-400 mb-3">The economics</p>
                 <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
-                    $10 a profile. Sits inside the ladder you already sell.
+                    Per-athlete integration. Volume drops the price.
                 </h2>
                 <p className="text-lg text-gray-400 leading-relaxed">
-                    Frames as the lowest-friction entry on IMG Academy's existing digital ladder &mdash; an order of magnitude
-                    below the 1-on-1 coaching SKU, priced to drive volume and bundle into every membership tier.
+                    Standard on every NCSA athlete profile. The more we ship, the cheaper per athlete &mdash;
+                    IMG Academy's per-profile margin stays at $3 from day one. We compress on our side to make
+                    the integration tomorrow.
                 </p>
             </div>
 
-            {/* Fits the existing ladder */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden mb-10">
-                <div className="bg-[#070707] p-6 sm:p-7">
-                    <p className="text-3xl sm:text-4xl font-semibold text-blue-400 tracking-tight mb-1 tabular-nums">$10</p>
-                    <p className="text-white text-base font-semibold mb-1">NTangible profile</p>
-                    <p className="text-gray-500 text-sm leading-relaxed">Per-athlete, per-sport. Standalone, bundled into NCSA tiers, or sent free as a conversion artifact.</p>
-                </div>
-                <div className="bg-[#070707] p-6 sm:p-7">
-                    <p className="text-3xl sm:text-4xl font-semibold text-white tracking-tight mb-1 tabular-nums">$120</p>
-                    <p className="text-white text-base font-semibold mb-1">Academy+ Essentials / yr</p>
-                    <p className="text-gray-500 text-sm leading-relaxed">Already auto-included Y1 with every NCSA membership. The NTangible profile becomes the per-sport hook that makes Y2 renew.</p>
-                </div>
-                <div className="bg-[#070707] p-6 sm:p-7">
-                    <p className="text-3xl sm:text-4xl font-semibold text-emerald-400 tracking-tight mb-1 tabular-nums">$85&ndash;$100</p>
-                    <p className="text-white text-base font-semibold mb-1">1-on-1 coaching / session</p>
-                    <p className="text-gray-500 text-sm leading-relaxed">The profile becomes the intake artifact every paid session opens with &mdash; lifts perceived value, doesn't compete with it.</p>
-                </div>
+            {/* Volume tier table */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden mb-10">
+                {VOLUME_TIERS.map((t) => (
+                    <div key={t.label} className="bg-[#070707] p-6 sm:p-7 flex flex-col">
+                        <p className={`text-xs font-semibold uppercase tracking-wider ${t.tone} mb-3`}>{t.label}</p>
+                        <p className="text-sm text-gray-500 tabular-nums mb-4">{fmtRange(t)} profiles / yr</p>
+                        <p className="text-4xl sm:text-5xl font-semibold text-white tracking-tight tabular-nums mb-4">
+                            ${t.price}
+                        </p>
+                        <div className="border-t border-white/5 pt-4 space-y-1.5">
+                            <div className="flex items-center justify-between text-sm">
+                                <span className="text-gray-500">IMG Academy</span>
+                                <span className="text-white font-semibold tabular-nums">${t.imgShare}</span>
+                            </div>
+                            <div className="flex items-center justify-between text-sm">
+                                <span className="text-gray-500">NTangible</span>
+                                <span className="text-white font-semibold tabular-nums">${t.price - t.imgShare}</span>
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
 
-            {/* Suggested split */}
+            {/* Why this shape */}
             <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-8 mb-10">
-                <p className="text-sm font-medium text-blue-400 mb-3">Suggested revenue split at $10 retail</p>
-                <div className="grid grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-xl overflow-hidden">
-                    <div className="bg-[#070707] p-5">
-                        <p className="text-3xl font-semibold text-blue-400 tracking-tight mb-1 tabular-nums">$3</p>
-                        <p className="text-white text-sm font-semibold mb-1">IMG Academy</p>
-                        <p className="text-gray-500 text-xs leading-relaxed">Per-profile margin. Conversion-share kicker on top when the profile drives an upsell.</p>
-                    </div>
-                    <div className="bg-[#070707] p-5">
-                        <p className="text-3xl font-semibold text-white tracking-tight mb-1 tabular-nums">$7</p>
-                        <p className="text-white text-sm font-semibold mb-1">NTangible</p>
-                        <p className="text-gray-500 text-xs leading-relaxed">Covers assessment build, hosting, coaches' dashboard, sport expansion, and validation co-authorship with the IMG psych team.</p>
-                    </div>
-                </div>
+                <p className="text-sm font-medium text-blue-400 mb-3">Why this shape</p>
+                <p className="text-base text-gray-300 leading-relaxed">
+                    IMG's $3 share is flat across every tier &mdash; growth comes from volume, not from renegotiating rate.
+                    NTangible's margin compresses from $7 to $3 as the integration deepens, in exchange for the certainty
+                    of full per-athlete coverage across NCSA. At the floor, both sides earn the same per profile and
+                    the program scales as fast as IMG wants to ship it.
+                </p>
             </div>
 
             {/* Calculator card */}
             <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-10">
                 <div className="mb-8">
                     <p className="text-sm text-gray-500 font-medium mb-1">Model it at scale</p>
-                    <p className="text-base text-gray-400">Drag to set the number of profiles sold.</p>
+                    <p className="text-base text-gray-400">Drag to set the annual profile volume across NCSA.</p>
                 </div>
 
                 {/* Slider */}
                 <div className="mb-10">
                     <div className="flex items-end justify-between mb-3 gap-4">
                         <label className="text-sm font-medium text-gray-400">
-                            Profiles sold <span className="text-gray-600">(@ $10 each)</span>
+                            Profiles / yr
+                            <span className={`ml-2 ${tier.tone} font-semibold uppercase tracking-wider text-[11px]`}>
+                                {tier.label} &middot; ${tier.price} ea
+                            </span>
                         </label>
                         <input
                             type="number"
@@ -206,7 +216,7 @@ const PricingCalculator = () => {
                         type="range"
                         min={0}
                         max={MAX_PROFILES}
-                        step={500}
+                        step={5000}
                         value={clamped}
                         onChange={(e) => setProfiles(parseInt(e.target.value, 10))}
                         className="w-full h-1.5 bg-gray-800 rounded-full appearance-none cursor-pointer accent-blue-500"
@@ -215,7 +225,7 @@ const PricingCalculator = () => {
                         }}
                     />
                     <div className="flex flex-wrap items-center gap-2 mt-4">
-                        {[5000, 10000, 25000, 50000, 100000, 250000].map(n => (
+                        {[50_000, 100_000, 250_000, 500_000, 1_000_000].map(n => (
                             <button
                                 key={n}
                                 onClick={() => setProfiles(n)}
@@ -229,30 +239,33 @@ const PricingCalculator = () => {
                     </div>
                 </div>
 
-                {/* Total to IMG Academy - hero result */}
+                {/* Annual revenue to IMG - hero result */}
                 <div className="rounded-2xl border border-blue-500/30 bg-gradient-to-b from-blue-500/[0.08] to-transparent p-6 sm:p-8 mb-6">
-                    <p className="text-sm font-medium text-blue-400 mb-2">Total value to IMG Academy</p>
-                    <p className="text-5xl sm:text-6xl font-semibold text-white tracking-tight tabular-nums mb-2">{fmt(totalToIMG)}</p>
-                    <p className="text-sm text-gray-400 tabular-nums">{fmt(imgRev)} rev share + {fmt(adSpend)} directed ad spend</p>
+                    <p className="text-sm font-medium text-blue-400 mb-2">Annual revenue to IMG Academy</p>
+                    <p className="text-5xl sm:text-6xl font-semibold text-white tracking-tight tabular-nums mb-2">{fmt(imgRev)}</p>
+                    <p className="text-sm text-gray-400 tabular-nums">
+                        {clamped.toLocaleString('en-US')} profiles &times; ${tier.imgShare} per athlete
+                    </p>
                 </div>
 
                 {/* Supporting breakdown */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-xl overflow-hidden">
                     <div className="bg-[#070707] p-5 sm:p-6">
-                        <p className="text-sm font-medium text-blue-400 mb-2">IMG Academy rev share</p>
+                        <p className="text-sm font-medium text-blue-400 mb-2">IMG Academy share</p>
                         <p className="text-2xl sm:text-3xl font-semibold text-white tracking-tight tabular-nums">{fmt(imgRev)}</p>
-                        <p className="text-xs text-gray-500 mt-1 tabular-nums">{clamped.toLocaleString('en-US')} &times; $3</p>
+                        <p className="text-xs text-gray-500 mt-1 tabular-nums">{clamped.toLocaleString('en-US')} &times; ${tier.imgShare}</p>
                     </div>
                     <div className="bg-[#070707] p-5 sm:p-6">
-                        <p className="text-sm font-medium text-blue-400 mb-2">Directed ad spend</p>
-                        <p className="text-2xl sm:text-3xl font-semibold text-white tracking-tight tabular-nums">{fmt(adSpend)}</p>
-                        <p className="text-xs text-gray-500 mt-1 tabular-nums">{milestones} &times; $10K milestone{milestones === 1 ? '' : 's'}</p>
+                        <p className="text-sm font-medium text-blue-400 mb-2">NTangible share</p>
+                        <p className="text-2xl sm:text-3xl font-semibold text-white tracking-tight tabular-nums">{fmt(ntangibleRev)}</p>
+                        <p className="text-xs text-gray-500 mt-1 tabular-nums">{clamped.toLocaleString('en-US')} &times; ${tier.price - tier.imgShare}</p>
                     </div>
                 </div>
 
                 <p className="text-xs text-gray-600 mt-6 leading-relaxed">
-                    Illustrative model. Per-profile margin only &mdash; doesn't reflect the conversion-share kicker on
-                    paid-tier uplift, the Y2 Essentials renewal pull-through, or the 6-month retest cycle.
+                    Per-profile economics only. Doesn't reflect the 6-month retest cycle (effectively doubles
+                    annual volume from a stable athlete base), SportsRecruits crossover into the same integration,
+                    or international expansion through Elevate.
                 </p>
             </div>
         </section>
@@ -261,10 +274,10 @@ const PricingCalculator = () => {
 
 // --- IMG ACADEMY DIGITAL SURFACES ---
 const SURFACES: { name: string; blurb: string }[] = [
-    { name: 'IMG Academy+ Essentials', blurb: 'The per-sport personalization layer the $120/yr Essentials bundle is missing &mdash; and the Y2 retention hook when the free year sunsets.' },
-    { name: 'NCSA', blurb: 'A family-facing artifact the inside-sales team can send between the first call and the conference call. Lifts paid-tier conversion.' },
-    { name: 'SportsRecruits', blurb: 'Crossover product that converts the 400K-athlete recruiting audience into developmental Academy+ subscribers.' },
-    { name: '1-on-1 Coaching', blurb: 'Slots alongside the existing $85&ndash;$100/session mental performance SKU as the intake artifact every session starts from.' },
+    { name: 'NCSA', blurb: 'Standard on every athlete profile. Per-athlete pricing across the membership base &mdash; not an add-on, not a SKU families have to opt into.' },
+    { name: 'SportsRecruits', blurb: 'Same integration extends across SR’s 400K-athlete club and HS audience. Adds volume, drops the per-profile price for IMG.' },
+    { name: 'IMG Academy+', blurb: 'Profile renders inside the Essentials experience already bundled with NCSA. The per-sport hook that earns the Y2 renewal.' },
+    { name: 'Elevate & NGB channels', blurb: 'Same surface extends into federation deals (USA Water Polo, USA Lacrosse) and Elevate’s B2B-to-schools motion. Internationally portable as the deal scales.' },
 ];
 
 const PartnerProperties = () => (
