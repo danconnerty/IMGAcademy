@@ -794,59 +794,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
 
               {/* VISUAL - Elevate Essentials with a Clutch Factor lesson on the laptop */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#070707]">
+                  <div className="rounded-2xl overflow-hidden border border-white/10 bg-[#070707]">
                       <img
                           src="/elevate-main-essentials.png"
                           alt="Elevate by IMG Academy Essentials - a Clutch Factor lesson"
-                          className="w-full h-auto block select-none"
+                          className="w-full h-auto block"
                           loading="lazy"
                       />
-
-                      {/* LAPTOP RIGHT PANEL - masks the 'Directing Focus' panel with a Clutch Factor lesson */}
-                      <div
-                          className="absolute"
-                          style={{ top: '30.5%', left: '62.5%', width: '33%', height: '42%' }}
-                      >
-                          <div className="h-full w-full bg-gradient-to-b from-[#0b1f4a] to-[#091740] px-[5%] py-[5%] flex flex-col">
-                              {/* Eyebrow */}
-                              <p className="text-amber-300 font-semibold uppercase tracking-[0.18em] mb-[3%]" style={{ fontSize: 'clamp(5px, 0.85vw, 11px)' }}>
-                                  Clutch Factor &middot; Lesson 01
-                              </p>
-
-                              {/* Title with amber underline */}
-                              <div className="mb-[5%]">
-                                  <h5 className="text-white font-bold leading-[1.15] tracking-tight" style={{ fontSize: 'clamp(8px, 1.4vw, 18px)' }}>
-                                      How do I understand my <span className="text-amber-300">Clutch Factor</span> score?
-                                  </h5>
-                                  <div className="h-[2px] w-[18%] bg-amber-300 mt-[3%]" />
-                              </div>
-
-                              {/* Lesson points - numbered, clean rows */}
-                              <div className="flex flex-col gap-[3.5%] flex-1">
-                                  {[
-                                      { num: '01', text: 'The score is a 0–1000 measure of pressure performance.' },
-                                      { num: '02', text: 'Your tier (Below Average → Elite) tells coaches what to expect.' },
-                                      { num: '03', text: 'Retest every 6 months to track real, measurable growth.' },
-                                  ].map((p) => (
-                                      <div key={p.num} className="flex items-start gap-[5%]">
-                                          <span
-                                              className="shrink-0 inline-flex items-center justify-center rounded-full bg-amber-300/15 border border-amber-300/40 text-amber-200 font-bold tabular-nums"
-                                              style={{
-                                                  fontSize: 'clamp(5px, 0.75vw, 9px)',
-                                                  width: 'clamp(12px, 2vw, 22px)',
-                                                  height: 'clamp(12px, 2vw, 22px)',
-                                              }}
-                                          >
-                                              {p.num}
-                                          </span>
-                                          <p className="text-white/95 font-medium leading-snug" style={{ fontSize: 'clamp(6px, 0.95vw, 12px)' }}>
-                                              {p.text}
-                                          </p>
-                                      </div>
-                                  ))}
-                              </div>
-                          </div>
-                      </div>
                   </div>
               </section>
 
