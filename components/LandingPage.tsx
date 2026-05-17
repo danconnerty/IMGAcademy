@@ -474,6 +474,16 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           <p className="text-gray-500 text-sm leading-relaxed">Of collegiate athletes scoring above 800, 73% are named All-American or All-Conference selections. The signal college coaches don't have today.</p>
                       </div>
                   </div>
+                  <div className="mt-5 flex justify-end">
+                      <a
+                          href="https://ntangible.co/research"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors underline underline-offset-4 decoration-blue-500/30 hover:decoration-blue-400/60"
+                      >
+                          Read the research <ArrowRight size={14} />
+                      </a>
+                  </div>
               </section>
 
           </>
