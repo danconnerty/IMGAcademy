@@ -1022,6 +1022,30 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   </div>
               </section>
 
+              {/* VISUAL PLACEHOLDER - mind/body */}
+              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
+                  <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-black">
+                      <img
+                          src="/mindbody1.jpg"
+                          alt="Mind and body - the cognitive performance dimension Academy+ closes on"
+                          className="w-full h-auto block"
+                          style={{ mixBlendMode: 'multiply' }}
+                          loading="lazy"
+                      />
+                      {/* Edge vignette to fully blend into the dark theme */}
+                      <div
+                          className="absolute inset-0 pointer-events-none"
+                          style={{
+                              background:
+                                  'radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.65) 100%), linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, transparent 18%, transparent 78%, rgba(0,0,0,0.6) 100%)',
+                          }}
+                      />
+                  </div>
+                  <p className="text-xs text-gray-600 italic leading-relaxed mt-3 text-right">
+                      Placeholder visual - to be replaced with the final Academy+ creative.
+                  </p>
+              </section>
+
               {/* THE NO-BRAINER */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
                   <div className="mb-10 sm:mb-12 max-w-2xl">
