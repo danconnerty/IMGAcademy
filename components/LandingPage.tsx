@@ -1073,6 +1073,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       {[
                           {
                               range: 'Clutch 750+',
+                              reportTier: 'Great + Elite',
                               label: 'Showcase',
                               tone: 'emerald',
                               barClass: 'bg-emerald-400',
@@ -1082,7 +1083,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               detail: "These athletes are the proof points. They get promoted in the Coach Dashboard, the Clutch Factor Leaderboard, and become the case studies Academy+ marketing leans on.",
                           },
                           {
-                              range: 'Clutch 500-749',
+                              range: 'Clutch 651-749',
+                              reportTier: 'Average + Above Average',
                               label: 'Workshop nudge',
                               tone: 'amber',
                               barClass: 'bg-amber-400',
@@ -1092,7 +1094,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               detail: "The middle tier - real upside, real gap, no crisis. Automated nudge in-app and via email surfaces an Academy+ group workshop or self-guided module. Low-ticket entry into the Academy+ catalog.",
                           },
                           {
-                              range: 'Clutch < 500',
+                              range: 'Clutch < 651',
+                              reportTier: 'Below Average',
                               label: '1-on-1 session offer',
                               tone: 'red',
                               barClass: 'bg-red-400',
@@ -1103,9 +1106,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           },
                       ].map((tier) => (
                           <div key={tier.range} className={`rounded-2xl border ${tier.ringClass} p-5 sm:p-7 flex flex-col sm:flex-row sm:items-start gap-5`}>
-                              <div className="shrink-0 flex sm:flex-col items-center sm:items-start gap-3 sm:gap-2 sm:w-44">
-                                  <span className={`block h-0.5 w-10 ${tier.barClass} rounded-full hidden sm:block`} />
+                              <div className="shrink-0 flex sm:flex-col items-center sm:items-start gap-3 sm:gap-2 sm:w-48">
+                                  <span className={`h-0.5 w-10 ${tier.barClass} rounded-full hidden sm:block`} />
                                   <p className="text-white text-base sm:text-lg font-semibold tabular-nums">{tier.range}</p>
+                                  <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold hidden sm:block">Report tier &middot; {tier.reportTier}</p>
                                   <span className={`inline-flex items-center px-2 py-0.5 rounded-full border text-[10px] font-semibold uppercase tracking-widest ${tier.tagClass}`}>
                                       {tier.label}
                                   </span>
