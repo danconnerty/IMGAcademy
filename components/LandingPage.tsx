@@ -1042,9 +1042,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                                   }}
                               />
                           </div>
-                          <p className="text-[11px] text-gray-600 italic leading-relaxed mt-2 text-right">
-                              Placeholder - to be replaced with final Academy+ creative.
-                          </p>
                       </div>
 
                       {/* Copy */}
