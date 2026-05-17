@@ -216,8 +216,8 @@ function renderSquareCanvas(
   const headerY = 52;
   const curX = 26;
   const lh = 28;
-  const lw = Math.round((3125 * lh) / 515);
-  if (logo && logo.naturalWidth) {
+  if (logo && logo.naturalWidth && logo.naturalHeight) {
+    const lw = Math.round(lh * (logo.naturalWidth / logo.naturalHeight));
     ctx.globalAlpha = 0.82;
     ctx.drawImage(logo, curX, Math.round(headerY - lh / 2), lw, lh);
     ctx.globalAlpha = 1;
@@ -354,8 +354,8 @@ function renderStoryCanvas(
   const headerY = 54;
   const curX = 24;
   const lh = 22;
-  const lw = Math.round((3125 * lh) / 515);
-  if (logo && logo.naturalWidth) {
+  if (logo && logo.naturalWidth && logo.naturalHeight) {
+    const lw = Math.round(lh * (logo.naturalWidth / logo.naturalHeight));
     ctx.globalAlpha = 0.82;
     ctx.drawImage(logo, curX, Math.round(headerY - lh / 2), lw, lh);
     ctx.globalAlpha = 1;
