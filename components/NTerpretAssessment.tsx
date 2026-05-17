@@ -370,6 +370,14 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
                 alt="NTangible"
                 style={{ height: '2.5rem', opacity: 0.8 }}
               />
+              <span style={{ width: '1px', height: '2rem', background: 'rgba(255,255,255,0.25)' }} aria-hidden="true" />
+              <div style={{ background: '#fff', borderRadius: '0.5rem', padding: '0.35rem 0.6rem', display: 'inline-flex', alignItems: 'center' }}>
+                <img
+                  src="/IMG.png"
+                  alt="IMG Academy"
+                  style={{ height: '2rem', width: 'auto' }}
+                />
+              </div>
             </div>
 
             <div className="d-flex justify-content-center mb-4">
@@ -397,7 +405,7 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
               className="font-tech text-uppercase text-secondary ls-widest fw-light mb-0"
               style={{ fontSize: '1rem' }}
             >
-              NTERPRET / MENTAL SCOUTING REPORT
+              NTERPRET / MENTAL SCOUTING REPORT · IMG ACADEMY
             </p>
           </div>
         </section>

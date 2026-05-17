@@ -81,8 +81,12 @@ const Header: React.FC<HeaderProps> = ({ currentView, onViewChange, onStartWalkt
             <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-gray-300 hover:text-white p-1">
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
-            <div className="flex items-center cursor-pointer" onClick={() => onViewChange('master')}>
+            <div className="flex items-center gap-2 cursor-pointer" onClick={() => onViewChange('master')}>
               <img src="/white_logo_transparent_background - name only.PNG" alt="N" className="h-6 w-auto object-contain" />
+              <span className="h-5 w-px bg-white/20" aria-hidden="true" />
+              <div className="bg-white rounded px-1.5 py-0.5 flex items-center">
+                <img src="/IMG.png" alt="IMG Academy" className="h-4 w-auto object-contain" />
+              </div>
             </div>
           </div>
 
@@ -145,13 +149,25 @@ const Header: React.FC<HeaderProps> = ({ currentView, onViewChange, onStartWalkt
         </div>
 
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex flex-col items-center cursor-pointer group" onClick={() => onViewChange('master')}>
-          {isDefaultBranding ? <img src="/white_logo_transparent_background - name only.PNG" alt="NTANGIBLE" className="h-8 w-auto object-contain" /> : (
+          {isDefaultBranding ? (
+            <div className="flex items-center gap-3">
+              <img src="/white_logo_transparent_background - name only.PNG" alt="NTANGIBLE" className="h-8 w-auto object-contain" />
+              <span className="h-6 w-px bg-white/25" aria-hidden="true" />
+              <div className="bg-white rounded px-2 py-1 flex items-center">
+                <img src="/IMG.png" alt="IMG Academy" className="h-6 w-auto object-contain" />
+              </div>
+            </div>
+          ) : (
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-sm font-light group-hover:bg-white group-hover:text-black transition-colors">{brandingName.charAt(0)}</div>
               <span className="text-lg tracking-[0.2em] font-light uppercase">{brandingName}</span>
+              <span className="h-6 w-px bg-white/25" aria-hidden="true" />
+              <div className="bg-white rounded px-2 py-1 flex items-center">
+                <img src="/IMG.png" alt="IMG Academy" className="h-6 w-auto object-contain" />
+              </div>
             </div>
           )}
-          {isDefaultBranding && <span className="text-[9px] text-blue-400 tracking-[0.5em] font-bold mt-1 uppercase group-hover:text-blue-300 transition-colors">N Control</span>}
+          {isDefaultBranding && <span className="text-[9px] text-blue-400 tracking-[0.5em] font-bold mt-1 uppercase group-hover:text-blue-300 transition-colors">N Control × IMG Academy</span>}
         </div>
 
         <div className="flex items-center gap-3 sm:gap-6" ref={userDropdownRef}>

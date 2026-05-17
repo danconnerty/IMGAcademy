@@ -547,7 +547,11 @@ const App: React.FC = () => {
         <ClutchFactorGuide onClose={() => setIsClutchGuideOpen(false)} />
       )}
 
-            <footer className="py-8 flex flex-col items-center border-t border-gray-200 bg-white">
+            <footer className="py-8 flex flex-col items-center gap-3 border-t border-gray-200 bg-white">
+        <div className="flex items-center gap-3">
+          <span className="text-[10px] text-gray-400 tracking-[0.25em] uppercase font-bold">In partnership with</span>
+          <img src="/IMG.png" alt="IMG Academy" className="h-8 w-auto object-contain" />
+        </div>
         <div className="flex items-center gap-2 text-[11px] text-gray-400 tracking-widest uppercase font-bold">
           <span>{customOrgName}</span>
           <span className="text-gray-300">|</span>

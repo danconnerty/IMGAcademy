@@ -1001,6 +1001,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
       <nav className="fixed top-0 left-0 right-0 z-50 w-full px-4 sm:px-6 h-16 flex items-center justify-between backdrop-blur-md border-b border-white/5 bg-black/60">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => handleEnter()}>
               <Logo className="text-white" size="small" />
+              <span className="h-6 w-px bg-white/15" aria-hidden="true" />
+              <div className="bg-white rounded-md px-2 py-1 flex items-center" title="In partnership with IMG Academy">
+                  <img src="/IMG.png" alt="IMG Academy" className="h-5 w-auto object-contain" />
+              </div>
           </div>
           <div className="flex items-center gap-2 sm:gap-4">
               <a href="#pricing" className="hidden sm:inline-flex text-sm font-medium text-gray-400 hover:text-white transition-colors px-3 py-2">
@@ -1024,6 +1028,17 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   <span className="inline-flex rounded-full h-1.5 w-1.5 bg-blue-500"></span>
                   <span className="text-[11px] font-medium text-gray-300 tracking-wide">Clutch isn't a feeling. It's a score.</span>
               </div>
+
+              <div className={`flex items-center justify-center gap-3 mb-8 ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700`}>
+                  <Logo className="text-white" size="small" />
+                  <span className="text-gray-500 text-xs tracking-[0.3em] uppercase font-semibold">×</span>
+                  <div className="bg-white rounded-lg px-3 py-1.5 flex items-center">
+                      <img src="/IMG.png" alt="IMG Academy" className="h-7 w-auto object-contain" />
+                  </div>
+              </div>
+              <p className={`text-[11px] uppercase tracking-[0.25em] text-gray-500 font-semibold mb-8 ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700`}>
+                  In partnership with IMG Academy
+              </p>
 
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight mb-6 leading-[1.02] text-white">
                   Coach the <span className="text-blue-400">whole athlete.</span>
@@ -1082,7 +1097,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
               <p className="text-center text-xs sm:text-sm font-medium text-gray-500 tracking-wide mb-8 sm:mb-10">
                   Trusted by leading youth sports organizations
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
                   <a
                       href="https://www.alliancefastpitch.com/"
                       target="_blank"
@@ -1114,6 +1129,24 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       </div>
                       <p className="text-white text-base font-semibold mb-1">Future Stars Series</p>
                       <p className="text-gray-500 text-sm">Premier youth baseball showcase</p>
+                  </a>
+                  <a
+                      href="https://www.imgacademy.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group bg-[#070707] hover:bg-white/[0.03] transition-colors p-8 sm:p-10 flex flex-col items-center text-center"
+                  >
+                      <div className="h-20 sm:h-24 flex items-center justify-center mb-5">
+                          <div className="bg-white rounded-lg px-4 py-2 flex items-center justify-center h-full">
+                              <img
+                                  src="/IMG.png"
+                                  alt="IMG Academy"
+                                  className="max-h-full max-w-[160px] object-contain"
+                              />
+                          </div>
+                      </div>
+                      <p className="text-white text-base font-semibold mb-1">IMG Academy</p>
+                      <p className="text-gray-500 text-sm">World-class athletic training</p>
                   </a>
               </div>
 
@@ -1502,9 +1535,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 mb-10">
                   <div className="col-span-2 sm:col-span-1">
                       <Logo className="text-white opacity-90 mb-4" size="small" />
-                      <p className="text-sm text-gray-500 leading-relaxed">
+                      <p className="text-sm text-gray-500 leading-relaxed mb-5">
                           The Operating System for Mental Performance.
                       </p>
+                      <div className="inline-flex items-center gap-2">
+                          <span className="text-[10px] uppercase tracking-[0.25em] text-gray-500 font-semibold">In partnership with</span>
+                      </div>
+                      <div className="mt-3 bg-white rounded-md px-3 py-2 inline-flex items-center">
+                          <img src="/IMG.png" alt="IMG Academy" className="h-7 w-auto object-contain" />
+                      </div>
                   </div>
                   <div>
                       <p className="text-xs font-semibold text-white uppercase tracking-wider mb-4">Product</p>
@@ -1529,7 +1568,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   </div>
               </div>
               <div className="border-t border-white/5 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-gray-600">
-                  <span>© 2026 NTangible, Inc.</span>
+                  <span>© 2026 NTangible, Inc. • In partnership with IMG Academy</span>
                   <div className="flex gap-5">
                       <span>COPPA-aligned</span>
                       <span>Encrypted data</span>
