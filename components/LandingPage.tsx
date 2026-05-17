@@ -27,7 +27,7 @@ const Logo = ({ className = "", size = "normal" }: { className?: string, size?: 
             <img
                 src="/IMG.png"
                 alt="IMG Academy"
-                className={`${height} w-auto object-contain bg-white rounded px-1.5 py-0.5`}
+                className={`${height} w-auto object-contain`}
             />
         </div>
     );
@@ -284,9 +284,7 @@ const PartnerProperties = () => (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-20 sm:mb-24">
         <div className="mb-10 sm:mb-12 max-w-2xl">
             <div className="flex items-center gap-3 mb-4">
-                <div className="bg-white rounded-md px-2 py-1 flex items-center">
-                    <img src="/IMG.png" alt="IMG Academy" className="h-7 w-auto object-contain" />
-                </div>
+                <img src="/IMG.png" alt="IMG Academy" className="h-7 w-auto object-contain" />
                 <p className="text-sm font-medium text-blue-400">Where it plugs in</p>
             </div>
             <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
@@ -1408,9 +1406,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
               {/* Active tab panel */}
               <div key={activeTab} className="lp-tab-panel pt-12 sm:pt-16">
                   <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-8 flex items-center gap-3">
-                      <div className="bg-white rounded-md px-2 py-1 flex items-center">
-                          <img src="/IMG.png" alt="IMG Academy" className="h-6 w-auto object-contain" />
-                      </div>
+                      <img src="/IMG.png" alt="IMG Academy" className="h-6 w-auto object-contain" />
                       <span className="text-[10px] uppercase tracking-[0.3em] text-gray-500 font-semibold">
                           IMG Academy &middot; {TABS.find(t => t.id === activeTab)?.label}
                       </span>
