@@ -1048,8 +1048,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           Every score becomes a next-best-action.
                       </h3>
                       <p className="text-lg text-gray-400 leading-relaxed">
-                          Three Clutch tiers, three outbound motions. The routing logic ships inside the
-                          profile - no separate CRM step, no lead-list ingestion.
+                          Three Clutch tiers, three outbound motions. No new ops, no new CRM step - the routing
+                          logic ships inside the profile.
                       </p>
                   </div>
 
@@ -1102,46 +1102,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                                   <h4 className="text-lg sm:text-xl font-semibold text-white tracking-tight mb-2 leading-snug">{tier.headline}</h4>
                                   <p className="text-sm sm:text-[15px] text-gray-400 leading-relaxed">{tier.detail}</p>
                               </div>
-                          </div>
-                      ))}
-                  </div>
-              </section>
-
-              {/* THE MECHANICS */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="mb-10 sm:mb-12 max-w-2xl">
-                      <p className="text-sm font-medium text-amber-400 mb-3">How a lead actually arrives</p>
-                      <h3 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
-                          Assessment to inbox in one motion.
-                      </h3>
-                      <p className="text-lg text-gray-400 leading-relaxed">
-                          No new ops, no new system. The pre-assessment intake already captures
-                          openness-to-coaching as a field. The routing logic ships inside the profile.
-                      </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-                      {[
-                          {
-                              step: '01',
-                              title: 'Athlete completes the assessment',
-                              body: "The Clutch Factor score lands on the NCSA profile; intake has already captured the family's openness to additional development resources.",
-                          },
-                          {
-                              step: '02',
-                              title: 'Score routes to the right tier',
-                              body: "Low score + opted-in family flags a record in IMG's lead system, tagged with the specific gap so Academy+ knows what to sell.",
-                          },
-                          {
-                              step: '03',
-                              title: 'Academy+ outreach is contextual',
-                              body: "Outreach references the exact area the score flagged - the pitch is 'here's the gap your dashboard already shows you,' not 'try our service.'",
-                          },
-                      ].map((s) => (
-                          <div key={s.step} className="bg-[#070707] p-6 sm:p-8 flex flex-col">
-                              <p className="text-[11px] font-semibold text-amber-300 uppercase tracking-widest mb-3 tabular-nums">Step {s.step}</p>
-                              <h4 className="text-lg sm:text-xl font-semibold text-white tracking-tight mb-3 leading-snug">{s.title}</h4>
-                              <p className="text-sm text-gray-400 leading-relaxed">{s.body}</p>
                           </div>
                       ))}
                   </div>
