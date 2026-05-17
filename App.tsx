@@ -4,24 +4,49 @@ import LandingPage from './components/LandingPage';
 
 // Lazy-load everything that only renders after the user enters the demo, so the
 // landing page (the first paint on mobile) doesn't pay for the whole app bundle.
-const Header = lazy(() => import('./components/Header'));
-const ParticipantTable = lazy(() => import('./components/ParticipantTable'));
-const CoachesNterpret = lazy(() => import('./components/CoachesNterpret'));
-const MyProfile = lazy(() => import('./components/MyProfile'));
-const FitScoreRubric = lazy(() => import('./components/FitScoreRubric'));
-const ClutchFactorGuide = lazy(() => import('./components/ClutchFactorGuide'));
-const RecruitingView = lazy(() => import('./components/RecruitingView'));
-const Walkthrough = lazy(() => import('./components/Walkthrough'));
-const MasterDashboard = lazy(() => import('./components/MasterDashboard'));
-const MethodologyView = lazy(() => import('./components/MethodologyView'));
-const RosterAlignmentView = lazy(() => import('./components/RosterAlignmentView'));
-const NTerpretProfilesView = lazy(() => import('./components/NTerpretProfilesView'));
-const DevelopmentPlanView = lazy(() => import('./components/DevelopmentPlanView'));
+// Each import factory is named so we can both lazy() it and preload() it.
+const loadHeader = () => import('./components/Header');
+const loadParticipantTable = () => import('./components/ParticipantTable');
+const loadCoachesNterpret = () => import('./components/CoachesNterpret');
+const loadMyProfile = () => import('./components/MyProfile');
+const loadFitScoreRubric = () => import('./components/FitScoreRubric');
+const loadClutchFactorGuide = () => import('./components/ClutchFactorGuide');
+const loadRecruitingView = () => import('./components/RecruitingView');
+const loadWalkthrough = () => import('./components/Walkthrough');
+const loadMasterDashboard = () => import('./components/MasterDashboard');
+const loadMethodologyView = () => import('./components/MethodologyView');
+const loadRosterAlignmentView = () => import('./components/RosterAlignmentView');
+const loadNTerpretProfilesView = () => import('./components/NTerpretProfilesView');
+const loadDevelopmentPlanView = () => import('./components/DevelopmentPlanView');
 
+const Header = lazy(loadHeader);
+const ParticipantTable = lazy(loadParticipantTable);
+const CoachesNterpret = lazy(loadCoachesNterpret);
+const MyProfile = lazy(loadMyProfile);
+const FitScoreRubric = lazy(loadFitScoreRubric);
+const ClutchFactorGuide = lazy(loadClutchFactorGuide);
+const RecruitingView = lazy(loadRecruitingView);
+const Walkthrough = lazy(loadWalkthrough);
+const MasterDashboard = lazy(loadMasterDashboard);
+const MethodologyView = lazy(loadMethodologyView);
+const RosterAlignmentView = lazy(loadRosterAlignmentView);
+const NTerpretProfilesView = lazy(loadNTerpretProfilesView);
+const DevelopmentPlanView = lazy(loadDevelopmentPlanView);
+
+// Warm every dashboard chunk so view-to-view navigation is from cache.
+// Called from LandingPage on mount and immediately on enter.
+export const preloadDashboard = () => {
+  loadHeader(); loadParticipantTable(); loadCoachesNterpret(); loadMyProfile();
+  loadFitScoreRubric(); loadClutchFactorGuide(); loadRecruitingView(); loadWalkthrough();
+  loadMasterDashboard(); loadMethodologyView(); loadRosterAlignmentView();
+  loadNTerpretProfilesView(); loadDevelopmentPlanView();
+};
+
+// Near-invisible fallback. With preload kicked off on landing mount, this
+// almost never renders in practice - and when it does it's a 1px top bar
+// rather than a black "Loading..." block.
 const ViewFallback: React.FC = () => (
-  <div className="flex items-center justify-center py-24 text-slate-400 text-sm tracking-wider uppercase">
-    Loading...
-  </div>
+  <div className="fixed top-0 left-0 right-0 h-0.5 bg-blue-500/60 animate-pulse z-[60]" />
 );
 import { ViewType, Player, UserProfile, HomeTab } from './types';
 import { MOCK_TEAMS } from './mockTeams';

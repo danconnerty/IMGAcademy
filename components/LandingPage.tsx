@@ -5,6 +5,7 @@ import {
     Megaphone, LayoutGrid, Target,
 } from 'lucide-react';
 import { ViewType } from '../types';
+import { preloadDashboard } from '../App';
 import { TestDriveModal } from './TestDriveModal';
 import ClutchAssessment from './ClutchAssessment';
 import NTerpretAssessment from './NTerpretAssessment';
@@ -378,6 +379,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
 
   useEffect(() => {
     setIsLoaded(true);
+    // Warm dashboard chunks in the background so view-to-view navigation
+    // later is instant rather than chunk-loaded.
+    const idle = (window as Window & { requestIdleCallback?: (cb: () => void) => number }).requestIdleCallback;
+    if (idle) idle(() => preloadDashboard());
+    else setTimeout(preloadDashboard, 300);
   }, []);
 
   const handleEnter = (view?: ViewType) => {
