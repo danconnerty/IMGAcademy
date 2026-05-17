@@ -18,19 +18,16 @@ interface LandingPageProps {
 // --- CO-BRANDED LOGO ---
 const Logo = ({ className = "", size = "normal" }: { className?: string, size?: "small" | "normal" }) => {
     const height = size === "small" ? "h-7" : "h-9";
+    const textSize = size === "small" ? "text-xs" : "text-sm";
 
     return (
         <div className={`flex items-center gap-2.5 select-none ${className}`}>
-            <img
-                src="/white_logo_transparent_background - name only.PNG"
-                alt="NTangible"
-                className={`${height} w-auto object-contain`}
-            />
+            <span className={`${textSize} font-light text-white tracking-[0.25em] uppercase`}>NTangible</span>
             <span className="text-white/25 text-lg font-light leading-none">&times;</span>
             <img
                 src="/IMG.png"
                 alt="IMG Academy"
-                className={`${height} w-auto object-contain`}
+                className={`${height} w-auto object-contain bg-white rounded px-1.5 py-0.5`}
             />
         </div>
     );
@@ -263,7 +260,12 @@ const PARTNERS: { name: string; src: string; blurb: string }[] = [
 const PartnerProperties = () => (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-20 sm:mb-24">
         <div className="mb-10 sm:mb-12 max-w-2xl">
-            <p className="text-sm font-medium text-blue-400 mb-3">Partner properties</p>
+            <div className="flex items-center gap-3 mb-4">
+                <div className="bg-white rounded-md px-2 py-1 flex items-center">
+                    <img src="/IMG.png" alt="IMG Academy" className="h-7 w-auto object-contain" />
+                </div>
+                <p className="text-sm font-medium text-blue-400">Partner properties</p>
+            </div>
             <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
                 Built into every IMG Academy property.
             </h2>
@@ -1387,6 +1389,14 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
 
               {/* Active tab panel */}
               <div key={activeTab} className="lp-tab-panel pt-12 sm:pt-16">
+                  <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-8 flex items-center gap-3">
+                      <div className="bg-white rounded-md px-2 py-1 flex items-center">
+                          <img src="/IMG.png" alt="IMG Academy" className="h-6 w-auto object-contain" />
+                      </div>
+                      <span className="text-[10px] uppercase tracking-[0.3em] text-gray-500 font-semibold">
+                          IMG Academy &middot; {TABS.find(t => t.id === activeTab)?.label}
+                      </span>
+                  </div>
                   {renderTabPanel()}
                   {renderTabPager()}
               </div>
