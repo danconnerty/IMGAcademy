@@ -168,6 +168,7 @@ function renderSquareCanvas(
   D: CanvasD,
   userPhoto: HTMLImageElement | null,
   logo: HTMLImageElement | null,
+  ntangibleLogo: HTMLImageElement | null,
   now: Date
 ): void {
   const W = 800, H = 800, S = 4;
@@ -214,11 +215,28 @@ function renderSquareCanvas(
   ctx.strokeRect(0.5, 0.5, W - 1, H - 1);
 
   const headerY = 52;
-  const curX = 26;
-  const lh = 28;
+  let curX = 26;
+  // NTangible wordmark first (primary brand), then divider, then IMG badge.
+  if (ntangibleLogo && ntangibleLogo.naturalWidth && ntangibleLogo.naturalHeight) {
+    const nlh = 18;
+    const nlw = Math.round(nlh * (ntangibleLogo.naturalWidth / ntangibleLogo.naturalHeight));
+    ctx.globalAlpha = 0.95;
+    ctx.drawImage(ntangibleLogo, curX, Math.round(headerY - nlh / 2), nlw, nlh);
+    ctx.globalAlpha = 1;
+    curX += nlw + 12;
+    // Thin vertical divider
+    ctx.strokeStyle = 'rgba(255,255,255,0.20)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(curX, headerY - 12);
+    ctx.lineTo(curX, headerY + 12);
+    ctx.stroke();
+    curX += 12;
+  }
   if (logo && logo.naturalWidth && logo.naturalHeight) {
+    const lh = 26;
     const lw = Math.round(lh * (logo.naturalWidth / logo.naturalHeight));
-    ctx.globalAlpha = 0.82;
+    ctx.globalAlpha = 0.95;
     ctx.drawImage(logo, curX, Math.round(headerY - lh / 2), lw, lh);
     ctx.globalAlpha = 1;
   }
@@ -306,6 +324,7 @@ function renderStoryCanvas(
   D: CanvasD,
   userPhoto: HTMLImageElement | null,
   logo: HTMLImageElement | null,
+  ntangibleLogo: HTMLImageElement | null,
   now: Date
 ): void {
   const W = 540, H = 960, S = 3;
@@ -352,11 +371,26 @@ function renderStoryCanvas(
   ctx.strokeRect(0.5, 0.5, W - 1, H - 1);
 
   const headerY = 54;
-  const curX = 24;
-  const lh = 22;
+  let curX = 24;
+  if (ntangibleLogo && ntangibleLogo.naturalWidth && ntangibleLogo.naturalHeight) {
+    const nlh = 15;
+    const nlw = Math.round(nlh * (ntangibleLogo.naturalWidth / ntangibleLogo.naturalHeight));
+    ctx.globalAlpha = 0.95;
+    ctx.drawImage(ntangibleLogo, curX, Math.round(headerY - nlh / 2), nlw, nlh);
+    ctx.globalAlpha = 1;
+    curX += nlw + 10;
+    ctx.strokeStyle = 'rgba(255,255,255,0.20)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(curX, headerY - 10);
+    ctx.lineTo(curX, headerY + 10);
+    ctx.stroke();
+    curX += 10;
+  }
   if (logo && logo.naturalWidth && logo.naturalHeight) {
+    const lh = 22;
     const lw = Math.round(lh * (logo.naturalWidth / logo.naturalHeight));
-    ctx.globalAlpha = 0.82;
+    ctx.globalAlpha = 0.95;
     ctx.drawImage(logo, curX, Math.round(headerY - lh / 2), lw, lh);
     ctx.globalAlpha = 1;
   }
@@ -609,6 +643,7 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
   const cropperInstanceRef = useRef<any>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const logoImgRef = useRef<HTMLImageElement | null>(null);
+  const ntangibleLogoImgRef = useRef<HTMLImageElement | null>(null);
 
   // Handlers
   const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -674,8 +709,9 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
     const sq = squareCanvasRef.current;
     const st = storyCanvasRef.current;
     const logo = logoImgRef.current;
-    if (sq) renderSquareCanvas(sq, D, userPhotoImg, logo, now);
-    if (st) renderStoryCanvas(st, D, userPhotoImg, logo, now);
+    const ntLogo = ntangibleLogoImgRef.current;
+    if (sq) renderSquareCanvas(sq, D, userPhotoImg, logo, ntLogo, now);
+    if (st) renderStoryCanvas(st, D, userPhotoImg, logo, ntLogo, now);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [D.first, D.last, D.score, D.tier, D.assessed, D.validThru, userPhotoImg, logoReady, fontsReady]);
 
@@ -743,11 +779,18 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
     } else {
       setCropperReady(true);
     }
+    let loaded = 0;
+    const markReady = () => { loaded += 1; if (loaded >= 2) setLogoReady(true); };
     const img = new Image();
-    img.onload = () => setLogoReady(true);
-    img.onerror = () => setLogoReady(true);
+    img.onload = markReady;
+    img.onerror = markReady;
     img.src = '/IMG.png';
     logoImgRef.current = img;
+    const ntImg = new Image();
+    ntImg.onload = markReady;
+    ntImg.onerror = markReady;
+    ntImg.src = '/NTangiblelogowhite.PNG';
+    ntangibleLogoImgRef.current = ntImg;
 
     // Canvas uses Oswald/Rajdhani - wait for fonts to load before rendering,
     // otherwise the social card falls back to Impact/Arial Black while the
@@ -856,19 +899,11 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
         <section className="position-relative py-5 d-flex flex-column align-items-center text-center overflow-hidden">
           <div className="hero-grid-bg" />
           <div className="d-flex align-items-center justify-content-center gap-3 mb-5">
-            <span
-              className="text-white"
-              style={{
-                fontFamily: "'Rajdhani', sans-serif",
-                fontWeight: 300,
-                fontSize: '1.1rem',
-                letterSpacing: '0.25em',
-                textTransform: 'uppercase',
-                opacity: 0.85,
-              }}
-            >
-              NTangible
-            </span>
+            <img
+              src="/NTangiblelogowhite.PNG"
+              alt="NTangible"
+              style={{ height: '1.6rem', width: 'auto' }}
+            />
             <span
               aria-hidden="true"
               style={{

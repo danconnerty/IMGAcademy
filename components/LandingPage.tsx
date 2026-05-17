@@ -17,17 +17,17 @@ interface LandingPageProps {
 
 // --- CO-BRANDED LOGO ---
 const Logo = ({ className = "", size = "normal" }: { className?: string, size?: "small" | "normal" }) => {
-    const height = size === "small" ? "h-7" : "h-9";
-    const textSize = size === "small" ? "text-xs" : "text-sm";
+    const imgHeight = size === "small" ? "h-7" : "h-9";
+    const ntHeight = size === "small" ? "h-3.5" : "h-4";
 
     return (
         <div className={`flex items-center gap-2.5 select-none ${className}`}>
-            <span className={`${textSize} font-light text-white tracking-[0.25em] uppercase`}>NTangible</span>
+            <img src="/NTangiblelogowhite.PNG" alt="NTangible" className={`${ntHeight} w-auto object-contain`} />
             <span className="text-white/25 text-lg font-light leading-none">&times;</span>
             <img
                 src="/IMG.png"
                 alt="IMG Academy"
-                className={`${height} w-auto object-contain`}
+                className={`${imgHeight} w-auto object-contain`}
             />
         </div>
     );
