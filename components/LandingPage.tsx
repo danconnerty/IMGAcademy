@@ -858,9 +858,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           Eight languages live today.
                       </h3>
                       <p className="text-lg text-gray-400 leading-relaxed">
-                          The assessment ships in every major European language out of the box - so an Elevate
-                          deal in Madrid, Frankfurt, or Lisbon doesn't wait on a localization SOW. New markets
-                          (Asia, MENA) are roughly two weeks of dev time per language, not a re-platform.
+                          The assessment ships in eight European languages out of the box - so an Elevate deal
+                          in Madrid, Frankfurt, or Stockholm doesn't wait on a localization SOW. Additional
+                          languages can be added on call, and we'll have every major language live by year-end.
                       </p>
                   </div>
 
@@ -877,7 +877,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               { name: 'Italian', code: 'IT' },
                               { name: 'Portuguese', code: 'PT' },
                               { name: 'Dutch', code: 'NL' },
-                              { name: 'Polish', code: 'PL' },
+                              { name: 'Swedish', code: 'SV' },
                           ].map((lang) => (
                               <div key={lang.code} className="flex items-center gap-3 rounded-lg border border-white/10 bg-black/40 px-3.5 py-3">
                                   <span className="text-[10px] font-bold text-emerald-300 tracking-widest tabular-nums">{lang.code}</span>
@@ -890,11 +890,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
                       <div className="bg-[#070707] p-6 sm:p-7">
                           <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-2">On the roadmap</p>
-                          <p className="text-white text-base font-semibold mb-2">Asia &amp; MENA, deal-driven</p>
+                          <p className="text-white text-base font-semibold mb-2">Every major language by year-end</p>
                           <p className="text-gray-500 text-sm leading-relaxed">
-                              Mandarin, Japanese, Korean, Arabic and others are scoped but not yet shipped.
-                              We add a new language when an Elevate deal pulls it through - roughly two weeks
-                              of dev time per market.
+                              Mandarin, Japanese, Korean, Arabic and others are on the build plan and shipping
+                              through 2026. Additional languages can be added on call when an Elevate deal
+                              pulls one through ahead of schedule.
                           </p>
                       </div>
                       <div className="bg-[#070707] p-6 sm:p-7">
