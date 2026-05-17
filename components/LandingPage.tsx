@@ -264,7 +264,7 @@ const PricingCalculator = () => {
                 <p className="text-xs text-gray-600 mt-6 leading-relaxed">
                     Per-profile economics only. Doesn't reflect the 6-month retest cycle (effectively doubles
                     annual volume from a stable athlete base), SportsRecruits crossover into the same integration,
-                    or the Elevate B2B distribution play (every athlete at every partner academy &mdash; see the
+                    or the Elevate B2B distribution play (every athlete at every partner academy - see the
                     Elevate Play tab).
                 </p>
             </div>
@@ -290,7 +290,7 @@ const PartnerProperties = () => (
                 Three surfaces. Two motions.
             </h2>
             <p className="text-lg text-gray-400 leading-relaxed">
-                Sport-specific testing across NCSA and SportsRecruits &mdash; the recruiting layer IMG already
+                Sport-specific testing across NCSA and SportsRecruits - the recruiting layer IMG already
                 owns. And a bundled NCSA-profile-plus-assessment that ships with every Elevate academy license,
                 opening a B2B funnel NCSA can't reach on its own. One integration, no new SKU to invent.
             </p>
@@ -690,7 +690,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               step: '01',
                               eyebrow: 'Discover',
                               title: 'Clutch Factor Leaderboard',
-                              blurb: "The public ranking every coach lands on first. Filterable by sport, position, state, grad year, GPA, and height/weight — thousands narrowed to a short list in seconds.",
+                              blurb: "The public ranking every coach lands on first. Filterable by sport, position, state, grad year, GPA, and height/weight - thousands narrowed to a short list in seconds.",
                               src: '/collegeleaderboard.png',
                               alt: 'Clutch Factor Leaderboard - public ranking of every assessed athlete',
                           },
@@ -698,7 +698,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               step: '02',
                               eyebrow: 'Shortlist',
                               title: 'My Top Targets',
-                              blurb: "The Trust Anchor view (Alignment ≥ 62.5%, Clutch ≥ 750) — the coach's personal board, ranked by fit to their program.",
+                              blurb: "The Trust Anchor view (Alignment ≥ 62.5%, Clutch ≥ 750) - the coach's personal board, ranked by fit to their program.",
                               src: '/collegetoptargets.png',
                               alt: "My Top Targets - athletes ranked by Alignment for the coach's program",
                           },
@@ -816,7 +816,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           Elevate is IMG's B2B vehicle into outside schools and academies. Every one of those
                           campuses has a roster of athletes who never made an NCSA profile, never took a
                           sport-specific assessment, and never showed up in a college coach's search. We bundle
-                          both into the Elevate license &mdash; turning each academy deal into hundreds of
+                          both into the Elevate license - turning each academy deal into hundreds of
                           recruiting-ready profiles on day one.
                       </p>
                   </div>
@@ -831,7 +831,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       </h3>
                       <p className="text-lg text-gray-400 leading-relaxed">
                           The 4.5M-athlete pool is the floor, not the ceiling. The ceiling is every program
-                          Elevate already touches &mdash; sports academies, Nord Anglia campuses, federation
+                          Elevate already touches - sports academies, Nord Anglia campuses, federation
                           training centers. None of them currently flow through NCSA's funnel.
                       </p>
                   </div>
@@ -922,7 +922,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       </h3>
                       <p className="text-lg text-gray-400 leading-relaxed">
                           The academy doesn't run a separate procurement for NCSA. The bundle ships with the
-                          Elevate license &mdash; same contract, same renewal cycle, same admin owner.
+                          Elevate license - same contract, same renewal cycle, same admin owner.
                       </p>
                   </div>
 
@@ -1073,7 +1073,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           pilot underperforms the agreed metrics, there's no obligation to scale and no cost to
                           IMG for sports we built during the integration window. The risk sits on our side of
                           the table, not yours. On-campus assessment access for boarding, camp, and corporate
-                          performance use is bundled with the deal at no extra cost &mdash; details in the call.
+                          performance use is bundled with the deal at no extra cost - details in the call.
                       </p>
                   </div>
               </section>
@@ -1087,7 +1087,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       </h2>
                       <p className="text-lg text-gray-400 leading-relaxed">
                           A 60&ndash;90 second module gated in front of every assessment captures identity,
-                          geography, sport profile, recruiting status, contact, and dev signals &mdash; one
+                          geography, sport profile, recruiting status, contact, and dev signals - one
                           schema, owned by IMG, feeding NCSA, SportsRecruits, and the Elevate layer.{' '}
                           <span className="text-white font-medium">IMG defines the fields. IMG owns the data.</span>
                       </p>
@@ -1104,7 +1104,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       <p className="text-lg text-gray-400 leading-relaxed">
                           Profiles live on IMG's database and ship as an IMG product. COPPA-aligned with parental
                           consent built into onboarding for every 13&ndash;18-year-old. Families can opt out and
-                          we delete what we hold. We measure how athletes compete and handle pressure &mdash;
+                          we delete what we hold. We measure how athletes compete and handle pressure -
                           growth signals, not personality or clinical labels.
                       </p>
                   </div>
@@ -1296,7 +1296,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           </p>
                           <p className="text-base text-gray-400 leading-relaxed">
                               Selected by the industry trade for category-defining work in youth sports
-                              technology &mdash; the same year IMG Academy is consolidating its digital
+                              technology - the same year IMG Academy is consolidating its digital
                               recruiting portfolio.
                           </p>
                       </div>
