@@ -34,7 +34,7 @@ const PSYCH_TEMPLATES = {
     approach: [
         (name: string) => `Engage ${name} in a conversation about recent experiences by asking open-ended questions. Inquire about feelings during the scrimmage and how performance was perceived. Frame the discussion around identifying specific moments of pressure and exploring what went through ${name.split(' ')[0]}'s mind at that time to foster a deeper understanding of mental processes.`,
         (name: string) => `Adopt a 'Socratic' review method. Instead of correcting errors on film, ask ${name}: 'What did you see here?' and 'What led you to that decision?'. This shifts the dynamic from passive instruction to active analysis, building the player's own internal feedback loop.`,
-        (name: string) => `Focus on 'Process over Outcome'. When discussing performance, steer ${name} away from 'I played bad' statements. Direct the focus to specific mechanics and decisions. This helps detach self-worth from the scoreboard, reducing performance anxiety.`
+        (name: string) => `Focus on 'Process over Outcome'. When discussing performance, steer ${name} away from 'I played bad' statements. Direct the focus to specific mechanics and decisions. This detaches self-worth from the scoreboard and keeps execution clean under pressure.`
     ],
     coachingSuggestion: [
         (name: string) => `Encourage ${name} to keep a reflective journal focused on competitive experiences. This practice allows for analysis of performances, noting what worked well and what didn’t. By revisiting these entries, patterns can be identified to address specific challenges like handling the pressure of a championship environment.`,

@@ -960,10 +960,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               A pre-qualified lead, not a cold one.
                           </h3>
                           <p className="text-lg text-gray-400 leading-relaxed">
-                              Every Academy+ outbound today starts from zero - cold list, no diagnostic, no signal
-                              that the athlete actually needs the service. The assessment changes that. By the time
-                              a low-scoring profile reaches the Academy+ team, the gap is named, quantified, and
-                              already visible to the family on their NCSA dashboard.
+                              Every Academy+ outbound today starts from zero - cold list, no read on whether
+                              the athlete actually needs the service. The assessment changes that. By the time
+                              a low-scoring profile reaches the Academy+ team, the development gap is named,
+                              quantified, and already visible to the family on their NCSA dashboard.
                           </p>
                       </div>
                   </div>
@@ -971,7 +971,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
                       <div className="bg-[#070707] p-6 sm:p-7">
                           <p className="text-3xl sm:text-4xl font-semibold text-amber-400 tracking-tight mb-2 tabular-nums">100%</p>
-                          <p className="text-white text-sm sm:text-base font-semibold mb-1">Diagnosed before contact</p>
+                          <p className="text-white text-sm sm:text-base font-semibold mb-1">Scored before contact</p>
                           <p className="text-gray-500 text-sm leading-relaxed">Every routed lead arrives with a Clutch Factor score, a position-specific assessment, and a named development gap. No discovery call required.</p>
                       </div>
                       <div className="bg-[#070707] p-6 sm:p-7">
@@ -1259,7 +1259,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           Profiles live on IMG's database and ship as an IMG product. COPPA-aligned with parental
                           consent built into onboarding for every 13&ndash;18-year-old. Families can opt out and
                           we delete what we hold. We measure how athletes compete and handle pressure -
-                          growth signals, not personality or clinical labels.
+                          growth signals, not personality profiles or static labels.
                       </p>
                   </div>
               </section>

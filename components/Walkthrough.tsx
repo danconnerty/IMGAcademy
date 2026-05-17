@@ -237,7 +237,7 @@ const Walkthrough: React.FC<WalkthroughProps> = ({ onComplete }) => {
     {
       id: 9,
       title: "NSIGHTS (AI ANALYSIS)",
-      subtitle: "Under the 'NSights' tab, our AI analyzes the raw data to provide narrative behavioral insights. It identifies specific tendencies like 'Tunnel Vision' under stress or 'Performance Anxiety' and translates them into plain English.",
+      subtitle: "Under the 'NSights' tab, our AI analyzes the raw data to provide narrative behavioral insights. It identifies specific tendencies like 'Tunnel Vision' under stress or 'Pressure Cracking' late in games and translates them into plain English.",
       graphic: (
         <div className="flex flex-col items-center justify-center h-48 w-full mb-8 bg-blue-50 rounded-lg">
              <div className="flex gap-3">
