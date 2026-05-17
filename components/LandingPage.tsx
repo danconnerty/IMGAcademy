@@ -278,7 +278,6 @@ const SURFACES: { name: string; blurb: string; logo?: string }[] = [
     { name: 'NCSA', blurb: 'Standard on every athlete profile. Per-athlete pricing across the membership base - not an add-on, not a SKU families have to opt into.', logo: '/NCSA.jpg' },
     { name: 'SportsRecruits', blurb: 'Same integration extends across SR’s 400K-athlete club and HS audience. Adds volume, drops the per-profile price for IMG.', logo: '/Sportsrecruits.png' },
     { name: 'Elevate by IMG Academy', blurb: 'Bundled into every Elevate academy license. Every athlete at every partner school gets an NCSA profile and a sport-specific assessment - the B2B distribution play that opens the TAM.', logo: '/IMGElevate.png' },
-    { name: 'NGB & federation channels', blurb: 'Same surface extends into federation deals (USA Water Polo, USA Lacrosse) and Nord Anglia’s international campuses. Internationally portable as the deal scales.' },
 ];
 
 const TwoWaysItWorks = () => (
@@ -370,7 +369,7 @@ const PartnerProperties = () => (
                 <p className="text-sm font-medium text-blue-400">Where it plugs in</p>
             </div>
             <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
-                Four surfaces. One integration.
+                Three surfaces. One integration.
             </h2>
             <p className="text-lg text-gray-400 leading-relaxed">
                 The profile slots directly into IMG Academy's existing digital product set - no new SKU to invent,
@@ -378,7 +377,7 @@ const PartnerProperties = () => (
             </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
             {SURFACES.map((s) => (
                 <div key={s.name} className="bg-[#070707] p-5 sm:p-7 flex flex-col">
                     {s.logo && (
