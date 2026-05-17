@@ -573,35 +573,21 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           </p>
                       </div>
 
-                      {/* Match analysis extended with Alignment Index */}
+                      {/* Match analysis with Coach-Player Alignment Index baked in */}
                       <div>
                           <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-4">
                               Match analysis (coach view)
                           </p>
-                          <div className="relative">
-                              <img
-                                  src="/match-analysis.png"
-                                  alt="NCSA match analysis showing a 74% match score"
-                                  className="w-full h-auto block"
-                              />
-                              {/* Alignment Index callout - positioned at top-right corner of the analysis card */}
-                              <div className="absolute" style={{ left: '4%', right: '38%', top: '4%' }}>
-                                  <div className="rounded-md border-2 border-emerald-400 bg-[#0b1d4d] shadow-[0_8px_24px_rgba(0,0,0,0.5)] px-2.5 py-1.5">
-                                      <div className="flex items-center justify-between gap-2 mb-1">
-                                          <div className="flex items-center gap-1.5">
-                                              <Target size={10} className="text-emerald-300" />
-                                              <span className="text-[8px] sm:text-[9px] font-bold text-emerald-200 tracking-widest uppercase">Coach&ndash;Player Alignment</span>
-                                          </div>
-                                          <span className="text-sm sm:text-base font-bold text-white tabular-nums leading-none">82%</span>
-                                      </div>
-                                      <p className="text-[8px] sm:text-[9px] font-semibold text-emerald-300 uppercase tracking-wider">Exceptional fit &middot; processes the game like the coach</p>
-                                  </div>
-                              </div>
-                          </div>
+                          <img
+                              src="/match-analysis-aligned.png"
+                              alt="NCSA match analysis with Coach-Player Alignment Index integrated"
+                              className="w-full h-auto block"
+                          />
                           <p className="text-sm text-gray-300 leading-relaxed mt-5">
                               <span className="text-white font-semibold">What we add:</span> a Coach&ndash;Player
-                              Alignment Index that extends NCSA's basic match score with the system, room,
-                              and pressure-response fit a coach actually wants to know before the first call.
+                              Alignment Index that extends NCSA's existing Athletic and Academic comparisons
+                              with the system, room, and pressure-response fit a coach actually wants to know
+                              before the first call.
                           </p>
                       </div>
                   </div>
