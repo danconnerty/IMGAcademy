@@ -850,6 +850,64 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   </div>
               </section>
 
+              {/* MULTILINGUAL FOOTPRINT */}
+              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
+                  <div className="mb-10 sm:mb-12 max-w-2xl">
+                      <p className="text-sm font-medium text-emerald-400 mb-3">Already internationally portable</p>
+                      <h3 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
+                          Eight languages live today.
+                      </h3>
+                      <p className="text-lg text-gray-400 leading-relaxed">
+                          The assessment ships in every major European language out of the box - so an Elevate
+                          deal in Madrid, Frankfurt, or Lisbon doesn't wait on a localization SOW. New markets
+                          (Asia, MENA) are roughly two weeks of dev time per language, not a re-platform.
+                      </p>
+                  </div>
+
+                  <div className="bg-[#070707] border border-white/10 rounded-2xl p-7 sm:p-9 mb-6">
+                      <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-5">
+                          Live today
+                      </p>
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                          {[
+                              { name: 'English', code: 'EN' },
+                              { name: 'Spanish', code: 'ES' },
+                              { name: 'French', code: 'FR' },
+                              { name: 'German', code: 'DE' },
+                              { name: 'Italian', code: 'IT' },
+                              { name: 'Portuguese', code: 'PT' },
+                              { name: 'Dutch', code: 'NL' },
+                              { name: 'Polish', code: 'PL' },
+                          ].map((lang) => (
+                              <div key={lang.code} className="flex items-center gap-3 rounded-lg border border-white/10 bg-black/40 px-3.5 py-3">
+                                  <span className="text-[10px] font-bold text-emerald-300 tracking-widest tabular-nums">{lang.code}</span>
+                                  <span className="text-sm text-white font-medium">{lang.name}</span>
+                              </div>
+                          ))}
+                      </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+                      <div className="bg-[#070707] p-6 sm:p-7">
+                          <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-2">On the roadmap</p>
+                          <p className="text-white text-base font-semibold mb-2">Asia &amp; MENA, deal-driven</p>
+                          <p className="text-gray-500 text-sm leading-relaxed">
+                              Mandarin, Japanese, Korean, Arabic and others are scoped but not yet shipped.
+                              We add a new language when an Elevate deal pulls it through - roughly two weeks
+                              of dev time per market.
+                          </p>
+                      </div>
+                      <div className="bg-[#070707] p-6 sm:p-7">
+                          <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-2">Why it matters here</p>
+                          <p className="text-white text-base font-semibold mb-2">Nord Anglia's footprint, addressable today</p>
+                          <p className="text-gray-500 text-sm leading-relaxed">
+                              The European campuses in Nord Anglia's 30-country network are addressable on
+                              day one. No new translation work between contract and rollout.
+                          </p>
+                      </div>
+                  </div>
+              </section>
+
               {/* THE MECHANICS - 3 steps */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
                   <div className="mb-10 sm:mb-12 max-w-2xl">
