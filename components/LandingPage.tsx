@@ -792,90 +792,62 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   </div>
               </section>
 
-              {/* VISUAL - Clutch Factor inside Elevate Essentials */}
+              {/* VISUAL - Elevate Essentials with a Clutch Factor lesson on the laptop */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
                   <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#070707]">
                       <img
                           src="/elevate-main-essentials.png"
-                          alt="Elevate by IMG Academy Essentials - Clutch Factor curriculum modules"
+                          alt="Elevate by IMG Academy Essentials - a Clutch Factor lesson"
                           className="w-full h-auto block select-none"
                           loading="lazy"
                       />
 
-                      {/* Subtle darken on the original image so overlays read on top */}
-                      <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-black/15 via-transparent to-black/15" />
-
-                      {/* PHONE OVERLAY - masks both course tiles + section headers */}
+                      {/* LAPTOP RIGHT PANEL - masks the 'Directing Focus' panel with a Clutch Factor lesson */}
                       <div
                           className="absolute"
-                          style={{ top: '8%', left: '4.5%', width: '28.5%', height: '88%' }}
+                          style={{ top: '30.5%', left: '62.5%', width: '33%', height: '42%' }}
                       >
-                          <div className="h-full w-full rounded-[14%/8%] bg-[#0b1a3a] flex flex-col p-3 sm:p-4 overflow-hidden">
-                              {/* Header */}
-                              <div className="text-center mb-2 sm:mb-3">
-                                  <p className="text-[6px] sm:text-[8px] font-bold text-white/70 uppercase tracking-[0.2em]">Welcome to</p>
-                                  <p className="text-[8px] sm:text-[11px] font-bold text-white leading-tight">IMG Academy<sup className="text-[5px] sm:text-[7px]">+</sup></p>
-                                  <p className="text-[8px] sm:text-[11px] font-bold text-white leading-tight">CLUTCH FACTOR</p>
-                              </div>
-
-                              {/* Section 1 */}
-                              <p className="text-[6px] sm:text-[8px] font-bold text-amber-300 uppercase tracking-widest mb-1">Pressure Performance</p>
-                              <div className="rounded bg-gradient-to-br from-blue-600 to-blue-900 p-1.5 sm:p-2 mb-1 flex-1">
-                                  <div className="flex items-start justify-between">
-                                      <span className="text-[6px] sm:text-[9px] font-bold text-amber-300">25%</span>
-                                      <span className="text-[5px] sm:text-[7px] font-bold text-white/80 uppercase">Course</span>
-                                  </div>
-                                  <p className="text-[7px] sm:text-[10px] font-bold text-white uppercase leading-tight mt-1 sm:mt-2">
-                                      Reading<br />Pressure
-                                  </p>
-                                  <p className="text-[5px] sm:text-[7px] text-white/70 mt-0.5 sm:mt-1 leading-tight hidden sm:block">
-                                      When the game tightens.
-                                  </p>
-                              </div>
-                              <p className="text-[5px] sm:text-[7px] text-white/60 mb-2 sm:mb-3 leading-tight">
-                                  9 Lessons &middot; 12 min/lesson
+                          <div className="h-full w-full bg-gradient-to-b from-[#0b1f4a] to-[#091740] px-[5%] py-[5%] flex flex-col">
+                              {/* Eyebrow */}
+                              <p className="text-amber-300 font-semibold uppercase tracking-[0.18em] mb-[3%]" style={{ fontSize: 'clamp(5px, 0.85vw, 11px)' }}>
+                                  Clutch Factor &middot; Lesson 01
                               </p>
 
-                              {/* Section 2 */}
-                              <p className="text-[6px] sm:text-[8px] font-bold text-amber-300 uppercase tracking-widest mb-1">Reset Routines</p>
-                              <div className="rounded bg-gradient-to-br from-emerald-700 to-emerald-900 p-1.5 sm:p-2 flex-1">
-                                  <div className="flex items-start justify-between">
-                                      <span className="text-[6px] sm:text-[9px] font-bold text-amber-300">0%</span>
-                                      <span className="text-[5px] sm:text-[7px] font-bold text-white/80 uppercase">Course</span>
-                                  </div>
-                                  <p className="text-[7px] sm:text-[10px] font-bold text-white uppercase leading-tight mt-1 sm:mt-2">
-                                      7-Second<br />Sequence
-                                  </p>
+                              {/* Title with amber underline */}
+                              <div className="mb-[5%]">
+                                  <h5 className="text-white font-bold leading-[1.15] tracking-tight" style={{ fontSize: 'clamp(8px, 1.4vw, 18px)' }}>
+                                      How do I understand my <span className="text-amber-300">Clutch Factor</span> score?
+                                  </h5>
+                                  <div className="h-[2px] w-[18%] bg-amber-300 mt-[3%]" />
                               </div>
-                          </div>
-                      </div>
 
-                      {/* LAPTOP RIGHT PANEL OVERLAY - masks "Directing Focus" copy */}
-                      <div
-                          className="absolute"
-                          style={{ top: '32%', left: '63%', width: '32%', height: '40%' }}
-                      >
-                          <div className="h-full w-full bg-[#0b1a3a] p-2 sm:p-4 flex flex-col justify-between">
-                              <div>
-                                  <p className="text-white text-[10px] sm:text-base font-bold border-b-2 border-amber-300/80 pb-1 sm:pb-2 mb-2 sm:mb-3 inline-block">
-                                      Reading Pressure
-                                  </p>
-                                  <p className="text-white text-[7px] sm:text-[11px] leading-snug mb-1 sm:mb-2">
-                                      The Clutch Factor predicts D1 outcomes
-                                  </p>
-                                  <p className="text-white text-[7px] sm:text-[11px] leading-snug mb-1 sm:mb-2">
-                                      750+ doubles your commit rate
-                                  </p>
-                                  <p className="text-white text-[7px] sm:text-[11px] leading-snug">
-                                      Build the score. Build the career.
-                                  </p>
+                              {/* Lesson points - numbered, clean rows */}
+                              <div className="flex flex-col gap-[3.5%] flex-1">
+                                  {[
+                                      { num: '01', text: 'The score is a 0–1000 measure of pressure performance.' },
+                                      { num: '02', text: 'Your tier (Below Average → Elite) tells coaches what to expect.' },
+                                      { num: '03', text: 'Retest every 6 months to track real, measurable growth.' },
+                                  ].map((p) => (
+                                      <div key={p.num} className="flex items-start gap-[5%]">
+                                          <span
+                                              className="shrink-0 inline-flex items-center justify-center rounded-full bg-amber-300/15 border border-amber-300/40 text-amber-200 font-bold tabular-nums"
+                                              style={{
+                                                  fontSize: 'clamp(5px, 0.75vw, 9px)',
+                                                  width: 'clamp(12px, 2vw, 22px)',
+                                                  height: 'clamp(12px, 2vw, 22px)',
+                                              }}
+                                          >
+                                              {p.num}
+                                          </span>
+                                          <p className="text-white/95 font-medium leading-snug" style={{ fontSize: 'clamp(6px, 0.95vw, 12px)' }}>
+                                              {p.text}
+                                          </p>
+                                      </div>
+                                  ))}
                               </div>
                           </div>
                       </div>
                   </div>
-                  <p className="text-xs text-gray-500 italic mt-3">
-                      Mockup of Clutch Factor curriculum modules inside the Elevate by IMG Academy Essentials shell.
-                  </p>
               </section>
 
               {/* THE TAM UNLOCK */}
