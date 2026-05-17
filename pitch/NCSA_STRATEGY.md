@@ -230,9 +230,10 @@ From the dossiers, the right people:
 - **Dr. Lindsey Hamilton** — Head of Mental Performance. Kirstie's boss. Same UNCG lineage (probably the reason Kirstie's on the team). Listed on both IMG and NCSA staff pages. Once Kirstie is bought in, Hamilton is the natural next conversation — and she signs off on validation programs.
 - **Dr. Duncan Simpson** — Director of Personal Development. Built the MPA with Kalkbrenner. He is the most likely source of "we already have this" reflex. **Must be co-opted as research partner from day one.** Frame the validation program (§6) as his to lead.
 
-**IMG side — commercial org (where we need to expand):**
-- **Michael Branch — VP Strategic Partnerships** (since Jul 2025). Role created expressly to do deals like this. **Right warm-intro target via Kirstie/Hamilton.**
-- **Chris Ciaccio — CCO** (since Oct 2024). Owns NCSA + digital P&L. 26-year IMG veteran. Commercial sponsor target.
+**IMG side — commercial/product org (where the second beachhead is):**
+- **Chris Meade — Co-founder & CEO, SportsRecruits** (acquired by IMG May 2025). **The second existing relationship.** A founder operating inside IMG, ~12 months post-exit. Sits adjacent to or inside the NCSA P&L. He knows the political terrain, he speaks founder, and his deal *was* Branch's and Ciaccio's deal — they have a personal stake in his success. He cares acutely about club/HS distribution (SportsRecruits' core motion), which is exactly the §5B "NCSA-as-distribution-into-non-IMG-schools" thesis. Treat him as the commercial-side internal champion the way Kirstie is the clinical-side champion.
+- **Michael Branch — VP Strategic Partnerships** (since Jul 2025). Role created expressly to do deals like this. **Natural warm-intro target via Meade.**
+- **Chris Ciaccio — CCO** (since Oct 2024). Owns NCSA + digital P&L. 26-year IMG veteran. Sponsored the SportsRecruits acquisition — Meade reports up through him or close to him. Commercial sponsor target.
 - **Ted Sullivan — Chief Growth Officer.** Cross-P&L growth across IMG + NCSA.
 - **Brent Richard** — CEO. Investor mindset (ex-Endeavor M&A, Raine Group co-founder). **Final approval, not cold open.**
 - **Tim Pernetti** — President, IMG Academy Bradenton. Campus P&L. Relevant only if/when academy access is on the table.
@@ -241,16 +242,45 @@ From the dossiers, the right people:
 - **Chris Krause** — Founder. Title fluid post-IMG integration (Founder/Chairman vs. CEO unclear in public sources). Verify on LinkedIn before any cold approach.
 - **Lisa Strasman** — Long-time President/COO. Title may now be Chief People Operations Officer. Verify.
 
-**Recommended sequence (v2.1 — we are already inside, not outside):**
-1. **Kirstie Alvarez** — already meeting. Goal: get her to formally request Hamilton's review of NTangible alongside the MPA. She becomes the internal advocate, not a contact.
-2. **Lindsey Hamilton** — clinical sign-off and validation-program co-lead. Brought in by Kirstie.
-3. **Duncan Simpson** — research co-author on the validation program. Brought in by Hamilton, framed as his program to lead, not a competitor's.
-4. **Michael Branch (Strategic Partnerships)** — once the clinical team is aligned, this is the warm intro Kirstie/Hamilton can make. He has air cover and is incentivized to close it.
-5. **Chris Ciaccio (CCO)** or **Ted Sullivan (CGO)** — commercial sponsor, brought in by Branch once a deal shape is on the table.
-6. **Brent Richard** — final approval, walked in with all of the above already aligned.
+**Recommended sequence — two parallel tracks (v2.2):**
+
+We have warm contacts on both sides of the org. Run them in parallel so
+they converge on Branch/Ciaccio from two directions at once.
+
+*Track A — clinical (Kirstie):*
+1. **Kirstie Alvarez (in-person visit)** — goal: get her to formally
+   request Hamilton's review of NTangible alongside the MPA. She becomes
+   the internal advocate, not a contact.
+2. **Lindsey Hamilton** — clinical sign-off and validation-program
+   co-lead. Brought in by Kirstie.
+3. **Duncan Simpson** — research co-author on the validation program.
+   Brought in by Hamilton, framed as his program to lead, not a
+   competitor's.
+
+*Track B — commercial/product (Meade):*
+1. **Chris Meade (post-visit call)** — goal: validate the product and
+   the §5B distribution thesis (clubs, HS, Nord Anglia, every program
+   NCSA + SportsRecruits already touches). He is *exactly* the buyer
+   profile for that thesis — he built SportsRecruits' club/HS motion.
+   Ask: "where does this fit in the product roadmap you're building
+   inside IMG, and who internally would own it." Don't ask him to
+   sell — ask him where the doors are.
+2. **Michael Branch (Strategic Partnerships)** — Meade can intro
+   warmly. Branch's job is literally to do this deal.
+3. **Chris Ciaccio (CCO)** or **Ted Sullivan (CGO)** — commercial
+   sponsor, brought in by Branch once a deal shape is on the table.
+   Ciaccio sponsored Meade's acquisition; the prior relationship helps.
+
+*Converge:*
+4. Tracks A and B meet at Branch/Ciaccio. Clinical air cover from
+   Hamilton + commercial validation from Meade is an unusually
+   complete internal alignment for a vendor pitch.
+5. **Brent Richard** — final approval, walked in with all of the above
+   already aligned.
 
 Do not cold-open Brent Richard. Do not pitch around Duncan Simpson.
-**Do not skip past Kirstie — she's the unlock and she's already warm.**
+**Do not skip past Kirstie or Meade — both are unlocks and both are
+already warm.**
 
 ---
 
@@ -289,15 +319,25 @@ or therapeutic language.
 
 ---
 
-## 11. Action plan — next 30 days (v2.1)
+## 11. Action plan — next 30 days (v2.2)
 
-1. **Prep the next Kirstie meeting deliberately.** She is the unlock.
-   Walk in with (a) a one-page side-by-side of NTangible vs. the MPA
-   that respects what the MPA does well, (b) the validation-program
-   one-pager (§6) framed for her to forward up to Hamilton/Simpson,
-   (c) the question "what does it take to get Lindsey in the next
-   conversation." Don't ask her to sell internally — give her the
+1. **Prep the Kirstie in-person deliberately.** She is the clinical-side
+   unlock. Walk in with (a) a one-page side-by-side of NTangible vs.
+   the MPA that respects what the MPA does well, (b) the validation-
+   program one-pager (§6) framed for her to forward up to Hamilton/
+   Simpson, (c) the question "what does it take to get Lindsey in the
+   next conversation." Don't ask her to sell internally — give her the
    artifacts that let her advocate.
+1b. **Prep the Chris Meade call as a different conversation.** He's
+   commercial/product, not clinical. Walk in with (a) the §5B
+   distribution thesis (NCSA + SportsRecruits as channel into clubs,
+   HS, Nord Anglia, non-IMG schools) — this is his motion, he will
+   recognize it instantly, (b) the build-vs-buy narrowed to sport-
+   specific instruments (§4), (c) the question "where does this fit
+   in the product roadmap, and who internally owns this kind of
+   decision." He's a founder — be direct, skip the build-up, lead
+   with the strategic frame and let him react. Possible ask: warm
+   intro to Branch once he's bought in. Don't ask on day one.
 2. **Rewrite the deck for the new thesis.** Lead with the à-la-carte +
    conversion-lift story (§5A). Elevate the NCSA-as-distribution-into-
    non-IMG-schools story (§5B). Build-vs-buy narrowed to sport-specific
