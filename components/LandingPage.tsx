@@ -1109,13 +1109,35 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       </div>
                   </div>
 
-                  <div className="rounded-2xl border border-white/10 bg-[#070707] p-6 sm:p-7">
+                  <div className="rounded-2xl border border-white/10 bg-[#070707] p-6 sm:p-7 mb-6">
                       <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
                           <span className="text-white font-medium">30-day exit. Sport buildout on us.</span> If the
                           pilot underperforms the agreed metrics, there's no obligation to scale and no cost to
                           IMG for sports we built during the integration window. The risk sits on our side of
                           the table, not yours.
                       </p>
+                  </div>
+
+                  <div className="bg-gradient-to-b from-emerald-500/[0.08] to-transparent border border-emerald-500/30 rounded-2xl p-6 sm:p-8">
+                      <div className="flex flex-col sm:flex-row sm:items-start gap-5 sm:gap-7">
+                          <div className="shrink-0">
+                              <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-2">Included with the deal</p>
+                              <p className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-tight">On-campus testing.<br /><span className="text-emerald-400">Free, annually.</span></p>
+                          </div>
+                          <div className="sm:border-l sm:border-white/10 sm:pl-7">
+                              <p className="text-base text-gray-300 leading-relaxed mb-3">
+                                  Once NCSA and the broader integration are locked, NTangible throws in the
+                                  on-campus assessment layer at <span className="text-white font-medium">no cost, renewed annually</span> &mdash;
+                                  for IMG Academy to use across boarding students, camp athletes, and corporate
+                                  performance clients as it sees fit.
+                              </p>
+                              <p className="text-sm text-gray-500 leading-relaxed">
+                                  Same instruments, same dashboard, same alignment scoring &mdash; deployed inside
+                                  the campus environment alongside the existing IMG mental performance staff.
+                                  No per-seat invoice. No SOW for every cohort. Standard inclusion.
+                              </p>
+                          </div>
+                      </div>
                   </div>
               </section>
 
