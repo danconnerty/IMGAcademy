@@ -1,4 +1,4 @@
-import React, { useState, useMemo, lazy, Suspense } from 'react';
+import React, { useState, useMemo, useTransition, lazy, Suspense } from 'react';
 import { X, Activity, Users, Target, ArrowLeft, ShieldAlert, ShieldCheck, Zap } from 'lucide-react';
 import LandingPage from './components/LandingPage';
 
@@ -42,11 +42,11 @@ export const preloadDashboard = () => {
   loadNTerpretProfilesView(); loadDevelopmentPlanView();
 };
 
-// Near-invisible fallback. With preload kicked off on landing mount, this
-// almost never renders in practice - and when it does it's a 1px top bar
-// rather than a black "Loading..." block.
+// Near-invisible fallback. With preload + useTransition on view changes this
+// almost never renders in practice - and when it does, the dashboard chrome
+// stays mounted around it (Suspense is scoped inside main, not the whole tree).
 const ViewFallback: React.FC = () => (
-  <div className="fixed top-0 left-0 right-0 h-0.5 bg-blue-500/60 animate-pulse z-[60]" />
+  <div className="fixed top-16 left-0 right-0 h-0.5 bg-blue-500/60 animate-pulse z-[60]" />
 );
 import { ViewType, Player, UserProfile, HomeTab } from './types';
 import { MOCK_TEAMS } from './mockTeams';
@@ -197,33 +197,42 @@ const App: React.FC = () => {
     });
   }, [allRosters]);
 
-  // Handle view change
+  const [, startViewTransition] = useTransition();
+
+  // Handle view change. useTransition keeps the previous view rendered while
+  // the next one is being prepared, so navigation feels instant and Suspense
+  // doesn't unmount the screen even if a chunk hasn't finished loading.
   const handleViewChange = (view: ViewType) => {
-    setCurrentView(view);
-    if (view === 'master') {
-      setHasSelectedTeam(false);
-    }
+    startViewTransition(() => {
+      setCurrentView(view);
+      if (view === 'master') {
+        setHasSelectedTeam(false);
+      }
+    });
   };
 
   const handleSelectTeam = (id: string) => {
-      setSelectedTeamId(id);
-      setHasSelectedTeam(true);
-      setCurrentView('home');
-      // Reset filters when switching teams
-      setSelectedPosition('All');
-      setSelectedLevel('All');
-      setSelectedGradYear('All');
-      setHomeTab('roster');
-      setAlignmentFocusPlayerId(null);
+      startViewTransition(() => {
+        setSelectedTeamId(id);
+        setHasSelectedTeam(true);
+        setCurrentView('home');
+        setSelectedPosition('All');
+        setSelectedLevel('All');
+        setSelectedGradYear('All');
+        setHomeTab('roster');
+        setAlignmentFocusPlayerId(null);
+      });
   };
 
   const handleHomeTabChange = (tab: HomeTab) => {
-    setCurrentView('home');
-    setHomeTab(tab);
-    setIsMobileFiltersOpen(false);
-    if (tab !== 'alignment') {
-      setAlignmentFocusPlayerId(null);
-    }
+    startViewTransition(() => {
+      setCurrentView('home');
+      setHomeTab(tab);
+      setIsMobileFiltersOpen(false);
+      if (tab !== 'alignment') {
+        setAlignmentFocusPlayerId(null);
+      }
+    });
   };
 
   // Handle Exit Demo
@@ -528,30 +537,35 @@ const App: React.FC = () => {
   }
 
   return (
-    <Suspense fallback={<ViewFallback />}>
     <div className="min-h-screen flex flex-col bg-slate-50">
 
       {/* Walkthrough Demo Overlay */}
       {showWalkthrough && (
-        <Walkthrough onComplete={() => setShowWalkthrough(false)} />
+        <Suspense fallback={null}>
+          <Walkthrough onComplete={() => setShowWalkthrough(false)} />
+        </Suspense>
       )}
 
-      <Header 
-        currentView={currentView} 
-        onViewChange={handleViewChange} 
-        onStartWalkthrough={() => setShowWalkthrough(true)}
-        user={userProfile}
-        teams={dashboardTeams}
-        onSelectTeam={handleSelectTeam}
-        homeTab={homeTab}
-        onHomeTabChange={handleHomeTabChange}
-        canOpenRosterInsights={hasSelectedTeam}
-        customOrgName={customOrgName}
-        onExit={handleExitDemo}
-      />
-      
+      <Suspense fallback={null}>
+        <Header
+          currentView={currentView}
+          onViewChange={handleViewChange}
+          onStartWalkthrough={() => setShowWalkthrough(true)}
+          user={userProfile}
+          teams={dashboardTeams}
+          onSelectTeam={handleSelectTeam}
+          homeTab={homeTab}
+          onHomeTabChange={handleHomeTabChange}
+          canOpenRosterInsights={hasSelectedTeam}
+          customOrgName={customOrgName}
+          onExit={handleExitDemo}
+        />
+      </Suspense>
+
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 max-w-[1600px]">
-        {renderContent()}
+        <Suspense fallback={<ViewFallback />}>
+          {renderContent()}
+        </Suspense>
       </main>
 
        {isRubricOpen && (
@@ -594,7 +608,6 @@ const App: React.FC = () => {
         </div>
       </footer>
     </div>
-    </Suspense>
   );
 };
 
