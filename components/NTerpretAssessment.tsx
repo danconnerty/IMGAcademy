@@ -365,11 +365,19 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
 
           <div className="position-relative" style={{ zIndex: 1 }}>
             <div className="d-flex align-items-center justify-content-center gap-3 mb-4">
-              <img
-                src="/white_logo_transparent_background - name only.PNG"
-                alt="NTangible"
-                style={{ height: '2.5rem', opacity: 0.8 }}
-              />
+              <span
+                className="text-white"
+                style={{
+                  fontFamily: "'Rajdhani', sans-serif",
+                  fontWeight: 300,
+                  fontSize: '1.1rem',
+                  letterSpacing: '0.25em',
+                  textTransform: 'uppercase',
+                  opacity: 0.85,
+                }}
+              >
+                NTangible
+              </span>
               <span
                 aria-hidden="true"
                 style={{

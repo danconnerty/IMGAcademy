@@ -82,7 +82,7 @@ const Header: React.FC<HeaderProps> = ({ currentView, onViewChange, onStartWalkt
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
             <div className="flex items-center gap-2 cursor-pointer" onClick={() => onViewChange('master')}>
-              <img src="/white_logo_transparent_background - name only.PNG" alt="N" className="h-6 w-auto object-contain" />
+              <span className="text-[10px] font-light text-white tracking-[0.2em] uppercase">NTangible</span>
               <span className="h-5 w-px bg-white/20" aria-hidden="true" />
               <div className="bg-white rounded px-1.5 py-0.5 flex items-center">
                 <img src="/IMG.png" alt="IMG Academy" className="h-4 w-auto object-contain" />
@@ -151,7 +151,7 @@ const Header: React.FC<HeaderProps> = ({ currentView, onViewChange, onStartWalkt
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex flex-col items-center cursor-pointer group" onClick={() => onViewChange('master')}>
           {isDefaultBranding ? (
             <div className="flex items-center gap-3">
-              <img src="/white_logo_transparent_background - name only.PNG" alt="NTANGIBLE" className="h-8 w-auto object-contain" />
+              <span className="text-sm tracking-[0.25em] font-light uppercase text-white">NTangible</span>
               <span className="h-6 w-px bg-white/25" aria-hidden="true" />
               <div className="bg-white rounded px-2 py-1 flex items-center">
                 <img src="/IMG.png" alt="IMG Academy" className="h-6 w-auto object-contain" />

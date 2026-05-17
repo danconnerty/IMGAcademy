@@ -746,7 +746,7 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
     const img = new Image();
     img.onload = () => setLogoReady(true);
     img.onerror = () => setLogoReady(true);
-    img.src = '/white_logo_transparent_background - name only.PNG';
+    img.src = '/IMG.png';
     logoImgRef.current = img;
 
     // Canvas uses Oswald/Rajdhani - wait for fonts to load before rendering,
@@ -856,12 +856,19 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
         <section className="position-relative py-5 d-flex flex-column align-items-center text-center overflow-hidden">
           <div className="hero-grid-bg" />
           <div className="d-flex align-items-center justify-content-center gap-3 mb-5">
-            <img
-              src="/white_logo_transparent_background - name only.PNG"
-              alt="NTangible"
-              className="opacity-80"
-              style={{ height: '2.5rem', width: 'auto' }}
-            />
+            <span
+              className="text-white"
+              style={{
+                fontFamily: "'Rajdhani', sans-serif",
+                fontWeight: 300,
+                fontSize: '1.1rem',
+                letterSpacing: '0.25em',
+                textTransform: 'uppercase',
+                opacity: 0.85,
+              }}
+            >
+              NTangible
+            </span>
             <span
               aria-hidden="true"
               style={{
