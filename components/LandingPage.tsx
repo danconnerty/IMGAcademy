@@ -484,9 +484,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
               {/* HERO - THESIS */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
                   <div className="max-w-3xl">
-                      <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full mb-5">
-                          <Target size={13} className="text-emerald-400" />
-                          <span className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest">More than testing</span>
+                      <div className="flex flex-wrap items-center gap-2 mb-5">
+                          <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full">
+                              <Target size={13} className="text-emerald-400" />
+                              <span className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest">More than testing</span>
+                          </div>
+                          <div className="inline-flex items-center gap-2 pl-1.5 pr-3 py-1 rounded-full border border-amber-400/25 bg-amber-400/[0.05]">
+                              <img src="/ysbr.png" alt="Youth Sports Business Report" className="h-5 w-5 object-contain rounded-full" />
+                              <span className="text-[11px] font-semibold text-amber-100 tracking-wide">YSBR 2026 Rising Star</span>
+                          </div>
                       </div>
                       <h2 className="text-4xl sm:text-6xl font-semibold text-white tracking-tight leading-[1.02] mb-6">
                           Coaches log in. <span className="text-gray-500">Alignment runs against every NCSA and SportsRecruits profile.</span>
@@ -1032,6 +1038,32 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
               </div>
           </section>
 
+          {/* RECOGNIZED BY - YSBR 2026 RISING STAR */}
+          <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 sm:mb-20">
+              <div className="rounded-3xl border border-amber-400/30 bg-gradient-to-b from-amber-400/[0.08] via-amber-400/[0.02] to-transparent p-6 sm:p-9">
+                  <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 text-center sm:text-left">
+                      <div className="shrink-0">
+                          <img
+                              src="/ysbr.png"
+                              alt="Youth Sports Business Report"
+                              className="h-20 sm:h-24 w-auto object-contain drop-shadow-[0_10px_30px_rgba(251,191,36,0.25)]"
+                          />
+                      </div>
+                      <div className="flex-1 sm:border-l sm:border-amber-400/20 sm:pl-8">
+                          <p className="text-[11px] font-semibold text-amber-300 uppercase tracking-widest mb-2">Industry recognition</p>
+                          <p className="text-2xl sm:text-3xl font-semibold text-white tracking-tight leading-tight mb-2">
+                              2026 Rising Star Award &middot; <span className="text-amber-200">Youth Sports Business Report</span>
+                          </p>
+                          <p className="text-base text-gray-400 leading-relaxed">
+                              Selected by the industry trade for category-defining work in youth sports
+                              technology &mdash; the same year IMG Academy is consolidating its digital
+                              recruiting portfolio.
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          </section>
+
           {/* SOCIAL PROOF / TRUSTED TEAMS TICKER */}
           <div className="w-full mb-16 sm:mb-20">
               <TrustedTeams />
@@ -1143,9 +1175,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   <div>
                       <p className="text-xs font-semibold text-white uppercase tracking-wider mb-4">Proposal</p>
                       <ul className="space-y-2.5 text-sm">
-                          <li><button onClick={() => handleTabChange('offer')} className="text-gray-400 hover:text-white transition-colors">The offer</button></li>
+                          <li><button onClick={() => handleTabChange('assessments')} className="text-gray-400 hover:text-white transition-colors">The assessments</button></li>
+                          <li><button onClick={() => handleTabChange('coaches')} className="text-gray-400 hover:text-white transition-colors">For college coaches</button></li>
                           <li><button onClick={() => handleTabChange('economics')} className="text-gray-400 hover:text-white transition-colors">Economics</button></li>
-                          <li><button onClick={() => handleTabChange('distribution')} className="text-gray-400 hover:text-white transition-colors">Distribution &amp; rollout</button></li>
+                          <li><button onClick={() => handleTabChange('activation')} className="text-gray-400 hover:text-white transition-colors">Activation &amp; rollout</button></li>
                       </ul>
                   </div>
                   <div>
@@ -1162,6 +1195,12 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           <li><a href="https://calendly.com/ntangible/30min" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Contact NTangible</a></li>
                       </ul>
                   </div>
+              </div>
+              <div className="border-t border-white/5 pt-6 mb-5 flex items-center justify-center sm:justify-start gap-3">
+                  <img src="/ysbr.png" alt="Youth Sports Business Report" className="h-8 w-auto object-contain opacity-90" />
+                  <span className="text-[11px] font-medium text-amber-200/80 tracking-wide">
+                      2026 Rising Star Award &middot; Youth Sports Business Report
+                  </span>
               </div>
               <div className="border-t border-white/5 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-gray-600">
                   <span>&copy; 2026 NTangible, Inc. - Proposal for IMG Academy</span>

@@ -920,14 +920,22 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
             />
           </div>
 
-          <div className="d-inline-flex align-items-center px-3 py-1 rounded-pill bg-white-5 border border-white-10 mb-5">
-            <span
-              className="rounded-circle bg-white me-2"
-              style={{ width: '0.5rem', height: '0.5rem' }}
-            />
-            <span className="text-10px font-tech fw-bold text-gray-400 tracking-tech text-uppercase">
-              Analysis Complete // {assessedDate}
-            </span>
+          <div className="d-flex flex-wrap justify-content-center align-items-center gap-2 mb-5">
+            <div className="d-inline-flex align-items-center px-3 py-1 rounded-pill" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.10)' }}>
+              <span
+                className="rounded-circle bg-white me-2"
+                style={{ width: '0.5rem', height: '0.5rem' }}
+              />
+              <span className="text-10px font-tech fw-bold text-gray-400 tracking-tech text-uppercase">
+                Analysis Complete // {assessedDate}
+              </span>
+            </div>
+            <div className="d-inline-flex align-items-center gap-2 py-1 rounded-pill" style={{ background: 'rgba(251,191,36,0.06)', border: '1px solid rgba(251,191,36,0.30)', paddingLeft: '0.4rem', paddingRight: '0.75rem' }}>
+              <img src="/ysbr.png" alt="Youth Sports Business Report" style={{ height: '1.1rem', width: '1.1rem', objectFit: 'contain', borderRadius: '999px' }} />
+              <span className="text-10px font-tech fw-bold tracking-tech text-uppercase" style={{ color: '#fde68a' }}>
+                YSBR 2026 Rising Star
+              </span>
+            </div>
           </div>
 
           <h1
