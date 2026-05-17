@@ -622,8 +622,12 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       <h3 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
                           From the public board to the private note.
                       </h3>
-                      <p className="text-lg text-gray-400 leading-relaxed">
+                      <p className="text-lg text-gray-400 leading-relaxed mb-4">
                           Three views, one workflow - the path every coach walks from first scroll to final decision.
+                      </p>
+                      <p className="text-sm text-gray-500 italic leading-relaxed border-l-2 border-emerald-400/30 pl-4">
+                          Screens below are from NTangible's internal college coach dashboard. These three
+                          views would be integrated directly into the NCSA interface, not run as a separate tool.
                       </p>
                   </div>
 
