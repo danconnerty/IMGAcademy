@@ -917,7 +917,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 sm:mb-20">
                   <div className="max-w-3xl">
                       <div className="flex items-center gap-3 mb-6">
-                          <img src="/IMG.png" alt="IMG Academy+" className="h-9 w-auto object-contain" />
+                          <img src="/IMGacademy+.png" alt="IMG Academy+" className="h-9 sm:h-10 w-auto object-contain" />
                       </div>
                       <h2 className="text-4xl sm:text-6xl font-semibold text-white tracking-tight leading-[1.02] mb-6">
                           Every low Clutch score is a qualified IMG Academy+ lead.
