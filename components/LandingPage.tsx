@@ -1022,42 +1022,44 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   </div>
               </section>
 
-              {/* VISUAL PLACEHOLDER - mind/body */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#070707]">
-                      <img
-                          src="/mindbody1.jpg"
-                          alt="Mind and body - the cognitive performance dimension Academy+ closes on"
-                          className="w-full h-auto block"
-                          loading="lazy"
-                      />
-                      {/* Edge vignette to soften image borders into the dark theme */}
-                      <div
-                          className="absolute inset-0 pointer-events-none"
-                          style={{
-                              background:
-                                  'radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%), linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 18%, transparent 78%, rgba(0,0,0,0.55) 100%)',
-                          }}
-                      />
-                  </div>
-                  <p className="text-xs text-gray-600 italic leading-relaxed mt-3 text-right">
-                      Placeholder visual - to be replaced with the final Academy+ creative.
-                  </p>
-              </section>
-
               {/* THE NO-BRAINER */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="mb-10 sm:mb-12 max-w-2xl">
-                      <p className="text-sm font-medium text-amber-400 mb-3">Why this is the no-brainer</p>
-                      <h3 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
-                          A pre-qualified lead, not a cold one.
-                      </h3>
-                      <p className="text-lg text-gray-400 leading-relaxed">
-                          Every Academy+ outbound today starts from zero - cold list, no diagnostic, no signal
-                          that the athlete actually needs the service. The assessment changes that. By the time
-                          a low-scoring profile reaches the Academy+ team, the gap is named, quantified, and
-                          already visible to the family on their NCSA dashboard.
-                      </p>
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 items-center mb-10 sm:mb-12">
+                      {/* Visual */}
+                      <div className="md:col-span-5">
+                          <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#070707] max-w-sm md:max-w-none mx-auto">
+                              <img
+                                  src="/mindbody1.jpg"
+                                  alt="Mind and body - the cognitive performance dimension Academy+ closes on"
+                                  className="w-full h-auto block"
+                                  loading="lazy"
+                              />
+                              <div
+                                  className="absolute inset-0 pointer-events-none"
+                                  style={{
+                                      background:
+                                          'radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%), linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 18%, transparent 78%, rgba(0,0,0,0.55) 100%)',
+                                  }}
+                              />
+                          </div>
+                          <p className="text-[11px] text-gray-600 italic leading-relaxed mt-2 text-right">
+                              Placeholder - to be replaced with final Academy+ creative.
+                          </p>
+                      </div>
+
+                      {/* Copy */}
+                      <div className="md:col-span-7">
+                          <p className="text-sm font-medium text-amber-400 mb-3">Why this is the no-brainer</p>
+                          <h3 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
+                              A pre-qualified lead, not a cold one.
+                          </h3>
+                          <p className="text-lg text-gray-400 leading-relaxed">
+                              Every Academy+ outbound today starts from zero - cold list, no diagnostic, no signal
+                              that the athlete actually needs the service. The assessment changes that. By the time
+                              a low-scoring profile reaches the Academy+ team, the gap is named, quantified, and
+                              already visible to the family on their NCSA dashboard.
+                          </p>
+                      </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
