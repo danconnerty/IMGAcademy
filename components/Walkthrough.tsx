@@ -76,7 +76,7 @@ const Walkthrough: React.FC<WalkthroughProps> = ({ onComplete }) => {
     {
       id: 3,
       title: "TEAM DNA",
-      subtitle: "Clicking a card takes you to that team's specific dashboard. The 'Team DNA' header instantly visualizes the pulse of that roster—tracking active headcount, average Clutch Factor, and Alignment Scores specific to that sport.",
+      subtitle: "Clicking a card takes you to that team's specific dashboard. The 'Team DNA' header instantly visualizes the pulse of that roster - tracking active headcount, average Clutch Factor, and Alignment Scores specific to that sport.",
       graphic: (
         <div className="flex flex-col items-center justify-center h-48 w-full mb-8 bg-slate-50 rounded-lg p-4">
             <div className="grid grid-cols-2 gap-3 w-full max-w-xs">

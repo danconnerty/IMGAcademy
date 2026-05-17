@@ -862,6 +862,20 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
               className="opacity-80"
               style={{ height: '2.5rem', width: 'auto' }}
             />
+            <span
+              aria-hidden="true"
+              style={{
+                display: 'inline-block',
+                width: 1,
+                height: '2.25rem',
+                background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.35), transparent)',
+              }}
+            />
+            <img
+              src="/IMG.png"
+              alt="IMG Academy"
+              style={{ height: '3rem', width: 'auto', filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.45))' }}
+            />
           </div>
 
           <div className="d-inline-flex align-items-center px-3 py-1 rounded-pill bg-white-5 border border-white-10 mb-5">

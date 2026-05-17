@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
+import './index.css';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -14,3 +14,10 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+requestAnimationFrame(() => {
+  document.documentElement.classList.add('app-ready');
+  window.setTimeout(() => {
+    document.getElementById('initial-loader')?.remove();
+  }, 250);
+});

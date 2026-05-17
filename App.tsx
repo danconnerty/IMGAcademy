@@ -1,19 +1,28 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, lazy, Suspense } from 'react';
 import { X, Activity, Users, Target, ArrowLeft, ShieldAlert, ShieldCheck, Zap } from 'lucide-react';
-import Header from './components/Header';
-import ParticipantTable from './components/ParticipantTable';
-import CoachesNterpret from './components/CoachesNterpret';
-import MyProfile from './components/MyProfile';
-import FitScoreRubric from './components/FitScoreRubric';
-import ClutchFactorGuide from './components/ClutchFactorGuide';
-import RecruitingView from './components/RecruitingView';
-import Walkthrough from './components/Walkthrough';
-import MasterDashboard from './components/MasterDashboard';
 import LandingPage from './components/LandingPage';
-import MethodologyView from './components/MethodologyView';
-import RosterAlignmentView from './components/RosterAlignmentView';
-import NTerpretProfilesView from './components/NTerpretProfilesView';
-import DevelopmentPlanView from './components/DevelopmentPlanView';
+
+// Lazy-load everything that only renders after the user enters the demo, so the
+// landing page (the first paint on mobile) doesn't pay for the whole app bundle.
+const Header = lazy(() => import('./components/Header'));
+const ParticipantTable = lazy(() => import('./components/ParticipantTable'));
+const CoachesNterpret = lazy(() => import('./components/CoachesNterpret'));
+const MyProfile = lazy(() => import('./components/MyProfile'));
+const FitScoreRubric = lazy(() => import('./components/FitScoreRubric'));
+const ClutchFactorGuide = lazy(() => import('./components/ClutchFactorGuide'));
+const RecruitingView = lazy(() => import('./components/RecruitingView'));
+const Walkthrough = lazy(() => import('./components/Walkthrough'));
+const MasterDashboard = lazy(() => import('./components/MasterDashboard'));
+const MethodologyView = lazy(() => import('./components/MethodologyView'));
+const RosterAlignmentView = lazy(() => import('./components/RosterAlignmentView'));
+const NTerpretProfilesView = lazy(() => import('./components/NTerpretProfilesView'));
+const DevelopmentPlanView = lazy(() => import('./components/DevelopmentPlanView'));
+
+const ViewFallback: React.FC = () => (
+  <div className="flex items-center justify-center py-24 text-slate-400 text-sm tracking-wider uppercase">
+    Loading...
+  </div>
+);
 import { ViewType, Player, UserProfile, HomeTab } from './types';
 import { MOCK_TEAMS } from './mockTeams';
 
@@ -25,7 +34,7 @@ import { isRecruitVisibleOutsideRecruitingPage } from './utils/recruiting';
 const App: React.FC = () => {
   const [demoStarted, setDemoStarted] = useState(false);
   // NEW: State for the custom organization name entered on landing page
-  const [customOrgName, setCustomOrgName] = useState<string>('NTANGIBLE');
+  const [customOrgName, setCustomOrgName] = useState<string>('IMG ACADEMY');
   
   const [currentView, setCurrentView] = useState<ViewType>('master');
   // Walkthrough set to false initially - requires button click to start
@@ -195,7 +204,7 @@ const App: React.FC = () => {
   // Handle Exit Demo
   const handleExitDemo = () => {
     setDemoStarted(false);
-    setCustomOrgName('NTANGIBLE');
+    setCustomOrgName('IMG ACADEMY');
     setCurrentView('master');
     setHasSelectedTeam(false);
     setIsMobileFiltersOpen(false);
@@ -494,8 +503,9 @@ const App: React.FC = () => {
   }
 
   return (
+    <Suspense fallback={<ViewFallback />}>
     <div className="min-h-screen flex flex-col bg-slate-50">
-      
+
       {/* Walkthrough Demo Overlay */}
       {showWalkthrough && (
         <Walkthrough onComplete={() => setShowWalkthrough(false)} />
@@ -555,6 +565,7 @@ const App: React.FC = () => {
         </div>
       </footer>
     </div>
+    </Suspense>
   );
 };
 

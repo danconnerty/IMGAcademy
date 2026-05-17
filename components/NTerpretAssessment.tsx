@@ -370,6 +370,20 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
                 alt="NTangible"
                 style={{ height: '2.5rem', opacity: 0.8 }}
               />
+              <span
+                aria-hidden="true"
+                style={{
+                  display: 'inline-block',
+                  width: 1,
+                  height: '2.25rem',
+                  background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.35), transparent)',
+                }}
+              />
+              <img
+                src="/IMG.png"
+                alt="IMG Academy"
+                style={{ height: '3rem', filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.45))' }}
+              />
             </div>
 
             <div className="d-flex justify-content-center mb-4">
