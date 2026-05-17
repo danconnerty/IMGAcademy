@@ -914,24 +914,19 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
         return (
           <>
               {/* HERO */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
+              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 sm:mb-20">
                   <div className="max-w-3xl">
-                      <div className="flex flex-wrap items-center gap-3 mb-6">
+                      <div className="flex items-center gap-3 mb-6">
                           <img src="/IMG.png" alt="IMG Academy+" className="h-9 w-auto object-contain" />
-                          <span className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 px-3 py-1 rounded-full">
-                              <Activity size={13} className="text-amber-400" />
-                              <span className="text-[11px] font-semibold text-amber-300 uppercase tracking-widest">The lead-gen engine</span>
-                          </span>
                       </div>
                       <h2 className="text-4xl sm:text-6xl font-semibold text-white tracking-tight leading-[1.02] mb-6">
-                          Every low Clutch score is a qualified IMG Academy+ lead.{' '}
-                          <span className="text-gray-500">Pre-screened, intent-signaled, and inside IMG's funnel before the family knows they need help.</span>
+                          Every low Clutch score is a qualified IMG Academy+ lead.
                       </h2>
                       <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-                          The assessment doesn't just rank athletes for college coaches. It identifies the
-                          ones whose mental performance is the gap between their physical ceiling and their
-                          recruiting outcome - and routes them straight into the IMG Academy+ sports
-                          psychology funnel. Testing volume becomes coaching revenue.
+                          The assessment identifies the athletes whose mental performance is the gap
+                          between their physical ceiling and their recruiting outcome, then routes them
+                          straight into the IMG Academy+ sports psychology funnel. Testing volume becomes
+                          coaching revenue.
                       </p>
                   </div>
               </section>
@@ -973,7 +968,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
                       <div className="bg-[#070707] p-6 sm:p-7">
                           <p className="text-3xl sm:text-4xl font-semibold text-amber-400 tracking-tight mb-2 tabular-nums">100%</p>
                           <p className="text-white text-sm sm:text-base font-semibold mb-1">Diagnosed before contact</p>
@@ -983,11 +978,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           <p className="text-3xl sm:text-4xl font-semibold text-amber-400 tracking-tight mb-2 tabular-nums">$0</p>
                           <p className="text-white text-sm sm:text-base font-semibold mb-1">CAC on routed leads</p>
                           <p className="text-gray-500 text-sm leading-relaxed">The assessment is already paid for as part of the NCSA profile. Academy+ inherits the lead at zero acquisition cost.</p>
-                      </div>
-                      <div className="bg-[#070707] p-6 sm:p-7">
-                          <p className="text-3xl sm:text-4xl font-semibold text-amber-400 tracking-tight mb-2 tabular-nums">6 mo</p>
-                          <p className="text-white text-sm sm:text-base font-semibold mb-1">Retest cycle = recurring trigger</p>
-                          <p className="text-gray-500 text-sm leading-relaxed">Athletes retest every six months. Each retest is a fresh routing event - new leads, win-back leads, upsell triggers.</p>
                       </div>
                   </div>
               </section>
@@ -1000,9 +990,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           The retest is the revenue.
                       </h3>
                       <p className="text-lg text-gray-400 leading-relaxed">
-                          One assessment, three retest modes - each a billable event and a new routing trigger
-                          for Academy+ outreach. The score doesn't sit static for a year. It moves with the
-                          athlete, and every movement is a chargeable touchpoint.
+                          Three retest modes, stacked - each a billable event and a new routing trigger for
+                          Academy+ outreach. The standard cycle doubles assessment volume; on-demand retakes
+                          add a new SKU; post-coaching retests bundle with the Academy+ session fee.
                       </p>
                   </div>
 
@@ -1048,14 +1038,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       ))}
                   </div>
 
-                  <div className="mt-6 rounded-2xl border border-white/10 bg-[#070707] p-6 sm:p-7">
-                      <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
-                          <span className="text-white font-medium">Stacked, these compound.</span>{' '}
-                          Standard cycle doubles annual assessment volume from a stable athlete base. On-demand
-                          retakes add a new SKU on top. Post-coaching retests bundle with the Academy+ session
-                          fee and convert a one-shot service into a measurable, repeatable outcome.
-                      </p>
-                  </div>
               </section>
 
               {/* THE ROUTING TIERS */}
@@ -1082,7 +1064,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               ringClass: 'border-emerald-400/30 bg-emerald-400/[0.04]',
                               tagClass: 'text-emerald-300 border-emerald-400/30 bg-emerald-400/[0.06]',
                               headline: 'Surface to college coaches.',
-                              detail: "These athletes are the proof points. They get promoted in the Coach Dashboard, the Clutch Factor Leaderboard, and become the case studies Academy+ marketing leans on.",
+                              detail: "Promoted in the Coach Dashboard and Clutch Factor Leaderboard - the proof points Academy+ marketing leans on.",
                           },
                           {
                               range: 'Clutch 651-749',
@@ -1093,7 +1075,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               ringClass: 'border-amber-400/30 bg-amber-400/[0.04]',
                               tagClass: 'text-amber-300 border-amber-400/30 bg-amber-400/[0.06]',
                               headline: 'Route into Academy+ group workshops.',
-                              detail: "The middle tier - real upside, real gap, no crisis. Automated nudge in-app and via email surfaces an Academy+ group workshop or self-guided module. Low-ticket entry into the Academy+ catalog.",
+                              detail: "Automated in-app and email nudge surfaces a group workshop or self-guided module - low-ticket entry into the Academy+ catalog.",
                           },
                           {
                               range: 'Clutch < 651',
@@ -1104,7 +1086,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               ringClass: 'border-red-400/30 bg-red-400/[0.04]',
                               tagClass: 'text-red-300 border-red-400/30 bg-red-400/[0.06]',
                               headline: 'Direct to Academy+ 1-on-1 sports psychology.',
-                              detail: "The high-intent tier. Score is low enough that the family can see it on the dashboard. Academy+ outreach offers a $85-$100 1-on-1 sports psychology session with a clear before/after promise tied to the retest cycle.",
+                              detail: "The family already sees the gap on their dashboard - Academy+ offers a $85-$100 1-on-1 session with a clear before/after tied to the next retest.",
                           },
                       ].map((tier) => (
                           <div key={tier.range} className={`rounded-2xl border ${tier.ringClass} p-5 sm:p-7 flex flex-col sm:flex-row sm:items-start gap-5`}>
@@ -1143,17 +1125,17 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           {
                               step: '01',
                               title: 'Athlete completes the assessment',
-                              body: "The Clutch Factor score lands inside the NCSA profile. The pre-assessment intake module has already captured the family's openness to additional development resources as a consent-checked field.",
+                              body: "The Clutch Factor score lands on the NCSA profile; intake has already captured the family's openness to additional development resources.",
                           },
                           {
                               step: '02',
                               title: 'Score routes to the right tier',
-                              body: "Low score + opted-in family = a flagged record in IMG's lead system, tagged with the position-specific gap (decision-making under pressure, reset between plays, etc.) so Academy+ knows what to sell.",
+                              body: "Low score + opted-in family flags a record in IMG's lead system, tagged with the specific gap so Academy+ knows what to sell.",
                           },
                           {
                               step: '03',
                               title: 'Academy+ outreach is contextual',
-                              body: "The Academy+ team contacts the family with a session offer that references the exact area the score flagged. The pitch isn't 'try our service' - it's 'here's the gap your dashboard already shows you.'",
+                              body: "Outreach references the exact area the score flagged - the pitch is 'here's the gap your dashboard already shows you,' not 'try our service.'",
                           },
                       ].map((s) => (
                           <div key={s.step} className="bg-[#070707] p-6 sm:p-8 flex flex-col">
@@ -1162,46 +1144,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               <p className="text-sm text-gray-400 leading-relaxed">{s.body}</p>
                           </div>
                       ))}
-                  </div>
-              </section>
-
-              {/* WHO WINS */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="mb-10 sm:mb-12 max-w-2xl">
-                      <p className="text-sm font-medium text-amber-400 mb-3">Why each side signs</p>
-                      <h3 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
-                          A funnel three parties want.
-                      </h3>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                      <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-7">
-                          <p className="text-[11px] font-semibold text-amber-300 uppercase tracking-widest mb-3">IMG Academy+</p>
-                          <h4 className="text-xl font-semibold text-white tracking-tight mb-4">Pre-qualified pipeline, $0 CAC</h4>
-                          <ul className="space-y-3">
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-amber-400 shrink-0 mt-0.5" /> A steady stream of leads with a named gap and demonstrated intent</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-amber-400 shrink-0 mt-0.5" /> Outreach references the family's own dashboard - higher conversion than cold outbound</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-amber-400 shrink-0 mt-0.5" /> Recurring 6-month retest cycle = win-back leads and upsell triggers built into the system</li>
-                          </ul>
-                      </div>
-                      <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-7">
-                          <p className="text-[11px] font-semibold text-amber-300 uppercase tracking-widest mb-3">NCSA</p>
-                          <h4 className="text-xl font-semibold text-white tracking-tight mb-4">A reason to keep paying</h4>
-                          <ul className="space-y-3">
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-amber-400 shrink-0 mt-0.5" /> Low scores don't dead-end - the dashboard turns into a development path, not a verdict</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-amber-400 shrink-0 mt-0.5" /> Higher tier retention - families stay subscribed to watch the score climb between retests</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-amber-400 shrink-0 mt-0.5" /> Cross-sell pathway with sibling IMG SKU - no new partner integration to negotiate</li>
-                          </ul>
-                      </div>
-                      <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-7">
-                          <p className="text-[11px] font-semibold text-amber-300 uppercase tracking-widest mb-3">The athlete</p>
-                          <h4 className="text-xl font-semibold text-white tracking-tight mb-4">A path, not a label</h4>
-                          <ul className="space-y-3">
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-amber-400 shrink-0 mt-0.5" /> A low score comes with a next step instead of a closed door</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-amber-400 shrink-0 mt-0.5" /> Access to IMG's clinical staff without needing to relocate or attend the residential program</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-amber-400 shrink-0 mt-0.5" /> A measurable retest at six months that shows the coaching worked</li>
-                          </ul>
-                      </div>
                   </div>
               </section>
 
@@ -1220,11 +1162,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                                   The assessment is the qualifier. NCSA is the channel. Academy+ is the close.
                               </p>
                               <p className="text-base text-gray-400 leading-relaxed">
-                                  Every Clutch Factor score that hits the database is a routing decision. High
-                                  scores feed the coach dashboard and the marketing reel. Mid scores feed Academy+
-                                  workshops. Low scores feed Academy+ 1-on-1 sessions. Three exits, one assessment,
-                                  zero net-new outbound spend - and a coaching pipeline that scales linearly with
-                                  every new NCSA profile created.
+                                  Academy+ inherits a pre-qualified pipeline with a named gap, demonstrated
+                                  intent, and zero acquisition cost - and every six months the retest cycle
+                                  refreshes the pool with new leads, win-backs, and validation upsells. The
+                                  coaching pipeline scales linearly with every new NCSA profile created, on
+                                  zero net-new outbound spend.
                               </p>
                           </div>
                       </div>
