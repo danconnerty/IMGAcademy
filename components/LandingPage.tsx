@@ -1499,10 +1499,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
 
               {/* Active tab panel */}
               <div key={activeTab} className="lp-tab-panel pt-12 sm:pt-16">
-                  <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-8 flex items-center gap-3">
-                      <img src="/IMG.png" alt="IMG Academy" className="h-6 w-auto object-contain" />
+                  <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-8">
                       <span className="text-[10px] uppercase tracking-[0.3em] text-gray-500 font-semibold">
-                          IMG Academy &middot; {TABS.find(t => t.id === activeTab)?.label}
+                          {TABS.find(t => t.id === activeTab)?.label}
                       </span>
                   </div>
                   {renderTabPanel()}
