@@ -110,8 +110,7 @@ const SampleReportModal = ({ onClose, onViewClutch, onViewNterpret }: { onClose:
 
 // --- ECONOMICS + REVENUE CALCULATOR ---
 const PRICE = 10;
-const IMG_SHARE = 2;
-const PARTNER_SHARE = 1;
+const IMG_SHARE = 3;
 const AD_SPEND_INCREMENT = 50000;
 const AD_SPEND_PER_INCREMENT = 10000;
 const MAX_PROFILES = 250000;
@@ -123,7 +122,6 @@ const PricingCalculator = () => {
 
     const grossRevenue = clamped * PRICE;
     const imgRev = clamped * IMG_SHARE;
-    const partnerRev = clamped * PARTNER_SHARE;
 
     const milestones = Math.floor(grossRevenue / AD_SPEND_INCREMENT);
     const adSpend = milestones * AD_SPEND_PER_INCREMENT;
@@ -138,30 +136,47 @@ const PricingCalculator = () => {
             <div className="mb-12 sm:mb-16 max-w-2xl">
                 <p className="text-sm font-medium text-blue-400 mb-3">The economics</p>
                 <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
-                    $10 a profile. Revenue on every one.
+                    $10 a profile. Sits inside the ladder you already sell.
                 </h2>
                 <p className="text-lg text-gray-400 leading-relaxed">
-                    IMG Academy and the originating partner earn on every profile sold. At scale, NTangible reinvests directly
-                    back into IMG Academy ad spend.
+                    Frames as the lowest-friction entry on IMG Academy's existing digital ladder &mdash; an order of magnitude
+                    below the 1-on-1 coaching SKU, priced to drive volume and bundle into every membership tier.
                 </p>
             </div>
 
-            {/* The split model */}
+            {/* Fits the existing ladder */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden mb-10">
                 <div className="bg-[#070707] p-6 sm:p-7">
-                    <p className="text-3xl sm:text-4xl font-semibold text-blue-400 tracking-tight mb-1 tabular-nums">$2</p>
-                    <p className="text-white text-base font-semibold mb-1">IMG Academy</p>
-                    <p className="text-gray-500 text-sm leading-relaxed">Direct revenue share to IMG Academy on every profile sold.</p>
+                    <p className="text-3xl sm:text-4xl font-semibold text-blue-400 tracking-tight mb-1 tabular-nums">$10</p>
+                    <p className="text-white text-base font-semibold mb-1">NTangible profile</p>
+                    <p className="text-gray-500 text-sm leading-relaxed">Per-athlete, per-sport. Standalone, bundled into NCSA tiers, or sent free as a conversion artifact.</p>
                 </div>
                 <div className="bg-[#070707] p-6 sm:p-7">
-                    <p className="text-3xl sm:text-4xl font-semibold text-emerald-400 tracking-tight mb-1 tabular-nums">$1</p>
-                    <p className="text-white text-base font-semibold mb-1">Originating partner</p>
-                    <p className="text-gray-500 text-sm leading-relaxed">Paid to the specific partner or property that drove the sale.</p>
+                    <p className="text-3xl sm:text-4xl font-semibold text-white tracking-tight mb-1 tabular-nums">$120</p>
+                    <p className="text-white text-base font-semibold mb-1">Academy+ Essentials / yr</p>
+                    <p className="text-gray-500 text-sm leading-relaxed">Already auto-included Y1 with every NCSA membership. The NTangible profile becomes the per-sport hook that makes Y2 renew.</p>
                 </div>
                 <div className="bg-[#070707] p-6 sm:p-7">
-                    <p className="text-3xl sm:text-4xl font-semibold text-white tracking-tight mb-1 tabular-nums">$7</p>
-                    <p className="text-white text-base font-semibold mb-1">NTangible</p>
-                    <p className="text-gray-500 text-sm leading-relaxed">Covers assessments, hosting, the collegiate dashboard, and ad-spend commitment.</p>
+                    <p className="text-3xl sm:text-4xl font-semibold text-emerald-400 tracking-tight mb-1 tabular-nums">$85&ndash;$100</p>
+                    <p className="text-white text-base font-semibold mb-1">1-on-1 coaching / session</p>
+                    <p className="text-gray-500 text-sm leading-relaxed">The profile becomes the intake artifact every paid session opens with &mdash; lifts perceived value, doesn't compete with it.</p>
+                </div>
+            </div>
+
+            {/* Suggested split */}
+            <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-8 mb-10">
+                <p className="text-sm font-medium text-blue-400 mb-3">Suggested revenue split at $10 retail</p>
+                <div className="grid grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-xl overflow-hidden">
+                    <div className="bg-[#070707] p-5">
+                        <p className="text-3xl font-semibold text-blue-400 tracking-tight mb-1 tabular-nums">$3</p>
+                        <p className="text-white text-sm font-semibold mb-1">IMG Academy</p>
+                        <p className="text-gray-500 text-xs leading-relaxed">Per-profile margin. Conversion-share kicker on top when the profile drives an upsell.</p>
+                    </div>
+                    <div className="bg-[#070707] p-5">
+                        <p className="text-3xl font-semibold text-white tracking-tight mb-1 tabular-nums">$7</p>
+                        <p className="text-white text-sm font-semibold mb-1">NTangible</p>
+                        <p className="text-gray-500 text-xs leading-relaxed">Covers assessment build, hosting, coaches' dashboard, sport expansion, and validation co-authorship with the IMG psych team.</p>
+                    </div>
                 </div>
             </div>
 
@@ -222,39 +237,34 @@ const PricingCalculator = () => {
                 </div>
 
                 {/* Supporting breakdown */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/5 border border-white/10 rounded-xl overflow-hidden">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-xl overflow-hidden">
                     <div className="bg-[#070707] p-5 sm:p-6">
                         <p className="text-sm font-medium text-blue-400 mb-2">IMG Academy rev share</p>
                         <p className="text-2xl sm:text-3xl font-semibold text-white tracking-tight tabular-nums">{fmt(imgRev)}</p>
-                        <p className="text-xs text-gray-500 mt-1 tabular-nums">{clamped.toLocaleString('en-US')} &times; $2</p>
+                        <p className="text-xs text-gray-500 mt-1 tabular-nums">{clamped.toLocaleString('en-US')} &times; $3</p>
                     </div>
                     <div className="bg-[#070707] p-5 sm:p-6">
                         <p className="text-sm font-medium text-blue-400 mb-2">Directed ad spend</p>
                         <p className="text-2xl sm:text-3xl font-semibold text-white tracking-tight tabular-nums">{fmt(adSpend)}</p>
                         <p className="text-xs text-gray-500 mt-1 tabular-nums">{milestones} &times; $10K milestone{milestones === 1 ? '' : 's'}</p>
                     </div>
-                    <div className="bg-[#070707] p-5 sm:p-6">
-                        <p className="text-sm font-medium text-emerald-400 mb-2">Partner rev share</p>
-                        <p className="text-2xl sm:text-3xl font-semibold text-white tracking-tight tabular-nums">{fmt(partnerRev)}</p>
-                        <p className="text-xs text-gray-500 mt-1 tabular-nums">{clamped.toLocaleString('en-US')} &times; $1</p>
-                    </div>
                 </div>
 
                 <p className="text-xs text-gray-600 mt-6 leading-relaxed">
-                    Illustrative model. Ad-spend milestones are calculated on gross program revenue in $50,000 increments.
-                    Profiles retest every 6 months - recurring volume is not reflected in this snapshot.
+                    Illustrative model. Per-profile margin only &mdash; doesn't reflect the conversion-share kicker on
+                    paid-tier uplift, the Y2 Essentials renewal pull-through, or the 6-month retest cycle.
                 </p>
             </div>
         </section>
     );
 };
 
-// --- IMG ACADEMY PARTNER PROPERTIES ---
-const PARTNERS: { name: string; src: string; blurb: string }[] = [
-    { name: 'PBR', src: '/PBR.png', blurb: 'Surfaced to the prospect pipeline already flowing through PBR.' },
-    { name: 'RYZE Basketball', src: '/RYZE.png', blurb: 'Promoted across the RYZE Basketball event circuit.' },
-    { name: 'Rally Volleyball', src: '/RallyVolleyball.png', blurb: 'Distributed through Rally’s club volleyball network.' },
-    { name: 'NFL FLAG', src: '/NFLFlag.png', blurb: 'Activated with the national flag football audience.' },
+// --- IMG ACADEMY DIGITAL SURFACES ---
+const SURFACES: { name: string; blurb: string }[] = [
+    { name: 'IMG Academy+ Essentials', blurb: 'The per-sport personalization layer the $120/yr Essentials bundle is missing &mdash; and the Y2 retention hook when the free year sunsets.' },
+    { name: 'NCSA', blurb: 'A family-facing artifact the inside-sales team can send between the first call and the conference call. Lifts paid-tier conversion.' },
+    { name: 'SportsRecruits', blurb: 'Crossover product that converts the 400K-athlete recruiting audience into developmental Academy+ subscribers.' },
+    { name: '1-on-1 Coaching', blurb: 'Slots alongside the existing $85&ndash;$100/session mental performance SKU as the intake artifact every session starts from.' },
 ];
 
 const PartnerProperties = () => (
@@ -264,30 +274,22 @@ const PartnerProperties = () => (
                 <div className="bg-white rounded-md px-2 py-1 flex items-center">
                     <img src="/IMG.png" alt="IMG Academy" className="h-7 w-auto object-contain" />
                 </div>
-                <p className="text-sm font-medium text-blue-400">Partner properties</p>
+                <p className="text-sm font-medium text-blue-400">Where it plugs in</p>
             </div>
             <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
-                Built into every IMG Academy property.
+                Four surfaces. One integration.
             </h2>
             <p className="text-lg text-gray-400 leading-relaxed">
-                The Mental Scouting Profile ships through the partner brands already running events across IMG Academy
-                - each one promotes it, and each one earns $1 on every profile it drives.
+                The profile slots directly into IMG Academy's existing digital product set &mdash; no new SKU to invent,
+                no new operational lift. It extends what's already shipping.
             </p>
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-            {PARTNERS.map((p) => (
-                <div key={p.name} className="bg-[#070707] p-5 sm:p-7 flex flex-col">
-                    <div className="rounded-xl bg-white/[0.03] border border-white/5 h-24 sm:h-28 flex items-center justify-center px-5 mb-5">
-                        <img
-                            src={p.src}
-                            alt={p.name}
-                            loading="lazy"
-                            className="max-h-12 sm:max-h-14 max-w-[150px] w-auto object-contain"
-                        />
-                    </div>
-                    <p className="text-white text-base font-semibold mb-1">{p.name}</p>
-                    <p className="text-gray-500 text-sm leading-relaxed">{p.blurb}</p>
+            {SURFACES.map((s) => (
+                <div key={s.name} className="bg-[#070707] p-5 sm:p-7 flex flex-col">
+                    <p className="text-white text-base font-semibold mb-2">{s.name}</p>
+                    <p className="text-gray-500 text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: s.blurb }} />
                 </div>
             ))}
         </div>
@@ -343,12 +345,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
               <div className="mb-12 sm:mb-16 max-w-2xl">
                   <p className="text-sm font-medium text-blue-400 mb-3">The offer</p>
                   <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
-                      One integration. Every IMG Academy property.
+                      Sport-specific. Position-specific. White-labeled.
                   </h2>
                   <p className="text-lg text-gray-400 leading-relaxed">
-                      NTangible builds and operates a IMG Academy-branded mental performance profile that any IMG Academy partner
-                      or property can sell - backed by a free collegiate discovery dashboard that turns IMG Academy into
-                      the place college coaches come to find talent.
+                      NTangible builds and operates a sport-by-sport mental performance profile that extends IMG Academy's
+                      High Performance Mindset framework &mdash; Commitment, Confidence, Focus, Resilience, Handling Pressure &mdash;
+                      with the position-level granularity the cross-sport digital catalog doesn't carry today. Hosted under
+                      IMG Academy's brand, paired with a free coaches' dashboard that makes recruiting fit measurable.
                   </p>
               </div>
 
@@ -359,8 +362,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       </div>
                       <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight mb-3">IMG Academy Mental Scouting Profile</h3>
                       <p className="text-base text-gray-400 leading-relaxed mb-5">
-                          A verified digital profile measuring how an athlete performs under pressure - hosted on
-                          IMG Academy's official database and usable across every partner and property we build assessments for.
+                          The sport-by-sport, position-level extension of IMG's HPM framework. Lives inside the
+                          IMG Academy+ surfaces athletes already use &mdash; complements the in-house MPA on the IDP side,
+                          ships sport-specific instruments NCSA and SportsRecruits don't have today.
                       </p>
                       <ul className="space-y-2.5 border-t border-white/5 pt-5">
                           <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> Full Clutch Factor&trade; + NTerpret&trade; reports</li>
@@ -930,39 +934,39 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
       case 'distribution':
         return (
           <>
-              {/* DISTRIBUTION - EVERY IMG ACADEMY CHANNEL */}
+              {/* DISTRIBUTION - INSIDE THE DIGITAL PRODUCTS */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
                   <div className="mb-12 sm:mb-16 max-w-2xl">
                       <p className="text-sm font-medium text-blue-400 mb-3">Distribution</p>
                       <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
-                          Pushed hard across every channel you own.
+                          Inside the digital products. Live in a quarter.
                       </h2>
                       <p className="text-lg text-gray-400 leading-relaxed">
-                          The profile ships through IMG Academy's own digital footprint and every partner channel we build assessments
-                          for - email, on-campus signage, partner sites - no field staff, no clipboards.
+                          The profile ships inside the products IMG Academy already operates &mdash; no field staff, no clipboards,
+                          no new SKU to build. The integration points are already there.
                       </p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
                       <div className="bg-[#070707] p-6 sm:p-7">
+                          <Send size={20} className="text-blue-400 mb-4" />
+                          <h3 className="text-white text-base font-semibold mb-2">Inside Academy+ Essentials</h3>
+                          <p className="text-gray-500 text-sm leading-relaxed">Surfaced inside the Essentials bundle that already ships free Y1 with every NCSA membership. Sport-specific where the catalog is cross-sport.</p>
+                      </div>
+                      <div className="bg-[#070707] p-6 sm:p-7">
                           <Mail size={20} className="text-blue-400 mb-4" />
-                          <h3 className="text-white text-base font-semibold mb-2">Dedicated email blasts</h3>
-                          <p className="text-gray-500 text-sm leading-relaxed">Multiple campaigns per year to IMG Academy's main mailing list and every property list.</p>
+                          <h3 className="text-white text-base font-semibold mb-2">In the NCSA sales motion</h3>
+                          <p className="text-gray-500 text-sm leading-relaxed">Free family-facing artifact the recruiting specialist sends between the first call and the conference call. Built to lift paid-tier conversion.</p>
                       </div>
                       <div className="bg-[#070707] p-6 sm:p-7">
                           <Building2 size={20} className="text-blue-400 mb-4" />
-                          <h3 className="text-white text-base font-semibold mb-2">Partner channels</h3>
-                          <p className="text-gray-500 text-sm leading-relaxed">Every IMG Academy partner and property promotes the profile - and earns $1 on every sale they drive.</p>
+                          <h3 className="text-white text-base font-semibold mb-2">In the SportsRecruits feed</h3>
+                          <p className="text-gray-500 text-sm leading-relaxed">Crossover hook into the 400K-athlete club/HS audience. The mechanism that pulls SR users into developmental Academy+ subs.</p>
                       </div>
                       <div className="bg-[#070707] p-6 sm:p-7">
                           <Tv size={20} className="text-blue-400 mb-4" />
-                          <h3 className="text-white text-base font-semibold mb-2">On-campus signage</h3>
-                          <p className="text-gray-500 text-sm leading-relaxed">Placement on WiFi landing pages and lobby screens across IMG Academy venues.</p>
-                      </div>
-                      <div className="bg-[#070707] p-6 sm:p-7">
-                          <Send size={20} className="text-blue-400 mb-4" />
-                          <h3 className="text-white text-base font-semibold mb-2">Digital-only activation</h3>
-                          <p className="text-gray-500 text-sm leading-relaxed">Everything ships through existing digital touchpoints - live without an operational lift.</p>
+                          <h3 className="text-white text-base font-semibold mb-2">In NGB & Elevate channels</h3>
+                          <p className="text-gray-500 text-sm leading-relaxed">Same surface for federation deals (USA Water Polo, USA Lacrosse) and Elevate's B2B-to-schools motion. Internationally portable.</p>
                       </div>
                   </div>
               </section>
@@ -1293,12 +1297,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
               </div>
 
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight mb-6 leading-[1.02] text-white">
-                  The IMG Academy <span className="text-blue-400">Mental Scouting Profile.</span>
+                  The sport-specific layer for <span className="text-blue-400">IMG Academy+</span>.
               </h1>
 
               <p className="text-lg sm:text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-                  A verified digital profile that measures an athlete's mental performance - hosted on IMG Academy's
-                  official database, sold across every IMG Academy channel and partner property for the price of a t-shirt.
+                  A position-specific mental performance profile that extends IMG Academy's High Performance Mindset
+                  framework with the sport-by-sport granularity the online product doesn't ship today &mdash; built to
+                  slot directly into the Essentials bundle, NCSA, and SportsRecruits.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12 sm:mb-16 max-w-md sm:max-w-none mx-auto">
