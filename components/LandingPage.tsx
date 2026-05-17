@@ -774,18 +774,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
         return (
           <>
               {/* HERO - THE THESIS */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
+              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 sm:mb-20">
                   <div className="max-w-3xl">
-                      <div className="flex flex-wrap items-center gap-3 mb-6">
+                      <div className="flex items-center gap-3 mb-6">
                           <img src="/IMGElevate.png" alt="Elevate by IMG Academy" className="h-9 w-auto object-contain" />
-                          <span className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full">
-                              <Target size={13} className="text-emerald-400" />
-                              <span className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest">The B2B distribution play</span>
-                          </span>
                       </div>
                       <h2 className="text-4xl sm:text-6xl font-semibold text-white tracking-tight leading-[1.02] mb-6">
-                          Every athlete at every Elevate academy.{' '}
-                          <span className="text-gray-500">One NCSA profile each. Bundled into the license they already sign.</span>
+                          Every athlete at every Elevate academy.
                       </h2>
                       <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
                           Elevate is IMG's B2B vehicle into outside schools and academies. Every one of those
@@ -795,6 +790,92 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           recruiting-ready profiles on day one.
                       </p>
                   </div>
+              </section>
+
+              {/* VISUAL - Clutch Factor inside Elevate Essentials */}
+              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
+                  <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#070707]">
+                      <img
+                          src="/elevate-main-essentials.png"
+                          alt="Elevate by IMG Academy Essentials - Clutch Factor curriculum modules"
+                          className="w-full h-auto block select-none"
+                          loading="lazy"
+                      />
+
+                      {/* Subtle darken on the original image so overlays read on top */}
+                      <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-black/15 via-transparent to-black/15" />
+
+                      {/* PHONE OVERLAY - masks both course tiles + section headers */}
+                      <div
+                          className="absolute"
+                          style={{ top: '8%', left: '4.5%', width: '28.5%', height: '88%' }}
+                      >
+                          <div className="h-full w-full rounded-[14%/8%] bg-[#0b1a3a] flex flex-col p-3 sm:p-4 overflow-hidden">
+                              {/* Header */}
+                              <div className="text-center mb-2 sm:mb-3">
+                                  <p className="text-[6px] sm:text-[8px] font-bold text-white/70 uppercase tracking-[0.2em]">Welcome to</p>
+                                  <p className="text-[8px] sm:text-[11px] font-bold text-white leading-tight">IMG Academy<sup className="text-[5px] sm:text-[7px]">+</sup></p>
+                                  <p className="text-[8px] sm:text-[11px] font-bold text-white leading-tight">CLUTCH FACTOR</p>
+                              </div>
+
+                              {/* Section 1 */}
+                              <p className="text-[6px] sm:text-[8px] font-bold text-amber-300 uppercase tracking-widest mb-1">Pressure Performance</p>
+                              <div className="rounded bg-gradient-to-br from-blue-600 to-blue-900 p-1.5 sm:p-2 mb-1 flex-1">
+                                  <div className="flex items-start justify-between">
+                                      <span className="text-[6px] sm:text-[9px] font-bold text-amber-300">25%</span>
+                                      <span className="text-[5px] sm:text-[7px] font-bold text-white/80 uppercase">Course</span>
+                                  </div>
+                                  <p className="text-[7px] sm:text-[10px] font-bold text-white uppercase leading-tight mt-1 sm:mt-2">
+                                      Reading<br />Pressure
+                                  </p>
+                                  <p className="text-[5px] sm:text-[7px] text-white/70 mt-0.5 sm:mt-1 leading-tight hidden sm:block">
+                                      When the game tightens.
+                                  </p>
+                              </div>
+                              <p className="text-[5px] sm:text-[7px] text-white/60 mb-2 sm:mb-3 leading-tight">
+                                  9 Lessons &middot; 12 min/lesson
+                              </p>
+
+                              {/* Section 2 */}
+                              <p className="text-[6px] sm:text-[8px] font-bold text-amber-300 uppercase tracking-widest mb-1">Reset Routines</p>
+                              <div className="rounded bg-gradient-to-br from-emerald-700 to-emerald-900 p-1.5 sm:p-2 flex-1">
+                                  <div className="flex items-start justify-between">
+                                      <span className="text-[6px] sm:text-[9px] font-bold text-amber-300">0%</span>
+                                      <span className="text-[5px] sm:text-[7px] font-bold text-white/80 uppercase">Course</span>
+                                  </div>
+                                  <p className="text-[7px] sm:text-[10px] font-bold text-white uppercase leading-tight mt-1 sm:mt-2">
+                                      7-Second<br />Sequence
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+
+                      {/* LAPTOP RIGHT PANEL OVERLAY - masks "Directing Focus" copy */}
+                      <div
+                          className="absolute"
+                          style={{ top: '32%', left: '63%', width: '32%', height: '40%' }}
+                      >
+                          <div className="h-full w-full bg-[#0b1a3a] p-2 sm:p-4 flex flex-col justify-between">
+                              <div>
+                                  <p className="text-white text-[10px] sm:text-base font-bold border-b-2 border-amber-300/80 pb-1 sm:pb-2 mb-2 sm:mb-3 inline-block">
+                                      Reading Pressure
+                                  </p>
+                                  <p className="text-white text-[7px] sm:text-[11px] leading-snug mb-1 sm:mb-2">
+                                      The Clutch Factor predicts D1 outcomes
+                                  </p>
+                                  <p className="text-white text-[7px] sm:text-[11px] leading-snug mb-1 sm:mb-2">
+                                      750+ doubles your commit rate
+                                  </p>
+                                  <p className="text-white text-[7px] sm:text-[11px] leading-snug">
+                                      Build the score. Build the career.
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <p className="text-xs text-gray-500 italic mt-3">
+                      Mockup of Clutch Factor curriculum modules inside the Elevate by IMG Academy Essentials shell.
+                  </p>
               </section>
 
               {/* THE TAM UNLOCK */}
@@ -838,13 +919,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           Eight languages live today.
                       </h3>
                       <p className="text-lg text-gray-400 leading-relaxed">
-                          The assessment ships in eight European languages out of the box - so an Elevate deal
-                          in Madrid, Frankfurt, or Stockholm doesn't wait on a localization SOW. Additional
-                          languages can be added on call, and we'll have every major language live by year-end.
+                          The assessment ships in eight European languages out of the box - a Madrid, Frankfurt,
+                          or Stockholm deal doesn't wait on a localization SOW. Additional languages added on
+                          call. Every major language live by year-end.
                       </p>
                   </div>
 
-                  <div className="bg-[#070707] border border-white/10 rounded-2xl p-7 sm:p-9 mb-6">
+                  <div className="bg-[#070707] border border-white/10 rounded-2xl p-7 sm:p-9">
                       <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-5">
                           Live today
                       </p>
@@ -865,26 +946,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               </div>
                           ))}
                       </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-                      <div className="bg-[#070707] p-6 sm:p-7">
-                          <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-2">On the roadmap</p>
-                          <p className="text-white text-base font-semibold mb-2">Every major language by year-end</p>
-                          <p className="text-gray-500 text-sm leading-relaxed">
-                              Mandarin, Japanese, Korean, Arabic and others are on the build plan and shipping
-                              through 2026. Additional languages can be added on call when an Elevate deal
-                              pulls one through ahead of schedule.
-                          </p>
-                      </div>
-                      <div className="bg-[#070707] p-6 sm:p-7">
-                          <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-2">Why it matters here</p>
-                          <p className="text-white text-base font-semibold mb-2">Nord Anglia's footprint, addressable today</p>
-                          <p className="text-gray-500 text-sm leading-relaxed">
-                              The European campuses in Nord Anglia's 30-country network are addressable on
-                              day one. No new translation work between contract and rollout.
-                          </p>
-                      </div>
+                      <p className="text-[12px] text-gray-500 leading-relaxed mt-5 pt-5 border-t border-white/5">
+                          <span className="text-emerald-300 font-semibold">Roadmap:</span> Mandarin, Japanese,
+                          Korean, Arabic and others shipping through 2026 - or on demand when an Elevate deal
+                          pulls one through ahead of schedule.
+                      </p>
                   </div>
               </section>
 
@@ -906,17 +972,17 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           {
                               step: '01',
                               title: 'Academy signs the Elevate license',
-                              body: "Same B2B motion Elevate already runs. The NCSA + assessment bundle is a line item on the contract, not a separate sale.",
+                              body: "NCSA + assessment is a line item on the contract Elevate already sells - not a separate sale.",
                           },
                           {
                               step: '02',
                               title: 'Roster ingest creates profiles automatically',
-                              body: 'The athletic department uploads the roster. Every athlete gets an NCSA profile and a sport-specific assessment invite. Completion is part of the school program, not a family decision.',
+                              body: 'Athletic department uploads the roster. Every athlete gets an NCSA profile and a sport-specific assessment invite as part of the school program.',
                           },
                           {
                               step: '03',
                               title: 'Profiles become searchable to coaches',
-                              body: "Each athlete shows up in the college coach dashboard with Clutch Factor, Coach-Player Alignment Index, and full NCSA chrome. The academy gets a measurable recruiting outcome it can market to the next parent.",
+                              body: "Clutch Factor, Coach-Player Alignment Index, full NCSA chrome - on every athlete card. The academy gets a recruiting outcome it can market to the next parent.",
                           },
                       ].map((s) => (
                           <div key={s.step} className="bg-[#070707] p-6 sm:p-8 flex flex-col">
@@ -928,41 +994,18 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   </div>
               </section>
 
-              {/* WHO WINS WHAT */}
+              {/* WHY IMG WANTS THIS */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="mb-10 sm:mb-12 max-w-2xl">
-                      <p className="text-sm font-medium text-emerald-400 mb-3">Why each side signs</p>
-                      <h3 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
-                          A bundle three parties want.
-                      </h3>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                      <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-7">
-                          <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-3">The academy</p>
-                          <h4 className="text-xl font-semibold text-white tracking-tight mb-4">Recruiting outcome, no extra spend</h4>
-                          <ul className="space-y-3">
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Every athlete on roster gets an NCSA profile - the recruiting outcome parents already pay tuition for</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Sport-specific assessment data the coaching staff can use for development plans</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> A marketing line for the next admissions cycle: &ldquo;Every athlete graduates with a verified recruiting profile.&rdquo;</li>
-                          </ul>
-                      </div>
-                      <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-7">
-                          <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-3">IMG Academy</p>
-                          <h4 className="text-xl font-semibold text-white tracking-tight mb-4">A second growth lever on Elevate</h4>
+                  <div className="rounded-2xl border border-emerald-500/30 bg-gradient-to-b from-emerald-500/[0.08] to-transparent p-7 sm:p-10">
+                      <div className="max-w-3xl">
+                          <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-3">Why IMG wants the bundle on every Elevate contract</p>
+                          <h3 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight mb-5">
+                              A second growth lever on Elevate.
+                          </h3>
                           <ul className="space-y-3">
                               <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> NCSA volume that doesn't depend on consumer marketing spend</li>
                               <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Higher Elevate ASP - the recruiting bundle becomes a real differentiator vs. competing B2B sport curricula</li>
                               <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Internationally portable - same bundle ships into Nord Anglia and overseas markets without a US-only dependency</li>
-                          </ul>
-                      </div>
-                      <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-7">
-                          <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-3">The athlete</p>
-                          <h4 className="text-xl font-semibold text-white tracking-tight mb-4">Discoverable before they had to ask</h4>
-                          <ul className="space-y-3">
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> A complete, NTangible-verified profile without anyone in the household having to know about NCSA first</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Clutch Factor score on a college coach search result - the signal that gets the first call</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Retests every six months alongside the school's existing development cadence</li>
                           </ul>
                       </div>
                   </div>
