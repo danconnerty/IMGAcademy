@@ -273,11 +273,11 @@ const PricingCalculator = () => {
 };
 
 // --- IMG ACADEMY DIGITAL SURFACES ---
-const SURFACES: { name: string; blurb: string }[] = [
-    { name: 'NCSA', blurb: 'Standard on every athlete profile. Per-athlete pricing across the membership base - not an add-on, not a SKU families have to opt into.' },
-    { name: 'SportsRecruits', blurb: 'Same integration extends across SR’s 400K-athlete club and HS audience. Adds volume, drops the per-profile price for IMG.' },
-    { name: 'IMG Academy+', blurb: 'Low scores get flagged and routed straight to IMG Academy+ sports psychology sessions. Testing volume becomes coaching revenue.' },
-    { name: 'Elevate & NGB channels', blurb: 'Same surface extends into federation deals (USA Water Polo, USA Lacrosse) and Elevate’s B2B-to-schools motion. Internationally portable as the deal scales.' },
+const SURFACES: { name: string; blurb: string; logo?: string }[] = [
+    { name: 'NCSA', blurb: 'Standard on every athlete profile. Per-athlete pricing across the membership base - not an add-on, not a SKU families have to opt into.', logo: '/NCSA.jpg' },
+    { name: 'SportsRecruits', blurb: 'Same integration extends across SR’s 400K-athlete club and HS audience. Adds volume, drops the per-profile price for IMG.', logo: '/Sportsrecruits.png' },
+    { name: 'IMG Academy+', blurb: 'Low scores get flagged and routed straight to IMG Academy+ sports psychology sessions. Testing volume becomes coaching revenue.', logo: '/IMG.png' },
+    { name: 'Elevate & NGB channels', blurb: 'Same surface extends into federation deals (USA Water Polo, USA Lacrosse) and Elevate’s B2B-to-schools motion. Internationally portable as the deal scales.', logo: '/IMGElevate.png' },
 ];
 
 const TwoWaysItWorks = () => (
@@ -380,6 +380,15 @@ const PartnerProperties = () => (
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
             {SURFACES.map((s) => (
                 <div key={s.name} className="bg-[#070707] p-5 sm:p-7 flex flex-col">
+                    {s.logo && (
+                        <div className="h-9 mb-4 flex items-center">
+                            <img
+                                src={s.logo}
+                                alt={`${s.name} logo`}
+                                className="max-h-9 w-auto object-contain"
+                            />
+                        </div>
+                    )}
                     <p className="text-white text-base font-semibold mb-2">{s.name}</p>
                     <p className="text-gray-500 text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: s.blurb }} />
                 </div>
@@ -543,7 +552,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
               {/* INSIDE THE NCSA PROFILE - native integration mockup */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
                   <div className="mb-10 sm:mb-12 max-w-2xl">
-                      <p className="text-sm font-medium text-emerald-400 mb-3">Inside the NCSA profile</p>
+                      <div className="flex items-center gap-3 mb-3">
+                          <img src="/NCSA.jpg" alt="NCSA" className="h-6 w-auto object-contain rounded" />
+                          <p className="text-sm font-medium text-emerald-400">Inside the NCSA profile</p>
+                      </div>
                       <h3 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
                           This is your NCSA profile with NTangible inside.
                       </h3>
