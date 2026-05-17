@@ -265,7 +265,8 @@ const PricingCalculator = () => {
                 <p className="text-xs text-gray-600 mt-6 leading-relaxed">
                     Per-profile economics only. Doesn't reflect the 6-month retest cycle (effectively doubles
                     annual volume from a stable athlete base), SportsRecruits crossover into the same integration,
-                    or international expansion through Elevate.
+                    or the Elevate B2B distribution play (every athlete at every partner academy &mdash; see the
+                    Elevate Play tab).
                 </p>
             </div>
         </section>
@@ -276,8 +277,8 @@ const PricingCalculator = () => {
 const SURFACES: { name: string; blurb: string; logo?: string }[] = [
     { name: 'NCSA', blurb: 'Standard on every athlete profile. Per-athlete pricing across the membership base - not an add-on, not a SKU families have to opt into.', logo: '/NCSA.jpg' },
     { name: 'SportsRecruits', blurb: 'Same integration extends across SR’s 400K-athlete club and HS audience. Adds volume, drops the per-profile price for IMG.', logo: '/Sportsrecruits.png' },
-    { name: 'IMG Academy+', blurb: 'Low scores get flagged and routed straight to IMG Academy+ sports psychology sessions. Testing volume becomes coaching revenue.', logo: '/IMG.png' },
-    { name: 'Elevate & NGB channels', blurb: 'Same surface extends into federation deals (USA Water Polo, USA Lacrosse) and Elevate’s B2B-to-schools motion. Internationally portable as the deal scales.', logo: '/IMGElevate.png' },
+    { name: 'Elevate by IMG Academy', blurb: 'Bundled into every Elevate academy license. Every athlete at every partner school gets an NCSA profile and a sport-specific assessment - the B2B distribution play that opens the TAM.', logo: '/IMGElevate.png' },
+    { name: 'NGB & federation channels', blurb: 'Same surface extends into federation deals (USA Water Polo, USA Lacrosse) and Nord Anglia’s international campuses. Internationally portable as the deal scales.' },
 ];
 
 const TwoWaysItWorks = () => (
@@ -285,12 +286,12 @@ const TwoWaysItWorks = () => (
         <div className="mb-10 sm:mb-12 max-w-2xl">
             <p className="text-sm font-medium text-blue-400 mb-3">Two ways it works</p>
             <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
-                A standalone tool. And a lead-gen engine.
+                A standalone tool. And a B2B distribution play.
             </h2>
             <p className="text-lg text-gray-400 leading-relaxed">
-                One assessment, two integration surfaces inside IMG Academy. Sport-specific testing that ships
-                across the full product suite - and a routing layer that turns every low score into a
-                qualified lead for IMG Academy+ coaching.
+                One assessment, two integration surfaces inside IMG. Sport-specific testing that ships
+                across NCSA and SportsRecruits - and a bundled NCSA-profile-plus-assessment that drops
+                into every Elevate academy license, opening a B2B funnel NCSA can't reach on its own.
             </p>
         </div>
 
@@ -301,10 +302,10 @@ const TwoWaysItWorks = () => (
                 </div>
                 <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mb-2">Testing layer</p>
                 <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight mb-3">
-                    Sport-specific assessment across the suite.
+                    Sport-specific assessment across NCSA & SportsRecruits.
                 </h3>
                 <p className="text-base text-gray-400 leading-relaxed mb-6">
-                    Standalone testing layer that ships across NCSA, SportsRecruits, and IMG Academy+. Athletes test,
+                    Standalone testing layer that ships across the recruiting suite. Athletes test,
                     score, retest every six months - per-sport, per-position, with the granularity IMG's
                     cross-sport catalog doesn't carry today.
                 </p>
@@ -321,38 +322,38 @@ const TwoWaysItWorks = () => (
                 <div className="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5">
                     <Megaphone size={20} className="text-emerald-400" />
                 </div>
-                <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-2">Lead-gen engine</p>
+                <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-2">B2B distribution</p>
                 <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight mb-3">
-                    Low scores route into IMG Academy+ sessions.
+                    Bundled into every Elevate academy license.
                 </h3>
                 <p className="text-base text-gray-400 leading-relaxed mb-6">
-                    Every low-scoring profile flags a development opportunity. The system routes those families
-                    straight into the IMG Academy+ sports psychology session funnel - turning every
-                    assessment into a qualified lead for the existing $85&ndash;$100 coaching SKU.
+                    Every athlete at every Elevate partner academy gets an NCSA profile and a sport-specific
+                    assessment, bundled into the license the school already signs. NCSA's TAM stops being
+                    4.5M self-signups and starts being every program Elevate touches.
                 </p>
                 <div className="mt-auto pt-2 border-t border-white/5">
-                    <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mt-5 mb-3">The routing logic</p>
+                    <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mt-5 mb-3">The distribution unlock</p>
                     <div className="space-y-2">
                         <div className="flex items-center justify-between gap-3 rounded-lg border border-white/10 bg-[#0a0a0a] px-3 py-2.5">
                             <div className="flex items-center gap-2.5">
                                 <span className="inline-block w-1.5 h-6 rounded-full bg-emerald-400" />
-                                <span className="text-sm text-gray-300">Clutch <span className="text-white font-semibold tabular-nums">750+</span></span>
+                                <span className="text-sm text-gray-300">Academy signs Elevate license</span>
                             </div>
-                            <span className="text-[11px] font-medium text-emerald-300 uppercase tracking-wider">Showcase to coaches</span>
+                            <span className="text-[11px] font-medium text-emerald-300 uppercase tracking-wider">Existing motion</span>
                         </div>
                         <div className="flex items-center justify-between gap-3 rounded-lg border border-white/10 bg-[#0a0a0a] px-3 py-2.5">
                             <div className="flex items-center gap-2.5">
-                                <span className="inline-block w-1.5 h-6 rounded-full bg-amber-400" />
-                                <span className="text-sm text-gray-300">Clutch <span className="text-white font-semibold tabular-nums">500&ndash;749</span></span>
+                                <span className="inline-block w-1.5 h-6 rounded-full bg-emerald-400" />
+                                <span className="text-sm text-gray-300">Roster ingested &rarr; NCSA profile per athlete</span>
                             </div>
-                            <span className="text-[11px] font-medium text-amber-300 uppercase tracking-wider">Workshop nudge</span>
+                            <span className="text-[11px] font-medium text-emerald-300 uppercase tracking-wider">Auto</span>
                         </div>
-                        <div className="flex items-center justify-between gap-3 rounded-lg border border-amber-400/30 bg-amber-400/[0.05] px-3 py-2.5">
+                        <div className="flex items-center justify-between gap-3 rounded-lg border border-emerald-400/30 bg-emerald-400/[0.05] px-3 py-2.5">
                             <div className="flex items-center gap-2.5">
-                                <span className="inline-block w-1.5 h-6 rounded-full bg-amber-500" />
-                                <span className="text-sm text-white">Clutch <span className="text-white font-semibold tabular-nums">&lt; 500</span></span>
+                                <span className="inline-block w-1.5 h-6 rounded-full bg-emerald-500" />
+                                <span className="text-sm text-white">Searchable by every college coach</span>
                             </div>
-                            <span className="text-[11px] font-bold text-amber-200 uppercase tracking-wider">1-on-1 session offer</span>
+                            <span className="text-[11px] font-bold text-emerald-200 uppercase tracking-wider">TAM unlock</span>
                         </div>
                     </div>
                 </div>
@@ -398,11 +399,12 @@ const PartnerProperties = () => (
 );
 
 // --- INSET TAB NAVIGATION ---
-type TabId = 'assessments' | 'coaches' | 'economics' | 'activation';
+type TabId = 'assessments' | 'coaches' | 'elevate' | 'economics' | 'activation';
 
 const TABS: { id: TabId; label: string }[] = [
     { id: 'assessments', label: 'The Assessments' },
     { id: 'coaches', label: "For College Coaches" },
+    { id: 'elevate', label: 'The Elevate Play' },
     { id: 'economics', label: 'The Economics' },
     { id: 'activation', label: 'Activation & Rollout' },
 ];
@@ -788,6 +790,174 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
           </>
         );
 
+      case 'elevate':
+        return (
+          <>
+              {/* HERO - THE THESIS */}
+              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
+                  <div className="max-w-3xl">
+                      <div className="flex flex-wrap items-center gap-3 mb-6">
+                          <img src="/IMGElevate.png" alt="Elevate by IMG Academy" className="h-9 w-auto object-contain" />
+                          <span className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full">
+                              <Target size={13} className="text-emerald-400" />
+                              <span className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest">The B2B distribution play</span>
+                          </span>
+                      </div>
+                      <h2 className="text-4xl sm:text-6xl font-semibold text-white tracking-tight leading-[1.02] mb-6">
+                          Every athlete at every Elevate academy.{' '}
+                          <span className="text-gray-500">One NCSA profile each. Bundled into the license they already sign.</span>
+                      </h2>
+                      <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
+                          Elevate is IMG's B2B vehicle into outside schools and academies. Every one of those
+                          campuses has a roster of athletes who never made an NCSA profile, never took a
+                          sport-specific assessment, and never showed up in a college coach's search. We bundle
+                          both into the Elevate license &mdash; turning each academy deal into hundreds of
+                          recruiting-ready profiles on day one.
+                      </p>
+                  </div>
+              </section>
+
+              {/* THE TAM UNLOCK */}
+              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
+                  <div className="mb-10 sm:mb-12 max-w-2xl">
+                      <p className="text-sm font-medium text-emerald-400 mb-3">Why this changes the ceiling</p>
+                      <h3 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
+                          NCSA's TAM stops being self-signup.
+                      </h3>
+                      <p className="text-lg text-gray-400 leading-relaxed">
+                          The 4.5M-athlete pool is the floor, not the ceiling. The ceiling is every program
+                          Elevate already touches &mdash; sports academies, Nord Anglia campuses, federation
+                          training centers. None of them currently flow through NCSA's funnel.
+                      </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+                      <div className="bg-[#070707] p-6 sm:p-7">
+                          <p className="text-3xl sm:text-4xl font-semibold text-emerald-400 tracking-tight mb-2 tabular-nums">80+</p>
+                          <p className="text-white text-sm sm:text-base font-semibold mb-1">Nord Anglia campuses</p>
+                          <p className="text-gray-500 text-sm leading-relaxed">Across 30 countries, already in EQT's distribution graph. Each one a candidate Elevate license.</p>
+                      </div>
+                      <div className="bg-[#070707] p-6 sm:p-7">
+                          <p className="text-3xl sm:text-4xl font-semibold text-emerald-400 tracking-tight mb-2 tabular-nums">100%</p>
+                          <p className="text-white text-sm sm:text-base font-semibold mb-1">Roster coverage per academy</p>
+                          <p className="text-gray-500 text-sm leading-relaxed">Bundled, not opt-in. Every athlete on the roster gets the profile and the assessment as part of the school's license.</p>
+                      </div>
+                      <div className="bg-[#070707] p-6 sm:p-7">
+                          <p className="text-3xl sm:text-4xl font-semibold text-emerald-400 tracking-tight mb-2 tabular-nums">0</p>
+                          <p className="text-white text-sm sm:text-base font-semibold mb-1">Net-new sales motion</p>
+                          <p className="text-gray-500 text-sm leading-relaxed">Rides Elevate's existing B2B-to-schools pipeline. No separate NCSA outbound, no per-family conversion funnel.</p>
+                      </div>
+                  </div>
+              </section>
+
+              {/* THE MECHANICS - 3 steps */}
+              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
+                  <div className="mb-10 sm:mb-12 max-w-2xl">
+                      <p className="text-sm font-medium text-emerald-400 mb-3">How the bundle works</p>
+                      <h3 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
+                          One signature. Every athlete recruiting-ready.
+                      </h3>
+                      <p className="text-lg text-gray-400 leading-relaxed">
+                          The academy doesn't run a separate procurement for NCSA. The bundle ships with the
+                          Elevate license &mdash; same contract, same renewal cycle, same admin owner.
+                      </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+                      {[
+                          {
+                              step: '01',
+                              title: 'Academy signs the Elevate license',
+                              body: "Same B2B motion Elevate already runs. The NCSA + assessment bundle is a line item on the contract, not a separate sale.",
+                          },
+                          {
+                              step: '02',
+                              title: 'Roster ingest creates profiles automatically',
+                              body: 'The athletic department uploads the roster. Every athlete gets an NCSA profile and a sport-specific assessment invite. Completion is part of the school program, not a family decision.',
+                          },
+                          {
+                              step: '03',
+                              title: 'Profiles become searchable to coaches',
+                              body: "Each athlete shows up in the college coach dashboard with Clutch Factor, Coach-Player Alignment Index, and full NCSA chrome. The academy gets a measurable recruiting outcome it can market to the next parent.",
+                          },
+                      ].map((s) => (
+                          <div key={s.step} className="bg-[#070707] p-6 sm:p-8 flex flex-col">
+                              <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-3 tabular-nums">Step {s.step}</p>
+                              <h4 className="text-lg sm:text-xl font-semibold text-white tracking-tight mb-3 leading-snug">{s.title}</h4>
+                              <p className="text-sm text-gray-400 leading-relaxed">{s.body}</p>
+                          </div>
+                      ))}
+                  </div>
+              </section>
+
+              {/* WHO WINS WHAT */}
+              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
+                  <div className="mb-10 sm:mb-12 max-w-2xl">
+                      <p className="text-sm font-medium text-emerald-400 mb-3">Why each side signs</p>
+                      <h3 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
+                          A bundle three parties want.
+                      </h3>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-7">
+                          <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-3">The academy</p>
+                          <h4 className="text-xl font-semibold text-white tracking-tight mb-4">Recruiting outcome, no extra spend</h4>
+                          <ul className="space-y-3">
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Every athlete on roster gets an NCSA profile - the recruiting outcome parents already pay tuition for</li>
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Sport-specific assessment data the coaching staff can use for development plans</li>
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> A marketing line for the next admissions cycle: &ldquo;Every athlete graduates with a verified recruiting profile.&rdquo;</li>
+                          </ul>
+                      </div>
+                      <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-7">
+                          <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-3">IMG Academy</p>
+                          <h4 className="text-xl font-semibold text-white tracking-tight mb-4">A second growth lever on Elevate</h4>
+                          <ul className="space-y-3">
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> NCSA volume that doesn't depend on consumer marketing spend</li>
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Higher Elevate ASP - the recruiting bundle becomes a real differentiator vs. competing B2B sport curricula</li>
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Internationally portable - same bundle ships into Nord Anglia and overseas markets without a US-only dependency</li>
+                          </ul>
+                      </div>
+                      <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-7">
+                          <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-3">The athlete</p>
+                          <h4 className="text-xl font-semibold text-white tracking-tight mb-4">Discoverable before they had to ask</h4>
+                          <ul className="space-y-3">
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> A complete, NTangible-verified profile without anyone in the household having to know about NCSA first</li>
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Clutch Factor score on a college coach search result - the signal that gets the first call</li>
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Retests every six months alongside the school's existing development cadence</li>
+                          </ul>
+                      </div>
+                  </div>
+              </section>
+
+              {/* CLOSER */}
+              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
+                  <div className="rounded-3xl border border-emerald-400/30 bg-gradient-to-b from-emerald-400/[0.08] via-emerald-400/[0.02] to-transparent p-7 sm:p-10">
+                      <div className="flex flex-col sm:flex-row items-start gap-6 sm:gap-9">
+                          <div className="shrink-0">
+                              <img
+                                  src="/IMGElevate.png"
+                                  alt="Elevate by IMG Academy"
+                                  className="h-16 sm:h-20 w-auto object-contain drop-shadow-[0_10px_30px_rgba(16,185,129,0.20)]"
+                              />
+                          </div>
+                          <div className="flex-1 sm:border-l sm:border-emerald-400/20 sm:pl-9">
+                              <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-3">The strategic frame</p>
+                              <p className="text-xl sm:text-2xl text-white leading-snug font-medium mb-3">
+                                  Elevate is the channel. NCSA is the destination. The assessment is the proof.
+                              </p>
+                              <p className="text-base text-gray-400 leading-relaxed">
+                                  Each Elevate academy deal becomes a hundreds-of-profiles-a-year subscription to NCSA,
+                                  sold once at the institutional level instead of one family at a time. That's the
+                                  play the EQT &times; Nord Anglia thesis was built to fund.
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              </section>
+          </>
+        );
+
       case 'economics':
         return <PricingCalculator />;
 
@@ -876,7 +1046,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       <p className="text-lg text-gray-400 leading-relaxed">
                           A 60&ndash;90 second module gated in front of every assessment. Required to unlock the
                           profile, so completion sits near 100%. One schema, owned by IMG, feeding NCSA,
-                          SportsRecruits, Academy+, and the routing logic that sends low scores into coaching sessions.
+                          SportsRecruits, and the Elevate academy distribution layer.
                       </p>
                   </div>
 
@@ -891,7 +1061,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               { label: 'Sport profile', detail: 'Primary sport, positions, level, team affiliations' },
                               { label: 'Recruiting status', detail: 'Grad year, current offers, target divisions, commit timeline' },
                               { label: 'Reach', detail: 'Parent email + mobile, opt-ins, communication preferences' },
-                              { label: 'Development signals', detail: 'Prior coaching, areas of focus, openness to IMG Academy+ sessions' },
+                              { label: 'Development signals', detail: 'Prior coaching, areas of focus, openness to additional development resources' },
                           ].map((row) => (
                               <div key={row.label} className="flex gap-3">
                                   <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
@@ -1067,7 +1237,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
 
               <p className="text-lg sm:text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
                   Sport-specific testing across NCSA and SportsRecruits. Standalone tool on one side -
-                  the lead-gen engine that routes low scores into IMG Academy+ sports psychology sessions on the other.
+                  Elevate-bundled distribution into every partner academy's roster on the other.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10 max-w-md sm:max-w-none mx-auto">
