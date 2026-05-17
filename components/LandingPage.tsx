@@ -146,7 +146,7 @@ const PricingCalculator = () => {
                     Per-athlete integration. Volume drops the price.
                 </h2>
                 <p className="text-lg text-gray-400 leading-relaxed">
-                    Standard on every NCSA athlete profile. The more we ship, the cheaper per athlete &mdash;
+                    Standard on every NCSA athlete profile. The more we ship, the cheaper per athlete -
                     IMG Academy's per-profile margin stays at $3 from day one. We compress on our side to make
                     the integration tomorrow.
                 </p>
@@ -179,7 +179,7 @@ const PricingCalculator = () => {
             <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-8 mb-10">
                 <p className="text-sm font-medium text-blue-400 mb-3">Why this shape</p>
                 <p className="text-base text-gray-300 leading-relaxed">
-                    IMG's $3 share is flat across every tier &mdash; growth comes from volume, not from renegotiating rate.
+                    IMG's $3 share is flat across every tier - growth comes from volume, not from renegotiating rate.
                     NTangible's margin compresses from $7 to $3 as the integration deepens, in exchange for the certainty
                     of full per-athlete coverage across NCSA. At the floor, both sides earn the same per profile and
                     the program scales as fast as IMG wants to ship it.
@@ -273,7 +273,7 @@ const PricingCalculator = () => {
 
 // --- IMG ACADEMY DIGITAL SURFACES ---
 const SURFACES: { name: string; blurb: string }[] = [
-    { name: 'NCSA', blurb: 'Standard on every athlete profile. Per-athlete pricing across the membership base &mdash; not an add-on, not a SKU families have to opt into.' },
+    { name: 'NCSA', blurb: 'Standard on every athlete profile. Per-athlete pricing across the membership base - not an add-on, not a SKU families have to opt into.' },
     { name: 'SportsRecruits', blurb: 'Same integration extends across SR’s 400K-athlete club and HS audience. Adds volume, drops the per-profile price for IMG.' },
     { name: 'IMG Academy+', blurb: 'Low scores get flagged and routed straight to IMG Academy+ sports psychology sessions. Testing volume becomes coaching revenue.' },
     { name: 'Elevate & NGB channels', blurb: 'Same surface extends into federation deals (USA Water Polo, USA Lacrosse) and Elevate’s B2B-to-schools motion. Internationally portable as the deal scales.' },
@@ -288,7 +288,7 @@ const TwoWaysItWorks = () => (
             </h2>
             <p className="text-lg text-gray-400 leading-relaxed">
                 One assessment, two integration surfaces inside IMG Academy. Sport-specific testing that ships
-                across the full product suite &mdash; and a routing layer that turns every low score into a
+                across the full product suite - and a routing layer that turns every low score into a
                 qualified lead for IMG Academy+ coaching.
             </p>
         </div>
@@ -304,7 +304,7 @@ const TwoWaysItWorks = () => (
                 </h3>
                 <p className="text-base text-gray-400 leading-relaxed">
                     Standalone testing layer that ships across NCSA, SportsRecruits, and IMG Academy+. Athletes test,
-                    score, retest every six months &mdash; per-sport, per-position, with the granularity IMG's
+                    score, retest every six months - per-sport, per-position, with the granularity IMG's
                     cross-sport catalog doesn't carry today.
                 </p>
             </div>
@@ -318,7 +318,7 @@ const TwoWaysItWorks = () => (
                 </h3>
                 <p className="text-base text-gray-400 leading-relaxed">
                     Every low-scoring profile flags a development opportunity. The system routes those families
-                    straight into the IMG Academy+ sports psychology session funnel &mdash; turning every
+                    straight into the IMG Academy+ sports psychology session funnel - turning every
                     assessment into a qualified lead for the existing $85&ndash;$100 coaching SKU.
                 </p>
             </div>
@@ -337,7 +337,7 @@ const PartnerProperties = () => (
                 Four surfaces. One integration.
             </h2>
             <p className="text-lg text-gray-400 leading-relaxed">
-                The profile slots directly into IMG Academy's existing digital product set &mdash; no new SKU to invent,
+                The profile slots directly into IMG Academy's existing digital product set - no new SKU to invent,
                 no new operational lift. It extends what's already shipping.
             </p>
         </div>
@@ -487,7 +487,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       </h2>
                       <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
                           NTangible isn't just an assessment. College coaches integrate directly into the platform
-                          and run the Coach&ndash;Player Alignment Index against any NCSA or SportsRecruits profile &mdash;
+                          and run the Coach&ndash;Player Alignment Index against any NCSA or SportsRecruits profile -
                           a free, always-on dashboard that answers <span className="text-white font-medium">will this athlete fit my system</span>{' '}
                           before the first call.
                       </p>
@@ -517,7 +517,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       </h3>
                       <p className="text-lg text-gray-400 leading-relaxed">
                           College coaches log in for free. The Coach&ndash;Player Alignment Index runs against every
-                          NCSA and SportsRecruits profile in the database &mdash; turning the recruiting database
+                          NCSA and SportsRecruits profile in the database - turning the recruiting database
                           IMG already owns into a scored, filterable, fit-aware prospect pool.
                       </p>
                   </div>
@@ -530,10 +530,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           <p className="text-[11px] font-semibold text-emerald-400 uppercase tracking-widest mb-2">What the coach gets</p>
                           <h4 className="text-xl font-semibold text-white tracking-tight mb-4">A live, alignment-scored prospect pool</h4>
                           <ul className="space-y-2.5">
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Free login from any laptop &mdash; alignment updates the moment a profile retests</li>
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Free login from any laptop - alignment updates the moment a profile retests</li>
                               <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Every NCSA and SportsRecruits athlete, searchable by sport, position, state, grad year</li>
                               <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Clutch Factor + Coach&ndash;Player Alignment Index on every athlete card</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Year-round &mdash; no event dependency, no rebuilding the list every weekend</li>
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Year-round - no event dependency, no rebuilding the list every weekend</li>
                               <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Shareable with the full staff in one link</li>
                           </ul>
                       </div>
@@ -544,10 +544,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mb-2">What IMG gets</p>
                           <h4 className="text-xl font-semibold text-white tracking-tight mb-4">Stickier coaches, stickier families</h4>
                           <ul className="space-y-2.5">
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> A signal college coaches can't get anywhere else &mdash; pulls them into NCSA/SR instead of competing platforms</li>
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> A signal college coaches can't get anywhere else - pulls them into NCSA/SR instead of competing platforms</li>
                               <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> Higher coach engagement per profile = higher commit conversion = the metric NCSA already sells on</li>
                               <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> Every alignment view is a touchpoint NCSA can surface to the family</li>
-                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> Differentiates NCSA + SR against 247, On3, Rivals &mdash; they have stats; you'd have fit</li>
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> Differentiates NCSA + SR against 247, On3, Rivals - they have stats; you'd have fit</li>
                           </ul>
                       </div>
                   </div>
@@ -707,7 +707,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       <p className="text-lg text-gray-400 leading-relaxed">
                           With a signed agreement, NTangible delivers a v1 assessment for every sport NCSA and
                           SportsRecruits offer within 60 days. 9 sports are live today. The rest take roughly
-                          two days each on our backend &mdash; the calendar is the whole differentiator.
+                          two days each on our backend - the calendar is the whole differentiator.
                       </p>
                   </div>
 
@@ -755,12 +755,12 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           <div className="sm:border-l sm:border-white/10 sm:pl-7">
                               <p className="text-base text-gray-300 leading-relaxed mb-3">
                                   Once NCSA and the broader integration are locked, NTangible throws in the
-                                  on-campus assessment layer at <span className="text-white font-medium">no cost, renewed annually</span> &mdash;
+                                  on-campus assessment layer at <span className="text-white font-medium">no cost, renewed annually</span> -
                                   for IMG Academy to use across boarding students, camp athletes, and corporate
                                   performance clients as it sees fit.
                               </p>
                               <p className="text-sm text-gray-500 leading-relaxed">
-                                  Same instruments, same dashboard, same alignment scoring &mdash; deployed inside
+                                  Same instruments, same dashboard, same alignment scoring - deployed inside
                                   the campus environment alongside the existing IMG mental performance staff.
                                   No per-seat invoice. No SOW for every cohort. Standard inclusion.
                               </p>
@@ -810,7 +810,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   <div className="rounded-2xl border border-white/10 bg-[#070707] p-6 sm:p-7">
                       <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
                           <span className="text-white font-medium">IMG defines the fields. IMG owns the data.</span>{' '}
-                          NTangible operates the intake inside the assessment flow &mdash; records land in IMG's
+                          NTangible operates the intake inside the assessment flow - records land in IMG's
                           database, branded as an IMG product, governed by IMG's privacy posture.
                       </p>
                   </div>
@@ -839,7 +839,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       </div>
                       <div className="bg-[#070707] p-6">
                           <p className="text-white text-base font-semibold mb-2">Growth, not diagnosis</p>
-                          <p className="text-gray-500 text-sm leading-relaxed">We measure how athletes compete and handle pressure &mdash; not personality or clinical labels.</p>
+                          <p className="text-gray-500 text-sm leading-relaxed">We measure how athletes compete and handle pressure - not personality or clinical labels.</p>
                       </div>
                   </div>
               </section>
@@ -963,7 +963,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
               </h1>
 
               <p className="text-lg sm:text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-                  Sport-specific testing across NCSA and SportsRecruits. Standalone tool on one side &mdash;
+                  Sport-specific testing across NCSA and SportsRecruits. Standalone tool on one side -
                   the lead-gen engine that routes low scores into IMG Academy+ sports psychology sessions on the other.
               </p>
 
