@@ -1058,16 +1058,16 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       Try a sample assessment
                   </button>
                   <button
+                    onClick={() => handleEnter()}
+                    className="text-gray-500 hover:text-gray-300 text-sm font-medium transition-colors underline underline-offset-4 decoration-white/10 hover:decoration-white/40"
+                  >
+                      Explore the coach dashboard
+                  </button>
+                  <button
                     onClick={() => setShowReportModal(true)}
                     className="text-gray-500 hover:text-gray-300 text-sm font-medium transition-colors underline underline-offset-4 decoration-white/10 hover:decoration-white/40"
                   >
                       See a sample player report
-                  </button>
-                  <button
-                    onClick={() => handleEnter()}
-                    className="hidden sm:inline-flex text-gray-500 hover:text-gray-300 text-sm font-medium transition-colors underline underline-offset-4 decoration-white/10 hover:decoration-white/40"
-                  >
-                      Explore the coach dashboard
                   </button>
               </div>
           </section>
