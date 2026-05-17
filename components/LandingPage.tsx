@@ -475,18 +475,18 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       </div>
                   </div>
                   <div className="mt-6 rounded-2xl border border-white/10 bg-[#070707] overflow-hidden">
-                      <div className="px-5 sm:px-7 py-4 border-b border-white/5 flex items-center justify-between gap-4">
+                      <div className="px-5 sm:px-7 py-4 border-b border-white/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                           <div className="flex items-center gap-2.5">
                               <FileText size={14} className="text-blue-400" />
-                              <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest">Backed by published research</p>
+                              <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest">Look at the recent research papers</p>
                           </div>
                           <a
                               href="https://ntangible.co/research"
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium text-gray-400 hover:text-white transition-colors"
+                              className="inline-flex items-center gap-1.5 self-start sm:self-auto text-xs font-semibold text-white bg-blue-500 hover:bg-blue-400 px-3 py-1.5 rounded-md transition-colors"
                           >
-                              All papers <ArrowRight size={12} />
+                              See all papers <ArrowRight size={12} />
                           </a>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/5">
