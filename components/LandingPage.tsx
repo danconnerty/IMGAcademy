@@ -295,7 +295,7 @@ const TwoWaysItWorks = () => (
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-            <div className="bg-[#070707] p-7 sm:p-9">
+            <div className="bg-[#070707] p-7 sm:p-9 flex flex-col">
                 <div className="w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-5">
                     <Activity size={20} className="text-blue-400" />
                 </div>
@@ -303,13 +303,29 @@ const TwoWaysItWorks = () => (
                 <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight mb-3">
                     Sport-specific assessment across the suite.
                 </h3>
-                <p className="text-base text-gray-400 leading-relaxed">
+                <p className="text-base text-gray-400 leading-relaxed mb-6">
                     Standalone testing layer that ships across NCSA, SportsRecruits, and IMG Academy+. Athletes test,
                     score, retest every six months - per-sport, per-position, with the granularity IMG's
                     cross-sport catalog doesn't carry today.
                 </p>
+                <div className="mt-auto pt-2 border-t border-white/5">
+                    <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mt-5 mb-3">Lives inside the NCSA profile</p>
+                    <div className="relative rounded-xl overflow-hidden bg-white max-w-[280px]">
+                        <img
+                            src="/get-noticed-1.png"
+                            alt="NCSA athlete profile with Clutch Factor integrated"
+                            className="w-full h-auto block"
+                        />
+                        <div className="absolute" style={{ left: '52%', right: '6%', top: '93%' }}>
+                            <div className="rounded-md border border-emerald-400 bg-[#0b1d4d] shadow-[0_4px_12px_rgba(0,0,0,0.5)] px-1.5 py-1 flex items-center justify-between gap-1">
+                                <span className="text-[6px] font-bold text-emerald-200 tracking-wider uppercase">Clutch</span>
+                                <span className="text-[10px] font-bold text-white tabular-nums leading-none">823</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="bg-[#070707] p-7 sm:p-9">
+            <div className="bg-[#070707] p-7 sm:p-9 flex flex-col">
                 <div className="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5">
                     <Megaphone size={20} className="text-emerald-400" />
                 </div>
@@ -317,11 +333,37 @@ const TwoWaysItWorks = () => (
                 <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight mb-3">
                     Low scores route into IMG Academy+ sessions.
                 </h3>
-                <p className="text-base text-gray-400 leading-relaxed">
+                <p className="text-base text-gray-400 leading-relaxed mb-6">
                     Every low-scoring profile flags a development opportunity. The system routes those families
                     straight into the IMG Academy+ sports psychology session funnel - turning every
                     assessment into a qualified lead for the existing $85&ndash;$100 coaching SKU.
                 </p>
+                <div className="mt-auto pt-2 border-t border-white/5">
+                    <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mt-5 mb-3">The routing logic</p>
+                    <div className="space-y-2">
+                        <div className="flex items-center justify-between gap-3 rounded-lg border border-white/10 bg-[#0a0a0a] px-3 py-2.5">
+                            <div className="flex items-center gap-2.5">
+                                <span className="inline-block w-1.5 h-6 rounded-full bg-emerald-400" />
+                                <span className="text-sm text-gray-300">Clutch <span className="text-white font-semibold tabular-nums">750+</span></span>
+                            </div>
+                            <span className="text-[11px] font-medium text-emerald-300 uppercase tracking-wider">Showcase to coaches</span>
+                        </div>
+                        <div className="flex items-center justify-between gap-3 rounded-lg border border-white/10 bg-[#0a0a0a] px-3 py-2.5">
+                            <div className="flex items-center gap-2.5">
+                                <span className="inline-block w-1.5 h-6 rounded-full bg-amber-400" />
+                                <span className="text-sm text-gray-300">Clutch <span className="text-white font-semibold tabular-nums">500&ndash;749</span></span>
+                            </div>
+                            <span className="text-[11px] font-medium text-amber-300 uppercase tracking-wider">Workshop nudge</span>
+                        </div>
+                        <div className="flex items-center justify-between gap-3 rounded-lg border border-amber-400/30 bg-amber-400/[0.05] px-3 py-2.5">
+                            <div className="flex items-center gap-2.5">
+                                <span className="inline-block w-1.5 h-6 rounded-full bg-amber-500" />
+                                <span className="text-sm text-white">Clutch <span className="text-white font-semibold tabular-nums">&lt; 500</span></span>
+                            </div>
+                            <span className="text-[11px] font-bold text-amber-200 uppercase tracking-wider">1-on-1 session offer</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
