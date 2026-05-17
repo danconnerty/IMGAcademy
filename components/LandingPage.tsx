@@ -1047,6 +1047,72 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   </div>
               </section>
 
+              {/* THE RETEST CYCLE */}
+              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
+                  <div className="mb-10 sm:mb-12 max-w-2xl">
+                      <p className="text-sm font-medium text-amber-400 mb-3">Recurring revenue, three ways</p>
+                      <h3 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
+                          The retest is the revenue.
+                      </h3>
+                      <p className="text-lg text-gray-400 leading-relaxed">
+                          One assessment, three retest modes - each a billable event and a new routing trigger
+                          for Academy+ outreach. The score doesn't sit static for a year. It moves with the
+                          athlete, and every movement is a chargeable touchpoint.
+                      </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+                      {[
+                          {
+                              cadence: 'Every 6 months',
+                              label: 'Standard cycle',
+                              title: 'The annual-recurring baseline',
+                              body: "Bundled into the profile. Every athlete retests on the 6-month mark, no opt-in required. Each retest refreshes the Clutch Factor on the NCSA profile and re-routes the score against Academy+ tiers.",
+                              tone: 'border-amber-400/30 bg-amber-400/[0.04]',
+                              chip: 'text-amber-300 border-amber-400/30 bg-amber-400/[0.06]',
+                              bar: 'bg-amber-400',
+                          },
+                          {
+                              cadence: 'Athlete-initiated',
+                              label: 'On-demand retake',
+                              title: 'Pay to improve the score early',
+                              body: "Athletes can purchase an out-of-cycle retake any time they want to push a higher number to coaches. A new revenue line on top of the subscription, owned entirely by IMG.",
+                              tone: 'border-emerald-400/30 bg-emerald-400/[0.04]',
+                              chip: 'text-emerald-300 border-emerald-400/30 bg-emerald-400/[0.06]',
+                              bar: 'bg-emerald-400',
+                          },
+                          {
+                              cadence: 'Post-coaching',
+                              label: 'Intervention retest',
+                              title: 'Prove Academy+ worked',
+                              body: "After an Academy+ session block, athletes can retest early - inside the 6-month window - to validate the score lift. Closes the loop on coaching ROI and bundles naturally with the Academy+ SKU.",
+                              tone: 'border-blue-400/30 bg-blue-400/[0.04]',
+                              chip: 'text-blue-300 border-blue-400/30 bg-blue-400/[0.06]',
+                              bar: 'bg-blue-400',
+                          },
+                      ].map((m) => (
+                          <div key={m.label} className={`bg-[#070707] p-6 sm:p-7 flex flex-col border ${m.tone}`}>
+                              <span className={`block h-0.5 w-10 ${m.bar} rounded-full mb-4`} />
+                              <p className="text-white text-[15px] font-semibold tabular-nums mb-1">{m.cadence}</p>
+                              <span className={`self-start inline-flex items-center px-2 py-0.5 rounded-full border text-[10px] font-semibold uppercase tracking-widest mb-4 ${m.chip}`}>
+                                  {m.label}
+                              </span>
+                              <h4 className="text-lg sm:text-xl font-semibold text-white tracking-tight mb-2 leading-snug">{m.title}</h4>
+                              <p className="text-sm text-gray-400 leading-relaxed">{m.body}</p>
+                          </div>
+                      ))}
+                  </div>
+
+                  <div className="mt-6 rounded-2xl border border-white/10 bg-[#070707] p-6 sm:p-7">
+                      <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
+                          <span className="text-white font-medium">Stacked, these compound.</span>{' '}
+                          Standard cycle doubles annual assessment volume from a stable athlete base. On-demand
+                          retakes add a new SKU on top. Post-coaching retests bundle with the Academy+ session
+                          fee and convert a one-shot service into a measurable, repeatable outcome.
+                      </p>
+                  </div>
+              </section>
+
               {/* THE ROUTING TIERS */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
                   <div className="mb-10 sm:mb-12 max-w-2xl">
