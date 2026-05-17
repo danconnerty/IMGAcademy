@@ -474,15 +474,59 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           <p className="text-gray-500 text-sm leading-relaxed">Of collegiate athletes scoring above 800, 73% are named All-American or All-Conference selections. The signal college coaches don't have today.</p>
                       </div>
                   </div>
-                  <div className="mt-5 flex justify-end">
-                      <a
-                          href="https://ntangible.co/research"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors underline underline-offset-4 decoration-blue-500/30 hover:decoration-blue-400/60"
-                      >
-                          Read the research <ArrowRight size={14} />
-                      </a>
+                  <div className="mt-6 rounded-2xl border border-white/10 bg-[#070707] overflow-hidden">
+                      <div className="px-5 sm:px-7 py-4 border-b border-white/5 flex items-center justify-between gap-4">
+                          <div className="flex items-center gap-2.5">
+                              <FileText size={14} className="text-blue-400" />
+                              <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest">Backed by published research</p>
+                          </div>
+                          <a
+                              href="https://ntangible.co/research"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium text-gray-400 hover:text-white transition-colors"
+                          >
+                              All papers <ArrowRight size={12} />
+                          </a>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/5">
+                          {[
+                              {
+                                  eyebrow: 'Whitepaper · The research',
+                                  title: 'From Clutch Outcomes to Pressure Behavior',
+                                  subtitle: 'A plate-appearance framework for evaluating NTangible in collegiate hitters. Extends Predictive Findings of Clutch Performance in Collegiate Baseball (Sept 2025).',
+                                  meta: 'April 15, 2026',
+                                  href: 'https://drive.google.com/file/u/1/d/1Co3EUQOxadIwDkTSastxkQ4IJouXBAdB/view?usp=sharing',
+                              },
+                              {
+                                  eyebrow: "Whitepaper · Decision-maker's companion",
+                                  title: 'From Pressure Performance to Program Economics',
+                                  subtitle: 'A decision-maker’s companion to the April 2026 NTangible whitepaper',
+                                  meta: 'Executive summary',
+                                  href: 'https://drive.google.com/file/d/1Qn8SMEzoStulq9UzsGF1aHGmjqRuiFBj/view',
+                              },
+                          ].map((paper) => (
+                              <a
+                                  key={paper.title}
+                                  href={paper.href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="group p-5 sm:p-7 flex items-start gap-4 hover:bg-white/[0.02] transition-colors"
+                              >
+                                  <div className="flex-1 min-w-0">
+                                      <p className="text-[10px] font-semibold text-blue-300 uppercase tracking-widest mb-2">{paper.eyebrow}</p>
+                                      <p className="text-[15px] sm:text-base font-semibold text-white tracking-tight leading-snug mb-1 group-hover:text-blue-300 transition-colors">
+                                          {paper.title}
+                                      </p>
+                                      <p className="text-[13px] text-gray-500 leading-snug mb-2.5">{paper.subtitle}</p>
+                                      <p className="text-[11px] text-gray-600 uppercase tracking-widest font-semibold tabular-nums">{paper.meta}</p>
+                                  </div>
+                                  <span className="shrink-0 mt-1 w-8 h-8 rounded-full border border-white/10 group-hover:border-blue-400/40 group-hover:bg-blue-500/10 text-gray-500 group-hover:text-blue-300 flex items-center justify-center transition-all">
+                                      <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                                  </span>
+                              </a>
+                          ))}
+                      </div>
                   </div>
               </section>
 
