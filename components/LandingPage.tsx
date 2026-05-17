@@ -310,19 +310,11 @@ const TwoWaysItWorks = () => (
                 </p>
                 <div className="mt-auto pt-2 border-t border-white/5">
                     <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mt-5 mb-3">Lives inside the NCSA profile</p>
-                    <div className="relative rounded-xl overflow-hidden bg-white max-w-[280px]">
-                        <img
-                            src="/get-noticed-1.png"
-                            alt="NCSA athlete profile with Clutch Factor integrated"
-                            className="w-full h-auto block"
-                        />
-                        <div className="absolute" style={{ left: '52%', right: '6%', top: '93%' }}>
-                            <div className="rounded-md border border-emerald-400 bg-[#0b1d4d] shadow-[0_4px_12px_rgba(0,0,0,0.5)] px-1.5 py-1 flex items-center justify-between gap-1">
-                                <span className="text-[6px] font-bold text-emerald-200 tracking-wider uppercase">Clutch</span>
-                                <span className="text-[10px] font-bold text-white tabular-nums leading-none">823</span>
-                            </div>
-                        </div>
-                    </div>
+                    <img
+                        src="/get-noticed-clutch.png"
+                        alt="NCSA athlete profile with Clutch Factor integrated"
+                        className="w-full max-w-[280px] h-auto block"
+                    />
                 </div>
             </div>
             <div className="bg-[#070707] p-7 sm:p-9 flex flex-col">
@@ -562,48 +554,31 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       </p>
                   </div>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
-                      {/* Athlete card with Clutch Factor injected */}
-                      <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-8">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 items-start">
+                      {/* Athlete card with Clutch Factor baked into the image */}
+                      <div>
                           <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-4">
                               Athlete profile card
                           </p>
-                          <div className="relative rounded-xl overflow-hidden bg-white">
-                              <img
-                                  src="/get-noticed-1.png"
-                                  alt="NCSA athlete profile card for Marcus Copeland"
-                                  className="w-full h-auto block"
-                              />
-                              {/* Clutch Factor chip overlay - positioned just below the stat row, inside the phone frame */}
-                              <div className="absolute" style={{ left: '52%', right: '6%', top: '94%' }}>
-                                  <div className="rounded-md border-2 border-emerald-400 bg-[#0b1d4d] shadow-[0_8px_24px_rgba(0,0,0,0.5)] px-2 py-1.5 flex items-center justify-between gap-2">
-                                      <div className="flex items-center gap-1.5">
-                                          <Activity size={11} className="text-emerald-300" />
-                                          <span className="text-[8px] sm:text-[9px] font-bold text-emerald-200 tracking-widest uppercase">Clutch Factor</span>
-                                      </div>
-                                      <div className="flex items-baseline gap-1">
-                                          <span className="text-sm sm:text-base font-bold text-white tabular-nums leading-none">823</span>
-                                          <span className="text-[8px] sm:text-[9px] font-semibold text-emerald-300 uppercase">Exceptional</span>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div className="mt-5 pt-5 border-t border-white/5">
-                              <p className="text-sm text-gray-300 leading-relaxed">
-                                  <span className="text-white font-semibold">What we add:</span> a Clutch Factor
-                                  score sitting alongside GPA, SAT, and ACT - the recruiting signal college
-                                  coaches don't have today. Athletes scoring above 750 commit D1 at twice the
-                                  rate of athletes below the threshold.
-                              </p>
-                          </div>
+                          <img
+                              src="/get-noticed-clutch.png"
+                              alt="NCSA athlete profile card for Marcus Copeland with Clutch Factor"
+                              className="w-full h-auto block"
+                          />
+                          <p className="text-sm text-gray-300 leading-relaxed mt-5">
+                              <span className="text-white font-semibold">What we add:</span> a Clutch Factor
+                              score sitting alongside GPA and SAT - the recruiting signal college coaches
+                              don't have today. Athletes scoring above 750 commit D1 at twice the rate of
+                              athletes below the threshold.
+                          </p>
                       </div>
 
                       {/* Match analysis extended with Alignment Index */}
-                      <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-8">
+                      <div>
                           <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-4">
                               Match analysis (coach view)
                           </p>
-                          <div className="relative rounded-xl overflow-hidden bg-white">
+                          <div className="relative">
                               <img
                                   src="/match-analysis.png"
                                   alt="NCSA match analysis showing a 74% match score"
@@ -623,13 +598,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                                   </div>
                               </div>
                           </div>
-                          <div className="mt-5 pt-5 border-t border-white/5">
-                              <p className="text-sm text-gray-300 leading-relaxed">
-                                  <span className="text-white font-semibold">What we add:</span> a Coach&ndash;Player
-                                  Alignment Index that extends NCSA's basic match score with the system, room,
-                                  and pressure-response fit a coach actually wants to know before the first call.
-                              </p>
-                          </div>
+                          <p className="text-sm text-gray-300 leading-relaxed mt-5">
+                              <span className="text-white font-semibold">What we add:</span> a Coach&ndash;Player
+                              Alignment Index that extends NCSA's basic match score with the system, room,
+                              and pressure-response fit a coach actually wants to know before the first call.
+                          </p>
                       </div>
                   </div>
               </section>
