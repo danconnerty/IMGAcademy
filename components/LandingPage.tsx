@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import {
-    Activity, Brain, ArrowRight, Check, X, FileText, Monitor,
-    Megaphone, LayoutGrid, Target,
+    Activity, Brain, ArrowRight, Check, X, FileText, Monitor, Target,
 } from 'lucide-react';
 import { ViewType } from '../types';
 import { preloadDashboard } from '../App';
@@ -274,92 +273,11 @@ const PricingCalculator = () => {
 };
 
 // --- IMG ACADEMY DIGITAL SURFACES ---
-const SURFACES: { name: string; blurb: string; logo?: string }[] = [
-    { name: 'NCSA', blurb: 'Standard on every athlete profile. Per-athlete pricing across the membership base - not an add-on, not a SKU families have to opt into.', logo: '/NCSA.jpg' },
-    { name: 'SportsRecruits', blurb: 'Same integration extends across SR’s 400K-athlete club and HS audience. Adds volume, drops the per-profile price for IMG.', logo: '/Sportsrecruits.png' },
-    { name: 'Elevate by IMG Academy', blurb: 'Bundled into every Elevate academy license. Every athlete at every partner school gets an NCSA profile and a sport-specific assessment - the B2B distribution play that opens the TAM.', logo: '/IMGElevate.png' },
+const SURFACES: { name: string; blurb: string; logo?: string; motion: 'testing' | 'distribution' }[] = [
+    { name: 'NCSA', motion: 'testing', blurb: 'Standard on every athlete profile. Per-athlete pricing across the membership base - not an add-on, not a SKU families have to opt into.', logo: '/NCSA.jpg' },
+    { name: 'SportsRecruits', motion: 'testing', blurb: 'Same integration extends across SR’s 400K-athlete club and HS audience. Adds volume, drops the per-profile price for IMG.', logo: '/Sportsrecruits.png' },
+    { name: 'Elevate by IMG Academy', motion: 'distribution', blurb: 'Bundled into every Elevate academy license. Every athlete at every partner school gets an NCSA profile and a sport-specific assessment - the B2B distribution play that opens the TAM.', logo: '/IMGElevate.png' },
 ];
-
-const TwoWaysItWorks = () => (
-    <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-20 sm:mb-24">
-        <div className="mb-10 sm:mb-12 max-w-2xl">
-            <p className="text-sm font-medium text-blue-400 mb-3">Two ways it works</p>
-            <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
-                A standalone tool. And a B2B distribution play.
-            </h2>
-            <p className="text-lg text-gray-400 leading-relaxed">
-                One assessment, two integration surfaces inside IMG. Sport-specific testing that ships
-                across NCSA and SportsRecruits - and a bundled NCSA-profile-plus-assessment that drops
-                into every Elevate academy license, opening a B2B funnel NCSA can't reach on its own.
-            </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-            <div className="bg-[#070707] p-7 sm:p-9 flex flex-col">
-                <div className="w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-5">
-                    <Activity size={20} className="text-blue-400" />
-                </div>
-                <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mb-2">Testing layer</p>
-                <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight mb-3">
-                    Sport-specific assessment across NCSA & SportsRecruits.
-                </h3>
-                <p className="text-base text-gray-400 leading-relaxed mb-6">
-                    Standalone testing layer that ships across the recruiting suite. Athletes test,
-                    score, retest every six months - per-sport, per-position, with the granularity IMG's
-                    cross-sport catalog doesn't carry today.
-                </p>
-                <div className="mt-auto pt-2 border-t border-white/5">
-                    <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mt-5 mb-3">Lives inside the NCSA profile</p>
-                    <img
-                        src="/get-noticed-clutch.png"
-                        alt="NCSA athlete profile with Clutch Factor integrated"
-                        className="w-full max-w-[280px] h-auto block"
-                    />
-                </div>
-            </div>
-            <div className="bg-[#070707] p-7 sm:p-9 flex flex-col">
-                <div className="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5">
-                    <Megaphone size={20} className="text-emerald-400" />
-                </div>
-                <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-2">B2B distribution</p>
-                <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight mb-3">
-                    Bundled into every Elevate academy license.
-                </h3>
-                <p className="text-base text-gray-400 leading-relaxed mb-6">
-                    Every athlete at every Elevate partner academy gets an NCSA profile and a sport-specific
-                    assessment, bundled into the license the school already signs. NCSA's TAM stops being
-                    4.5M self-signups and starts being every program Elevate touches.
-                </p>
-                <div className="mt-auto pt-2 border-t border-white/5">
-                    <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mt-5 mb-3">The distribution unlock</p>
-                    <div className="space-y-2">
-                        <div className="flex items-center justify-between gap-3 rounded-lg border border-white/10 bg-[#0a0a0a] px-3 py-2.5">
-                            <div className="flex items-center gap-2.5">
-                                <span className="inline-block w-1.5 h-6 rounded-full bg-emerald-400" />
-                                <span className="text-sm text-gray-300">Academy signs Elevate license</span>
-                            </div>
-                            <span className="text-[11px] font-medium text-emerald-300 uppercase tracking-wider">Existing motion</span>
-                        </div>
-                        <div className="flex items-center justify-between gap-3 rounded-lg border border-white/10 bg-[#0a0a0a] px-3 py-2.5">
-                            <div className="flex items-center gap-2.5">
-                                <span className="inline-block w-1.5 h-6 rounded-full bg-emerald-400" />
-                                <span className="text-sm text-gray-300">Roster ingested &rarr; NCSA profile per athlete</span>
-                            </div>
-                            <span className="text-[11px] font-medium text-emerald-300 uppercase tracking-wider">Auto</span>
-                        </div>
-                        <div className="flex items-center justify-between gap-3 rounded-lg border border-emerald-400/30 bg-emerald-400/[0.05] px-3 py-2.5">
-                            <div className="flex items-center gap-2.5">
-                                <span className="inline-block w-1.5 h-6 rounded-full bg-emerald-500" />
-                                <span className="text-sm text-white">Searchable by every college coach</span>
-                            </div>
-                            <span className="text-[11px] font-bold text-emerald-200 uppercase tracking-wider">TAM unlock</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-);
 
 const PartnerProperties = () => (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-20 sm:mb-24">
@@ -369,30 +287,41 @@ const PartnerProperties = () => (
                 <p className="text-sm font-medium text-blue-400">Where it plugs in</p>
             </div>
             <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
-                Three surfaces. One integration.
+                Three surfaces. Two motions.
             </h2>
             <p className="text-lg text-gray-400 leading-relaxed">
-                The profile slots directly into IMG Academy's existing digital product set - no new SKU to invent,
-                no new operational lift. It extends what's already shipping.
+                Sport-specific testing across NCSA and SportsRecruits &mdash; the recruiting layer IMG already
+                owns. And a bundled NCSA-profile-plus-assessment that ships with every Elevate academy license,
+                opening a B2B funnel NCSA can't reach on its own. One integration, no new SKU to invent.
             </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-            {SURFACES.map((s) => (
-                <div key={s.name} className="bg-[#070707] p-5 sm:p-7 flex flex-col">
-                    {s.logo && (
-                        <div className="h-9 mb-4 flex items-center">
-                            <img
-                                src={s.logo}
-                                alt={`${s.name} logo`}
-                                className="max-h-9 w-auto object-contain"
-                            />
-                        </div>
-                    )}
-                    <p className="text-white text-base font-semibold mb-2">{s.name}</p>
-                    <p className="text-gray-500 text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: s.blurb }} />
-                </div>
-            ))}
+            {SURFACES.map((s) => {
+                const motionLabel = s.motion === 'testing' ? 'Testing layer' : 'B2B distribution';
+                const motionTone =
+                    s.motion === 'testing'
+                        ? 'text-blue-300 border-blue-400/30 bg-blue-400/[0.06]'
+                        : 'text-emerald-300 border-emerald-400/30 bg-emerald-400/[0.06]';
+                return (
+                    <div key={s.name} className="bg-[#070707] p-5 sm:p-7 flex flex-col">
+                        {s.logo && (
+                            <div className="h-9 mb-4 flex items-center">
+                                <img
+                                    src={s.logo}
+                                    alt={`${s.name} logo`}
+                                    className="max-h-9 w-auto object-contain"
+                                />
+                            </div>
+                        )}
+                        <span className={`self-start inline-flex items-center px-2 py-0.5 rounded-full border text-[10px] font-semibold uppercase tracking-widest mb-3 ${motionTone}`}>
+                            {motionLabel}
+                        </span>
+                        <p className="text-white text-base font-semibold mb-2">{s.name}</p>
+                        <p className="text-gray-500 text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: s.blurb }} />
+                    </div>
+                );
+            })}
         </div>
     </section>
 );
@@ -663,13 +592,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       </p>
                   </div>
 
-                  <div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
                       {[
                           {
                               step: '01',
                               eyebrow: 'Discover',
                               title: 'Clutch Factor Leaderboard',
-                              blurb: 'The public ranking every coach lands on first. Every NTangible-verified athlete in the IMG Academy database, filterable by sport, position, state, grad year, GPA, and height/weight - thousands narrowed to a short list in seconds.',
+                              blurb: "The public ranking every coach lands on first. Filterable by sport, position, state, grad year, GPA, and height/weight — thousands narrowed to a short list in seconds.",
                               src: '/collegeleaderboard.png',
                               alt: 'Clutch Factor Leaderboard - public ranking of every assessed athlete',
                           },
@@ -677,51 +606,36 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               step: '02',
                               eyebrow: 'Shortlist',
                               title: 'My Top Targets',
-                              blurb: 'The Trust Anchor view (Alignment ≥ 62.5% & Clutch Factor ≥ 750) - the coach’s personal board, ranked by fit to their program. Underneath every name: how each athlete learns, leads, communicates, and competes under pressure - the stuff a stat line never tells you.',
+                              blurb: "The Trust Anchor view (Alignment ≥ 62.5%, Clutch ≥ 750) — the coach's personal board, ranked by fit to their program.",
                               src: '/collegetoptargets.png',
-                              alt: 'My Top Targets - athletes ranked by Alignment for the coach’s program',
+                              alt: "My Top Targets - athletes ranked by Alignment for the coach's program",
                           },
                           {
                               step: '03',
                               eyebrow: 'Decide',
                               title: 'My Watchlist',
-                              blurb: 'Clutch Factor, NTerpret, highlight tape, and the staff’s in-person observations all live on the same card - the dashboard is the workflow, shareable with assistants and analysts in one link.',
+                              blurb: "Clutch Factor, NTerpret, highlight tape, and the staff's in-person observations on the same card. Shareable with assistants in one link.",
                               src: '/collegenotes.png',
                               alt: 'My Watchlist - private scouting log tied to each athlete profile',
                           },
-                      ].map((view, idx, arr) => (
-                          <div key={view.step}>
-                              <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.03] to-transparent p-6 sm:p-10 lg:p-12">
-                                  <div className="flex items-center gap-4 mb-8 sm:mb-10">
-                                      <div className="flex items-center justify-center w-11 h-11 rounded-full bg-emerald-500/10 border border-emerald-500/30 shrink-0">
-                                          <span className="text-emerald-300 text-sm font-semibold tabular-nums">{view.step}</span>
-                                      </div>
-                                      <span className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest">{view.eyebrow}</span>
-                                      <div className="flex-1 h-px bg-gradient-to-r from-emerald-500/20 to-transparent ml-2" />
-                                  </div>
-
-                                  <div className="max-w-2xl mb-8 sm:mb-12">
-                                      <h4 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white tracking-tight leading-tight mb-4">{view.title}</h4>
-                                      <p className="text-base sm:text-lg text-gray-400 leading-relaxed">{view.blurb}</p>
-                                  </div>
-
-                                  <div className="rounded-2xl overflow-hidden border border-white/10 bg-[#070707] shadow-[0_30px_80px_rgba(0,0,0,0.5)] ring-1 ring-white/5">
-                                      <img
-                                          src={view.src}
-                                          alt={view.alt}
-                                          className="w-full h-auto block"
-                                      />
-                                  </div>
+                      ].map((view) => (
+                          <div key={view.step} className="rounded-2xl border border-white/10 bg-[#070707] overflow-hidden flex flex-col">
+                              <div className="bg-black/40 border-b border-white/5">
+                                  <img
+                                      src={view.src}
+                                      alt={view.alt}
+                                      loading="lazy"
+                                      className="w-full h-auto block"
+                                  />
                               </div>
-                              {idx < arr.length - 1 && (
-                                  <div className="flex justify-center py-16 sm:py-20">
-                                      <div className="flex flex-col items-center gap-3">
-                                          <div className="h-12 w-px bg-gradient-to-b from-transparent to-emerald-500/40" />
-                                          <div className="w-1.5 h-1.5 rounded-full bg-emerald-400/60" />
-                                          <div className="h-12 w-px bg-gradient-to-b from-emerald-500/40 to-transparent" />
-                                      </div>
+                              <div className="p-5 sm:p-6 flex flex-col">
+                                  <div className="flex items-center gap-2.5 mb-3">
+                                      <span className="text-[10px] font-bold tabular-nums text-emerald-300 tracking-widest">{view.step}</span>
+                                      <span className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest">{view.eyebrow}</span>
                                   </div>
-                              )}
+                                  <h4 className="text-lg sm:text-xl font-semibold text-white tracking-tight leading-snug mb-2">{view.title}</h4>
+                                  <p className="text-sm text-gray-400 leading-relaxed">{view.blurb}</p>
+                              </div>
                           </div>
                       ))}
                   </div>
@@ -1061,110 +975,46 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       </div>
                   </div>
 
-                  <div className="rounded-2xl border border-white/10 bg-[#070707] p-6 sm:p-7 mb-6">
+                  <div className="rounded-2xl border border-white/10 bg-[#070707] p-6 sm:p-7">
                       <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
                           <span className="text-white font-medium">30-day exit. Sport buildout on us.</span> If the
                           pilot underperforms the agreed metrics, there's no obligation to scale and no cost to
                           IMG for sports we built during the integration window. The risk sits on our side of
-                          the table, not yours.
+                          the table, not yours. On-campus assessment access for boarding, camp, and corporate
+                          performance use is bundled with the deal at no extra cost &mdash; details in the call.
                       </p>
-                  </div>
-
-                  <div className="bg-gradient-to-b from-emerald-500/[0.08] to-transparent border border-emerald-500/30 rounded-2xl p-6 sm:p-8">
-                      <div className="flex flex-col sm:flex-row sm:items-start gap-5 sm:gap-7">
-                          <div className="shrink-0">
-                              <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-2">Included with the deal</p>
-                              <p className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-tight">On-campus testing.<br /><span className="text-emerald-400">Free, annually.</span></p>
-                          </div>
-                          <div className="sm:border-l sm:border-white/10 sm:pl-7">
-                              <p className="text-base text-gray-300 leading-relaxed mb-3">
-                                  Once NCSA and the broader integration are locked, NTangible throws in the
-                                  on-campus assessment layer at <span className="text-white font-medium">no cost, renewed annually</span> -
-                                  for IMG Academy to use across boarding students, camp athletes, and corporate
-                                  performance clients as it sees fit.
-                              </p>
-                              <p className="text-sm text-gray-500 leading-relaxed">
-                                  Same instruments, same dashboard, same alignment scoring - deployed inside
-                                  the campus environment alongside the existing IMG mental performance staff.
-                                  No per-seat invoice. No SOW for every cohort. Standard inclusion.
-                              </p>
-                          </div>
-                      </div>
                   </div>
               </section>
 
               {/* INTAKE / FIRST-PARTY DATA */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="mb-10 sm:mb-12 max-w-3xl">
+                  <div className="max-w-3xl">
                       <p className="text-sm font-medium text-emerald-400 mb-3">Pre-assessment intake</p>
-                      <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
+                      <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
                           First-party data on every athlete who takes the test.
                       </h2>
                       <p className="text-lg text-gray-400 leading-relaxed">
-                          A 60&ndash;90 second module gated in front of every assessment. Required to unlock the
-                          profile, so completion sits near 100%. One schema, owned by IMG, feeding NCSA,
-                          SportsRecruits, and the Elevate academy distribution layer.
-                      </p>
-                  </div>
-
-                  <div className="bg-[#070707] border border-white/10 rounded-2xl p-7 sm:p-9 mb-6">
-                      <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-5">
-                          What the intake captures
-                      </p>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
-                          {[
-                              { label: 'Identity', detail: 'Athlete + parent/guardian name, age, grade' },
-                              { label: 'Geography', detail: 'Home city, state, travel radius, club home base' },
-                              { label: 'Sport profile', detail: 'Primary sport, positions, level, team affiliations' },
-                              { label: 'Recruiting status', detail: 'Grad year, current offers, target divisions, commit timeline' },
-                              { label: 'Reach', detail: 'Parent email + mobile, opt-ins, communication preferences' },
-                              { label: 'Development signals', detail: 'Prior coaching, areas of focus, openness to additional development resources' },
-                          ].map((row) => (
-                              <div key={row.label} className="flex gap-3">
-                                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-                                  <div>
-                                      <p className="text-white text-sm font-semibold mb-0.5">{row.label}</p>
-                                      <p className="text-gray-500 text-sm leading-snug">{row.detail}</p>
-                                  </div>
-                              </div>
-                          ))}
-                      </div>
-                  </div>
-
-                  <div className="rounded-2xl border border-white/10 bg-[#070707] p-6 sm:p-7">
-                      <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
-                          <span className="text-white font-medium">IMG defines the fields. IMG owns the data.</span>{' '}
-                          NTangible operates the intake inside the assessment flow - records land in IMG's
-                          database, branded as an IMG product, governed by IMG's privacy posture.
+                          A 60&ndash;90 second module gated in front of every assessment captures identity,
+                          geography, sport profile, recruiting status, contact, and dev signals &mdash; one
+                          schema, owned by IMG, feeding NCSA, SportsRecruits, and the Elevate layer.{' '}
+                          <span className="text-white font-medium">IMG defines the fields. IMG owns the data.</span>
                       </p>
                   </div>
               </section>
 
               {/* DATA & TRUST */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="mb-8 sm:mb-10 max-w-2xl">
+                  <div className="max-w-3xl">
                       <p className="text-sm font-medium text-blue-400 mb-3">Data &amp; trust</p>
-                      <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.1]">
+                      <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
                           IMG-branded. IMG-controlled.
                       </h2>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-                      <div className="bg-[#070707] p-6">
-                          <p className="text-white text-base font-semibold mb-2">Hosted in IMG's database</p>
-                          <p className="text-gray-500 text-sm leading-relaxed">Profiles live on IMG's database, branded as an IMG product.</p>
-                      </div>
-                      <div className="bg-[#070707] p-6">
-                          <p className="text-white text-base font-semibold mb-2">COPPA-aligned</p>
-                          <p className="text-gray-500 text-sm leading-relaxed">Parental consent built into onboarding for every athlete 13&ndash;18.</p>
-                      </div>
-                      <div className="bg-[#070707] p-6">
-                          <p className="text-white text-base font-semibold mb-2">Opt-out anytime</p>
-                          <p className="text-gray-500 text-sm leading-relaxed">Families can remove a profile at any time. We delete everything we hold.</p>
-                      </div>
-                      <div className="bg-[#070707] p-6">
-                          <p className="text-white text-base font-semibold mb-2">Growth, not diagnosis</p>
-                          <p className="text-gray-500 text-sm leading-relaxed">We measure how athletes compete and handle pressure - not personality or clinical labels.</p>
-                      </div>
+                      <p className="text-lg text-gray-400 leading-relaxed">
+                          Profiles live on IMG's database and ship as an IMG product. COPPA-aligned with parental
+                          consent built into onboarding for every 13&ndash;18-year-old. Families can opt out and
+                          we delete what we hold. We measure how athletes compete and handle pressure &mdash;
+                          growth signals, not personality or clinical labels.
+                      </p>
                   </div>
               </section>
           </>
@@ -1381,28 +1231,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
               <TrustedTeams />
           </div>
 
-          {/* TWO WAYS IT WORKS */}
-          <TwoWaysItWorks />
-
           {/* IMG ACADEMY DIGITAL SURFACES */}
           <PartnerProperties />
 
           {/* INSET TABBED SECTION */}
           <div className="mb-24 sm:mb-32">
-              {/* Section navigator prompt */}
-              <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-5 sm:mb-7">
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 mb-3">
-                      <LayoutGrid size={13} className="text-blue-400" />
-                      <span className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest">Explore the proposal</span>
-                  </div>
-                  <h2 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight mb-1.5">
-                      Click through each section.
-                  </h2>
-                  <p className="text-base text-gray-400 leading-relaxed">
-                      Pick a tab below - the content swaps in place, so there's no endless scrolling.
-                  </p>
-              </div>
-
               {/* Sticky inset tab bar */}
               <div
                   ref={tabSectionRef}
