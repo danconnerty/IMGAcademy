@@ -1402,6 +1402,12 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       See a sample profile
                   </button>
                   <button
+                    onClick={() => handleEnter('master')}
+                    className="text-gray-500 hover:text-gray-300 text-sm font-medium transition-colors underline underline-offset-4 decoration-white/10 hover:decoration-white/40"
+                  >
+                      Open the dashboard demo
+                  </button>
+                  <button
                     onClick={() => handleTabChange('economics')}
                     className="text-gray-500 hover:text-gray-300 text-sm font-medium transition-colors underline underline-offset-4 decoration-white/10 hover:decoration-white/40"
                   >
