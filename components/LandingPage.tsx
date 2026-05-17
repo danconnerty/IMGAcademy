@@ -451,27 +451,27 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
               {/* OUTCOMES - what the score actually predicts */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
                   <div className="mb-8 sm:mb-10 max-w-2xl">
-                      <p className="text-sm font-medium text-blue-400 mb-3">The recruiting correlation</p>
+                      <p className="text-sm font-medium text-blue-400 mb-3">What the score predicts</p>
                       <h3 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
-                          High Clutch scores predict the outcomes families pay NCSA for.
+                          Look at the recruiting correlations.
                       </h3>
                       <p className="text-lg text-gray-400 leading-relaxed">
-                          Two correlations, tracked across collegiate athletes: the Clutch Factor maps
-                          directly to who commits to Division I and who finishes their career on a
-                          postseason honors list.
+                          The Clutch Factor isn't a vanity metric. The score correlates directly with the
+                          two outcomes families pay NCSA to deliver: a D1 commitment and a college career
+                          that ends in conference honors.
                       </p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden text-left">
                       <div className="bg-[#070707] p-6 sm:p-7">
                           <p className="text-3xl sm:text-4xl font-semibold text-blue-400 tracking-tight mb-2 tabular-nums">2&times;</p>
-                          <p className="text-white text-sm sm:text-base font-semibold mb-1">Doubled D1 commit rate at Clutch 750+</p>
-                          <p className="text-gray-500 text-sm leading-relaxed">Athletes scoring above 750 commit to Division I programs at twice the rate of athletes below the threshold &mdash; the outcome NCSA's whole funnel is built around.</p>
+                          <p className="text-white text-sm sm:text-base font-semibold mb-1">More likely to commit D1</p>
+                          <p className="text-gray-500 text-sm leading-relaxed">Athletes scoring above 750 on the Clutch Factor commit to Division I programs at twice the rate of athletes below the threshold.</p>
                       </div>
                       <div className="bg-[#070707] p-6 sm:p-7">
                           <p className="text-3xl sm:text-4xl font-semibold text-blue-400 tracking-tight mb-2 tabular-nums">73%</p>
-                          <p className="text-white text-sm sm:text-base font-semibold mb-1">Three in four earn postseason honors at Clutch 800+</p>
-                          <p className="text-gray-500 text-sm leading-relaxed">73% of collegiate athletes scoring above 800 are named All-American or All-Conference selections &mdash; the signal college coaches don't have anywhere else.</p>
+                          <p className="text-white text-sm sm:text-base font-semibold mb-1">All-American or All-Conference</p>
+                          <p className="text-gray-500 text-sm leading-relaxed">Of collegiate athletes scoring above 800, 73% are named All-American or All-Conference selections. The signal college coaches don't have today.</p>
                       </div>
                   </div>
                   <div className="mt-6 rounded-2xl border border-white/10 bg-[#070707] overflow-hidden">
