@@ -1024,20 +1024,19 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
 
               {/* VISUAL PLACEHOLDER - mind/body */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-black">
+                  <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#070707]">
                       <img
                           src="/mindbody1.jpg"
                           alt="Mind and body - the cognitive performance dimension Academy+ closes on"
                           className="w-full h-auto block"
-                          style={{ mixBlendMode: 'multiply' }}
                           loading="lazy"
                       />
-                      {/* Edge vignette to fully blend into the dark theme */}
+                      {/* Edge vignette to soften image borders into the dark theme */}
                       <div
                           className="absolute inset-0 pointer-events-none"
                           style={{
                               background:
-                                  'radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.65) 100%), linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, transparent 18%, transparent 78%, rgba(0,0,0,0.6) 100%)',
+                                  'radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%), linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 18%, transparent 78%, rgba(0,0,0,0.55) 100%)',
                           }}
                       />
                   </div>
