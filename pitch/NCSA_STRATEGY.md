@@ -4,6 +4,18 @@
 Supersedes v1. Key facts from v1 were wrong — most importantly, IMG already
 owns a proprietary mental-performance assessment.*
 
+*v2.1 patch (same day): two corrections from Dan after reading v2 —
+(1) Kirstie Alvarez, the existing IMG contact, is Senior Mental Performance
+Coach (CMPC, UNCG) — she sits *inside* Hamilton's clinical org and has
+already told us months ago that IMG's in-house thing doesn't approach
+the depth of NTangible. The MPA-as-wall framing was overstated.
+(2) NCSA does sell per-player à la carte — 1-on-1 mental performance
+coaching at $85–$100/session, available standalone or as a membership
+add-on. So a per-profile SKU does slot into their existing motion. The
+commercial structure (§5) is updated.
+(3) The NCSA-as-distribution-channel-into-non-IMG-schools angle is
+elevated, not parked for "conversation 2."*
+
 ---
 
 ## 0. Material corrections from v1
@@ -15,10 +27,15 @@ owns a proprietary mental-performance assessment.*
 | Angus Mugford runs IMG's psych team | **Mugford is at the NJ Devils.** Current head is **Dr. Lindsey Hamilton.** |
 | IMG has psych staff but no productized assessment | **They have one.** The Mental Performance Assessment (MPA), built by **Dr. Duncan Simpson + Dr. Michael Kalkbrenner (NMSU)** over 2+ years, 5-factor model, administered 3x/year on campus, validated on ~1,100 athletes, referenced in IMG Academy+ content. |
 | Coaches are the affiliate network | Coaches are **free users** on NCSA; the monetization is family-side. Affiliate framing has to change. |
-| $10/profile lines up cleanly | NCSA's paid packages are **$1,300–$6,000 multi-year contracts**, not à-la-carte. A $10 SKU doesn't slot into that motion as a standalone — it has to ride the existing tier. |
+| $10/profile doesn't slot into multi-year contracts | **Corrected v2.1.** NCSA sells per-session 1-on-1 mental performance coaching at $85–$100/session as a standalone or add-on. Per-player à la carte is already in their motion. A $10 profile slots in cleanly and is in fact *cheaper than anything else they sell* — that's a feature, not a problem. |
 
-The MPA changes everything. We are not selling "the missing mental-performance
-product." We are selling something narrower and complementary.
+The MPA matters, but it is not a deal-killer: Kirstie Alvarez (Hamilton's
+team, the people who own the MPA) has already told us months ago that
+the internal thing doesn't approach the depth of what we provide. The
+clinical staff has already seen our product and the comparison is
+favorable. The risk is not that they reject us on the MPA — it's that
+we walk in talking about replacing it instead of complementing it and
+trigger an unnecessary turf reaction.
 
 ---
 
@@ -117,40 +134,52 @@ methodology partnership, not a vendor sale.
 
 ---
 
-## 5. Commercial structure — rewritten
+## 5. Commercial structure — rewritten (v2.1)
 
-Drop the $10/$2/$1/$7 framing. It doesn't fit NCSA's package economics
-and the "$1 to affiliate" line is moot — coaches are free users, not
-revenue-share partners.
+Drop the $10/$2/$1/$7 framing. The "$1 to affiliate" line is moot —
+coaches are free users, not revenue-share partners. But $10 per profile
+as the unit price *does* work — it's an order of magnitude cheaper than
+NCSA's existing $85–$100/session coaching SKU and frames as accessible
+where coaching is premium.
 
-Three structures to put on the table, in order of preference:
+Three structures to put on the table, in priority order:
 
-### A. Conversion-share pilot (lead with this)
-- NTangible delivered **free to the family** as part of the NCSA assessment-call workflow.
-- IMG/NCSA pays a **per-completed-profile fee** (suggest $3–$5) for fulfillment.
-- **Conversion-share kicker:** on top of the fulfillment fee, NTangible takes
-  a share (suggest 3–5%) of incremental paid-package revenue from families
-  who received a profile, measured against a holdout.
-- This frames us as a CRO partner, not a vendor. EQT-owned PE shops respond
-  to "measurable lift on existing funnel" language.
+### A. À la carte + conversion-share (the lead)
+The à la carte motion already exists at NCSA. We slot in directly:
+- **$10 per profile** as the retail unit. Sold standalone, or bundled
+  into MVP/MVP+ tiers, or sent free to families during the assessment
+  call as a conversion artifact (NCSA's choice — they own the motion).
+- Suggested split: **$7 NTangible / $3 NCSA** at the basic standalone
+  price. Cleaner than v1's four-way split.
+- **Conversion-share kicker on top:** when the profile is used as the
+  free artifact between the first call and the family conference call,
+  NTangible takes a small share (suggest 2–3%) of incremental paid-
+  package revenue from families who received one, measured against a
+  holdout. This is the CRO story for EQT.
 
-### B. Bundled-into-paid-tier
-- Profile included in every paid NCSA tier (Champion through MVP+).
-- Per-activation fee (~$7–$10) paid by NCSA.
+### B. NCSA as à la carte distribution into non-IMG schools
+This is the user's insight and it's the right strategic frame: NCSA
+already has direct lines into every high school athletic department,
+every club program, every Nord Anglia campus, and the broader school
+ecosystem that *isn't* IMG. The $10 profile becomes a level-up product
+that any school, club, or organization can buy through NCSA's existing
+channels — IMG doesn't have to deliver it on campus.
+- This is the **TAM unlock**. NCSA's 4.5M-athlete pool is the floor,
+  not the ceiling. The ceiling is every program NCSA already touches.
+- Revenue-share economics same as A; channel is NCSA, fulfillment is us.
+- Elevate by IMG Academy (launched Mar 2026 expressly for B2B-to-schools
+  licensing of IMG curriculum) is the explicit distribution vehicle and
+  should be named in the pitch.
+
+### C. Bundled-into-paid-tier (defensive option)
+- Profile included automatically in every paid NCSA tier.
+- Per-activation fee (~$7) paid by NCSA.
 - Lifts perceived value of paid tiers without raising sticker price.
-- Lower upside than A; lower risk; easier procurement.
+- Lower upside than A/B; lower risk; easier procurement. Hold this in
+  reserve if they push back on per-unit pricing.
 
-### C. Elevate co-distribution
-- NTangible profile licensed into the **Elevate by IMG Academy** product
-  for global school distribution alongside IMG's personal-development
-  curriculum.
-- Per-seat licensing or revenue share on Elevate contracts.
-- This is the EQT/Nord Anglia international-thesis play. Park it for
-  conversation 2 after the NCSA pilot is signed.
-
-The $50K → $10K ad-reinvestment loop from v1 should stay on the menu but
-move to a **secondary slide**. It's a fine flourish but it's not the
-business case — the business case is funnel conversion.
+The $50K → $10K ad-reinvestment loop from v1 stays on the menu but
+moves to a **secondary slide**. Nice flourish, not the business case.
 
 ---
 
@@ -196,27 +225,32 @@ can put in front of an org that just spent 2 years building an MPA.
 
 From the dossiers, the right people:
 
-**IMG side:**
-- **Brent Richard** — CEO. Investor mindset (ex-Endeavor M&A, Raine Group co-founder). Comfortable with deal structures. **Not the cold-open target.**
-- **Ted Sullivan — Chief Growth Officer.** Owns cross-P&L growth across IMG + NCSA. **Likely warm-open target.**
-- **Chris Ciaccio — CCO** (since Oct 2024). Owns NCSA + digital P&L. 26-year IMG veteran. **Commercial sponsor target.**
-- **Michael Branch — VP Strategic Partnerships** (since Jul 2025). Role created expressly to do deals like this. **Highest-leverage cold-open target.**
-- **Dr. Lindsey Hamilton** — Head of Mental Performance. Listed on both IMG and NCSA staff pages. Clinical validator and internal advocate.
-- **Dr. Duncan Simpson** — Director of Personal Development. Built the MPA. **Must be co-opted as research partner from day one or this deal dies on his desk.**
-- **Tim Pernetti** — President, IMG Academy Bradenton. Campus P&L. Relevant if/when academy access is on the table.
+**IMG side — clinical org (where we already are):**
+- **Kirstie Alvarez — Senior Mental Performance Coach** (CMPC, M.S. UNC Greensboro). **The existing relationship.** Sits inside Hamilton's team. Has already reviewed NTangible and told us the in-house tool doesn't compare on depth. Treat her as the internal champion — she has the credibility on the clinical side to neutralize the "we already built one" reflex from above her.
+- **Dr. Lindsey Hamilton** — Head of Mental Performance. Kirstie's boss. Same UNCG lineage (probably the reason Kirstie's on the team). Listed on both IMG and NCSA staff pages. Once Kirstie is bought in, Hamilton is the natural next conversation — and she signs off on validation programs.
+- **Dr. Duncan Simpson** — Director of Personal Development. Built the MPA with Kalkbrenner. He is the most likely source of "we already have this" reflex. **Must be co-opted as research partner from day one.** Frame the validation program (§6) as his to lead.
+
+**IMG side — commercial org (where we need to expand):**
+- **Michael Branch — VP Strategic Partnerships** (since Jul 2025). Role created expressly to do deals like this. **Right warm-intro target via Kirstie/Hamilton.**
+- **Chris Ciaccio — CCO** (since Oct 2024). Owns NCSA + digital P&L. 26-year IMG veteran. Commercial sponsor target.
+- **Ted Sullivan — Chief Growth Officer.** Cross-P&L growth across IMG + NCSA.
+- **Brent Richard** — CEO. Investor mindset (ex-Endeavor M&A, Raine Group co-founder). **Final approval, not cold open.**
+- **Tim Pernetti** — President, IMG Academy Bradenton. Campus P&L. Relevant only if/when academy access is on the table.
 
 **NCSA side:**
 - **Chris Krause** — Founder. Title fluid post-IMG integration (Founder/Chairman vs. CEO unclear in public sources). Verify on LinkedIn before any cold approach.
 - **Lisa Strasman** — Long-time President/COO. Title may now be Chief People Operations Officer. Verify.
 
-**Recommended sequence:**
-1. **Michael Branch (Strategic Partnerships)** — cold-open. His job is literally to take this meeting.
-2. **Ted Sullivan (CGO)** — commercial sponsor on the IMG side.
-3. **Chris Ciaccio (CCO)** — P&L owner, brought in once Sullivan is interested.
-4. **Lindsey Hamilton, then Duncan Simpson** — research/clinical co-leads. Bring them in *before* any commercial close so they own the validation program.
-5. **Brent Richard** — final approval, walked in with Sullivan + Ciaccio + Hamilton + Simpson already aligned.
+**Recommended sequence (v2.1 — we are already inside, not outside):**
+1. **Kirstie Alvarez** — already meeting. Goal: get her to formally request Hamilton's review of NTangible alongside the MPA. She becomes the internal advocate, not a contact.
+2. **Lindsey Hamilton** — clinical sign-off and validation-program co-lead. Brought in by Kirstie.
+3. **Duncan Simpson** — research co-author on the validation program. Brought in by Hamilton, framed as his program to lead, not a competitor's.
+4. **Michael Branch (Strategic Partnerships)** — once the clinical team is aligned, this is the warm intro Kirstie/Hamilton can make. He has air cover and is incentivized to close it.
+5. **Chris Ciaccio (CCO)** or **Ted Sullivan (CGO)** — commercial sponsor, brought in by Branch once a deal shape is on the table.
+6. **Brent Richard** — final approval, walked in with all of the above already aligned.
 
 Do not cold-open Brent Richard. Do not pitch around Duncan Simpson.
+**Do not skip past Kirstie — she's the unlock and she's already warm.**
 
 ---
 
@@ -224,8 +258,8 @@ Do not cold-open Brent Richard. Do not pitch around Duncan Simpson.
 
 | Objection | Counter |
 |---|---|
-| "We already built the MPA." | Yours is cross-sport psychometric for IDP. Ours is sport-specific decision-making for the funnel. They live together. Validation program co-led by Simpson. |
-| "$10/profile is small money." | Reframe — we're a CRO layer on a $2K average package, not a SKU. Even 1pt of conversion lift dwarfs the assessment fee. |
+| "We already built the MPA." | Kirstie has already told us the internal tool doesn't approach our depth. Frame ours as sport-specific decision-making that complements the MPA's cross-sport psychometric. Validation program co-led by Simpson — he gets ownership, not displacement. |
+| "$10/profile is small money." | At à la carte standalone, yes. But (a) it slots into the same motion as the $85–$100/session 1-on-1 coaching SKU, (b) it's a top-of-funnel CRO layer on $1.3K–$6K packages, and (c) the real TAM is NCSA-as-distribution into non-IMG schools (Nord Anglia + every program NCSA touches). |
 | "BBB / contract-lock reputational exposure." | Profile is delivered **free to the family** before the package sale, paid for by NCSA. Adds value pre-purchase, doesn't add to "sold us something we didn't use" complaints. |
 | "Compliance / NIL." | Stay explicitly out of NIL adjacency. Profile is self-reported, family-disclosed, never coupled to compensation recommendations. Pre-clear with NCSA compliance in pilot phase. |
 | "Procurement under EQT + Nord Anglia is slow." | True. Structure pilot to fit a single quarter and a single sport. Avoid committee triggers. |
@@ -255,36 +289,40 @@ or therapeutic language.
 
 ---
 
-## 11. Action plan — next 30 days
+## 11. Action plan — next 30 days (v2.1)
 
-1. **Rewrite the deck for the new thesis.** Lead with the conversion-lift
-   story (§3). Build-vs-buy table narrowed to sport-specific instruments
-   (§4). Validation-program slide co-credited to Simpson (§6). 30-day
-   calendar (§7). Drop LakePoint framing entirely.
-2. **Build the "NCSA assessment call" mock.** Single screen: rep's view at
+1. **Prep the next Kirstie meeting deliberately.** She is the unlock.
+   Walk in with (a) a one-page side-by-side of NTangible vs. the MPA
+   that respects what the MPA does well, (b) the validation-program
+   one-pager (§6) framed for her to forward up to Hamilton/Simpson,
+   (c) the question "what does it take to get Lindsey in the next
+   conversation." Don't ask her to sell internally — give her the
+   artifacts that let her advocate.
+2. **Rewrite the deck for the new thesis.** Lead with the à-la-carte +
+   conversion-lift story (§5A). Elevate the NCSA-as-distribution-into-
+   non-IMG-schools story (§5B). Build-vs-buy narrowed to sport-specific
+   instruments (§4). Validation-program slide co-credited to Simpson (§6).
+   30-day calendar (§7). Drop LakePoint framing entirely.
+3. **Build the "NCSA assessment call" mock.** Single screen: rep's view at
    the end of a first call, with the family-facing NTangible profile
-   ready to send. This is the single highest-leverage asset in the deck —
-   it shows the rep workflow integration, not just a product screenshot.
-3. **Build the "coach view inside NCSA" mock** as a second slide. Mental
+   ready to send. Single highest-leverage asset in the deck.
+4. **Build the "coach view inside NCSA" mock** as a second slide. Mental
    profile sitting next to the athletic profile in NCSA chrome.
-4. **Pre-stage the validation framing.** One-pager titled "Sport-Specific
+5. **Pre-stage the validation framing.** One-pager titled "Sport-Specific
    Instruments as Incremental Predictive Signal on Top of the MPA" —
    written in Simpson's voice, citable. Goal: he reads it and feels
    ownership, not threat.
-5. **Pilot one-pager.** Conversion-share structure (option A from §5),
-   one sport (suggest baseball or soccer — deepest NCSA coach relationships),
-   90-day window, success metric = incremental conversion lift on paid
-   tiers vs. holdout.
-6. **Identify warm-intro paths to Michael Branch.** LinkedIn, mutual
-   connections, IMG/NCSA alumni network. He's the cold-open target —
-   prefer warm.
+6. **Pilot one-pager.** Structure A from §5, one sport (suggest baseball
+   or soccer — deepest NCSA coach relationships), 90-day window,
+   success metric = incremental conversion lift on paid tiers vs. holdout
+   *and* per-profile activation volume.
 7. **Lock the sport buildout calendar internally.** Engineering schedule
    for the remaining sports queued so the day-30 milestone is real, not
    aspirational, the moment the pilot is signed.
-8. **Verify two open facts** before any meeting: Chris Krause's current
-   operating title, and Lisa Strasman's current title. Both are unclear
-   in public sources and getting either wrong in a deck would burn
-   credibility.
+8. **Verify two open facts** before any commercial-side meeting: Chris
+   Krause's current operating title, and Lisa Strasman's current title.
+   Both are unclear in public sources and getting either wrong in a deck
+   would burn credibility.
 
 ---
 
