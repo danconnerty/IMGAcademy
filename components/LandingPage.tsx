@@ -1,9 +1,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import {
-    Activity, Brain, ArrowRight, Check, X, FileText, Monitor, ShieldCheck,
-    Megaphone, RefreshCw, Mail, Database, Tv, Building2, Send, Trophy, LayoutGrid,
-    Target, ClipboardList, Search, UserCheck
+    Activity, Brain, ArrowRight, Check, X, FileText, Monitor,
+    Megaphone, LayoutGrid, Target,
 } from 'lucide-react';
 import { ViewType } from '../types';
 import { TestDriveModal } from './TestDriveModal';
@@ -355,14 +354,12 @@ const PartnerProperties = () => (
 );
 
 // --- INSET TAB NAVIGATION ---
-type TabId = 'offer' | 'assessments' | 'coaches' | 'economics' | 'distribution' | 'activation';
+type TabId = 'assessments' | 'coaches' | 'economics' | 'activation';
 
 const TABS: { id: TabId; label: string }[] = [
-    { id: 'offer', label: 'The Offer' },
     { id: 'assessments', label: 'The Assessments' },
     { id: 'coaches', label: "For College Coaches" },
     { id: 'economics', label: 'The Economics' },
-    { id: 'distribution', label: 'Distribution' },
     { id: 'activation', label: 'Activation & Rollout' },
 ];
 
@@ -370,7 +367,6 @@ const TABS: { id: TabId; label: string }[] = [
 const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const videoSectionRef = useRef<HTMLElement>(null);
   const tabSectionRef = useRef<HTMLDivElement>(null);
 
   const [showTestDrive, setShowTestDrive] = useState(false);
@@ -378,7 +374,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
   const [showNterpretReport, setShowNterpretReport] = useState(false);
   const [showBooking, setShowBooking] = useState(false);
   const [showReportModal, setShowReportModal] = useState(false);
-  const [activeTab, setActiveTab] = useState<TabId>('offer');
+  const [activeTab, setActiveTab] = useState<TabId>('assessments');
 
   useEffect(() => {
     setIsLoaded(true);
@@ -397,58 +393,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
 
   const renderTabPanel = () => {
     switch (activeTab) {
-      case 'offer':
-        return (
-          <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-              <div className="mb-12 sm:mb-16 max-w-2xl">
-                  <p className="text-sm font-medium text-blue-400 mb-3">The offer</p>
-                  <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
-                      Sport-specific. Position-specific. White-labeled.
-                  </h2>
-                  <p className="text-lg text-gray-400 leading-relaxed">
-                      NTangible builds and operates a sport-by-sport mental performance profile that extends IMG Academy's
-                      High Performance Mindset framework &mdash; Commitment, Confidence, Focus, Resilience, Handling Pressure &mdash;
-                      with the position-level granularity the cross-sport digital catalog doesn't carry today. Hosted under
-                      IMG Academy's brand, paired with a free coaches' dashboard that makes recruiting fit measurable.
-                  </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-                  <div className="bg-[#070707] p-7 sm:p-9">
-                      <div className="w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-5">
-                          <ShieldCheck size={20} className="text-blue-400" />
-                      </div>
-                      <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight mb-3">IMG Academy Mental Scouting Profile</h3>
-                      <p className="text-base text-gray-400 leading-relaxed mb-5">
-                          The sport-by-sport, position-level extension of IMG's HPM framework. Lives inside the
-                          IMG Academy+ surfaces athletes already use &mdash; complements the in-house MPA on the IDP side,
-                          ships sport-specific instruments NCSA and SportsRecruits don't have today.
-                      </p>
-                      <ul className="space-y-2.5 border-t border-white/5 pt-5">
-                          <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> Full Clutch Factor&trade; + NTerpret&trade; reports</li>
-                          <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> Personalized drills to improve performance</li>
-                          <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> Verified recruiting status inside the IMG Academy dashboard</li>
-                      </ul>
-                  </div>
-                  <div className="bg-[#070707] p-7 sm:p-9">
-                      <div className="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5">
-                          <Monitor size={20} className="text-emerald-400" />
-                      </div>
-                      <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight mb-3">IMG Academy Collegiate Dashboard</h3>
-                      <p className="text-base text-gray-400 leading-relaxed mb-5">
-                          A free, web-based portal college coaches log into to discover IMG Academy talent - and see which
-                          athletes align with their coaching style.
-                      </p>
-                      <ul className="space-y-2.5 border-t border-white/5 pt-5">
-                          <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Free access for every college coach across properties</li>
-                          <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-emerald-400 shrink-0 mt-0.5" /> Searchable leaderboards of IMG Academy athletes</li>
-                      </ul>
-                  </div>
-              </div>
-
-          </section>
-        );
-
       case 'assessments':
         return (
           <>
@@ -525,61 +469,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   </div>
               </section>
 
-              {/* METHODOLOGY / TED TALK */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-                      <div className="lg:col-span-5">
-                          <p className="text-sm font-medium text-blue-400 mb-3">The science</p>
-                          <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-5">
-                              The TED Talk behind the method.
-                          </h2>
-                          <p className="text-lg text-gray-400 leading-relaxed mb-4">
-                              NTangible's assessments are grounded in research on how athletes actually perform under pressure
-                              - the work that started with this TED Talk.
-                          </p>
-                          <p className="text-base text-gray-500 leading-relaxed">
-                              Watch the framework that powers every NTerpret Mental Scouting Report and Clutch Factor Assessment.
-                          </p>
-                      </div>
-                      <div className="lg:col-span-7">
-                          <div className="relative aspect-video w-full rounded-2xl overflow-hidden border border-white/10 bg-black">
-                              <iframe
-                                  width="100%"
-                                  height="100%"
-                                  src="https://www.youtube.com/embed/SmXZSYEnau0?rel=0&modestbranding=1"
-                                  title="TED Talk - The Science of Mental Performance"
-                                  frameBorder="0"
-                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                  allowFullScreen
-                                  className="absolute inset-0 w-full h-full"
-                              ></iframe>
-                          </div>
-                      </div>
-                  </div>
-              </section>
-
-              {/* PRODUCT TOUR VIDEO */}
-              <section ref={videoSectionRef} className="max-w-5xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="mb-8 max-w-2xl">
-                      <p className="text-sm font-medium text-blue-400 mb-3">Product tour</p>
-                      <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05]">
-                          See what athletes and coaches will use.
-                      </h2>
-                  </div>
-
-                  <div className="relative aspect-video w-full rounded-2xl overflow-hidden border border-white/10 bg-black">
-                      <iframe
-                          width="100%"
-                          height="100%"
-                          src="https://www.youtube.com/embed/6NS4CVbeZQg?autoplay=0&controls=1&rel=0&modestbranding=1"
-                          title="Product Tour"
-                          frameBorder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          className="absolute inset-0 w-full h-full"
-                      ></iframe>
-                  </div>
-              </section>
           </>
         );
 
@@ -803,268 +692,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
         );
 
       case 'economics':
-        return (
-          <>
-              <PricingCalculator />
-
-              {/* MARQUEE: DIRECTED AD-SPEND / REINVESTMENT ENGINE */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="rounded-3xl border border-blue-500/30 bg-gradient-to-b from-blue-500/[0.10] via-blue-500/[0.03] to-transparent p-6 sm:p-12">
-                      <div className="max-w-2xl mb-10 sm:mb-12">
-                          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 px-3 py-1 rounded-full mb-4">
-                              <Megaphone size={13} className="text-blue-400" />
-                              <span className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest">The reinvestment engine</span>
-                          </div>
-                          <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
-                              Every $50K in revenue buys IMG Academy $10K of reach.
-                          </h2>
-                          <p className="text-lg text-gray-300 leading-relaxed">
-                              For every <span className="text-white font-semibold">$50,000</span> in gross program revenue, NTangible puts
-                              {' '}<span className="text-white font-semibold">$10,000</span> back into a directed ad campaign run through IMG Academy.
-                              The program funds its own growth.
-                          </p>
-                      </div>
-
-                      {/* Revenue-increment ladder */}
-                      <p className="text-sm font-medium text-blue-400 mb-3">The increment ladder</p>
-                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden mb-10">
-                          {[
-                              { rev: '$50K', spend: '$10K' },
-                              { rev: '$150K', spend: '$30K' },
-                              { rev: '$500K', spend: '$100K' },
-                              { rev: '$1M', spend: '$200K' },
-                          ].map((step) => (
-                              <div key={step.rev} className="bg-[#070707] p-5 sm:p-6">
-                                  <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-widest mb-2">Gross revenue</p>
-                                  <p className="text-2xl sm:text-3xl font-semibold text-white tracking-tight tabular-nums mb-4">{step.rev}</p>
-                                  <div className="flex items-center gap-2 text-blue-400">
-                                      <ArrowRight size={15} className="shrink-0" />
-                                      <p className="text-xl sm:text-2xl font-semibold tracking-tight tabular-nums">{step.spend}</p>
-                                  </div>
-                                  <p className="text-[11px] text-gray-500 mt-1">directed ad spend</p>
-                              </div>
-                          ))}
-                      </div>
-
-                      {/* The flywheel */}
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
-                          <div className="rounded-2xl border border-white/10 bg-[#070707] p-6">
-                              <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-sm font-bold mb-4">1</span>
-                              <h4 className="text-white text-base font-semibold mb-2">Profiles sell</h4>
-                              <p className="text-gray-500 text-sm leading-relaxed">Every $10 profile across IMG Academy channels stacks toward the next $50K increment.</p>
-                          </div>
-                          <div className="rounded-2xl border border-white/10 bg-[#070707] p-6">
-                              <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-sm font-bold mb-4">2</span>
-                              <h4 className="text-white text-base font-semibold mb-2">NTangible reinvests</h4>
-                              <p className="text-gray-500 text-sm leading-relaxed">Each increment triggers $10K of directed ad spend, run through IMG Academy.</p>
-                          </div>
-                          <div className="rounded-2xl border border-white/10 bg-[#070707] p-6">
-                              <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-sm font-bold mb-4">3</span>
-                              <h4 className="text-white text-base font-semibold mb-2">Reach compounds</h4>
-                              <p className="text-gray-500 text-sm leading-relaxed">More reach drives more profiles - which triggers the next campaign. The loop tightens.</p>
-                          </div>
-                      </div>
-
-                      <div className="mt-8 flex items-center gap-2 text-blue-300/80">
-                          <RefreshCw size={14} className="shrink-0" />
-                          <p className="text-sm">The more the program earns, the harder NTangible markets IMG Academy.</p>
-                      </div>
-
-                      {/* AD SPEND FLEXIBILITY */}
-                      <div className="mt-10 rounded-2xl border border-white/10 bg-[#070707] p-6 sm:p-8">
-                          <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mb-3">
-                              IMG Academy's call on where it goes
-                          </p>
-                          <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight leading-tight mb-3">
-                              The ad spend isn't locked to a channel - it's a marketing budget IMG Academy deploys.
-                          </h3>
-                          <p className="text-base text-gray-400 leading-relaxed mb-6">
-                              The $10K-per-increment commitment is dollars NTangible is putting on the table. IMG Academy
-                              decides how to spend them - whatever moves the needle hardest at that moment.
-                          </p>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-xl overflow-hidden">
-                              <div className="bg-[#0a0a0a] p-5 sm:p-6">
-                                  <p className="text-white text-base font-semibold mb-2">General marketing fund</p>
-                                  <p className="text-gray-500 text-sm leading-relaxed">
-                                      Roll it into IMG Academy's broader paid media, owned-channel campaigns, or event
-                                      promotion - whatever the marketing team is already pushing.
-                                  </p>
-                              </div>
-                              <div className="bg-[#0a0a0a] p-5 sm:p-6">
-                                  <p className="text-white text-base font-semibold mb-2">Redirect to strategic partners</p>
-                                  <p className="text-gray-500 text-sm leading-relaxed">
-                                      Or aim it at a flagship partner like <span className="text-white font-medium">Publix</span>
-                                      {' '}to deepen that integration - co-branded campaigns, in-store activations, joint
-                                      promotions that strengthen the relationship IMG Academy cares about most.
-                                  </p>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </section>
-
-              {/* RECURRING REVENUE */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="bg-[#070707] border border-white/10 rounded-2xl p-7 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                      <div className="lg:col-span-7">
-                          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 px-3 py-1 rounded-full mb-5">
-                              <RefreshCw size={13} className="text-blue-400" />
-                              <span className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest">Recurring revenue funnel</span>
-                          </div>
-                          <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.1] mb-4">
-                              Every profile resets the clock.
-                          </h2>
-                          <p className="text-lg text-gray-400 leading-relaxed">
-                              Every 6 months, NTangible sends an automatic retest email so athletes can update their Clutch Factor
-                              score. Each retest is another $10 profile - another $2 to IMG Academy and $1 to the partner.
-                          </p>
-                      </div>
-                      <div className="lg:col-span-5">
-                          <div className="grid grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-xl overflow-hidden">
-                              <div className="bg-[#0a0a0a] p-5">
-                                  <p className="text-3xl font-semibold text-white tracking-tight tabular-nums mb-1">6 mo</p>
-                                  <p className="text-sm text-gray-500">Automatic retest cadence</p>
-                              </div>
-                              <div className="bg-[#0a0a0a] p-5">
-                                  <p className="text-3xl font-semibold text-white tracking-tight tabular-nums mb-1">2&times;+</p>
-                                  <p className="text-sm text-gray-500">Profiles per athlete, per year</p>
-                              </div>
-                              <div className="bg-[#0a0a0a] p-5">
-                                  <p className="text-3xl font-semibold text-blue-400 tracking-tight tabular-nums mb-1">$3</p>
-                                  <p className="text-sm text-gray-500">To IMG Academy + partner, per retest</p>
-                              </div>
-                              <div className="bg-[#0a0a0a] p-5">
-                                  <p className="text-3xl font-semibold text-white tracking-tight tabular-nums mb-1">$0</p>
-                                  <p className="text-sm text-gray-500">Added cost to acquire the retest</p>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </section>
-
-              {/* INTEGRATION & ACTIVATION */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="mb-12 sm:mb-16 max-w-2xl">
-                      <p className="text-sm font-medium text-blue-400 mb-3">The commitment</p>
-                      <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
-                          What NTangible brings to the table.
-                      </h2>
-                      <p className="text-lg text-gray-400 leading-relaxed">
-                          Beyond the per-profile revenue share, NTangible commits to securing official-partner status and
-                          reinvesting in IMG Academy's reach.
-                      </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-                      <div className="bg-[#070707] p-7 sm:p-8">
-                          <div className="w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-5">
-                              <Trophy size={20} className="text-blue-400" />
-                          </div>
-                          <h3 className="text-lg sm:text-xl font-semibold text-white tracking-tight mb-2">Official partner sponsorship</h3>
-                          <p className="text-base text-gray-400 leading-relaxed">
-                              NTangible commits to an annual sponsorship fee to secure "Official Partner" rights with IMG Academy.
-                          </p>
-                      </div>
-                      <div className="bg-[#070707] p-7 sm:p-8">
-                          <div className="w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-5">
-                              <Megaphone size={20} className="text-blue-400" />
-                          </div>
-                          <h3 className="text-lg sm:text-xl font-semibold text-white tracking-tight mb-2">Directed ad-spend campaigns</h3>
-                          <p className="text-base text-gray-400 leading-relaxed">
-                              For every $50,000 in gross program revenue, NTangible directs $10,000 into an ad-spend campaign run
-                              through IMG Academy - revenue compounds back into reach.
-                          </p>
-                      </div>
-                      <div className="bg-[#070707] p-7 sm:p-8">
-                          <div className="w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-5">
-                              <Database size={20} className="text-blue-400" />
-                          </div>
-                          <h3 className="text-lg sm:text-xl font-semibold text-white tracking-tight mb-2">Front-load data agreement</h3>
-                          <p className="text-base text-gray-400 leading-relaxed">
-                              Initial athlete data access from partners to seed the platform - structured as an annual
-                              agreement to keep driving usage.
-                          </p>
-                      </div>
-                  </div>
-              </section>
-          </>
-        );
-
-      case 'distribution':
-        return (
-          <>
-              {/* DISTRIBUTION - INSIDE THE DIGITAL PRODUCTS */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="mb-12 sm:mb-16 max-w-2xl">
-                      <p className="text-sm font-medium text-blue-400 mb-3">Distribution</p>
-                      <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
-                          Inside the digital products. Live in a quarter.
-                      </h2>
-                      <p className="text-lg text-gray-400 leading-relaxed">
-                          The profile ships inside the products IMG Academy already operates &mdash; no field staff, no clipboards,
-                          no new SKU to build. The integration points are already there.
-                      </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-                      <div className="bg-[#070707] p-6 sm:p-7">
-                          <Send size={20} className="text-blue-400 mb-4" />
-                          <h3 className="text-white text-base font-semibold mb-2">Inside Academy+ Essentials</h3>
-                          <p className="text-gray-500 text-sm leading-relaxed">Surfaced inside the Essentials bundle that already ships free Y1 with every NCSA membership. Sport-specific where the catalog is cross-sport.</p>
-                      </div>
-                      <div className="bg-[#070707] p-6 sm:p-7">
-                          <Mail size={20} className="text-blue-400 mb-4" />
-                          <h3 className="text-white text-base font-semibold mb-2">In the NCSA sales motion</h3>
-                          <p className="text-gray-500 text-sm leading-relaxed">Free family-facing artifact the recruiting specialist sends between the first call and the conference call. Built to lift paid-tier conversion.</p>
-                      </div>
-                      <div className="bg-[#070707] p-6 sm:p-7">
-                          <Building2 size={20} className="text-blue-400 mb-4" />
-                          <h3 className="text-white text-base font-semibold mb-2">In the SportsRecruits feed</h3>
-                          <p className="text-gray-500 text-sm leading-relaxed">Crossover hook into the 400K-athlete club/HS audience. The mechanism that pulls SR users into developmental Academy+ subs.</p>
-                      </div>
-                      <div className="bg-[#070707] p-6 sm:p-7">
-                          <Tv size={20} className="text-blue-400 mb-4" />
-                          <h3 className="text-white text-base font-semibold mb-2">In NGB & Elevate channels</h3>
-                          <p className="text-gray-500 text-sm leading-relaxed">Same surface for federation deals (USA Water Polo, USA Lacrosse) and Elevate's B2B-to-schools motion. Internationally portable.</p>
-                      </div>
-                  </div>
-              </section>
-
-              {/* DATA & TRUST */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-                      <div className="lg:col-span-5">
-                          <p className="text-sm font-medium text-blue-400 mb-3">Data &amp; trust</p>
-                          <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-5">
-                              IMG Academy-branded. IMG Academy-controlled.
-                          </h2>
-                          <p className="text-lg text-gray-400 leading-relaxed">
-                              The profile carries IMG Academy's name and lives on IMG Academy's official database. NTangible operates
-                              it - IMG Academy owns the relationship with its athletes.
-                          </p>
-                      </div>
-                      <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-                          <div className="bg-[#070707] p-6">
-                              <p className="text-white text-base font-semibold mb-2">Hosted on IMG Academy's database</p>
-                              <p className="text-gray-500 text-sm leading-relaxed">Verified profiles sit on the official campus database, branded as a IMG Academy product.</p>
-                          </div>
-                          <div className="bg-[#070707] p-6">
-                              <p className="text-white text-base font-semibold mb-2">COPPA-aligned</p>
-                              <p className="text-gray-500 text-sm leading-relaxed">For athletes 13-18, with parental consent built into onboarding for every athlete.</p>
-                          </div>
-                          <div className="bg-[#070707] p-6">
-                              <p className="text-white text-base font-semibold mb-2">Opt-out anytime</p>
-                              <p className="text-gray-500 text-sm leading-relaxed">Families can remove an athlete's profile at any time. We delete everything we hold on them.</p>
-                          </div>
-                          <div className="bg-[#070707] p-6">
-                              <p className="text-white text-base font-semibold mb-2">Growth, not diagnosis</p>
-                              <p className="text-gray-500 text-sm leading-relaxed">We measure how athletes compete and handle pressure - not personality or clinical labels.</p>
-                          </div>
-                      </div>
-                  </div>
-              </section>
-          </>
-        );
+        return <PricingCalculator />;
 
       case 'activation':
         return (
@@ -1143,138 +771,78 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
 
               {/* INTAKE / FIRST-PARTY DATA */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="mb-12 sm:mb-16 max-w-3xl">
+                  <div className="mb-10 sm:mb-12 max-w-3xl">
                       <p className="text-sm font-medium text-emerald-400 mb-3">Pre-assessment intake</p>
                       <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
-                          First-party data on every athlete that takes the assessment.
+                          First-party data on every athlete who takes the test.
                       </h2>
                       <p className="text-lg text-gray-400 leading-relaxed">
-                          Every NTangible assessment opens with a short intake module &mdash; co-designed with
-                          IMG Academy &mdash; that turns every athlete who takes the test into a structured,
-                          first-party record IMG owns alongside the NCSA and SportsRecruits profile.
+                          A 60&ndash;90 second module gated in front of every assessment. Required to unlock the
+                          profile, so completion sits near 100%. One schema, owned by IMG, feeding NCSA,
+                          SportsRecruits, Academy+, and the routing logic that sends low scores into coaching sessions.
                       </p>
                   </div>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 mb-10 sm:mb-12">
-                      <div className="lg:col-span-5 bg-gradient-to-b from-blue-500/[0.07] to-transparent border border-blue-500/25 rounded-2xl p-7 sm:p-9">
-                          <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mb-3">
-                              Why it matters
-                          </p>
-                          <p className="text-2xl sm:text-3xl font-semibold text-white tracking-tight leading-tight mb-4">
-                              The same field set across NCSA, SportsRecruits, and IMG Academy+.
-                          </p>
-                          <p className="text-base text-gray-400 leading-relaxed">
-                              One intake schema, structured to feed every downstream system. Powers personalized
-                              outreach, sport-specific content surfacing in Academy+, and the routing logic that
-                              sends low-scoring athletes to IMG Academy+ coaching sessions.
-                          </p>
-                      </div>
-
-                      <div className="lg:col-span-7 bg-[#070707] border border-white/10 rounded-2xl p-7 sm:p-9">
-                          <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-4">
-                              What the intake captures
-                          </p>
-                          <p className="text-base text-gray-400 leading-relaxed mb-6">
-                              A 60-90 second module gated in front of every assessment. Required to unlock the
-                              profile &mdash; completion rate sits near 100%, not the 5&ndash;15% of an optional survey.
-                          </p>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-                              {[
-                                  { label: 'Identity', detail: 'Athlete + parent/guardian name, age, grade' },
-                                  { label: 'Geography', detail: 'Home city, state, travel radius, club home base' },
-                                  { label: 'Sport profile', detail: 'Primary sport, positions, level, team affiliations' },
-                                  { label: 'Recruiting status', detail: 'Grad year, current offers, target divisions, commit timeline' },
-                                  { label: 'Reach', detail: 'Parent email + mobile, opt-ins, communication preferences' },
-                                  { label: 'Development signals', detail: 'Prior coaching, areas of focus, openness to IMG Academy+ sessions' },
-                              ].map((row) => (
-                                  <div key={row.label} className="flex gap-3">
-                                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-                                      <div>
-                                          <p className="text-white text-sm font-semibold mb-0.5">{row.label}</p>
-                                          <p className="text-gray-500 text-sm leading-snug">{row.detail}</p>
-                                      </div>
+                  <div className="bg-[#070707] border border-white/10 rounded-2xl p-7 sm:p-9 mb-6">
+                      <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-5">
+                          What the intake captures
+                      </p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                          {[
+                              { label: 'Identity', detail: 'Athlete + parent/guardian name, age, grade' },
+                              { label: 'Geography', detail: 'Home city, state, travel radius, club home base' },
+                              { label: 'Sport profile', detail: 'Primary sport, positions, level, team affiliations' },
+                              { label: 'Recruiting status', detail: 'Grad year, current offers, target divisions, commit timeline' },
+                              { label: 'Reach', detail: 'Parent email + mobile, opt-ins, communication preferences' },
+                              { label: 'Development signals', detail: 'Prior coaching, areas of focus, openness to IMG Academy+ sessions' },
+                          ].map((row) => (
+                              <div key={row.label} className="flex gap-3">
+                                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
+                                  <div>
+                                      <p className="text-white text-sm font-semibold mb-0.5">{row.label}</p>
+                                      <p className="text-gray-500 text-sm leading-snug">{row.detail}</p>
                                   </div>
-                              ))}
-                          </div>
+                              </div>
+                          ))}
                       </div>
                   </div>
 
                   <div className="rounded-2xl border border-white/10 bg-[#070707] p-6 sm:p-7">
                       <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
-                          <span className="text-white font-medium">IMG defines the fields; IMG owns the data.</span>{' '}
+                          <span className="text-white font-medium">IMG defines the fields. IMG owns the data.</span>{' '}
                           NTangible operates the intake inside the assessment flow &mdash; records land in IMG's
                           database, branded as an IMG product, governed by IMG's privacy posture.
                       </p>
                   </div>
               </section>
 
+              {/* DATA & TRUST */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="mb-12 sm:mb-16 max-w-2xl">
-                      <p className="text-sm font-medium text-blue-400 mb-3">The rollout</p>
-                      <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
-                          Seed the NCSA database. Then open coach access.
+                  <div className="mb-8 sm:mb-10 max-w-2xl">
+                      <p className="text-sm font-medium text-blue-400 mb-3">Data &amp; trust</p>
+                      <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.1]">
+                          IMG-branded. IMG-controlled.
                       </h2>
-                      <p className="text-lg text-gray-400 leading-relaxed">
-                          NTangible seeds the NCSA + SportsRecruits database with verified profiles before the
-                          paid rollout, so the alignment-scored prospect pool has real depth the day college
-                          coaches log in.
-                      </p>
                   </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-10 sm:mb-12">
-                      <div className="bg-[#070707] border border-white/10 rounded-2xl p-7 sm:p-9">
-                          <div className="flex items-baseline gap-3 mb-4">
-                              <span className="text-blue-400 text-sm font-semibold tabular-nums">Phase 1</span>
-                              <span className="text-sm text-gray-500 font-medium">Seed</span>
-                          </div>
-                          <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight mb-3">Pre-fill the NCSA + SR database</h3>
-                          <p className="text-base text-gray-400 leading-relaxed">
-                              NTangible runs free testing for the pilot sport's <span className="text-white font-medium">top NCSA + SportsRecruits athletes</span>{' '}
-                              before paid rollout &mdash; alignment-scored profiles ready to surface to coaches on day one.
-                          </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+                      <div className="bg-[#070707] p-6">
+                          <p className="text-white text-base font-semibold mb-2">Hosted in IMG's database</p>
+                          <p className="text-gray-500 text-sm leading-relaxed">Profiles live on IMG's database, branded as an IMG product.</p>
                       </div>
-                      <div className="bg-[#070707] border border-white/10 rounded-2xl p-7 sm:p-9">
-                          <div className="flex items-baseline gap-3 mb-4">
-                              <span className="text-emerald-400 text-sm font-semibold tabular-nums">Phase 2</span>
-                              <span className="text-sm text-gray-500 font-medium">Open</span>
-                          </div>
-                          <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight mb-3">Open the coach dashboard</h3>
-                          <p className="text-base text-gray-400 leading-relaxed">
-                              Free dashboard access for <span className="text-white font-medium">every college coach already in the NCSA + SR network</span>.
-                              Coach engagement pulls families into paid profiles &mdash; the flywheel starts.
-                          </p>
+                      <div className="bg-[#070707] p-6">
+                          <p className="text-white text-base font-semibold mb-2">COPPA-aligned</p>
+                          <p className="text-gray-500 text-sm leading-relaxed">Parental consent built into onboarding for every athlete 13&ndash;18.</p>
                       </div>
-                  </div>
-
-                  {/* PHASE 1 OUTPUT - SAMPLE LEADERBOARDS */}
-                  <div>
-                      <div className="flex items-baseline justify-between mb-5 flex-wrap gap-2">
-                          <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest">
-                              Phase 1 output &middot; sample
-                          </p>
-                          <p className="text-sm text-gray-500">
-                              Auto-generated, co-branded per partner - ready to publish on day one.
-                          </p>
+                      <div className="bg-[#070707] p-6">
+                          <p className="text-white text-base font-semibold mb-2">Opt-out anytime</p>
+                          <p className="text-gray-500 text-sm leading-relaxed">Families can remove a profile at any time. We delete everything we hold.</p>
                       </div>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                          <div className="rounded-2xl overflow-hidden border border-white/10 bg-[#070707] shadow-[0_30px_80px_rgba(0,0,0,0.5)] ring-1 ring-white/5">
-                              <img
-                                  src="/clutch-factor-top10-slide1.png"
-                                  alt="Clutch Factor leaderboard - top 3 performers"
-                                  className="w-full h-auto block"
-                              />
-                          </div>
-                          <div className="rounded-2xl overflow-hidden border border-white/10 bg-[#070707] shadow-[0_30px_80px_rgba(0,0,0,0.5)] ring-1 ring-white/5">
-                              <img
-                                  src="/clutch-factor-top10-slide2.png"
-                                  alt="Clutch Factor leaderboard - ranks 4 through 10"
-                                  className="w-full h-auto block"
-                              />
-                          </div>
+                      <div className="bg-[#070707] p-6">
+                          <p className="text-white text-base font-semibold mb-2">Growth, not diagnosis</p>
+                          <p className="text-gray-500 text-sm leading-relaxed">We measure how athletes compete and handle pressure &mdash; not personality or clinical labels.</p>
                       </div>
                   </div>
               </section>
-
           </>
         );
 
