@@ -1350,41 +1350,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   </div>
               </section>
 
-              {/* ALREADY IN MARKET - social proof + active conversations */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="rounded-2xl border border-emerald-500/30 bg-gradient-to-b from-emerald-500/[0.06] to-transparent p-7 sm:p-10">
-                      <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-3">Already in market</p>
-                      <h3 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight leading-snug mb-5 max-w-3xl">
-                          The assessment is shipping today &mdash; and others are moving on it.
-                      </h3>
-                      <p className="text-base text-gray-300 leading-relaxed mb-7 max-w-3xl">
-                          NTangible isn't vaporware looking for its first customer. The platform is live with
-                          established partners across youth sports, with additional conversations active across
-                          residential training campuses, athletic departments, and youth-sport organizations.
-                      </p>
-
-                      <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-4">Active partners include</p>
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
-                          {[
-                              { name: 'Alliance' },
-                              { name: 'Future Stars Series' },
-                              { name: "Governor's Challenge" },
-                          ].map((p) => (
-                              <div key={p.name} className="rounded-lg border border-white/10 bg-black/30 px-4 py-3">
-                                  <p className="text-white text-sm font-semibold">{p.name}</p>
-                              </div>
-                          ))}
-                      </div>
-
-                      <p className="text-[12px] text-gray-500 leading-relaxed pt-4 border-t border-emerald-400/15">
-                          <span className="text-emerald-300 font-semibold">Advanced integration negotiations</span>{' '}
-                          underway with a flagship multi-sport residential training campus. Active
-                          conversations across additional college athletic departments and youth sports
-                          organizations. First-mover position on the NCSA + SportsRecruits surface is open today.
-                      </p>
-                  </div>
-              </section>
-
               {/* HOW THIS STARTS - the explicit ask */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
                   <div className="rounded-3xl border border-amber-400/30 bg-gradient-to-b from-amber-400/[0.10] via-amber-400/[0.02] to-transparent p-7 sm:p-10">
@@ -1393,7 +1358,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           The first 48 hours after the Letter of Intent.
                       </h2>
                       <p className="text-base text-gray-300 leading-relaxed mb-7 max-w-3xl">
-                          We start with a Letter of Intent &mdash; not a full contract &mdash; so the 60-day
+                          We start with a Letter of Intent - not a full contract - so the 60-day
                           clock can start immediately while the Master Service Agreement gets negotiated in
                           parallel. No waiting on legal.
                       </p>
