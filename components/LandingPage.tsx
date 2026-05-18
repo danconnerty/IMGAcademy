@@ -125,24 +125,28 @@ const tierForVolume = (v: number): VolumeTier =>
 const PricingCalculator = () => {
     const [profiles, setProfiles] = useState(150_000);
 
-    // Stacked-layer inputs - all directional, exposed for live tuning during a pitch
-    const [lowScorePct, setLowScorePct] = useState(20);          // % of athletes in Below Average tier
-    const [conversionPct, setConversionPct] = useState(5);       // % of routed leads that convert to an Academy+ session
-    const [sessionPrice, setSessionPrice] = useState(90);        // Academy+ 1-on-1 session price ($)
-    const [elevateAcademies, setElevateAcademies] = useState(0); // Number of Elevate academy deals layered on
-    const [academySize, setAcademySize] = useState(400);         // Avg roster size per Elevate academy
+    // Layer toggles
+    const [includeRetest, setIncludeRetest]         = useState(true);
+    const [includeAcademyPlus, setIncludeAcademyPlus] = useState(true);
+    const [includeElevate, setIncludeElevate]       = useState(false);
+
+    // Tunable assumptions (hidden behind disclosure)
+    const [showAdvanced, setShowAdvanced]   = useState(false);
+    const [lowScorePct, setLowScorePct]     = useState(20);
+    const [conversionPct, setConversionPct] = useState(5);
+    const [sessionPrice, setSessionPrice]   = useState(90);
+    const [elevateAcademies, setElevateAcademies] = useState(5);
+    const [academySize, setAcademySize]     = useState(400);
 
     const clamped = Math.max(0, Math.min(MAX_PROFILES, Number.isFinite(profiles) ? profiles : 0));
     const tier = tierForVolume(clamped);
-    const imgRev = clamped * tier.imgShare;
-    const ntangibleRev = clamped * (tier.price - tier.imgShare);
 
-    // Layered revenue
-    const retestRev        = imgRev;                                                 // Standard 6-mo retest doubles annual events
-    const academyPlusRev   = clamped * (lowScorePct / 100) * (conversionPct / 100) * sessionPrice;
-    const elevateProfiles  = elevateAcademies * academySize;
-    const elevateAssessRev = elevateProfiles * tier.imgShare * 2;                    // Per-profile + retest, same tier
-    const stackedTotal     = imgRev + retestRev + academyPlusRev + elevateAssessRev;
+    // Layers (always computed; zeroed out when their toggle is off)
+    const baselineRev    = clamped * tier.imgShare;
+    const retestRev      = includeRetest      ? baselineRev : 0;
+    const academyPlusRev = includeAcademyPlus ? clamped * (lowScorePct / 100) * (conversionPct / 100) * sessionPrice : 0;
+    const elevateRev     = includeElevate     ? elevateAcademies * academySize * tier.imgShare * 2 : 0;
+    const stackedTotal   = baselineRev + retestRev + academyPlusRev + elevateRev;
 
     const fmt = (n: number) => `$${Math.round(n).toLocaleString('en-US')}`;
     const fmtCompact = (n: number) => n >= 1000 ? `${(n / 1000).toLocaleString('en-US')}k` : `${n}`;
@@ -200,18 +204,65 @@ const PricingCalculator = () => {
                 </p>
             </div>
 
-            {/* Calculator card */}
+            {/* ---- ONE UNIFIED CALCULATOR ---- */}
             <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-10">
-                <div className="mb-8">
-                    <p className="text-sm text-gray-500 font-medium mb-1">Model it at scale</p>
-                    <p className="text-base text-gray-400">Drag to set the annual profile volume across NCSA.</p>
+
+                {/* HERO: total revenue */}
+                <div className="rounded-2xl border border-blue-500/30 bg-gradient-to-b from-blue-500/[0.10] to-transparent p-6 sm:p-8 mb-8">
+                    <p className="text-sm font-medium text-blue-400 mb-2">Annual revenue to IMG Academy</p>
+                    <p className="text-5xl sm:text-6xl md:text-7xl font-semibold text-white tracking-tight tabular-nums mb-2">{fmt(stackedTotal)}</p>
+                    <p className="text-sm text-gray-400 tabular-nums">
+                        {clamped.toLocaleString('en-US')} profiles / yr at the {tier.label.toLowerCase()} tier (${tier.imgShare} to IMG per athlete)
+                    </p>
                 </div>
 
-                {/* Slider */}
-                <div className="mb-10">
+                {/* HORIZONTAL STACKED BAR - where the revenue comes from */}
+                {stackedTotal > 0 && (
+                    <div className="mb-8">
+                        <div className="flex h-3 rounded-full overflow-hidden bg-white/5 mb-3">
+                            <div className="bg-blue-500"    style={{ width: `${(baselineRev    / stackedTotal) * 100}%` }} />
+                            <div className="bg-blue-400"    style={{ width: `${(retestRev      / stackedTotal) * 100}%` }} />
+                            <div className="bg-amber-400"   style={{ width: `${(academyPlusRev / stackedTotal) * 100}%` }} />
+                            <div className="bg-emerald-400" style={{ width: `${(elevateRev     / stackedTotal) * 100}%` }} />
+                        </div>
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                            <div className="flex items-baseline gap-2">
+                                <span className="inline-block w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0 translate-y-[-1px]" />
+                                <div>
+                                    <p className="text-sm font-semibold text-white tabular-nums">{fmt(baselineRev)}</p>
+                                    <p className="text-[11px] text-gray-500">Per-profile assessment</p>
+                                </div>
+                            </div>
+                            <div className={`flex items-baseline gap-2 ${includeRetest ? '' : 'opacity-40'}`}>
+                                <span className="inline-block w-2.5 h-2.5 rounded-full bg-blue-400 shrink-0 translate-y-[-1px]" />
+                                <div>
+                                    <p className="text-sm font-semibold text-white tabular-nums">{fmt(retestRev)}</p>
+                                    <p className="text-[11px] text-gray-500">6-month retest cycle</p>
+                                </div>
+                            </div>
+                            <div className={`flex items-baseline gap-2 ${includeAcademyPlus ? '' : 'opacity-40'}`}>
+                                <span className="inline-block w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0 translate-y-[-1px]" />
+                                <div>
+                                    <p className="text-sm font-semibold text-white tabular-nums">{fmt(academyPlusRev)}</p>
+                                    <p className="text-[11px] text-gray-500">Academy+ session funnel</p>
+                                </div>
+                            </div>
+                            <div className={`flex items-baseline gap-2 ${includeElevate ? '' : 'opacity-40'}`}>
+                                <span className="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0 translate-y-[-1px]" />
+                                <div>
+                                    <p className="text-sm font-semibold text-white tabular-nums">{fmt(elevateRev)}</p>
+                                    <p className="text-[11px] text-gray-500">Elevate channel</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* PROFILE SLIDER */}
+                <div className="pt-6 border-t border-white/5">
                     <div className="flex items-end justify-between mb-3 gap-4">
                         <label className="text-sm font-medium text-gray-400">
-                            Profiles / yr
+                            Annual NCSA profiles
                             <span className={`ml-2 ${tier.tone} font-semibold uppercase tracking-wider text-[11px]`}>
                                 {tier.label} &middot; ${tier.price} ea
                             </span>
@@ -222,7 +273,7 @@ const PricingCalculator = () => {
                             max={MAX_PROFILES}
                             value={clamped}
                             onChange={(e) => setProfiles(parseInt(e.target.value || '0', 10))}
-                            className="w-32 sm:w-44 bg-black border border-white/10 rounded-lg px-3 py-2 text-right text-2xl sm:text-3xl font-semibold text-white tracking-tight tabular-nums focus:outline-none focus:border-blue-500"
+                            className="w-32 sm:w-44 bg-black border border-white/10 rounded-lg px-3 py-2 text-right text-xl sm:text-2xl font-semibold text-white tracking-tight tabular-nums focus:outline-none focus:border-blue-500"
                         />
                     </div>
                     <input
@@ -252,204 +303,117 @@ const PricingCalculator = () => {
                     </div>
                 </div>
 
-                {/* Annual revenue to IMG - hero result */}
-                <div className="rounded-2xl border border-blue-500/30 bg-gradient-to-b from-blue-500/[0.08] to-transparent p-6 sm:p-8 mb-6">
-                    <p className="text-sm font-medium text-blue-400 mb-2">Annual revenue to IMG Academy</p>
-                    <p className="text-5xl sm:text-6xl font-semibold text-white tracking-tight tabular-nums mb-2">{fmt(imgRev)}</p>
-                    <p className="text-sm text-gray-400 tabular-nums">
-                        {clamped.toLocaleString('en-US')} profiles &times; ${tier.imgShare} per athlete
-                    </p>
-                </div>
-
-                {/* Supporting breakdown */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-xl overflow-hidden">
-                    <div className="bg-[#070707] p-5 sm:p-6">
-                        <p className="text-sm font-medium text-blue-400 mb-2">IMG Academy share</p>
-                        <p className="text-2xl sm:text-3xl font-semibold text-white tracking-tight tabular-nums">{fmt(imgRev)}</p>
-                        <p className="text-xs text-gray-500 mt-1 tabular-nums">{clamped.toLocaleString('en-US')} &times; ${tier.imgShare}</p>
-                    </div>
-                    <div className="bg-[#070707] p-5 sm:p-6">
-                        <p className="text-sm font-medium text-blue-400 mb-2">NTangible share</p>
-                        <p className="text-2xl sm:text-3xl font-semibold text-white tracking-tight tabular-nums">{fmt(ntangibleRev)}</p>
-                        <p className="text-xs text-gray-500 mt-1 tabular-nums">{clamped.toLocaleString('en-US')} &times; ${tier.price - tier.imgShare}</p>
-                    </div>
-                </div>
-
-                <p className="text-xs text-gray-600 mt-6 leading-relaxed">
-                    Per-profile assessment economics only. See the stacked-layer view below for the full
-                    revenue thesis - retest cycle, Academy+ funnel, and Elevate distribution stacked together.
-                </p>
-            </div>
-
-            {/* ---- STACKED REVENUE LAYERS ---- */}
-            <div className="mt-16 sm:mt-20">
-                <div className="mb-10 sm:mb-12 max-w-2xl">
-                    <p className="text-sm font-medium text-emerald-400 mb-3">Stacked revenue layers</p>
-                    <h3 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
-                        What the per-profile number doesn't show.
-                    </h3>
-                    <p className="text-lg text-gray-400 leading-relaxed">
-                        The assessment economics above are the floor. Stacked with the retest cycle, the
-                        Academy+ funnel, and the Elevate distribution channel, the deal is 2-3&times; the
-                        per-profile baseline. Tune the inputs below to model your own assumptions.
-                    </p>
-                </div>
-
-                {/* Hero total */}
-                <div className="rounded-2xl border border-emerald-500/30 bg-gradient-to-b from-emerald-500/[0.10] to-transparent p-6 sm:p-8 mb-6">
-                    <p className="text-sm font-medium text-emerald-400 mb-2">Stacked annual revenue to IMG</p>
-                    <p className="text-5xl sm:text-6xl md:text-7xl font-semibold text-white tracking-tight tabular-nums mb-2">{fmt(stackedTotal)}</p>
-                    <p className="text-sm text-gray-400 tabular-nums">
-                        Assessment + retest + Academy+ funnel{elevateAcademies > 0 ? ' + Elevate channel' : ''}
-                    </p>
-                </div>
-
-                {/* Layer breakdown */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden mb-8">
-                    <div className="bg-[#070707] p-5 sm:p-6 flex flex-col">
-                        <p className="text-[10px] font-semibold text-blue-300 uppercase tracking-widest mb-2">Layer 01 &middot; Baseline</p>
-                        <p className="text-2xl sm:text-3xl font-semibold text-blue-300 tracking-tight tabular-nums mb-2">{fmt(imgRev)}</p>
-                        <p className="text-sm text-white font-semibold mb-1">Per-profile assessment</p>
-                        <p className="text-[12px] text-gray-500 leading-relaxed tabular-nums">{clamped.toLocaleString('en-US')} &times; ${tier.imgShare}</p>
-                    </div>
-                    <div className="bg-[#070707] p-5 sm:p-6 flex flex-col">
-                        <p className="text-[10px] font-semibold text-blue-300 uppercase tracking-widest mb-2">Layer 02 &middot; Retest cycle</p>
-                        <p className="text-2xl sm:text-3xl font-semibold text-blue-300 tracking-tight tabular-nums mb-2">+ {fmt(retestRev)}</p>
-                        <p className="text-sm text-white font-semibold mb-1">6-month standard cycle</p>
-                        <p className="text-[12px] text-gray-500 leading-relaxed">Doubles annual events from the same athlete base</p>
-                    </div>
-                    <div className="bg-[#070707] p-5 sm:p-6 flex flex-col">
-                        <p className="text-[10px] font-semibold text-amber-300 uppercase tracking-widest mb-2">Layer 03 &middot; Academy+ funnel</p>
-                        <p className="text-2xl sm:text-3xl font-semibold text-amber-300 tracking-tight tabular-nums mb-2">+ {fmt(academyPlusRev)}</p>
-                        <p className="text-sm text-white font-semibold mb-1">1-on-1 session revenue</p>
-                        <p className="text-[12px] text-gray-500 leading-relaxed tabular-nums">
-                            {clamped.toLocaleString('en-US')} &times; {lowScorePct}% low-score &times; {conversionPct}% convert &times; ${sessionPrice}
-                        </p>
-                    </div>
-                    <div className="bg-[#070707] p-5 sm:p-6 flex flex-col">
-                        <p className="text-[10px] font-semibold text-emerald-300 uppercase tracking-widest mb-2">Layer 04 &middot; Elevate channel</p>
-                        <p className="text-2xl sm:text-3xl font-semibold text-emerald-300 tracking-tight tabular-nums mb-2">+ {fmt(elevateAssessRev)}</p>
-                        <p className="text-sm text-white font-semibold mb-1">B2B academy distribution</p>
-                        <p className="text-[12px] text-gray-500 leading-relaxed tabular-nums">
-                            {elevateAcademies} academies &times; {academySize} athletes &times; ${tier.imgShare} &times; 2 (retest)
-                        </p>
-                    </div>
-                </div>
-
-                {/* Tunable inputs */}
-                <div className="bg-[#070707] border border-white/10 rounded-2xl p-5 sm:p-7">
-                    <div className="mb-5">
-                        <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-1">Tune the model</p>
-                        <p className="text-xs text-gray-500">All inputs editable - defaults are conservative.</p>
+                {/* LAYER TOGGLES */}
+                <div className="mt-7 pt-6 border-t border-white/5">
+                    <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-3">Revenue layers</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        {[
+                            { label: '6-month retest cycle',  on: includeRetest,      setOn: setIncludeRetest,      dot: 'bg-blue-400'    },
+                            { label: 'Academy+ session funnel', on: includeAcademyPlus, setOn: setIncludeAcademyPlus, dot: 'bg-amber-400'   },
+                            { label: 'Elevate channel',       on: includeElevate,     setOn: setIncludeElevate,     dot: 'bg-emerald-400' },
+                        ].map((t) => (
+                            <button
+                                key={t.label}
+                                onClick={() => t.setOn(!t.on)}
+                                className={`flex items-center justify-between gap-3 rounded-lg border px-4 py-3 transition-colors text-left ${
+                                    t.on
+                                        ? 'border-white/20 bg-white/[0.04] text-white'
+                                        : 'border-white/10 bg-transparent text-gray-500 hover:text-gray-300 hover:border-white/20'
+                                }`}
+                            >
+                                <span className="flex items-center gap-2.5">
+                                    <span className={`inline-block w-2 h-2 rounded-full ${t.dot} ${t.on ? '' : 'opacity-40'}`} />
+                                    <span className="text-sm font-medium">{t.label}</span>
+                                </span>
+                                <span className={`text-[10px] font-bold uppercase tracking-widest ${t.on ? 'text-blue-300' : 'text-gray-600'}`}>
+                                    {t.on ? 'On' : 'Off'}
+                                </span>
+                            </button>
+                        ))}
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5">
-                        {/* Low-score share */}
-                        <label className="flex flex-col gap-1.5">
-                            <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Low-score share</span>
-                            <div className="flex items-center gap-2 bg-black border border-white/10 rounded-lg px-3 py-2 focus-within:border-amber-400/60">
-                                <input
-                                    type="number"
-                                    min={0}
-                                    max={100}
-                                    step={1}
-                                    value={lowScorePct}
-                                    onChange={(e) => setLowScorePct(Math.max(0, Math.min(100, parseInt(e.target.value || '0', 10))))}
-                                    className="w-full bg-transparent text-right text-lg font-semibold text-white tabular-nums focus:outline-none"
-                                />
-                                <span className="text-sm text-gray-500">%</span>
-                            </div>
-                            <span className="text-[10px] text-gray-600">% of athletes under Clutch 651</span>
-                        </label>
-
-                        {/* Academy+ conversion */}
-                        <label className="flex flex-col gap-1.5">
-                            <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">A+ conversion</span>
-                            <div className="flex items-center gap-2 bg-black border border-white/10 rounded-lg px-3 py-2 focus-within:border-amber-400/60">
-                                <input
-                                    type="number"
-                                    min={0}
-                                    max={100}
-                                    step={1}
-                                    value={conversionPct}
-                                    onChange={(e) => setConversionPct(Math.max(0, Math.min(100, parseInt(e.target.value || '0', 10))))}
-                                    className="w-full bg-transparent text-right text-lg font-semibold text-white tabular-nums focus:outline-none"
-                                />
-                                <span className="text-sm text-gray-500">%</span>
-                            </div>
-                            <span className="text-[10px] text-gray-600">routed leads &rarr; booked session</span>
-                        </label>
-
-                        {/* Session price */}
-                        <label className="flex flex-col gap-1.5">
-                            <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Session price</span>
-                            <div className="flex items-center gap-2 bg-black border border-white/10 rounded-lg px-3 py-2 focus-within:border-amber-400/60">
-                                <span className="text-sm text-gray-500">$</span>
-                                <input
-                                    type="number"
-                                    min={0}
-                                    step={5}
-                                    value={sessionPrice}
-                                    onChange={(e) => setSessionPrice(Math.max(0, parseInt(e.target.value || '0', 10)))}
-                                    className="w-full bg-transparent text-right text-lg font-semibold text-white tabular-nums focus:outline-none"
-                                />
-                            </div>
-                            <span className="text-[10px] text-gray-600">existing $85-$100 SKU</span>
-                        </label>
-
-                        {/* Elevate academies */}
-                        <label className="flex flex-col gap-1.5">
-                            <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Elevate academies</span>
-                            <div className="flex items-center gap-2 bg-black border border-white/10 rounded-lg px-3 py-2 focus-within:border-emerald-400/60">
+                    {/* When Elevate is on, surface the academy count input */}
+                    {includeElevate && (
+                        <div className="mt-4 rounded-lg border border-emerald-400/20 bg-emerald-400/[0.04] px-4 py-3 flex flex-wrap items-center gap-x-5 gap-y-3">
+                            <label className="flex items-center gap-2.5 text-sm text-gray-300">
+                                <span className="text-gray-400">Elevate academies layered on:</span>
                                 <input
                                     type="number"
                                     min={0}
                                     step={1}
                                     value={elevateAcademies}
                                     onChange={(e) => setElevateAcademies(Math.max(0, parseInt(e.target.value || '0', 10)))}
-                                    className="w-full bg-transparent text-right text-lg font-semibold text-white tabular-nums focus:outline-none"
+                                    className="w-20 bg-black/40 border border-white/10 rounded px-2 py-1 text-right font-semibold text-white tabular-nums focus:outline-none focus:border-emerald-400"
                                 />
-                            </div>
-                            <span className="text-[10px] text-gray-600">licensed schools layered on</span>
-                        </label>
+                            </label>
+                            <span className="text-[11px] text-gray-500 tabular-nums">
+                                = {(elevateAcademies * academySize).toLocaleString('en-US')} bundled athletes
+                                (assumes ~{academySize}/academy)
+                            </span>
+                        </div>
+                    )}
+                </div>
 
-                        {/* Athletes per academy */}
-                        <label className="flex flex-col gap-1.5">
-                            <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Athletes / academy</span>
-                            <div className="flex items-center gap-2 bg-black border border-white/10 rounded-lg px-3 py-2 focus-within:border-emerald-400/60">
+                {/* ADVANCED ASSUMPTIONS DISCLOSURE */}
+                <div className="mt-7 pt-6 border-t border-white/5">
+                    <button
+                        onClick={() => setShowAdvanced(!showAdvanced)}
+                        className="text-[11px] font-semibold text-gray-400 hover:text-white uppercase tracking-widest transition-colors flex items-center gap-2"
+                    >
+                        <span>{showAdvanced ? '−' : '+'}</span> Adjust assumptions
+                    </button>
+                    {!showAdvanced && (
+                        <p className="text-[11px] text-gray-600 mt-2 leading-relaxed">
+                            Defaults: {lowScorePct}% of athletes score Below Average · {conversionPct}% convert
+                            on Academy+ outreach · ${sessionPrice} per session · ~{academySize} athletes per Elevate academy.
+                        </p>
+                    )}
+                    {showAdvanced && (
+                        <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <label className="flex flex-col gap-1">
+                                <span className="text-[10px] text-gray-500 uppercase tracking-wider">Low-score share %</span>
                                 <input
-                                    type="number"
-                                    min={0}
-                                    step={50}
+                                    type="number" min={0} max={100} step={1}
+                                    value={lowScorePct}
+                                    onChange={(e) => setLowScorePct(Math.max(0, Math.min(100, parseInt(e.target.value || '0', 10))))}
+                                    className="bg-black border border-white/10 rounded-lg px-3 py-2 text-right text-sm font-semibold text-white tabular-nums focus:outline-none focus:border-amber-400"
+                                />
+                            </label>
+                            <label className="flex flex-col gap-1">
+                                <span className="text-[10px] text-gray-500 uppercase tracking-wider">A+ conversion %</span>
+                                <input
+                                    type="number" min={0} max={100} step={1}
+                                    value={conversionPct}
+                                    onChange={(e) => setConversionPct(Math.max(0, Math.min(100, parseInt(e.target.value || '0', 10))))}
+                                    className="bg-black border border-white/10 rounded-lg px-3 py-2 text-right text-sm font-semibold text-white tabular-nums focus:outline-none focus:border-amber-400"
+                                />
+                            </label>
+                            <label className="flex flex-col gap-1">
+                                <span className="text-[10px] text-gray-500 uppercase tracking-wider">Session price $</span>
+                                <input
+                                    type="number" min={0} step={5}
+                                    value={sessionPrice}
+                                    onChange={(e) => setSessionPrice(Math.max(0, parseInt(e.target.value || '0', 10)))}
+                                    className="bg-black border border-white/10 rounded-lg px-3 py-2 text-right text-sm font-semibold text-white tabular-nums focus:outline-none focus:border-amber-400"
+                                />
+                            </label>
+                            <label className="flex flex-col gap-1">
+                                <span className="text-[10px] text-gray-500 uppercase tracking-wider">Athletes / academy</span>
+                                <input
+                                    type="number" min={0} step={50}
                                     value={academySize}
                                     onChange={(e) => setAcademySize(Math.max(0, parseInt(e.target.value || '0', 10)))}
-                                    className="w-full bg-transparent text-right text-lg font-semibold text-white tabular-nums focus:outline-none"
+                                    className="bg-black border border-white/10 rounded-lg px-3 py-2 text-right text-sm font-semibold text-white tabular-nums focus:outline-none focus:border-emerald-400"
                                 />
-                            </div>
-                            <span className="text-[10px] text-gray-600">avg roster per partner school</span>
-                        </label>
-                    </div>
-
-                    {/* Cross-references */}
-                    <div className="mt-6 pt-5 border-t border-white/5 flex flex-wrap gap-x-5 gap-y-2 text-[11px] text-gray-500">
-                        <span>
-                            <span className="text-gray-400">Retest cycle:</span> see The Academy+ Funnel tab
-                        </span>
-                        <span className="hidden sm:inline text-gray-700">&middot;</span>
-                        <span>
-                            <span className="text-gray-400">Tier thresholds:</span> Clutch report &middot; Below Average &lt; 651
-                        </span>
-                        <span className="hidden sm:inline text-gray-700">&middot;</span>
-                        <span>
-                            <span className="text-gray-400">Elevate channel:</span> see The Elevate Play tab
-                        </span>
-                    </div>
+                            </label>
+                        </div>
+                    )}
                 </div>
 
                 <p className="text-xs text-gray-600 mt-6 leading-relaxed">
-                    Layered revenue is directional, not contractual. SportsRecruits crossover (400K-athlete pool)
-                    can be modeled by raising the profile slider above. On-demand and post-coaching retests are
-                    additional revenue lines on top of the standard cycle modeled here.
+                    Directional model. SportsRecruits crossover (400K-athlete pool) can be modeled by raising
+                    the profile slider. On-demand and post-coaching retests are additional revenue lines on
+                    top of the standard cycle.
                 </p>
             </div>
         </section>
