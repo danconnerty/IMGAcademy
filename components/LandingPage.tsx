@@ -339,10 +339,11 @@ const PricingCalculator = () => {
 };
 
 // --- IMG ACADEMY DIGITAL SURFACES ---
-const SURFACES: { name: string; blurb: string; logo?: string; motion: 'testing' | 'distribution' }[] = [
-    { name: 'NCSA', motion: 'testing', blurb: 'Standard on every athlete profile. Per-athlete pricing across the membership base - not an add-on, not a SKU families have to opt into.', logo: '/NCSA.jpg' },
-    { name: 'SportsRecruits', motion: 'testing', blurb: 'Same integration extends across SR’s 400K-athlete club and HS audience. Adds volume, drops the per-profile price for IMG.', logo: '/Sportsrecruits.png' },
+const SURFACES: { name: string; blurb: string; logo?: string; motion: 'testing' | 'distribution' | 'funnel' }[] = [
+    { name: 'NCSA', motion: 'testing', blurb: 'Standard on every athlete profile. Per-active-subscriber pricing across the membership base - not an add-on, not a SKU families have to opt into.', logo: '/NCSA.jpg' },
+    { name: 'SportsRecruits', motion: 'testing', blurb: 'Same integration extends across SR’s 400K-athlete club and HS audience. Adds volume, drops the per-subscriber price for IMG.', logo: '/Sportsrecruits.png' },
     { name: 'Elevate by IMG Academy', motion: 'distribution', blurb: 'Bundled into every Elevate academy license. Every athlete at every partner school gets an NCSA profile and a sport-specific assessment - the B2B distribution play that opens the TAM.', logo: '/IMGElevate.png' },
+    { name: 'IMG Academy+', motion: 'funnel', blurb: 'Low Clutch scores route automatically into the Academy+ session funnel. Pre-qualified leads at $0 acquisition cost - the lead-gen engine on top of every assessment.', logo: '/IMGacademy+.png' },
 ];
 
 const PartnerProperties = () => (
@@ -353,22 +354,25 @@ const PartnerProperties = () => (
                 <p className="text-sm font-medium text-blue-400">Where it plugs in</p>
             </div>
             <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
-                Three surfaces. Two motions.
+                Four surfaces. One integration.
             </h2>
             <p className="text-lg text-gray-400 leading-relaxed">
-                Sport-specific testing across NCSA and SportsRecruits - the recruiting layer IMG already
-                owns. And a bundled NCSA-profile-plus-assessment that ships with every Elevate academy license,
-                opening a B2B funnel NCSA can't reach on its own. One integration, no new SKU to invent.
+                Sport-specific testing across NCSA and SportsRecruits. Bundled into Elevate academy licenses
+                for B2B distribution. Routed into IMG Academy+ as a pre-qualified lead funnel. One integration,
+                no new SKU to invent.
             </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
             {SURFACES.map((s) => {
-                const motionLabel = s.motion === 'testing' ? 'Testing layer' : 'B2B distribution';
+                const motionLabel =
+                    s.motion === 'testing' ? 'Testing layer' :
+                    s.motion === 'distribution' ? 'B2B distribution' :
+                    'Lead-gen funnel';
                 const motionTone =
-                    s.motion === 'testing'
-                        ? 'text-blue-300 border-blue-400/30 bg-blue-400/[0.06]'
-                        : 'text-emerald-300 border-emerald-400/30 bg-emerald-400/[0.06]';
+                    s.motion === 'testing'      ? 'text-blue-300 border-blue-400/30 bg-blue-400/[0.06]' :
+                    s.motion === 'distribution' ? 'text-emerald-300 border-emerald-400/30 bg-emerald-400/[0.06]' :
+                                                  'text-amber-300 border-amber-400/30 bg-amber-400/[0.06]';
                 return (
                     <div key={s.name} className="bg-[#070707] p-5 sm:p-7 flex flex-col">
                         {s.logo && (
@@ -392,11 +396,111 @@ const PartnerProperties = () => (
     </section>
 );
 
+// --- RECRUITING CORRELATIONS (proof-of-value block, lives on landing page) ---
+const RecruitingCorrelations: React.FC<{ onOpenSample: () => void }> = ({ onOpenSample }) => (
+    <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-20 sm:mb-24">
+        <div className="mb-8 sm:mb-10 max-w-2xl">
+            <p className="text-sm font-medium text-blue-400 mb-3">What the score predicts</p>
+            <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
+                Look at the recruiting correlations.
+            </h2>
+            <p className="text-lg text-gray-400 leading-relaxed">
+                The Clutch Factor isn't a vanity metric. The score correlates directly with the two outcomes
+                families pay NCSA to deliver: a D1 commitment and a college career that ends in conference honors.
+            </p>
+        </div>
+
+        <div className="rounded-2xl border border-white/10 bg-[#070707] overflow-hidden">
+            {/* Header strip */}
+            <div className="px-5 sm:px-7 py-4 border-b border-white/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div className="flex items-center gap-2.5">
+                    <FileText size={14} className="text-blue-400" />
+                    <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest">Look at the recruiting correlations</p>
+                </div>
+                <div className="flex items-center gap-2">
+                    <button
+                        onClick={onOpenSample}
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-300 hover:text-white border border-white/10 hover:border-white/30 px-3 py-1.5 rounded-md transition-colors"
+                    >
+                        <FileText size={12} /> Sample reports
+                    </button>
+                    <a
+                        href="https://ntangible.co/research"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 self-start sm:self-auto text-xs font-semibold text-white bg-blue-500 hover:bg-blue-400 px-3 py-1.5 rounded-md transition-colors"
+                    >
+                        See all papers <ArrowRight size={12} />
+                    </a>
+                </div>
+            </div>
+
+            {/* Stat grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-white/5">
+                <div className="p-6 sm:p-7">
+                    <p className="text-3xl sm:text-4xl font-semibold text-blue-400 tracking-tight mb-2 tabular-nums">2&times;</p>
+                    <p className="text-white text-sm sm:text-base font-semibold mb-1">More likely to commit D1</p>
+                    <p className="text-gray-500 text-sm leading-relaxed">Athletes scoring above 750 on the Clutch Factor commit to Division I programs at twice the rate of athletes below the threshold.</p>
+                </div>
+                <div className="p-6 sm:p-7">
+                    <p className="text-3xl sm:text-4xl font-semibold text-blue-400 tracking-tight mb-2 tabular-nums">73%</p>
+                    <p className="text-white text-sm sm:text-base font-semibold mb-1">All-American or All-Conference</p>
+                    <p className="text-gray-500 text-sm leading-relaxed">Of collegiate athletes scoring above 800, 73% are named All-American or All-Conference selections. The signal college coaches don't have today.</p>
+                </div>
+            </div>
+
+            {/* Whitepaper sub-section */}
+            <div className="border-t border-white/10">
+                <div className="px-5 sm:px-7 py-3 bg-white/[0.02] border-b border-white/5">
+                    <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-widest">The supporting research</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/5">
+                    {[
+                        {
+                            eyebrow: 'Whitepaper · The research',
+                            title: 'From Clutch Outcomes to Pressure Behavior',
+                            subtitle: 'A plate-appearance framework for evaluating NTangible in collegiate hitters. Extends Predictive Findings of Clutch Performance in Collegiate Baseball (Sept 2025).',
+                            meta: 'April 15, 2026',
+                            href: 'https://drive.google.com/file/u/1/d/1Co3EUQOxadIwDkTSastxkQ4IJouXBAdB/view?usp=sharing',
+                        },
+                        {
+                            eyebrow: "Whitepaper · Decision-maker's companion",
+                            title: 'From Pressure Performance to Program Economics',
+                            subtitle: 'A decision-maker’s companion to the April 2026 NTangible whitepaper',
+                            meta: 'Executive summary',
+                            href: 'https://drive.google.com/file/d/1Qn8SMEzoStulq9UzsGF1aHGmjqRuiFBj/view',
+                        },
+                    ].map((paper) => (
+                        <a
+                            key={paper.title}
+                            href={paper.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group p-5 sm:p-7 flex items-start gap-4 hover:bg-white/[0.02] transition-colors"
+                        >
+                            <div className="flex-1 min-w-0">
+                                <p className="text-[10px] font-semibold text-blue-300 uppercase tracking-widest mb-2">{paper.eyebrow}</p>
+                                <p className="text-[15px] sm:text-base font-semibold text-white tracking-tight leading-snug mb-1 group-hover:text-blue-300 transition-colors">
+                                    {paper.title}
+                                </p>
+                                <p className="text-[13px] text-gray-500 leading-snug mb-2.5">{paper.subtitle}</p>
+                                <p className="text-[11px] text-gray-600 uppercase tracking-widest font-semibold tabular-nums">{paper.meta}</p>
+                            </div>
+                            <span className="shrink-0 mt-1 w-8 h-8 rounded-full border border-white/10 group-hover:border-blue-400/40 group-hover:bg-blue-500/10 text-gray-500 group-hover:text-blue-300 flex items-center justify-center transition-all">
+                                <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                            </span>
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </section>
+);
+
 // --- INSET TAB NAVIGATION ---
-type TabId = 'assessments' | 'coaches' | 'elevate' | 'academy-plus' | 'economics' | 'activation';
+type TabId = 'coaches' | 'elevate' | 'academy-plus' | 'economics' | 'activation';
 
 const TABS: { id: TabId; label: string }[] = [
-    { id: 'assessments', label: 'The Assessments' },
     { id: 'coaches', label: "For College Coaches" },
     { id: 'elevate', label: 'The Elevate Play' },
     { id: 'academy-plus', label: 'The Academy+ Funnel' },
@@ -415,7 +519,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
   const [showNterpretReport, setShowNterpretReport] = useState(false);
   const [showBooking, setShowBooking] = useState(false);
   const [showReportModal, setShowReportModal] = useState(false);
-  const [activeTab, setActiveTab] = useState<TabId>('assessments');
+  const [activeTab, setActiveTab] = useState<TabId>('coaches');
 
   useEffect(() => {
     setIsLoaded(true);
@@ -439,177 +543,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
 
   const renderTabPanel = () => {
     switch (activeTab) {
-      case 'assessments':
-        return (
-          <>
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="mb-12 sm:mb-16 max-w-2xl">
-                      <p className="text-sm font-medium text-blue-400 mb-3">What powers the profile</p>
-                      <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
-                          Two reports. One complete profile.
-                      </h2>
-                      <p className="text-lg text-gray-400 leading-relaxed">
-                          Every athlete completes both assessments in under 15 minutes from any phone. The reports live inside the
-                          IMG Academy dashboard - and athletes can share them with college coaches in one tap.
-                      </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-                      {/* NTerpret Mental Scouting Report */}
-                      <div className="bg-[#070707] border border-white/10 rounded-2xl overflow-hidden flex flex-col">
-                          <div className="relative px-6 sm:px-8 pt-10 sm:pt-14 pb-8 sm:pb-10 flex items-end justify-center overflow-hidden bg-gradient-to-b from-blue-500/[0.08] via-transparent to-transparent min-h-[420px] sm:min-h-[520px]">
-                              <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none" />
-                              <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] bg-blue-500/15 blur-[100px] rounded-full pointer-events-none" />
-                              <img
-                                  src="/NterpretMobile.png"
-                                  alt="NTerpret Mental Scouting Report on mobile"
-                                  loading="lazy"
-                                  decoding="async"
-                                  className="relative z-10 max-h-[420px] sm:max-h-[520px] w-auto object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]"
-                              />
-                          </div>
-                          <div className="p-6 sm:p-8 border-t border-white/5">
-                              <p className="text-[11px] font-semibold text-blue-400 uppercase tracking-[0.2em] mb-2">NTerpret<sup className="text-[8px] tracking-normal ml-0.5">&trade;</sup></p>
-                              <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight mb-3">Mental Scouting Report</h3>
-                              <p className="text-base text-gray-400 leading-relaxed mb-6">
-                                  The complete cognitive profile - how each athlete learns, leads, communicates, and competes.
-                                  The report college coaches now expect alongside the highlight tape.
-                              </p>
-                              <button
-                                  onClick={() => setShowNterpretReport(true)}
-                                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-white/20 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors"
-                              >
-                                  <FileText size={14} /> View sample NTerpret report
-                              </button>
-                          </div>
-                      </div>
-
-                      {/* Clutch Factor Assessment */}
-                      <div className="bg-[#070707] border border-white/10 rounded-2xl overflow-hidden flex flex-col">
-                          <div className="relative px-6 sm:px-8 pt-10 sm:pt-14 pb-8 sm:pb-10 flex items-end justify-center overflow-hidden bg-gradient-to-b from-blue-500/[0.08] via-transparent to-transparent min-h-[420px] sm:min-h-[520px]">
-                              <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none" />
-                              <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] bg-blue-500/15 blur-[100px] rounded-full pointer-events-none" />
-                              <img
-                                  src="/ClutchMobile.png"
-                                  alt="Clutch Assessment on mobile"
-                                  loading="lazy"
-                                  decoding="async"
-                                  className="relative z-10 max-h-[420px] sm:max-h-[520px] w-auto object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]"
-                              />
-                          </div>
-                          <div className="p-6 sm:p-8 border-t border-white/5">
-                              <p className="text-[11px] font-semibold text-blue-400 uppercase tracking-[0.2em] mb-2">Clutch Factor<sup className="text-[8px] tracking-normal ml-0.5">&trade;</sup></p>
-                              <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight mb-3">Clutch Factor Assessment</h3>
-                              <p className="text-base text-gray-400 leading-relaxed mb-6">
-                                  A standardized Clutch Factor<sup className="text-[8px] ml-0.5">&trade;</sup> score that quantifies how an
-                                  athlete responds when the game is on the line. Benchmarked and tracked year over year.
-                              </p>
-                              <button
-                                  onClick={() => setShowClutchReport(true)}
-                                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-white/20 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors"
-                              >
-                                  <FileText size={14} /> View sample Clutch report
-                              </button>
-                          </div>
-                      </div>
-                  </div>
-              </section>
-
-              {/* OUTCOMES - what the score actually predicts */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="mb-8 sm:mb-10 max-w-2xl">
-                      <p className="text-sm font-medium text-blue-400 mb-3">What the score predicts</p>
-                      <h3 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
-                          Look at the recruiting correlations.
-                      </h3>
-                      <p className="text-lg text-gray-400 leading-relaxed">
-                          The Clutch Factor isn't a vanity metric. The score correlates directly with the
-                          two outcomes families pay NCSA to deliver: a D1 commitment and a college career
-                          that ends in conference honors.
-                      </p>
-                  </div>
-
-                  <div className="rounded-2xl border border-white/10 bg-[#070707] overflow-hidden">
-                      {/* Header strip */}
-                      <div className="px-5 sm:px-7 py-4 border-b border-white/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                          <div className="flex items-center gap-2.5">
-                              <FileText size={14} className="text-blue-400" />
-                              <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest">Look at the recruiting correlations</p>
-                          </div>
-                          <a
-                              href="https://ntangible.co/research"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 self-start sm:self-auto text-xs font-semibold text-white bg-blue-500 hover:bg-blue-400 px-3 py-1.5 rounded-md transition-colors"
-                          >
-                              See all papers <ArrowRight size={12} />
-                          </a>
-                      </div>
-
-                      {/* Stat grid */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-white/5">
-                          <div className="p-6 sm:p-7">
-                              <p className="text-3xl sm:text-4xl font-semibold text-blue-400 tracking-tight mb-2 tabular-nums">2&times;</p>
-                              <p className="text-white text-sm sm:text-base font-semibold mb-1">More likely to commit D1</p>
-                              <p className="text-gray-500 text-sm leading-relaxed">Athletes scoring above 750 on the Clutch Factor commit to Division I programs at twice the rate of athletes below the threshold.</p>
-                          </div>
-                          <div className="p-6 sm:p-7">
-                              <p className="text-3xl sm:text-4xl font-semibold text-blue-400 tracking-tight mb-2 tabular-nums">73%</p>
-                              <p className="text-white text-sm sm:text-base font-semibold mb-1">All-American or All-Conference</p>
-                              <p className="text-gray-500 text-sm leading-relaxed">Of collegiate athletes scoring above 800, 73% are named All-American or All-Conference selections. The signal college coaches don't have today.</p>
-                          </div>
-                      </div>
-
-                      {/* Whitepaper sub-section */}
-                      <div className="border-t border-white/10">
-                          <div className="px-5 sm:px-7 py-3 bg-white/[0.02] border-b border-white/5">
-                              <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-widest">The supporting research</p>
-                          </div>
-                          <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/5">
-                              {[
-                                  {
-                                      eyebrow: 'Whitepaper · The research',
-                                      title: 'From Clutch Outcomes to Pressure Behavior',
-                                      subtitle: 'A plate-appearance framework for evaluating NTangible in collegiate hitters. Extends Predictive Findings of Clutch Performance in Collegiate Baseball (Sept 2025).',
-                                      meta: 'April 15, 2026',
-                                      href: 'https://drive.google.com/file/u/1/d/1Co3EUQOxadIwDkTSastxkQ4IJouXBAdB/view?usp=sharing',
-                                  },
-                                  {
-                                      eyebrow: "Whitepaper · Decision-maker's companion",
-                                      title: 'From Pressure Performance to Program Economics',
-                                      subtitle: 'A decision-maker’s companion to the April 2026 NTangible whitepaper',
-                                      meta: 'Executive summary',
-                                      href: 'https://drive.google.com/file/d/1Qn8SMEzoStulq9UzsGF1aHGmjqRuiFBj/view',
-                                  },
-                              ].map((paper) => (
-                                  <a
-                                      key={paper.title}
-                                      href={paper.href}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="group p-5 sm:p-7 flex items-start gap-4 hover:bg-white/[0.02] transition-colors"
-                                  >
-                                      <div className="flex-1 min-w-0">
-                                          <p className="text-[10px] font-semibold text-blue-300 uppercase tracking-widest mb-2">{paper.eyebrow}</p>
-                                          <p className="text-[15px] sm:text-base font-semibold text-white tracking-tight leading-snug mb-1 group-hover:text-blue-300 transition-colors">
-                                              {paper.title}
-                                          </p>
-                                          <p className="text-[13px] text-gray-500 leading-snug mb-2.5">{paper.subtitle}</p>
-                                          <p className="text-[11px] text-gray-600 uppercase tracking-widest font-semibold tabular-nums">{paper.meta}</p>
-                                      </div>
-                                      <span className="shrink-0 mt-1 w-8 h-8 rounded-full border border-white/10 group-hover:border-blue-400/40 group-hover:bg-blue-500/10 text-gray-500 group-hover:text-blue-300 flex items-center justify-center transition-all">
-                                          <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-                                      </span>
-                                  </a>
-                              ))}
-                          </div>
-                      </div>
-                  </div>
-              </section>
-
-          </>
-        );
-
       case 'coaches':
         return (
           <>
@@ -1542,12 +1475,12 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
               </div>
 
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight mb-6 leading-[1.02] text-white">
-                  A mental performance score for <span className="text-blue-400">every NCSA athlete.</span>
+                  A mental performance score for <span className="text-blue-400">every NCSA and SportsRecruits athlete.</span>
               </h1>
 
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-                  Sport-specific testing across NCSA and SportsRecruits. Standalone tool on one side -
-                  Elevate-bundled distribution into every partner academy's roster on the other.
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
+                  Sport-specific testing across NCSA and SportsRecruits, bundled into every Elevate academy
+                  license, with low scores routed straight into the IMG Academy+ funnel.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10 max-w-md sm:max-w-none mx-auto">
@@ -1589,32 +1522,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
               </div>
           </section>
 
-          {/* RECOGNIZED BY - YSBR 2026 RISING STAR */}
-          <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 sm:mb-20">
-              <div className="rounded-3xl border border-amber-400/30 bg-gradient-to-b from-amber-400/[0.08] via-amber-400/[0.02] to-transparent p-6 sm:p-9">
-                  <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 text-center sm:text-left">
-                      <div className="shrink-0">
-                          <img
-                              src="/ysbr.png"
-                              alt="Youth Sports Business Report"
-                              className="h-20 sm:h-24 w-auto object-contain drop-shadow-[0_10px_30px_rgba(251,191,36,0.25)]"
-                          />
-                      </div>
-                      <div className="flex-1 sm:border-l sm:border-amber-400/20 sm:pl-8">
-                          <p className="text-[11px] font-semibold text-amber-300 uppercase tracking-widest mb-2">Industry recognition</p>
-                          <p className="text-2xl sm:text-3xl font-semibold text-white tracking-tight leading-tight mb-2">
-                              2026 Rising Star Award &middot; <span className="text-amber-200">Youth Sports Business Report</span>
-                          </p>
-                          <p className="text-base text-gray-400 leading-relaxed">
-                              Selected by the industry trade for category-defining work in youth sports
-                              technology - the same year IMG Academy is consolidating its digital
-                              recruiting portfolio.
-                          </p>
-                      </div>
-                  </div>
-              </div>
-          </section>
-
           {/* SOCIAL PROOF / TRUSTED TEAMS TICKER */}
           <div className="w-full mb-16 sm:mb-20">
               <TrustedTeams />
@@ -1622,6 +1529,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
 
           {/* IMG ACADEMY DIGITAL SURFACES */}
           <PartnerProperties />
+
+          {/* RECRUITING CORRELATIONS (proof-of-value) */}
+          <RecruitingCorrelations onOpenSample={() => setShowReportModal(true)} />
 
           {/* INSET TABBED SECTION */}
           <div className="mb-24 sm:mb-32">
@@ -1708,8 +1618,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   <div>
                       <p className="text-xs font-semibold text-white uppercase tracking-wider mb-4">Proposal</p>
                       <ul className="space-y-2.5 text-sm">
-                          <li><button onClick={() => handleTabChange('assessments')} className="text-gray-400 hover:text-white transition-colors">The assessments</button></li>
                           <li><button onClick={() => handleTabChange('coaches')} className="text-gray-400 hover:text-white transition-colors">For college coaches</button></li>
+                          <li><button onClick={() => handleTabChange('elevate')} className="text-gray-400 hover:text-white transition-colors">The Elevate Play</button></li>
+                          <li><button onClick={() => handleTabChange('academy-plus')} className="text-gray-400 hover:text-white transition-colors">The Academy+ Funnel</button></li>
                           <li><button onClick={() => handleTabChange('economics')} className="text-gray-400 hover:text-white transition-colors">Economics</button></li>
                           <li><button onClick={() => handleTabChange('activation')} className="text-gray-400 hover:text-white transition-colors">Activation &amp; rollout</button></li>
                       </ul>
