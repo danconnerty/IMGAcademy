@@ -469,7 +469,7 @@ const AssessmentShowcase: React.FC<{ onViewNterpret: () => void; onViewClutch: (
 );
 
 // --- RECRUITING CORRELATIONS (proof-of-value block, lives on landing page) ---
-const RecruitingCorrelations: React.FC<{ onOpenSample: () => void }> = ({ onOpenSample }) => (
+const RecruitingCorrelations: React.FC = () => (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-20 sm:mb-24">
         <div className="mb-8 sm:mb-10 max-w-2xl">
             <p className="text-sm font-medium text-blue-400 mb-3">What the score predicts</p>
@@ -489,22 +489,14 @@ const RecruitingCorrelations: React.FC<{ onOpenSample: () => void }> = ({ onOpen
                     <FileText size={14} className="text-blue-400" />
                     <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest">Look at the recruiting correlations</p>
                 </div>
-                <div className="flex items-center gap-2">
-                    <button
-                        onClick={onOpenSample}
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-300 hover:text-white border border-white/10 hover:border-white/30 px-3 py-1.5 rounded-md transition-colors"
-                    >
-                        <FileText size={12} /> Sample reports
-                    </button>
-                    <a
-                        href="https://ntangible.co/research"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 self-start sm:self-auto text-xs font-semibold text-white bg-blue-500 hover:bg-blue-400 px-3 py-1.5 rounded-md transition-colors"
-                    >
-                        See all papers <ArrowRight size={12} />
-                    </a>
-                </div>
+                <a
+                    href="https://ntangible.co/research"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 self-start sm:self-auto text-xs font-semibold text-white bg-blue-500 hover:bg-blue-400 px-3 py-1.5 rounded-md transition-colors"
+                >
+                    See all papers <ArrowRight size={12} />
+                </a>
             </div>
 
             {/* Stat grid */}
@@ -1609,7 +1601,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
           />
 
           {/* RECRUITING CORRELATIONS (proof-of-value) */}
-          <RecruitingCorrelations onOpenSample={() => setShowReportModal(true)} />
+          <RecruitingCorrelations />
 
           {/* INSET TABBED SECTION */}
           <div className="mb-24 sm:mb-32">
