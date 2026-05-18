@@ -123,29 +123,24 @@ const tierForVolume = (v: number): VolumeTier =>
 
 const PricingCalculator = () => {
     const [profiles, setProfiles] = useState(150_000);
+    const [elevateAcademies, setElevateAcademies] = useState(5);
 
-    // Layer toggles
-    const [includeRetest, setIncludeRetest]         = useState(true);
-    const [includeAcademyPlus, setIncludeAcademyPlus] = useState(true);
-    const [includeElevate, setIncludeElevate]       = useState(false);
-
-    // Tunable assumptions (hidden behind disclosure)
+    // Tunable assumptions hidden behind a disclosure
     const [showAdvanced, setShowAdvanced]   = useState(false);
     const [lowScorePct, setLowScorePct]     = useState(20);
     const [conversionPct, setConversionPct] = useState(5);
     const [sessionPrice, setSessionPrice]   = useState(90);
-    const [elevateAcademies, setElevateAcademies] = useState(5);
     const [academySize, setAcademySize]     = useState(400);
 
     const clamped = Math.max(0, Math.min(MAX_PROFILES, Number.isFinite(profiles) ? profiles : 0));
     const tier = tierForVolume(clamped);
 
-    // Layers (always computed; zeroed out when their toggle is off)
+    // Always computed - presented as stackable revenue opportunities
     const baselineRev    = clamped * tier.imgShare;
-    const retestRev      = includeRetest      ? baselineRev : 0;
-    const academyPlusRev = includeAcademyPlus ? clamped * (lowScorePct / 100) * (conversionPct / 100) * sessionPrice : 0;
-    const elevateRev     = includeElevate     ? elevateAcademies * academySize * tier.imgShare * 2 : 0;
-    const stackedTotal   = baselineRev + retestRev + academyPlusRev + elevateRev;
+    const retestRev      = baselineRev;
+    const academyPlusRev = clamped * (lowScorePct / 100) * (conversionPct / 100) * sessionPrice;
+    const elevateRev     = elevateAcademies * academySize * tier.imgShare * 2;
+    const allInTotal     = baselineRev + retestRev + academyPlusRev + elevateRev;
 
     const fmt = (n: number) => `$${Math.round(n).toLocaleString('en-US')}`;
     const fmtMoney = (n: number) => Number.isInteger(n) ? `${n}` : n.toFixed(2);
@@ -200,62 +195,20 @@ const PricingCalculator = () => {
                 </p>
             </div>
 
-            {/* ---- ONE UNIFIED CALCULATOR ---- */}
-            <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-10">
+            {/* ---- STEP 1: BASELINE REVENUE AT SCALE ---- */}
+            <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-10 mb-8">
+                <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mb-4">Step 01 &middot; Revenue at scale</p>
 
-                {/* HERO: total revenue */}
                 <div className="rounded-2xl border border-blue-500/30 bg-gradient-to-b from-blue-500/[0.10] to-transparent p-6 sm:p-8 mb-8">
                     <p className="text-sm font-medium text-blue-400 mb-2">Annual revenue to IMG Academy</p>
-                    <p className="text-5xl sm:text-6xl md:text-7xl font-semibold text-white tracking-tight tabular-nums mb-2">{fmt(stackedTotal)}</p>
+                    <p className="text-5xl sm:text-6xl md:text-7xl font-semibold text-white tracking-tight tabular-nums mb-2">{fmt(baselineRev)}</p>
                     <p className="text-sm text-gray-400 tabular-nums">
-                        {clamped.toLocaleString('en-US')} profiles / yr at the {tier.label.toLowerCase()} tier (${fmtMoney(tier.imgShare)} to IMG per athlete)
+                        {clamped.toLocaleString('en-US')} profiles &times; ${fmtMoney(tier.imgShare)} per profile &middot; {tier.label.toLowerCase()} tier
                     </p>
                 </div>
 
-                {/* HORIZONTAL STACKED BAR - where the revenue comes from */}
-                {stackedTotal > 0 && (
-                    <div className="mb-8">
-                        <div className="flex h-3 rounded-full overflow-hidden bg-white/5 mb-3">
-                            <div className="bg-blue-500"    style={{ width: `${(baselineRev    / stackedTotal) * 100}%` }} />
-                            <div className="bg-blue-400"    style={{ width: `${(retestRev      / stackedTotal) * 100}%` }} />
-                            <div className="bg-amber-400"   style={{ width: `${(academyPlusRev / stackedTotal) * 100}%` }} />
-                            <div className="bg-emerald-400" style={{ width: `${(elevateRev     / stackedTotal) * 100}%` }} />
-                        </div>
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                            <div className="flex items-baseline gap-2">
-                                <span className="inline-block w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0 translate-y-[-1px]" />
-                                <div>
-                                    <p className="text-sm font-semibold text-white tabular-nums">{fmt(baselineRev)}</p>
-                                    <p className="text-[11px] text-gray-500">Per-profile assessment</p>
-                                </div>
-                            </div>
-                            <div className={`flex items-baseline gap-2 ${includeRetest ? '' : 'opacity-40'}`}>
-                                <span className="inline-block w-2.5 h-2.5 rounded-full bg-blue-400 shrink-0 translate-y-[-1px]" />
-                                <div>
-                                    <p className="text-sm font-semibold text-white tabular-nums">{fmt(retestRev)}</p>
-                                    <p className="text-[11px] text-gray-500">6-month retest cycle</p>
-                                </div>
-                            </div>
-                            <div className={`flex items-baseline gap-2 ${includeAcademyPlus ? '' : 'opacity-40'}`}>
-                                <span className="inline-block w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0 translate-y-[-1px]" />
-                                <div>
-                                    <p className="text-sm font-semibold text-white tabular-nums">{fmt(academyPlusRev)}</p>
-                                    <p className="text-[11px] text-gray-500">Academy+ session funnel</p>
-                                </div>
-                            </div>
-                            <div className={`flex items-baseline gap-2 ${includeElevate ? '' : 'opacity-40'}`}>
-                                <span className="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0 translate-y-[-1px]" />
-                                <div>
-                                    <p className="text-sm font-semibold text-white tabular-nums">{fmt(elevateRev)}</p>
-                                    <p className="text-[11px] text-gray-500">Elevate channel</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )}
-
-                {/* PROFILE SLIDER */}
-                <div className="pt-6 border-t border-white/5">
+                {/* Slider */}
+                <div className="pt-2">
                     <div className="flex items-end justify-between mb-3 gap-4">
                         <label className="text-sm font-medium text-gray-400">
                             Annual NCSA profiles
@@ -298,119 +251,148 @@ const PricingCalculator = () => {
                         ))}
                     </div>
                 </div>
+            </div>
 
-                {/* LAYER TOGGLES */}
-                <div className="mt-7 pt-6 border-t border-white/5">
-                    <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-3">Revenue layers</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        {[
-                            { label: '6-month retest cycle',  on: includeRetest,      setOn: setIncludeRetest,      dot: 'bg-blue-400'    },
-                            { label: 'Academy+ session funnel', on: includeAcademyPlus, setOn: setIncludeAcademyPlus, dot: 'bg-amber-400'   },
-                            { label: 'Elevate channel',       on: includeElevate,     setOn: setIncludeElevate,     dot: 'bg-emerald-400' },
-                        ].map((t) => (
-                            <button
-                                key={t.label}
-                                onClick={() => t.setOn(!t.on)}
-                                className={`flex items-center justify-between gap-3 rounded-lg border px-4 py-3 transition-colors text-left ${
-                                    t.on
-                                        ? 'border-white/20 bg-white/[0.04] text-white'
-                                        : 'border-white/10 bg-transparent text-gray-500 hover:text-gray-300 hover:border-white/20'
-                                }`}
-                            >
-                                <span className="flex items-center gap-2.5">
-                                    <span className={`inline-block w-2 h-2 rounded-full ${t.dot} ${t.on ? '' : 'opacity-40'}`} />
-                                    <span className="text-sm font-medium">{t.label}</span>
-                                </span>
-                                <span className={`text-[10px] font-bold uppercase tracking-widest ${t.on ? 'text-blue-300' : 'text-gray-600'}`}>
-                                    {t.on ? 'On' : 'Off'}
-                                </span>
-                            </button>
-                        ))}
+            {/* ---- STEP 2: STACK ADDITIONAL OPPORTUNITIES ---- */}
+            <div className="mb-8">
+                <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-2">Step 02 &middot; Stack additional opportunities</p>
+                <h3 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight leading-snug mb-4">
+                    Three additional revenue layers, on the same volume.
+                </h3>
+                <p className="text-base text-gray-400 leading-relaxed mb-6 max-w-2xl">
+                    The baseline above is the floor - it only counts assessment fees. Each athlete is also a
+                    retest event, a potential Academy+ session, and (via Elevate) a B2B distribution point.
+                    The layers compound on the same audience.
+                </p>
+
+                <div className="space-y-3">
+                    {/* Layer 1 - Retest */}
+                    <div className="rounded-2xl border border-blue-400/30 bg-blue-400/[0.04] p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+                        <div className="sm:w-52 shrink-0">
+                            <p className="text-2xl sm:text-3xl font-semibold text-blue-200 tracking-tight tabular-nums">+ {fmt(retestRev)}</p>
+                            <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mt-1">6-month retest cycle</p>
+                        </div>
+                        <div className="flex-1 sm:border-l sm:border-white/10 sm:pl-6">
+                            <p className="text-sm text-gray-300 leading-relaxed">
+                                Standard cadence doubles annual assessment events from the same athlete base.
+                                On-demand retakes and post-coaching validation retests are additional revenue
+                                lines on top of this floor.
+                            </p>
+                        </div>
                     </div>
 
-                    {/* When Elevate is on, surface the academy count input */}
-                    {includeElevate && (
-                        <div className="mt-4 rounded-lg border border-emerald-400/20 bg-emerald-400/[0.04] px-4 py-3 flex flex-wrap items-center gap-x-5 gap-y-3">
-                            <label className="flex items-center gap-2.5 text-sm text-gray-300">
-                                <span className="text-gray-400">Elevate academies layered on:</span>
-                                <input
-                                    type="number"
-                                    min={0}
-                                    step={1}
-                                    value={elevateAcademies}
-                                    onChange={(e) => setElevateAcademies(Math.max(0, parseInt(e.target.value || '0', 10)))}
-                                    className="w-20 bg-black/40 border border-white/10 rounded px-2 py-1 text-right font-semibold text-white tabular-nums focus:outline-none focus:border-emerald-400"
-                                />
-                            </label>
-                            <span className="text-[11px] text-gray-500 tabular-nums">
-                                = {(elevateAcademies * academySize).toLocaleString('en-US')} bundled athletes
-                                (assumes ~{academySize}/academy)
-                            </span>
+                    {/* Layer 2 - Academy+ */}
+                    <div className="rounded-2xl border border-amber-400/30 bg-amber-400/[0.04] p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+                        <div className="sm:w-52 shrink-0">
+                            <p className="text-2xl sm:text-3xl font-semibold text-amber-200 tracking-tight tabular-nums">+ {fmt(academyPlusRev)}</p>
+                            <p className="text-[11px] font-semibold text-amber-300 uppercase tracking-widest mt-1">Academy+ session funnel</p>
                         </div>
-                    )}
-                </div>
-
-                {/* ADVANCED ASSUMPTIONS DISCLOSURE */}
-                <div className="mt-7 pt-6 border-t border-white/5">
-                    <button
-                        onClick={() => setShowAdvanced(!showAdvanced)}
-                        className="text-[11px] font-semibold text-gray-400 hover:text-white uppercase tracking-widest transition-colors flex items-center gap-2"
-                    >
-                        <span>{showAdvanced ? '−' : '+'}</span> Adjust assumptions
-                    </button>
-                    {!showAdvanced && (
-                        <p className="text-[11px] text-gray-600 mt-2 leading-relaxed">
-                            Defaults: {lowScorePct}% of athletes score Below Average · {conversionPct}% convert
-                            on Academy+ outreach · ${sessionPrice} per session · ~{academySize} athletes per Elevate academy.
-                        </p>
-                    )}
-                    {showAdvanced && (
-                        <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
-                            <label className="flex flex-col gap-1">
-                                <span className="text-[10px] text-gray-500 uppercase tracking-wider">Low-score share %</span>
-                                <input
-                                    type="number" min={0} max={100} step={1}
-                                    value={lowScorePct}
-                                    onChange={(e) => setLowScorePct(Math.max(0, Math.min(100, parseInt(e.target.value || '0', 10))))}
-                                    className="bg-black border border-white/10 rounded-lg px-3 py-2 text-right text-sm font-semibold text-white tabular-nums focus:outline-none focus:border-amber-400"
-                                />
-                            </label>
-                            <label className="flex flex-col gap-1">
-                                <span className="text-[10px] text-gray-500 uppercase tracking-wider">A+ conversion %</span>
-                                <input
-                                    type="number" min={0} max={100} step={1}
-                                    value={conversionPct}
-                                    onChange={(e) => setConversionPct(Math.max(0, Math.min(100, parseInt(e.target.value || '0', 10))))}
-                                    className="bg-black border border-white/10 rounded-lg px-3 py-2 text-right text-sm font-semibold text-white tabular-nums focus:outline-none focus:border-amber-400"
-                                />
-                            </label>
-                            <label className="flex flex-col gap-1">
-                                <span className="text-[10px] text-gray-500 uppercase tracking-wider">Session price $</span>
-                                <input
-                                    type="number" min={0} step={5}
-                                    value={sessionPrice}
-                                    onChange={(e) => setSessionPrice(Math.max(0, parseInt(e.target.value || '0', 10)))}
-                                    className="bg-black border border-white/10 rounded-lg px-3 py-2 text-right text-sm font-semibold text-white tabular-nums focus:outline-none focus:border-amber-400"
-                                />
-                            </label>
-                            <label className="flex flex-col gap-1">
-                                <span className="text-[10px] text-gray-500 uppercase tracking-wider">Athletes / academy</span>
-                                <input
-                                    type="number" min={0} step={50}
-                                    value={academySize}
-                                    onChange={(e) => setAcademySize(Math.max(0, parseInt(e.target.value || '0', 10)))}
-                                    className="bg-black border border-white/10 rounded-lg px-3 py-2 text-right text-sm font-semibold text-white tabular-nums focus:outline-none focus:border-emerald-400"
-                                />
-                            </label>
+                        <div className="flex-1 sm:border-l sm:border-white/10 sm:pl-6">
+                            <p className="text-sm text-gray-300 leading-relaxed">
+                                <span className="text-white font-medium">{lowScorePct}%</span> score Below Average &middot;{' '}
+                                <span className="text-white font-medium">{conversionPct}%</span> convert on Academy+ outreach &middot;{' '}
+                                <span className="text-white font-medium">${sessionPrice}</span> per 1-on-1 session. Pre-qualified
+                                pipeline at $0 acquisition cost.
+                            </p>
                         </div>
-                    )}
-                </div>
+                    </div>
 
-                <p className="text-xs text-gray-600 mt-6 leading-relaxed">
-                    Directional model. SportsRecruits crossover (400K-athlete pool) can be modeled by raising
-                    the profile slider. On-demand and post-coaching retests are additional revenue lines on
-                    top of the standard cycle.
+                    {/* Layer 3 - Elevate */}
+                    <div className="rounded-2xl border border-emerald-400/30 bg-emerald-400/[0.04] p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+                        <div className="sm:w-52 shrink-0">
+                            <p className="text-2xl sm:text-3xl font-semibold text-emerald-200 tracking-tight tabular-nums">+ {fmt(elevateRev)}</p>
+                            <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mt-1">Elevate B2B channel</p>
+                        </div>
+                        <div className="flex-1 sm:border-l sm:border-white/10 sm:pl-6">
+                            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-2">
+                                <label className="flex items-center gap-2 text-sm text-gray-300">
+                                    <span className="text-gray-400">Elevate academies:</span>
+                                    <input
+                                        type="number"
+                                        min={0}
+                                        step={1}
+                                        value={elevateAcademies}
+                                        onChange={(e) => setElevateAcademies(Math.max(0, parseInt(e.target.value || '0', 10)))}
+                                        className="w-16 bg-black/40 border border-white/10 rounded px-2 py-1 text-right font-semibold text-white tabular-nums focus:outline-none focus:border-emerald-400"
+                                    />
+                                </label>
+                                <span className="text-[11px] text-gray-500 tabular-nums">
+                                    = {(elevateAcademies * academySize).toLocaleString('en-US')} bundled athletes (~{academySize}/academy)
+                                </span>
+                            </div>
+                            <p className="text-sm text-gray-300 leading-relaxed">
+                                Each Elevate license bundles its full roster in - profile + retest. Institutional
+                                sale, not family-by-family.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* ---- STEP 3: ALL-IN POTENTIAL ---- */}
+            <div className="rounded-2xl border border-emerald-500/40 bg-gradient-to-b from-emerald-500/[0.10] to-transparent p-6 sm:p-10 mb-6">
+                <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-3">Step 03 &middot; All-in annual potential</p>
+                <p className="text-5xl sm:text-6xl md:text-7xl font-semibold text-white tracking-tight tabular-nums mb-3">{fmt(allInTotal)}</p>
+                <p className="text-sm text-gray-400 leading-relaxed">
+                    Baseline {fmt(baselineRev)} &nbsp;+&nbsp; retest {fmt(retestRev)} &nbsp;+&nbsp; Academy+ {fmt(academyPlusRev)}
+                    {elevateRev > 0 && <> &nbsp;+&nbsp; Elevate {fmt(elevateRev)}</>}
                 </p>
+            </div>
+
+            {/* ADVANCED ASSUMPTIONS */}
+            <div className="bg-[#070707] border border-white/10 rounded-2xl p-5 sm:p-6">
+                <button
+                    onClick={() => setShowAdvanced(!showAdvanced)}
+                    className="text-[11px] font-semibold text-gray-400 hover:text-white uppercase tracking-widest transition-colors flex items-center gap-2"
+                >
+                    <span>{showAdvanced ? '−' : '+'}</span> Adjust assumptions
+                </button>
+                {!showAdvanced && (
+                    <p className="text-[11px] text-gray-600 mt-2 leading-relaxed">
+                        Defaults: {lowScorePct}% of athletes score Below Average &middot; {conversionPct}% convert
+                        on Academy+ outreach &middot; ${sessionPrice} per session &middot; ~{academySize} athletes per Elevate academy.
+                    </p>
+                )}
+                {showAdvanced && (
+                    <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <label className="flex flex-col gap-1">
+                            <span className="text-[10px] text-gray-500 uppercase tracking-wider">Low-score share %</span>
+                            <input
+                                type="number" min={0} max={100} step={1}
+                                value={lowScorePct}
+                                onChange={(e) => setLowScorePct(Math.max(0, Math.min(100, parseInt(e.target.value || '0', 10))))}
+                                className="bg-black border border-white/10 rounded-lg px-3 py-2 text-right text-sm font-semibold text-white tabular-nums focus:outline-none focus:border-amber-400"
+                            />
+                        </label>
+                        <label className="flex flex-col gap-1">
+                            <span className="text-[10px] text-gray-500 uppercase tracking-wider">A+ conversion %</span>
+                            <input
+                                type="number" min={0} max={100} step={1}
+                                value={conversionPct}
+                                onChange={(e) => setConversionPct(Math.max(0, Math.min(100, parseInt(e.target.value || '0', 10))))}
+                                className="bg-black border border-white/10 rounded-lg px-3 py-2 text-right text-sm font-semibold text-white tabular-nums focus:outline-none focus:border-amber-400"
+                            />
+                        </label>
+                        <label className="flex flex-col gap-1">
+                            <span className="text-[10px] text-gray-500 uppercase tracking-wider">Session price $</span>
+                            <input
+                                type="number" min={0} step={5}
+                                value={sessionPrice}
+                                onChange={(e) => setSessionPrice(Math.max(0, parseInt(e.target.value || '0', 10)))}
+                                className="bg-black border border-white/10 rounded-lg px-3 py-2 text-right text-sm font-semibold text-white tabular-nums focus:outline-none focus:border-amber-400"
+                            />
+                        </label>
+                        <label className="flex flex-col gap-1">
+                            <span className="text-[10px] text-gray-500 uppercase tracking-wider">Athletes / academy</span>
+                            <input
+                                type="number" min={0} step={50}
+                                value={academySize}
+                                onChange={(e) => setAcademySize(Math.max(0, parseInt(e.target.value || '0', 10)))}
+                                className="bg-black border border-white/10 rounded-lg px-3 py-2 text-right text-sm font-semibold text-white tabular-nums focus:outline-none focus:border-emerald-400"
+                            />
+                        </label>
+                    </div>
+                )}
             </div>
         </section>
     );
