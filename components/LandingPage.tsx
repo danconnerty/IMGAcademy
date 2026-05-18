@@ -1303,14 +1303,86 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           Built into NCSA, not bolted onto it.
                       </h2>
                       <p className="text-lg text-gray-400 leading-relaxed">
-                          REST API + SSO + responsive embed. Roster sync via webhook. NTangible handles all
-                          assessment delivery, scoring, retest scheduling, and routing logic. The NCSA backend
-                          integration - Clutch Factor on athlete cards, Coach Dashboard wiring, Alignment Index
-                          inside match analysis - is built out and finalized during the 60-day window above.
-                          <span className="text-white font-medium"> IMG defines the schema, owns the records, and
-                          controls family consent.</span> COPPA-aligned today; FERPA-aware data handling for
-                          student records.
+                          REST API + Single Sign-On + responsive embed. Roster sync via webhook. NTangible
+                          handles all assessment delivery, scoring, retest scheduling, and routing logic. The
+                          NCSA backend integration - Clutch Factor on athlete cards, Coach Dashboard wiring,
+                          Alignment Index inside match analysis - is built out and finalized during the 60-day
+                          window above.
+                          <span className="text-white font-medium"> IMG defines the schema, owns the records,
+                          and controls family consent.</span> COPPA-aligned today; FERPA-aware data handling
+                          for student records.
                       </p>
+                  </div>
+              </section>
+
+              {/* HOW THIS STARTS - the explicit ask */}
+              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
+                  <div className="rounded-3xl border border-amber-400/30 bg-gradient-to-b from-amber-400/[0.10] via-amber-400/[0.02] to-transparent p-7 sm:p-10">
+                      <p className="text-[11px] font-semibold text-amber-300 uppercase tracking-widest mb-3">How this starts</p>
+                      <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-5 max-w-3xl">
+                          The first 48 hours after the Letter of Intent.
+                      </h2>
+                      <p className="text-base text-gray-300 leading-relaxed mb-7 max-w-3xl">
+                          We start with a Letter of Intent &mdash; not a full contract &mdash; so the 60-day
+                          clock can start immediately while the Master Service Agreement gets negotiated in
+                          parallel. No waiting on legal.
+                      </p>
+
+                      <ol className="space-y-4 mb-8">
+                          <li className="flex gap-4">
+                              <span className="shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-400/15 border border-amber-400/40 text-amber-200 text-xs font-bold tabular-nums">1</span>
+                              <div>
+                                  <p className="text-white text-base font-semibold mb-0.5">Sign the Letter of Intent</p>
+                                  <p className="text-sm text-gray-400 leading-relaxed">
+                                      Non-binding except for the pricing tier alignment, exclusivity through
+                                      formal-contract negotiation, and confidentiality. Terms sent within 48
+                                      hours of the integration call.
+                                  </p>
+                              </div>
+                          </li>
+                          <li className="flex gap-4">
+                              <span className="shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-400/15 border border-amber-400/40 text-amber-200 text-xs font-bold tabular-nums">2</span>
+                              <div>
+                                  <p className="text-white text-base font-semibold mb-0.5">Designate one IMG engineering point of contact</p>
+                                  <p className="text-sm text-gray-400 leading-relaxed">
+                                      The bridge between NTangible's build team and the NCSA backend.
+                                  </p>
+                              </div>
+                          </li>
+                          <li className="flex gap-4">
+                              <span className="shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-400/15 border border-amber-400/40 text-amber-200 text-xs font-bold tabular-nums">3</span>
+                              <div>
+                                  <p className="text-white text-base font-semibold mb-0.5">Day 1 starts the 60-day clock</p>
+                                  <p className="text-sm text-gray-400 leading-relaxed">
+                                      NTangible begins sport buildout and backend integration immediately. The
+                                      Master Service Agreement is finalized in parallel during the same window.
+                                  </p>
+                              </div>
+                          </li>
+                          <li className="flex gap-4">
+                              <span className="shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-400/15 border border-amber-400/40 text-amber-200 text-xs font-bold tabular-nums">4</span>
+                              <div>
+                                  <p className="text-white text-base font-semibold mb-0.5">First sport ships within 7 days of Letter of Intent signature</p>
+                                  <p className="text-sm text-gray-400 leading-relaxed">
+                                      Visible product in IMG's hands the same week.
+                                  </p>
+                              </div>
+                          </li>
+                      </ol>
+
+                      <div className="rounded-2xl border border-white/10 bg-black/30 p-5 sm:p-6 mb-7">
+                          <p className="text-sm text-gray-300 leading-relaxed">
+                              <span className="text-white font-semibold">NTangible cost to IMG until the integration goes live: $0.</span>
+                              {' '}Billing only starts on the first completed assessment after launch.
+                          </p>
+                      </div>
+
+                      <button
+                          onClick={() => setShowBooking(true)}
+                          className="inline-flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-black px-6 py-3.5 rounded-lg font-semibold text-base transition-colors"
+                      >
+                          Book the integration call <ArrowRight size={16} />
+                      </button>
                   </div>
               </section>
           </>
