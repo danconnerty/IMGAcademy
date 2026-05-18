@@ -403,7 +403,7 @@ const PartnerProperties = () => (
             </div>
             <p className="text-sm sm:text-base text-white leading-relaxed flex-1">
                 <span className="font-semibold">Free on-campus assessment access</span>{' '}
-                <span className="text-gray-300">for IMG's boarding students, camp athletes, and corporate performance clients. Same instruments, same dashboard - no extra cost, no separate SOW.</span>
+                <span className="text-gray-300">for IMG's boarding students and other people on campus. Same instruments, same dashboard - no extra cost, no separate SOW.</span>
             </p>
         </div>
     </section>
@@ -1297,38 +1297,20 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
 
               </section>
 
-              {/* ON-CAMPUS BUNDLE - free assessment access for IMG's own businesses */}
+              {/* ON-CAMPUS BUNDLE - free assessment access for IMG's own programs */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
                   <div className="rounded-3xl border border-emerald-500/40 bg-gradient-to-b from-emerald-500/[0.10] via-emerald-500/[0.02] to-transparent p-7 sm:p-10">
                       <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-3">Bundled in the deal</p>
                       <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-5 max-w-3xl">
                           On-campus assessment access for IMG's flagship programs. Free.
                       </h2>
-                      <p className="text-base sm:text-lg text-gray-300 leading-relaxed mb-7 max-w-3xl">
+                      <p className="text-base sm:text-lg text-gray-300 leading-relaxed max-w-3xl">
                           Once the integration is live, the same Clutch Factor and NTerpret assessments are
-                          available across IMG's own residential, camp, and corporate businesses at zero
-                          additional cost. Same instruments, same dashboard, same scoring engine - deployed
-                          inside the campus environment alongside IMG's existing mental performance staff.
-                          No separate SOW, no per-seat invoice, no per-cohort negotiation.
+                          available across IMG's campus - boarding students and other people on campus - at
+                          zero additional cost. Same instruments, same dashboard, same scoring engine,
+                          deployed alongside IMG's existing mental performance staff. No separate SOW,
+                          no per-seat invoice, no per-cohort negotiation.
                       </p>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-                          <div className="bg-[#070707] p-5 sm:p-6">
-                              <p className="text-[10px] font-semibold text-emerald-300 uppercase tracking-widest mb-2">For</p>
-                              <p className="text-white text-base font-semibold mb-1">Boarding students</p>
-                              <p className="text-[12px] text-gray-500 leading-relaxed">The residential athletes already on campus, year-round.</p>
-                          </div>
-                          <div className="bg-[#070707] p-5 sm:p-6">
-                              <p className="text-[10px] font-semibold text-emerald-300 uppercase tracking-widest mb-2">For</p>
-                              <p className="text-white text-base font-semibold mb-1">Camp athletes</p>
-                              <p className="text-[12px] text-gray-500 leading-relaxed">Every camp cohort across the calendar - mental performance becomes part of the camp deliverable.</p>
-                          </div>
-                          <div className="bg-[#070707] p-5 sm:p-6">
-                              <p className="text-[10px] font-semibold text-emerald-300 uppercase tracking-widest mb-2">For</p>
-                              <p className="text-white text-base font-semibold mb-1">Corporate performance</p>
-                              <p className="text-[12px] text-gray-500 leading-relaxed">High-margin executive and team programs get the same assessment as the recruiting suite.</p>
-                          </div>
-                      </div>
                   </div>
               </section>
 
