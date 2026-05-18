@@ -1377,9 +1377,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       </div>
 
                       <p className="text-[12px] text-gray-500 leading-relaxed pt-4 border-t border-emerald-400/15">
-                          Plus active integration conversations with additional residential training campuses,
-                          college athletic departments, and youth sports organizations. First-mover position
-                          on the NCSA + SportsRecruits surface is open today.
+                          <span className="text-emerald-300 font-semibold">Advanced integration negotiations</span>{' '}
+                          underway with a flagship multi-sport residential training campus. Active
+                          conversations across additional college athletic departments and youth sports
+                          organizations. First-mover position on the NCSA + SportsRecruits surface is open today.
                       </p>
                   </div>
               </section>
