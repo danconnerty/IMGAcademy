@@ -1207,27 +1207,55 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
       case 'activation':
         return (
           <>
-              {/* 60-DAY COMMITMENT */}
+              {/* TRY IT TODAY - icing moment, leads the tab */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="mb-12 sm:mb-16 max-w-2xl">
+                  <div className="rounded-3xl border border-amber-400/30 bg-gradient-to-b from-amber-400/[0.10] via-amber-400/[0.02] to-transparent p-7 sm:p-10">
+                      <p className="text-[11px] font-semibold text-amber-300 uppercase tracking-widest mb-4">Try it today</p>
+                      <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-5 max-w-3xl">
+                          The assessment is live. Run it yourself in 60 seconds.
+                      </h2>
+                      <p className="text-lg text-gray-300 leading-relaxed mb-7 max-w-3xl">
+                          Don't take the pitch at face value. Pick any of our 9 live sports, complete the
+                          assessment from your phone, and see the actual report inside this prototype. No
+                          commitment, no integration required - the experience IMG families would see is
+                          something you can hold in your hand right now.
+                      </p>
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                          <button
+                              onClick={() => setShowTestDrive(true)}
+                              className="inline-flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-black px-6 py-3.5 rounded-lg font-semibold text-base transition-colors"
+                          >
+                              Run a live assessment <ArrowRight size={16} />
+                          </button>
+                          <p className="text-[12px] text-gray-500 leading-relaxed max-w-md">
+                              Full NCSA backend integration (profile views, leaderboards, Coach Dashboard) is
+                              the 60-day buildout below. The assessment is live now.
+                          </p>
+                      </div>
+                  </div>
+              </section>
+
+              {/* THE 60-DAY DEAL + WHAT SHIPS */}
+              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
+                  <div className="mb-10 sm:mb-12 max-w-2xl">
                       <p className="text-sm font-medium text-blue-400 mb-3">The commitment</p>
                       <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
                           Signed agreement. 60 days. Every sport.
                       </h2>
                       <p className="text-lg text-gray-400 leading-relaxed">
-                          With a signed agreement, NTangible delivers a v1 assessment for every sport NCSA and
-                          SportsRecruits offer within 60 days. 9 sports are live today. The rest take roughly
-                          two days each on our backend - the calendar is the whole differentiator.
+                          With a signed agreement, every NCSA and SportsRecruits sport ships in 60 days. 9 are
+                          live today; the rest take roughly two days each on our backend. The calendar is the
+                          whole differentiator.
                       </p>
                   </div>
 
                   <div className="bg-gradient-to-b from-blue-500/[0.08] to-transparent border border-blue-500/30 rounded-2xl p-7 sm:p-10 mb-6">
-                      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+                      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-8">
                           <div>
                               <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mb-3">Sport coverage timeline</p>
                               <p className="text-6xl sm:text-7xl font-semibold text-white tracking-tight leading-none mb-3 tabular-nums">60 days</p>
                               <p className="text-lg text-gray-300 leading-relaxed">
-                                  from signature to <span className="text-white font-medium">every NCSA and SportsRecruits sport, live</span>
+                                  from signature to <span className="text-white font-medium">every sport, live and integrated</span>
                               </p>
                           </div>
                           <div className="grid grid-cols-3 gap-3 max-w-md sm:max-w-sm">
@@ -1245,45 +1273,57 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               </div>
                           </div>
                       </div>
+
+                      <div className="pt-6 border-t border-blue-400/15">
+                          <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mb-4">What ships in 60 days</p>
+                          <ul className="space-y-2.5">
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> Every NCSA and SportsRecruits sport, live with a sport-specific assessment</li>
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> Native NCSA integration: Clutch Factor on every athlete card, Alignment Index inside match analysis</li>
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> Free Coach Dashboard launched: alignment-scored prospect pool across every profile</li>
+                              <li className="text-[15px] text-gray-300 leading-relaxed flex gap-2.5"><Check size={17} className="text-blue-400 shrink-0 mt-0.5" /> Academy+ routing live: low scores flow to the funnel automatically by tier</li>
+                          </ul>
+                      </div>
                   </div>
 
                   <div className="rounded-2xl border border-white/10 bg-[#070707] p-6 sm:p-7">
                       <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
-                          <span className="text-white font-medium">30-day exit. Sport buildout on us.</span> If the
-                          pilot underperforms the agreed metrics, there's no obligation to scale and no cost to
-                          IMG for sports we built during the integration window. The risk sits on our side of
-                          the table, not yours. On-campus assessment access for boarding, camp, and corporate
-                          performance use is bundled with the deal at no extra cost - details in the call.
+                          <span className="text-white font-medium">30-day exit. Sport buildout on us.</span> If
+                          the pilot underperforms, there's no obligation to scale and no cost to IMG for the
+                          sports we built during the integration window. The risk sits on our side of the
+                          table, not yours. On-campus assessment access for boarding, camp, and corporate
+                          performance use is bundled with the deal - details in the call.
                       </p>
                   </div>
               </section>
 
-              {/* INTAKE / FIRST-PARTY DATA */}
+              {/* TECHNICAL FIT */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
                   <div className="max-w-3xl">
-                      <p className="text-sm font-medium text-emerald-400 mb-3">Pre-assessment intake</p>
+                      <p className="text-sm font-medium text-blue-400 mb-3">Technical fit</p>
                       <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
-                          First-party data on every athlete who takes the test.
+                          Plugs in. Doesn't rebuild.
                       </h2>
                       <p className="text-lg text-gray-400 leading-relaxed">
-                          A 60&ndash;90 second module gated in front of every assessment captures identity,
-                          geography, sport profile, recruiting status, contact, and dev signals - one
-                          schema, owned by IMG, feeding NCSA, SportsRecruits, and the Elevate layer.{' '}
-                          <span className="text-white font-medium">IMG defines the fields. IMG owns the data.</span>
+                          REST API + SAML/OAuth SSO + responsive iframe embed. Roster sync via webhook.
+                          Sub-2-week IMG engineering sprint to wire it in - NTangible handles all assessment
+                          delivery, scoring, retest scheduling, and routing logic. SOC 2 in progress;
+                          COPPA-aligned today; FERPA-aware data handling for student records.
                       </p>
                   </div>
               </section>
 
-              {/* DATA & TRUST */}
+              {/* DATA OWNERSHIP - combined first-party + trust */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
                   <div className="max-w-3xl">
-                      <p className="text-sm font-medium text-blue-400 mb-3">Data &amp; trust</p>
+                      <p className="text-sm font-medium text-emerald-400 mb-3">Data ownership</p>
                       <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
-                          IMG-branded. IMG-controlled.
+                          IMG defines the schema. IMG owns the records. IMG controls the consent.
                       </h2>
                       <p className="text-lg text-gray-400 leading-relaxed">
-                          Profiles live on IMG's database and ship as an IMG product. COPPA-aligned with parental
-                          consent built into onboarding for every 13&ndash;18-year-old. Families can opt out and
+                          A 60&ndash;90 second intake module gated in front of every assessment captures
+                          identity, geography, sport profile, recruiting status, contact, and dev signals -
+                          one schema, owned by IMG, feeding NCSA, SportsRecruits, and the Elevate layer.
+                          Profiles live on IMG's database and ship as an IMG product. Families can opt out and
                           we delete what we hold. We measure how athletes compete and handle pressure -
                           growth signals, not personality profiles or static labels.
                       </p>
