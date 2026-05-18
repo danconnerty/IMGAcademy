@@ -396,6 +396,78 @@ const PartnerProperties = () => (
     </section>
 );
 
+// --- ASSESSMENT SHOWCASE (compact two-up: NTerpret + Clutch Factor) ---
+const AssessmentShowcase: React.FC<{ onViewNterpret: () => void; onViewClutch: () => void }> = ({ onViewNterpret, onViewClutch }) => (
+    <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-20 sm:mb-24">
+        <div className="mb-8 sm:mb-10 max-w-2xl">
+            <p className="text-sm font-medium text-blue-400 mb-3">What powers the profile</p>
+            <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
+                Two reports. One complete profile.
+            </h2>
+            <p className="text-lg text-gray-400 leading-relaxed">
+                Every athlete completes both assessments in under 15 minutes from any phone. Reports live
+                inside the IMG Academy dashboard and share to college coaches in one tap.
+            </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+            {/* NTerpret */}
+            <div className="bg-[#070707] flex flex-col sm:flex-row items-stretch">
+                <div className="relative shrink-0 w-full sm:w-44 md:w-48 lg:w-52 flex items-end justify-center overflow-hidden bg-gradient-to-b from-blue-500/[0.08] via-transparent to-transparent min-h-[200px] sm:min-h-0">
+                    <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[200px] h-[200px] bg-blue-500/15 blur-[80px] rounded-full pointer-events-none" />
+                    <img
+                        src="/NterpretMobile.png"
+                        alt="NTerpret Mental Scouting Report on mobile"
+                        loading="lazy"
+                        decoding="async"
+                        className="relative z-10 max-h-[280px] sm:max-h-[340px] w-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
+                    />
+                </div>
+                <div className="flex-1 p-5 sm:p-6 flex flex-col">
+                    <p className="text-[11px] font-semibold text-blue-400 uppercase tracking-[0.2em] mb-2">NTerpret<sup className="text-[8px] tracking-normal ml-0.5">&trade;</sup></p>
+                    <h3 className="text-lg sm:text-xl font-semibold text-white tracking-tight mb-2">Mental Scouting Report</h3>
+                    <p className="text-sm text-gray-400 leading-relaxed mb-4">
+                        The complete cognitive profile - how each athlete learns, leads, communicates, and competes.
+                    </p>
+                    <button
+                        onClick={onViewNterpret}
+                        className="self-start inline-flex items-center justify-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-white/20 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+                    >
+                        <FileText size={14} /> View sample report
+                    </button>
+                </div>
+            </div>
+
+            {/* Clutch Factor */}
+            <div className="bg-[#070707] flex flex-col sm:flex-row items-stretch">
+                <div className="relative shrink-0 w-full sm:w-44 md:w-48 lg:w-52 flex items-end justify-center overflow-hidden bg-gradient-to-b from-blue-500/[0.08] via-transparent to-transparent min-h-[200px] sm:min-h-0">
+                    <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[200px] h-[200px] bg-blue-500/15 blur-[80px] rounded-full pointer-events-none" />
+                    <img
+                        src="/ClutchMobile.png"
+                        alt="Clutch Factor Assessment on mobile"
+                        loading="lazy"
+                        decoding="async"
+                        className="relative z-10 max-h-[280px] sm:max-h-[340px] w-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
+                    />
+                </div>
+                <div className="flex-1 p-5 sm:p-6 flex flex-col">
+                    <p className="text-[11px] font-semibold text-blue-400 uppercase tracking-[0.2em] mb-2">Clutch Factor<sup className="text-[8px] tracking-normal ml-0.5">&trade;</sup></p>
+                    <h3 className="text-lg sm:text-xl font-semibold text-white tracking-tight mb-2">Clutch Factor Assessment</h3>
+                    <p className="text-sm text-gray-400 leading-relaxed mb-4">
+                        A standardized score that quantifies how an athlete responds when the game is on the line.
+                    </p>
+                    <button
+                        onClick={onViewClutch}
+                        className="self-start inline-flex items-center justify-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-white/20 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+                    >
+                        <FileText size={14} /> View sample report
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+);
+
 // --- RECRUITING CORRELATIONS (proof-of-value block, lives on landing page) ---
 const RecruitingCorrelations: React.FC<{ onOpenSample: () => void }> = ({ onOpenSample }) => (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-20 sm:mb-24">
@@ -1529,6 +1601,12 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
 
           {/* IMG ACADEMY DIGITAL SURFACES */}
           <PartnerProperties />
+
+          {/* TWO ASSESSMENTS - compact showcase */}
+          <AssessmentShowcase
+              onViewNterpret={() => setShowNterpretReport(true)}
+              onViewClutch={() => setShowClutchReport(true)}
+          />
 
           {/* RECRUITING CORRELATIONS (proof-of-value) */}
           <RecruitingCorrelations onOpenSample={() => setShowReportModal(true)} />
