@@ -363,7 +363,7 @@ const PartnerProperties = () => (
             </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden mb-5">
             {SURFACES.map((s) => {
                 const motionLabel =
                     s.motion === 'testing' ? 'Testing layer' :
@@ -392,6 +392,19 @@ const PartnerProperties = () => (
                     </div>
                 );
             })}
+        </div>
+
+        {/* Bonus inclusion strip - free on-campus access for IMG's own programs */}
+        <div className="rounded-2xl border border-emerald-500/40 bg-gradient-to-r from-emerald-500/[0.10] via-emerald-500/[0.04] to-transparent p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+            <div className="shrink-0">
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-400/40 bg-emerald-400/10">
+                    <span className="text-[10px] font-bold text-emerald-200 uppercase tracking-widest">Bonus &middot; Included</span>
+                </span>
+            </div>
+            <p className="text-sm sm:text-base text-white leading-relaxed flex-1">
+                <span className="font-semibold">Free on-campus assessment access</span>{' '}
+                <span className="text-gray-300">for IMG's boarding students, camp athletes, and corporate performance clients. Same instruments, same dashboard - no extra cost, no separate SOW.</span>
+            </p>
         </div>
     </section>
 );
