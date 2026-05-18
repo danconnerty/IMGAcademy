@@ -1285,13 +1285,12 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       </div>
                   </div>
 
-                  <div className="rounded-2xl border border-white/10 bg-[#070707] p-6 sm:p-7">
-                      <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
-                          <span className="text-white font-medium">30-day exit. Sport buildout on us.</span> If
-                          the pilot underperforms, there's no obligation to scale and no cost to IMG for the
-                          sports we built during the integration window. The risk sits on our side of the
-                          table, not yours. On-campus assessment access for boarding, camp, and corporate
-                          performance use is bundled with the deal - details in the call.
+                  <div className="rounded-2xl border border-emerald-500/30 bg-gradient-to-b from-emerald-500/[0.06] to-transparent p-6 sm:p-7">
+                      <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                          <span className="text-white font-semibold">Bundled with the deal:</span> on-campus
+                          assessment access for IMG's boarding students, camp athletes, and corporate
+                          performance clients - no additional cost, no separate SOW. Same instruments, same
+                          dashboard, deployed inside the campus environment.
                       </p>
                   </div>
               </section>
@@ -1301,12 +1300,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   <div className="max-w-3xl">
                       <p className="text-sm font-medium text-blue-400 mb-3">Technical fit</p>
                       <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
-                          Plugs in. Doesn't rebuild.
+                          Built into NCSA, not bolted onto it.
                       </h2>
                       <p className="text-lg text-gray-400 leading-relaxed">
-                          REST API + SAML/OAuth SSO + responsive iframe embed. Roster sync via webhook.
-                          Sub-2-week IMG engineering sprint to wire it in - NTangible handles all assessment
-                          delivery, scoring, retest scheduling, and routing logic. SOC 2 in progress;
+                          REST API + SSO + responsive embed. Roster sync via webhook. NTangible handles all
+                          assessment delivery, scoring, retest scheduling, and routing logic. The NCSA backend
+                          integration - Clutch Factor on athlete cards, Coach Dashboard wiring, Alignment Index
+                          inside match analysis - is built out and finalized during the 60-day window above.
                           COPPA-aligned today; FERPA-aware data handling for student records.
                       </p>
                   </div>
