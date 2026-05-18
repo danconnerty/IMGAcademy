@@ -159,8 +159,7 @@ const PricingCalculator = () => {
                 </h2>
                 <p className="text-lg text-gray-400 leading-relaxed">
                     Per active subscriber, per year, bundled into the NCSA membership. IMG Academy's $3 share
-                    is flat from day one. At the platform tier, that's <span className="text-white font-medium">$30 per
-                    family over a 4-year NCSA package &mdash; roughly 0.5% of their NCSA spend.</span>
+                    is flat across every tier - growth comes from volume, not from renegotiating rate.
                 </p>
             </div>
 
@@ -184,64 +183,41 @@ const PricingCalculator = () => {
                 ))}
             </div>
 
-            {/* Why this shape */}
-            <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-8 mb-10">
-                <p className="text-sm font-medium text-blue-400 mb-3">Why this shape</p>
-                <p className="text-base text-gray-300 leading-relaxed">
-                    IMG's <span className="text-white font-semibold">$3 take is flat across every tier</span> -
-                    growth comes from active subscribers, not from renegotiating rate. The per-subscriber price
-                    drops as the integration deepens. Above 250K active subscribers or with a multi-year
-                    commitment, pricing is negotiated directly. Settlement is monthly on completed tests.
-                </p>
-            </div>
+            {/* ---- UNIFIED COST <-> EARN CARD ---- */}
+            <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-10 mb-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 rounded-2xl overflow-hidden mb-8 border border-white/10">
+                    {/* LEFT: what it costs the family */}
+                    <div className="bg-gradient-to-b from-blue-500/[0.06] to-transparent p-6 sm:p-8">
+                        <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mb-4">What it costs the family</p>
+                        <div className="flex items-baseline gap-3 mb-1">
+                            <p className="text-5xl sm:text-6xl font-semibold text-white tracking-tight tabular-nums">$30</p>
+                            <p className="text-sm text-blue-300 font-semibold tabular-nums">/ 0.5% of NCSA spend</p>
+                        </div>
+                        <p className="text-sm text-gray-400 leading-relaxed mb-4">
+                            $7.50 / yr &times; 4 years on a $6,000 MVP+ multi-year package.
+                            A rounding-error line on the family's NCSA invoice.
+                        </p>
+                        <p className="text-[11px] text-gray-500 leading-relaxed pt-3 border-t border-blue-400/10">
+                            Entry-tier Champion package (~$1,500): still ~2% of family spend.
+                        </p>
+                    </div>
 
-            {/* ---- WHAT IT COSTS THE FAMILY (cost-in-context callout) ---- */}
-            <div className="rounded-2xl border border-blue-400/30 bg-gradient-to-b from-blue-500/[0.06] to-transparent p-6 sm:p-8 mb-10">
-                <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mb-4">
-                    What it costs the family
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-start">
-                    <div className="md:col-span-1">
-                        <p className="text-5xl sm:text-6xl font-semibold text-white tracking-tight tabular-nums mb-2">$30</p>
-                        <p className="text-sm text-white font-semibold mb-1">Per family, over a 4-year NCSA package</p>
-                        <p className="text-[12px] text-gray-500 leading-relaxed tabular-nums">
-                            $7.50 / yr &times; 4 years &middot; platform tier
+                    {/* RIGHT: what it earns IMG */}
+                    <div className="bg-gradient-to-b from-emerald-500/[0.08] to-transparent p-6 sm:p-8">
+                        <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-4">What it earns IMG &middot; live</p>
+                        <p className="text-5xl sm:text-6xl font-semibold text-white tracking-tight tabular-nums mb-2">{fmt(allInTotal)}</p>
+                        <p className="text-sm text-gray-400 leading-relaxed mb-2 tabular-nums">
+                            annually, at {clamped.toLocaleString('en-US')} active subscribers
                         </p>
-                    </div>
-                    <div className="md:col-span-1 md:border-l md:border-blue-400/15 md:pl-8">
-                        <p className="text-5xl sm:text-6xl font-semibold text-white tracking-tight tabular-nums mb-2">0.5%</p>
-                        <p className="text-sm text-white font-semibold mb-1">Of an MVP+ family's NCSA spend</p>
-                        <p className="text-[12px] text-gray-500 leading-relaxed tabular-nums">
-                            $30 of a $6,000 multi-year package
-                        </p>
-                    </div>
-                    <div className="md:col-span-1 md:border-l md:border-blue-400/15 md:pl-8">
-                        <p className="text-base text-gray-300 leading-relaxed">
-                            The annual subscription is a rounding-error line on the family's NCSA invoice, and a
-                            <span className="text-white font-semibold"> recurring revenue stream</span> for IMG that compounds
-                            across every active subscriber, every year, for the life of the package.
+                        <p className="text-[12px] text-gray-500 leading-relaxed pt-3 border-t border-emerald-400/10">
+                            Subscriptions {fmt(baselineRev)}
+                            {academyPlusRev > 0 && <> &middot; Academy+ {fmt(academyPlusRev)}</>}
+                            {elevateRev > 0 && <> &middot; Elevate {fmt(elevateRev)}</>}
                         </p>
                     </div>
                 </div>
-                <p className="text-[11px] text-gray-500 leading-relaxed mt-6 pt-5 border-t border-blue-400/10">
-                    At an entry-tier Champion package (~$1,500), the assessment still lands at roughly 2% of
-                    family spend - small enough to fold into the existing membership invoice without a separate purchase decision.
-                </p>
-            </div>
 
-            {/* ---- STEP 1: BASELINE REVENUE AT SCALE ---- */}
-            <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-10 mb-8">
-                <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mb-4">Step 01 &middot; Revenue at scale</p>
-
-                <div className="rounded-2xl border border-blue-500/30 bg-gradient-to-b from-blue-500/[0.10] to-transparent p-6 sm:p-8 mb-8">
-                    <p className="text-sm font-medium text-blue-400 mb-2">Annual revenue to IMG Academy</p>
-                    <p className="text-5xl sm:text-6xl md:text-7xl font-semibold text-white tracking-tight tabular-nums mb-2">{fmt(baselineRev)}</p>
-                    <p className="text-sm text-gray-400 tabular-nums">
-                        {clamped.toLocaleString('en-US')} active subscribers &times; ${fmtMoney(tier.imgShare)} / yr &middot; {tier.label.toLowerCase()} tier
-                    </p>
-                </div>
-
-                {/* Slider */}
+                {/* Slider spanning both halves */}
                 <div className="pt-2">
                     <div className="flex items-end justify-between mb-3 gap-4">
                         <label className="text-sm font-medium text-gray-400">
@@ -285,55 +261,11 @@ const PricingCalculator = () => {
                         ))}
                     </div>
                 </div>
-            </div>
 
-            {/* ---- STEP 2: ADDITIONAL OPPORTUNITIES (DESCRIPTIVE) ---- */}
-            <div className="mb-8">
-                <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-2">Step 02 &middot; Additional revenue opportunities</p>
-                <h3 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight leading-snug mb-4">
-                    The subscription is the floor. Two opportunities stack on top.
-                </h3>
-                <p className="text-base text-gray-400 leading-relaxed mb-6 max-w-2xl">
-                    The number above counts annual subscription fees only. Every active subscriber is also a
-                    potential Academy+ session lead, and - via Elevate - the surface scales into entire
-                    partner academies signed institutionally.
-                </p>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="rounded-2xl border border-amber-400/30 bg-amber-400/[0.04] p-6">
-                        <p className="text-[11px] font-semibold text-amber-300 uppercase tracking-widest mb-3">Academy+ session funnel</p>
-                        <h4 className="text-lg font-semibold text-white tracking-tight mb-2 leading-snug">A pre-qualified pipeline at $0 CAC.</h4>
-                        <p className="text-sm text-gray-400 leading-relaxed">
-                            Low scores route directly into the Academy+ funnel. Every routed lead arrives with
-                            a named gap and a dashboard the family can already see. Workshops, 1-on-1 sessions.
-                        </p>
-                    </div>
-
-                    <div className="rounded-2xl border border-emerald-400/30 bg-emerald-400/[0.04] p-6">
-                        <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-3">Elevate B2B channel</p>
-                        <h4 className="text-lg font-semibold text-white tracking-tight mb-2 leading-snug">Whole rosters, one signature.</h4>
-                        <p className="text-sm text-gray-400 leading-relaxed">
-                            Each Elevate academy license bundles every athlete on roster. Institutional sale,
-                            not family-by-family - and a TAM that scales with Elevate's existing pipeline.
-                        </p>
-                    </div>
-                </div>
-
-                <p className="text-[11px] text-gray-600 mt-4 leading-relaxed">
-                    Optional in-cycle retake: families wanting to push a higher score ahead of a recruiting
-                    deadline can purchase an out-of-cycle assessment. Additional small revenue line, not modeled here.
-                </p>
-            </div>
-
-            {/* ---- STEP 3: ALL-IN POTENTIAL ---- */}
-            <div className="rounded-2xl border border-emerald-500/40 bg-gradient-to-b from-emerald-500/[0.10] to-transparent p-6 sm:p-10 mb-6">
-                <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-3">Step 03 &middot; All-in annual potential</p>
-                <p className="text-5xl sm:text-6xl md:text-7xl font-semibold text-white tracking-tight tabular-nums mb-3">{fmt(allInTotal)}</p>
-                <p className="text-sm text-gray-400 leading-relaxed mb-1">
-                    Annual subscriptions + Academy+ funnel + Elevate channel, computed against the active base above.
-                </p>
-                <p className="text-[11px] text-gray-600 leading-relaxed">
-                    Directional, based on the assumptions below.
+                <p className="text-[12px] text-gray-500 leading-relaxed mt-6 pt-5 border-t border-white/5">
+                    The all-in number folds in Academy+ session-funnel revenue and Elevate B2B channel revenue.
+                    See those tabs for the full mechanics. Optional in-cycle retakes are an additional revenue
+                    line not modeled here. Settlement is monthly on completed tests.
                 </p>
             </div>
 
