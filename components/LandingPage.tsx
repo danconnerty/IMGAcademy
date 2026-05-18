@@ -210,7 +210,7 @@ const PricingCalculator = () => {
                     </div>
                     <div className="md:col-span-1 md:border-l md:border-blue-400/15 md:pl-8">
                         <p className="text-5xl sm:text-6xl font-semibold text-white tracking-tight tabular-nums mb-2">0.5%</p>
-                        <p className="text-sm text-white font-semibold mb-1">Of the family's NCSA spend</p>
+                        <p className="text-sm text-white font-semibold mb-1">Of an MVP+ family's NCSA spend</p>
                         <p className="text-[12px] text-gray-500 leading-relaxed tabular-nums">
                             $30 of a $6,000 multi-year package
                         </p>
@@ -223,6 +223,10 @@ const PricingCalculator = () => {
                         </p>
                     </div>
                 </div>
+                <p className="text-[11px] text-gray-500 leading-relaxed mt-6 pt-5 border-t border-blue-400/10">
+                    At an entry-tier Champion package (~$1,500), the assessment still lands at roughly 2% of
+                    family spend - small enough to fold into the existing membership invoice without a separate purchase decision.
+                </p>
             </div>
 
             {/* ---- STEP 1: BASELINE REVENUE AT SCALE ---- */}
