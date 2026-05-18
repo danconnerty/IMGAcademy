@@ -99,7 +99,7 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({ onBack }) => {
                 </div>
               </div>
               <p className="text-gray-300 text-base md:text-xl leading-relaxed font-light">
-                  You perform best when you know your role and feel like you belong. When your role is unclear you say you "mentally begin to spiral." You respond strongly to coaches who show they care and believe in you — that belief makes you try to exceed expectations. You want frequent feedback, prefer to have skills shown to you and then do them while being watched, and you open up slowly because you're shy and need time to build trust.
+                  You perform best when you know your role and feel like you belong. When your role is unclear you say you "mentally begin to spiral." You respond strongly to coaches who show they care and believe in you - that belief makes you try to exceed expectations. You want frequent feedback, prefer to have skills shown to you and then do them while being watched, and you open up slowly because you're shy and need time to build trust.
               </p>
               <div className="w-full h-1 bg-gradient-to-r from-white via-purple-500 to-[#F59E0B] rounded-full opacity-60"></div>
             </div>
@@ -140,7 +140,7 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({ onBack }) => {
               <div className="h-px w-8 bg-purple-500/50 mb-4"></div>
               <h3 className="text-xl font-display text-white mb-2">Kinesthetic</h3>
               <p className="text-sm text-gray-400 font-light leading-snug mb-4">
-                  You learn fastest by doing — you want skills shown to you and then to try them while someone watches. Hands-on reps with coach observation and immediate, specific feedback help you improve fastest.
+                  You learn fastest by doing - you want skills shown to you and then to try them while someone watches. Hands-on reps with coach observation and immediate, specific feedback help you improve fastest.
               </p>
               <div className="block">
                 <p className="text-xs text-gray-500 font-light pt-4 border-t border-white/10">
@@ -161,7 +161,7 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({ onBack }) => {
               <div className="h-px w-8 bg-emerald-500/50 mb-4"></div>
               <h3 className="text-xl font-display text-white mb-2">Team Commitment</h3>
               <p className="text-sm text-gray-400 font-light leading-snug mb-4">
-                  Belonging and harmony motivate you. You want a team where people get along and support each other — that sense of connection makes you feel secure and pushes you to perform for the group.
+                  Belonging and harmony motivate you. You want a team where people get along and support each other - that sense of connection makes you feel secure and pushes you to perform for the group.
               </p>
               <div className="block">
                 <p className="text-xs text-gray-500 font-light pt-4 border-t border-white/10">
@@ -202,14 +202,14 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({ onBack }) => {
               <div className="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-[#0A0A0A] border-2 border-[#F59E0B] z-10 -translate-x-[5px] md:-translate-x-1/2 order-1 md:order-2"></div>
               <div className="md:w-1/2 md:pl-12 order-3">
                 <h3 className="text-xl font-tech font-bold text-white mb-2 text-[#F59E0B]">SPEED UP TRUST</h3>
-                <p className="text-gray-400 text-sm">You take time to open up and sometimes say 'yes' even when you don’t fully understand — practicing small, increasing responsibilities can accelerate trust and confidence.</p>
+                <p className="text-gray-400 text-sm">You take time to open up and sometimes say 'yes' even when you don’t fully understand - practicing small, increasing responsibilities can accelerate trust and confidence.</p>
               </div>
             </div>
 
             <div className="relative flex flex-col md:flex-row items-start md:items-center gap-6">
               <div className="md:w-1/2 md:text-right md:pr-12 order-2 md:order-1">
                 <h3 className="text-xl font-tech font-bold text-white mb-2 text-[#10B981]">PRACTICAL IMPROVEMENTS</h3>
-                <p className="text-gray-400 text-sm">Team-first mindset — you genuinely support teammates and thrive in a positive, cooperative environment. High coachability — when a coach shows belief in you and gives clear feedback, you immediately try to improve and follow through.</p>
+                <p className="text-gray-400 text-sm">Team-first mindset - you genuinely support teammates and thrive in a positive, cooperative environment. High coachability - when a coach shows belief in you and gives clear feedback, you immediately try to improve and follow through.</p>
               </div>
               <div className="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-[#0A0A0A] border-2 border-[#10B981] z-10 -translate-x-[5px] md:-translate-x-1/2 shadow-[0_0_15px_rgba(16,185,129,0.4)] order-1 md:order-2"></div>
               <div className="md:w-1/2 md:pl-12 order-3">
