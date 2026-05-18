@@ -219,7 +219,7 @@ const PricingCalculator = () => {
 
                 {/* Slider spanning both halves */}
                 <div className="pt-2">
-                    <div className="flex items-end justify-between mb-3 gap-4">
+                    <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-3 gap-3 sm:gap-4">
                         <label className="text-sm font-medium text-gray-400">
                             Active NCSA + SR subscribers
                             <span className={`ml-2 ${tier.tone} font-semibold uppercase tracking-wider text-[11px]`}>
@@ -232,7 +232,7 @@ const PricingCalculator = () => {
                             max={MAX_PROFILES}
                             value={clamped}
                             onChange={(e) => setProfiles(parseInt(e.target.value || '0', 10))}
-                            className="w-32 sm:w-44 bg-black border border-white/10 rounded-lg px-3 py-2 text-right text-xl sm:text-2xl font-semibold text-white tracking-tight tabular-nums focus:outline-none focus:border-blue-500"
+                            className="w-full sm:w-44 bg-black border border-white/10 rounded-lg px-3 py-2 text-right text-xl sm:text-2xl font-semibold text-white tracking-tight tabular-nums focus:outline-none focus:border-blue-500"
                         />
                     </div>
                     <input
@@ -1166,13 +1166,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           },
                       ].map((tier) => (
                           <div key={tier.range} className={`rounded-2xl border ${tier.ringClass} p-5 sm:p-7 flex flex-col sm:flex-row sm:items-start gap-5`}>
-                              <div className="shrink-0 flex sm:flex-col items-center sm:items-start gap-3 sm:gap-2 sm:w-48">
+                              <div className="shrink-0 flex flex-col sm:flex-col gap-2 sm:w-48">
                                   <span className={`h-0.5 w-10 ${tier.barClass} rounded-full hidden sm:block`} />
-                                  <p className="text-white text-base sm:text-lg font-semibold tabular-nums">{tier.range}</p>
-                                  <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold hidden sm:block">Report tier &middot; {tier.reportTier}</p>
-                                  <span className={`inline-flex items-center px-2 py-0.5 rounded-full border text-[10px] font-semibold uppercase tracking-widest ${tier.tagClass}`}>
-                                      {tier.label}
-                                  </span>
+                                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 sm:block">
+                                      <p className="text-white text-base sm:text-lg font-semibold tabular-nums">{tier.range}</p>
+                                      <span className={`inline-flex items-center px-2 py-0.5 rounded-full border text-[10px] font-semibold uppercase tracking-widest ${tier.tagClass} sm:mt-1`}>
+                                          {tier.label}
+                                      </span>
+                                  </div>
+                                  <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">Report tier &middot; {tier.reportTier}</p>
                               </div>
                               <div className="flex-1 sm:border-l sm:border-white/10 sm:pl-6">
                                   <h4 className="text-lg sm:text-xl font-semibold text-white tracking-tight mb-2 leading-snug">{tier.headline}</h4>
