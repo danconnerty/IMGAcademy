@@ -1240,7 +1240,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   <div className="mb-10 sm:mb-12 max-w-2xl">
                       <p className="text-sm font-medium text-blue-400 mb-3">The commitment</p>
                       <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
-                          Signed agreement. 60 days. Every sport.
+                          60 days from signature. Every sport built and integrated.
                       </h2>
                       <p className="text-lg text-gray-400 leading-relaxed">
                           With a signed agreement, every NCSA and SportsRecruits sport ships in 60 days. 9 are
@@ -1295,7 +1295,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   </div>
               </section>
 
-              {/* TECHNICAL FIT */}
+              {/* TECHNICAL FIT (with data ownership folded in) */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
                   <div className="max-w-3xl">
                       <p className="text-sm font-medium text-blue-400 mb-3">Technical fit</p>
@@ -1307,25 +1307,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           assessment delivery, scoring, retest scheduling, and routing logic. The NCSA backend
                           integration - Clutch Factor on athlete cards, Coach Dashboard wiring, Alignment Index
                           inside match analysis - is built out and finalized during the 60-day window above.
-                          COPPA-aligned today; FERPA-aware data handling for student records.
-                      </p>
-                  </div>
-              </section>
-
-              {/* DATA OWNERSHIP - combined first-party + trust */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="max-w-3xl">
-                      <p className="text-sm font-medium text-emerald-400 mb-3">Data ownership</p>
-                      <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-[1.08] mb-4">
-                          IMG defines the schema. IMG owns the records. IMG controls the consent.
-                      </h2>
-                      <p className="text-lg text-gray-400 leading-relaxed">
-                          A 60&ndash;90 second intake module gated in front of every assessment captures
-                          identity, geography, sport profile, recruiting status, contact, and dev signals -
-                          one schema, owned by IMG, feeding NCSA, SportsRecruits, and the Elevate layer.
-                          Profiles live on IMG's database and ship as an IMG product. Families can opt out and
-                          we delete what we hold. We measure how athletes compete and handle pressure -
-                          growth signals, not personality profiles or static labels.
+                          <span className="text-white font-medium"> IMG defines the schema, owns the records, and
+                          controls family consent.</span> COPPA-aligned today; FERPA-aware data handling for
+                          student records.
                       </p>
                   </div>
               </section>
