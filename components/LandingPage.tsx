@@ -122,7 +122,7 @@ const tierForVolume = (v: number): VolumeTier =>
     VOLUME_TIERS.find(t => v >= t.min && v < t.max) ?? VOLUME_TIERS[VOLUME_TIERS.length - 1];
 
 const PricingCalculator = () => {
-    const [profiles, setProfiles] = useState(150_000);
+    const [profiles, setProfiles] = useState(500_000);
     const [elevateAcademies, setElevateAcademies] = useState(5);
 
     // Tunable assumptions hidden behind a disclosure
@@ -135,12 +135,11 @@ const PricingCalculator = () => {
     const clamped = Math.max(0, Math.min(MAX_PROFILES, Number.isFinite(profiles) ? profiles : 0));
     const tier = tierForVolume(clamped);
 
-    // Always computed - presented as stackable revenue opportunities
+    // Annual subscription model - one assessment per year bundled in the fee
     const baselineRev    = clamped * tier.imgShare;
-    const retestRev      = baselineRev;
     const academyPlusRev = clamped * (lowScorePct / 100) * (conversionPct / 100) * sessionPrice;
-    const elevateRev     = elevateAcademies * academySize * tier.imgShare * 2;
-    const allInTotal     = baselineRev + retestRev + academyPlusRev + elevateRev;
+    const elevateRev     = elevateAcademies * academySize * tier.imgShare;
+    const allInTotal     = baselineRev + academyPlusRev + elevateRev;
 
     const fmt = (n: number) => `$${Math.round(n).toLocaleString('en-US')}`;
     const fmtMoney = (n: number) => Number.isInteger(n) ? `${n}` : n.toFixed(2);
@@ -156,12 +155,12 @@ const PricingCalculator = () => {
             <div className="mb-12 sm:mb-16 max-w-2xl">
                 <p className="text-sm font-medium text-blue-400 mb-3">The economics</p>
                 <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
-                    Per-athlete integration. Volume drops the price.
+                    Annual per-athlete subscription. Volume drops the price.
                 </h2>
                 <p className="text-lg text-gray-400 leading-relaxed">
-                    Standard on every NCSA athlete profile. The more we ship, the cheaper per athlete -
-                    IMG Academy's per-profile margin stays at $3 from day one. We compress on our side to make
-                    the integration tomorrow.
+                    Per active subscriber, per year, bundled into the NCSA membership. IMG Academy's $3 share
+                    is flat from day one. At the platform tier, that's <span className="text-white font-medium">$30 per
+                    family over a 4-year NCSA package &mdash; roughly 0.5% of their NCSA spend.</span>
                 </p>
             </div>
 
@@ -170,14 +169,15 @@ const PricingCalculator = () => {
                 {VOLUME_TIERS.map((t) => (
                     <div key={t.label} className="bg-[#070707] p-6 sm:p-7 flex flex-col">
                         <p className={`text-xs font-semibold uppercase tracking-wider ${t.tone} mb-3`}>{t.label}</p>
-                        <p className="text-sm text-gray-500 tabular-nums mb-4">{fmtRange(t)} profiles / yr</p>
-                        <p className="text-4xl sm:text-5xl font-semibold text-white tracking-tight tabular-nums mb-4">
+                        <p className="text-sm text-gray-500 tabular-nums mb-4">{fmtRange(t)} active subscribers</p>
+                        <p className="text-4xl sm:text-5xl font-semibold text-white tracking-tight tabular-nums mb-1">
                             ${fmtMoney(t.price)}
                         </p>
+                        <p className="text-xs text-gray-500 mb-4">per subscriber / year</p>
                         <div className="border-t border-white/5 pt-4">
                             <div className="flex items-center justify-between text-sm">
                                 <span className="text-gray-500">IMG Academy take</span>
-                                <span className="text-white font-semibold tabular-nums">${fmtMoney(t.imgShare)} / profile</span>
+                                <span className="text-white font-semibold tabular-nums">${fmtMoney(t.imgShare)} / yr</span>
                             </div>
                         </div>
                     </div>
@@ -189,9 +189,9 @@ const PricingCalculator = () => {
                 <p className="text-sm font-medium text-blue-400 mb-3">Why this shape</p>
                 <p className="text-base text-gray-300 leading-relaxed">
                     IMG's <span className="text-white font-semibold">$3 take is flat across every tier</span> -
-                    growth comes from volume, not from renegotiating rate. The per-profile price drops as the
-                    integration deepens, in exchange for the certainty of full per-athlete coverage across NCSA.
-                    Above 250K profiles or with a multi-year commitment, pricing is negotiated directly.
+                    growth comes from active subscribers, not from renegotiating rate. The per-subscriber price
+                    drops as the integration deepens. Above 250K active subscribers or with a multi-year
+                    commitment, pricing is negotiated directly. Settlement is monthly on completed tests.
                 </p>
             </div>
 
@@ -203,7 +203,7 @@ const PricingCalculator = () => {
                     <p className="text-sm font-medium text-blue-400 mb-2">Annual revenue to IMG Academy</p>
                     <p className="text-5xl sm:text-6xl md:text-7xl font-semibold text-white tracking-tight tabular-nums mb-2">{fmt(baselineRev)}</p>
                     <p className="text-sm text-gray-400 tabular-nums">
-                        {clamped.toLocaleString('en-US')} profiles &times; ${fmtMoney(tier.imgShare)} per profile &middot; {tier.label.toLowerCase()} tier
+                        {clamped.toLocaleString('en-US')} active subscribers &times; ${fmtMoney(tier.imgShare)} / yr &middot; {tier.label.toLowerCase()} tier
                     </p>
                 </div>
 
@@ -211,9 +211,9 @@ const PricingCalculator = () => {
                 <div className="pt-2">
                     <div className="flex items-end justify-between mb-3 gap-4">
                         <label className="text-sm font-medium text-gray-400">
-                            Annual NCSA profiles
+                            Active NCSA + SR subscribers
                             <span className={`ml-2 ${tier.tone} font-semibold uppercase tracking-wider text-[11px]`}>
-                                {tier.label} &middot; ${fmtMoney(tier.price)} ea
+                                {tier.label} &middot; ${fmtMoney(tier.price)} / yr
                             </span>
                         </label>
                         <input
@@ -257,24 +257,15 @@ const PricingCalculator = () => {
             <div className="mb-8">
                 <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-2">Step 02 &middot; Additional revenue opportunities</p>
                 <h3 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight leading-snug mb-4">
-                    The baseline is the floor. Three opportunities stack on top.
+                    The subscription is the floor. Two opportunities stack on top.
                 </h3>
                 <p className="text-base text-gray-400 leading-relaxed mb-6 max-w-2xl">
-                    The number above counts assessment fees only. Each athlete is also a retest event, a
-                    potential Academy+ session, and - via Elevate - a B2B distribution point. The layers
-                    compound on the same volume IMG already commits to.
+                    The number above counts annual subscription fees only. Every active subscriber is also a
+                    potential Academy+ session lead, and - via Elevate - the surface scales into entire
+                    partner academies signed institutionally.
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="rounded-2xl border border-blue-400/30 bg-blue-400/[0.04] p-6">
-                        <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mb-3">6-month retest cycle</p>
-                        <h4 className="text-lg font-semibold text-white tracking-tight mb-2 leading-snug">Same base, double the events.</h4>
-                        <p className="text-sm text-gray-400 leading-relaxed">
-                            The standard cadence runs every six months. On-demand retakes and post-coaching
-                            validation retests stack as additional billable events on top.
-                        </p>
-                    </div>
-
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="rounded-2xl border border-amber-400/30 bg-amber-400/[0.04] p-6">
                         <p className="text-[11px] font-semibold text-amber-300 uppercase tracking-widest mb-3">Academy+ session funnel</p>
                         <h4 className="text-lg font-semibold text-white tracking-tight mb-2 leading-snug">A pre-qualified pipeline at $0 CAC.</h4>
@@ -293,6 +284,11 @@ const PricingCalculator = () => {
                         </p>
                     </div>
                 </div>
+
+                <p className="text-[11px] text-gray-600 mt-4 leading-relaxed">
+                    Optional in-cycle retake: families wanting to push a higher score ahead of a recruiting
+                    deadline can purchase an out-of-cycle assessment. Additional small revenue line, not modeled here.
+                </p>
             </div>
 
             {/* ---- STEP 3: ALL-IN POTENTIAL ---- */}
@@ -300,7 +296,7 @@ const PricingCalculator = () => {
                 <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-3">Step 03 &middot; All-in annual potential</p>
                 <p className="text-5xl sm:text-6xl md:text-7xl font-semibold text-white tracking-tight tabular-nums mb-3">{fmt(allInTotal)}</p>
                 <p className="text-sm text-gray-400 leading-relaxed mb-1">
-                    Baseline + retest cycle + Academy+ funnel + Elevate channel, computed against the volume above.
+                    Annual subscriptions + Academy+ funnel + Elevate channel, computed against the active base above.
                 </p>
                 <p className="text-[11px] text-gray-600 leading-relaxed">
                     Directional, based on the assumptions below.
