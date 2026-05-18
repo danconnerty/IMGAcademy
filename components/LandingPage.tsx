@@ -179,14 +179,10 @@ const PricingCalculator = () => {
                         <p className="text-4xl sm:text-5xl font-semibold text-white tracking-tight tabular-nums mb-4">
                             ${fmtMoney(t.price)}
                         </p>
-                        <div className="border-t border-white/5 pt-4 space-y-1.5">
+                        <div className="border-t border-white/5 pt-4">
                             <div className="flex items-center justify-between text-sm">
-                                <span className="text-gray-500">IMG Academy</span>
-                                <span className="text-white font-semibold tabular-nums">${fmtMoney(t.imgShare)}</span>
-                            </div>
-                            <div className="flex items-center justify-between text-sm">
-                                <span className="text-gray-500">NTangible</span>
-                                <span className="text-white font-semibold tabular-nums">${fmtMoney(t.price - t.imgShare)}</span>
+                                <span className="text-gray-500">IMG Academy take</span>
+                                <span className="text-white font-semibold tabular-nums">${fmtMoney(t.imgShare)} / profile</span>
                             </div>
                         </div>
                     </div>
@@ -197,10 +193,10 @@ const PricingCalculator = () => {
             <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-8 mb-10">
                 <p className="text-sm font-medium text-blue-400 mb-3">Why this shape</p>
                 <p className="text-base text-gray-300 leading-relaxed">
-                    IMG's $3 share is flat across every tier - growth comes from volume, not from renegotiating rate.
-                    NTangible's margin compresses as the integration deepens, in exchange for the certainty of
-                    full per-athlete coverage across NCSA. Above 250K profiles or with a multi-year commitment,
-                    pricing is negotiated directly.
+                    IMG's <span className="text-white font-semibold">$3 take is flat across every tier</span> -
+                    growth comes from volume, not from renegotiating rate. The per-profile price drops as the
+                    integration deepens, in exchange for the certainty of full per-athlete coverage across NCSA.
+                    Above 250K profiles or with a multi-year commitment, pricing is negotiated directly.
                 </p>
             </div>
 
