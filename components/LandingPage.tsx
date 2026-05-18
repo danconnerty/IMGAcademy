@@ -111,10 +111,9 @@ const SampleReportModal = ({ onClose, onViewClutch, onViewNterpret }: { onClose:
 type VolumeTier = { min: number; max: number; price: number; imgShare: number; label: string; tone: string };
 
 const VOLUME_TIERS: VolumeTier[] = [
-    { min: 0,       max: 100_000,  price: 10, imgShare: 3, label: 'Entry',            tone: 'text-blue-400' },
-    { min: 100_000, max: 250_000,  price: 8,  imgShare: 3, label: 'Scale',            tone: 'text-blue-400' },
-    { min: 250_000, max: 500_000,  price: 7,  imgShare: 3, label: 'Platform',         tone: 'text-emerald-400' },
-    { min: 500_000, max: Infinity, price: 6,  imgShare: 3, label: 'Full integration', tone: 'text-emerald-400' },
+    { min: 0,       max: 100_000,  price: 10,   imgShare: 3, label: 'Entry',    tone: 'text-blue-400' },
+    { min: 100_000, max: 250_000,  price: 8.5,  imgShare: 3, label: 'Scale',    tone: 'text-blue-400' },
+    { min: 250_000, max: Infinity, price: 7.5,  imgShare: 3, label: 'Platform', tone: 'text-emerald-400' },
 ];
 
 const MAX_PROFILES = 1_000_000;
@@ -149,6 +148,7 @@ const PricingCalculator = () => {
     const stackedTotal   = baselineRev + retestRev + academyPlusRev + elevateRev;
 
     const fmt = (n: number) => `$${Math.round(n).toLocaleString('en-US')}`;
+    const fmtMoney = (n: number) => Number.isInteger(n) ? `${n}` : n.toFixed(2);
     const fmtCompact = (n: number) => n >= 1000 ? `${(n / 1000).toLocaleString('en-US')}k` : `${n}`;
     const fmtRange = (t: VolumeTier) =>
         t.max === Infinity
@@ -171,22 +171,22 @@ const PricingCalculator = () => {
             </div>
 
             {/* Volume tier table */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden mb-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 border border-white/10 rounded-2xl overflow-hidden mb-10">
                 {VOLUME_TIERS.map((t) => (
                     <div key={t.label} className="bg-[#070707] p-6 sm:p-7 flex flex-col">
                         <p className={`text-xs font-semibold uppercase tracking-wider ${t.tone} mb-3`}>{t.label}</p>
                         <p className="text-sm text-gray-500 tabular-nums mb-4">{fmtRange(t)} profiles / yr</p>
                         <p className="text-4xl sm:text-5xl font-semibold text-white tracking-tight tabular-nums mb-4">
-                            ${t.price}
+                            ${fmtMoney(t.price)}
                         </p>
                         <div className="border-t border-white/5 pt-4 space-y-1.5">
                             <div className="flex items-center justify-between text-sm">
                                 <span className="text-gray-500">IMG Academy</span>
-                                <span className="text-white font-semibold tabular-nums">${t.imgShare}</span>
+                                <span className="text-white font-semibold tabular-nums">${fmtMoney(t.imgShare)}</span>
                             </div>
                             <div className="flex items-center justify-between text-sm">
                                 <span className="text-gray-500">NTangible</span>
-                                <span className="text-white font-semibold tabular-nums">${t.price - t.imgShare}</span>
+                                <span className="text-white font-semibold tabular-nums">${fmtMoney(t.price - t.imgShare)}</span>
                             </div>
                         </div>
                     </div>
@@ -198,9 +198,9 @@ const PricingCalculator = () => {
                 <p className="text-sm font-medium text-blue-400 mb-3">Why this shape</p>
                 <p className="text-base text-gray-300 leading-relaxed">
                     IMG's $3 share is flat across every tier - growth comes from volume, not from renegotiating rate.
-                    NTangible's margin compresses from $7 to $3 as the integration deepens, in exchange for the certainty
-                    of full per-athlete coverage across NCSA. At the floor, both sides earn the same per profile and
-                    the program scales as fast as IMG wants to ship it.
+                    NTangible's margin compresses as the integration deepens, in exchange for the certainty of
+                    full per-athlete coverage across NCSA. Above 250K profiles or with a multi-year commitment,
+                    pricing is negotiated directly.
                 </p>
             </div>
 
@@ -212,7 +212,7 @@ const PricingCalculator = () => {
                     <p className="text-sm font-medium text-blue-400 mb-2">Annual revenue to IMG Academy</p>
                     <p className="text-5xl sm:text-6xl md:text-7xl font-semibold text-white tracking-tight tabular-nums mb-2">{fmt(stackedTotal)}</p>
                     <p className="text-sm text-gray-400 tabular-nums">
-                        {clamped.toLocaleString('en-US')} profiles / yr at the {tier.label.toLowerCase()} tier (${tier.imgShare} to IMG per athlete)
+                        {clamped.toLocaleString('en-US')} profiles / yr at the {tier.label.toLowerCase()} tier (${fmtMoney(tier.imgShare)} to IMG per athlete)
                     </p>
                 </div>
 
@@ -264,7 +264,7 @@ const PricingCalculator = () => {
                         <label className="text-sm font-medium text-gray-400">
                             Annual NCSA profiles
                             <span className={`ml-2 ${tier.tone} font-semibold uppercase tracking-wider text-[11px]`}>
-                                {tier.label} &middot; ${tier.price} ea
+                                {tier.label} &middot; ${fmtMoney(tier.price)} ea
                             </span>
                         </label>
                         <input
