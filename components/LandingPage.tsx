@@ -37,7 +37,7 @@ const BookingModal = ({ onClose }: { onClose: () => void }) => (
     <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 bg-black/90 backdrop-blur-md animate-in fade-in duration-200">
         <div className="w-full max-w-5xl h-[85vh] bg-[#0f1115] border border-gray-800 rounded-2xl relative shadow-2xl overflow-hidden flex flex-col">
             <div className="px-6 py-5 border-b border-gray-800 flex justify-between items-center bg-[#0f1115]">
-                <h2 className="text-xl font-bold text-white">Book An Integration Call</h2>
+                <h2 className="text-xl font-bold text-white">Continue the conversation</h2>
                 <button onClick={onClose} className="text-gray-400 hover:text-white transition-colors">
                     <X size={24} />
                 </button>
@@ -1381,7 +1381,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                           onClick={() => setShowBooking(true)}
                           className="inline-flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-black px-6 py-3.5 rounded-lg font-semibold text-base transition-colors"
                       >
-                          Book the integration call <ArrowRight size={16} />
+                          Move to Letter of Intent terms <ArrowRight size={16} />
                       </button>
                   </div>
               </section>
@@ -1442,7 +1442,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                       onClick={() => setShowBooking(true)}
                       className="inline-flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-400 text-white text-sm font-semibold px-5 py-3 rounded-lg transition-colors"
                   >
-                      Book a call <ArrowRight size={15} />
+                      Continue the conversation <ArrowRight size={15} />
                   </button>
               </div>
           </div>
@@ -1478,7 +1478,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   onClick={() => setShowBooking(true)}
                   className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors"
               >
-                  Book a call
+                  Send questions
               </button>
           </div>
       </nav>
@@ -1527,7 +1527,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                     onClick={() => setShowBooking(true)}
                     className="w-full sm:w-auto bg-white/[0.06] hover:bg-white/[0.10] border border-white/10 hover:border-white/20 text-white px-8 py-3.5 rounded-lg font-semibold text-base transition-colors flex items-center justify-center gap-2"
                  >
-                    Book an integration call
+                    Send questions
                  </button>
               </div>
 
@@ -1635,18 +1635,18 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
           <section className="max-w-5xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
               <div className="border-t border-white/10 pt-16 sm:pt-20 text-center">
                   <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-white tracking-tight leading-[1.05] mb-5">
-                      Let's make it official.
+                      Ready when you are.
                   </h2>
                   <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed mb-10">
-                      We'll walk through the integration, the rollout plan, and the numbers behind the IMG Academy Mental
-                      Scouting Profile. 15 minutes, no slides.
+                      Questions, comments, or ready to move to the Letter of Intent? Drop us a line and we'll
+                      send the next step within 24 hours.
                   </p>
                   <div className="flex flex-col sm:flex-row justify-center gap-3 max-w-md sm:max-w-none mx-auto">
                       <button
                           onClick={() => setShowBooking(true)}
                           className="bg-blue-500 hover:bg-blue-400 text-white px-8 py-3.5 rounded-lg font-semibold text-base transition-colors flex items-center justify-center gap-2"
                       >
-                          Book a 15-min call <ArrowRight size={16} />
+                          Continue the conversation <ArrowRight size={16} />
                       </button>
                       <button
                           onClick={() => setShowReportModal(true)}
@@ -1689,7 +1689,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   <div>
                       <p className="text-xs font-semibold text-white uppercase tracking-wider mb-4">Talk to us</p>
                       <ul className="space-y-2.5 text-sm">
-                          <li><button onClick={() => setShowBooking(true)} className="text-gray-400 hover:text-white transition-colors">Book a call</button></li>
+                          <li><button onClick={() => setShowBooking(true)} className="text-gray-400 hover:text-white transition-colors">Continue the conversation</button></li>
                           <li><a href="https://calendly.com/ntangible/30min" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Contact NTangible</a></li>
                       </ul>
                   </div>
