@@ -624,7 +624,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
         return (
           <>
               {/* HERO - THESIS */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
+              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 sm:mb-20">
                   <div className="max-w-3xl">
                       <h2 className="text-4xl sm:text-6xl font-semibold text-white tracking-tight leading-[1.02] mb-6">
                           Coaches log in.
@@ -786,7 +786,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
 
               {/* CPA INDEX - signature feature spotlight */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-                  <div className="rounded-3xl border border-emerald-500/30 bg-gradient-to-b from-emerald-500/[0.10] via-emerald-500/[0.03] to-transparent p-6 sm:p-10 lg:p-12">
+                  <div className="rounded-3xl border border-emerald-500/30 bg-gradient-to-b from-emerald-500/[0.10] via-emerald-500/[0.02] to-transparent p-7 sm:p-10">
                       <div className="max-w-3xl mb-10 sm:mb-12">
                           <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full mb-5">
                               <Target size={13} className="text-emerald-400" />
@@ -1218,7 +1218,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
         return (
           <>
               {/* TRY IT TODAY - icing moment, leads the tab */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
+              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 sm:mb-20">
                   <div className="rounded-3xl border border-amber-400/30 bg-gradient-to-b from-amber-400/[0.10] via-amber-400/[0.02] to-transparent p-7 sm:p-10">
                       <p className="text-[11px] font-semibold text-amber-300 uppercase tracking-widest mb-4">Try it today</p>
                       <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-5 max-w-3xl">
@@ -1335,7 +1335,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
               </section>
 
               {/* THE MOAT - what an internal build can't ship */}
-              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-12 sm:mb-16">
+              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
                   <div className="rounded-2xl border border-blue-500/30 bg-gradient-to-b from-blue-500/[0.06] to-transparent p-7 sm:p-10">
                       <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mb-3">The five-year head start</p>
                       <h3 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight leading-snug mb-5 max-w-3xl">
