@@ -1613,6 +1613,17 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
 
           {/* INSET TABBED SECTION */}
           <div className="mb-24 sm:mb-32">
+              {/* Section intro - signposts the shift from product/proof into deal arguments */}
+              <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-10 sm:mb-12">
+                  <p className="text-sm font-medium text-blue-400 mb-3">Where the value lives</p>
+                  <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.05] mb-4">
+                      The five arguments for IMG to integrate.
+                  </h2>
+                  <p className="text-lg text-gray-400 leading-relaxed max-w-3xl">
+                      Coach moat. Distribution play. Lead-gen funnel. Economics. Rollout.
+                  </p>
+              </div>
+
               {/* Sticky inset tab bar */}
               <div
                   ref={tabSectionRef}
