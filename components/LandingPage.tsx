@@ -195,6 +195,36 @@ const PricingCalculator = () => {
                 </p>
             </div>
 
+            {/* ---- WHAT IT COSTS THE FAMILY (cost-in-context callout) ---- */}
+            <div className="rounded-2xl border border-blue-400/30 bg-gradient-to-b from-blue-500/[0.06] to-transparent p-6 sm:p-8 mb-10">
+                <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mb-4">
+                    What it costs the family
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-start">
+                    <div className="md:col-span-1">
+                        <p className="text-5xl sm:text-6xl font-semibold text-white tracking-tight tabular-nums mb-2">$30</p>
+                        <p className="text-sm text-white font-semibold mb-1">Per family, over a 4-year NCSA package</p>
+                        <p className="text-[12px] text-gray-500 leading-relaxed tabular-nums">
+                            $7.50 / yr &times; 4 years &middot; platform tier
+                        </p>
+                    </div>
+                    <div className="md:col-span-1 md:border-l md:border-blue-400/15 md:pl-8">
+                        <p className="text-5xl sm:text-6xl font-semibold text-white tracking-tight tabular-nums mb-2">0.5%</p>
+                        <p className="text-sm text-white font-semibold mb-1">Of the family's NCSA spend</p>
+                        <p className="text-[12px] text-gray-500 leading-relaxed tabular-nums">
+                            $30 of a $6,000 multi-year package
+                        </p>
+                    </div>
+                    <div className="md:col-span-1 md:border-l md:border-blue-400/15 md:pl-8">
+                        <p className="text-base text-gray-300 leading-relaxed">
+                            The annual subscription is a rounding-error line on the family's NCSA invoice, and a
+                            <span className="text-white font-semibold"> recurring revenue stream</span> for IMG that compounds
+                            across every active subscriber, every year, for the life of the package.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             {/* ---- STEP 1: BASELINE REVENUE AT SCALE ---- */}
             <div className="bg-[#070707] border border-white/10 rounded-2xl p-6 sm:p-10 mb-8">
                 <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mb-4">Step 01 &middot; Revenue at scale</p>
