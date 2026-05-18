@@ -253,78 +253,44 @@ const PricingCalculator = () => {
                 </div>
             </div>
 
-            {/* ---- STEP 2: STACK ADDITIONAL OPPORTUNITIES ---- */}
+            {/* ---- STEP 2: ADDITIONAL OPPORTUNITIES (DESCRIPTIVE) ---- */}
             <div className="mb-8">
-                <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-2">Step 02 &middot; Stack additional opportunities</p>
+                <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-2">Step 02 &middot; Additional revenue opportunities</p>
                 <h3 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight leading-snug mb-4">
-                    Three additional revenue layers, on the same volume.
+                    The baseline is the floor. Three opportunities stack on top.
                 </h3>
                 <p className="text-base text-gray-400 leading-relaxed mb-6 max-w-2xl">
-                    The baseline above is the floor - it only counts assessment fees. Each athlete is also a
-                    retest event, a potential Academy+ session, and (via Elevate) a B2B distribution point.
-                    The layers compound on the same audience.
+                    The number above counts assessment fees only. Each athlete is also a retest event, a
+                    potential Academy+ session, and - via Elevate - a B2B distribution point. The layers
+                    compound on the same volume IMG already commits to.
                 </p>
 
-                <div className="space-y-3">
-                    {/* Layer 1 - Retest */}
-                    <div className="rounded-2xl border border-blue-400/30 bg-blue-400/[0.04] p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
-                        <div className="sm:w-52 shrink-0">
-                            <p className="text-2xl sm:text-3xl font-semibold text-blue-200 tracking-tight tabular-nums">+ {fmt(retestRev)}</p>
-                            <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mt-1">6-month retest cycle</p>
-                        </div>
-                        <div className="flex-1 sm:border-l sm:border-white/10 sm:pl-6">
-                            <p className="text-sm text-gray-300 leading-relaxed">
-                                Standard cadence doubles annual assessment events from the same athlete base.
-                                On-demand retakes and post-coaching validation retests are additional revenue
-                                lines on top of this floor.
-                            </p>
-                        </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="rounded-2xl border border-blue-400/30 bg-blue-400/[0.04] p-6">
+                        <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mb-3">6-month retest cycle</p>
+                        <h4 className="text-lg font-semibold text-white tracking-tight mb-2 leading-snug">Same base, double the events.</h4>
+                        <p className="text-sm text-gray-400 leading-relaxed">
+                            The standard cadence runs every six months. On-demand retakes and post-coaching
+                            validation retests stack as additional billable events on top.
+                        </p>
                     </div>
 
-                    {/* Layer 2 - Academy+ */}
-                    <div className="rounded-2xl border border-amber-400/30 bg-amber-400/[0.04] p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
-                        <div className="sm:w-52 shrink-0">
-                            <p className="text-2xl sm:text-3xl font-semibold text-amber-200 tracking-tight tabular-nums">+ {fmt(academyPlusRev)}</p>
-                            <p className="text-[11px] font-semibold text-amber-300 uppercase tracking-widest mt-1">Academy+ session funnel</p>
-                        </div>
-                        <div className="flex-1 sm:border-l sm:border-white/10 sm:pl-6">
-                            <p className="text-sm text-gray-300 leading-relaxed">
-                                <span className="text-white font-medium">{lowScorePct}%</span> score Below Average &middot;{' '}
-                                <span className="text-white font-medium">{conversionPct}%</span> convert on Academy+ outreach &middot;{' '}
-                                <span className="text-white font-medium">${sessionPrice}</span> per 1-on-1 session. Pre-qualified
-                                pipeline at $0 acquisition cost.
-                            </p>
-                        </div>
+                    <div className="rounded-2xl border border-amber-400/30 bg-amber-400/[0.04] p-6">
+                        <p className="text-[11px] font-semibold text-amber-300 uppercase tracking-widest mb-3">Academy+ session funnel</p>
+                        <h4 className="text-lg font-semibold text-white tracking-tight mb-2 leading-snug">A pre-qualified pipeline at $0 CAC.</h4>
+                        <p className="text-sm text-gray-400 leading-relaxed">
+                            Low scores route directly into the Academy+ funnel. Every routed lead arrives with
+                            a named gap and a dashboard the family can already see. Workshops, 1-on-1 sessions.
+                        </p>
                     </div>
 
-                    {/* Layer 3 - Elevate */}
-                    <div className="rounded-2xl border border-emerald-400/30 bg-emerald-400/[0.04] p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
-                        <div className="sm:w-52 shrink-0">
-                            <p className="text-2xl sm:text-3xl font-semibold text-emerald-200 tracking-tight tabular-nums">+ {fmt(elevateRev)}</p>
-                            <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mt-1">Elevate B2B channel</p>
-                        </div>
-                        <div className="flex-1 sm:border-l sm:border-white/10 sm:pl-6">
-                            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-2">
-                                <label className="flex items-center gap-2 text-sm text-gray-300">
-                                    <span className="text-gray-400">Elevate academies:</span>
-                                    <input
-                                        type="number"
-                                        min={0}
-                                        step={1}
-                                        value={elevateAcademies}
-                                        onChange={(e) => setElevateAcademies(Math.max(0, parseInt(e.target.value || '0', 10)))}
-                                        className="w-16 bg-black/40 border border-white/10 rounded px-2 py-1 text-right font-semibold text-white tabular-nums focus:outline-none focus:border-emerald-400"
-                                    />
-                                </label>
-                                <span className="text-[11px] text-gray-500 tabular-nums">
-                                    = {(elevateAcademies * academySize).toLocaleString('en-US')} bundled athletes (~{academySize}/academy)
-                                </span>
-                            </div>
-                            <p className="text-sm text-gray-300 leading-relaxed">
-                                Each Elevate license bundles its full roster in - profile + retest. Institutional
-                                sale, not family-by-family.
-                            </p>
-                        </div>
+                    <div className="rounded-2xl border border-emerald-400/30 bg-emerald-400/[0.04] p-6">
+                        <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-3">Elevate B2B channel</p>
+                        <h4 className="text-lg font-semibold text-white tracking-tight mb-2 leading-snug">Whole rosters, one signature.</h4>
+                        <p className="text-sm text-gray-400 leading-relaxed">
+                            Each Elevate academy license bundles every athlete on roster. Institutional sale,
+                            not family-by-family - and a TAM that scales with Elevate's existing pipeline.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -333,9 +299,11 @@ const PricingCalculator = () => {
             <div className="rounded-2xl border border-emerald-500/40 bg-gradient-to-b from-emerald-500/[0.10] to-transparent p-6 sm:p-10 mb-6">
                 <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-3">Step 03 &middot; All-in annual potential</p>
                 <p className="text-5xl sm:text-6xl md:text-7xl font-semibold text-white tracking-tight tabular-nums mb-3">{fmt(allInTotal)}</p>
-                <p className="text-sm text-gray-400 leading-relaxed">
-                    Baseline {fmt(baselineRev)} &nbsp;+&nbsp; retest {fmt(retestRev)} &nbsp;+&nbsp; Academy+ {fmt(academyPlusRev)}
-                    {elevateRev > 0 && <> &nbsp;+&nbsp; Elevate {fmt(elevateRev)}</>}
+                <p className="text-sm text-gray-400 leading-relaxed mb-1">
+                    Baseline + retest cycle + Academy+ funnel + Elevate channel, computed against the volume above.
+                </p>
+                <p className="text-[11px] text-gray-600 leading-relaxed">
+                    Directional, based on the assumptions below.
                 </p>
             </div>
 
@@ -345,16 +313,17 @@ const PricingCalculator = () => {
                     onClick={() => setShowAdvanced(!showAdvanced)}
                     className="text-[11px] font-semibold text-gray-400 hover:text-white uppercase tracking-widest transition-colors flex items-center gap-2"
                 >
-                    <span>{showAdvanced ? '−' : '+'}</span> Adjust assumptions
+                    <span>{showAdvanced ? '−' : '+'}</span> Assumptions behind the all-in number
                 </button>
                 {!showAdvanced && (
                     <p className="text-[11px] text-gray-600 mt-2 leading-relaxed">
-                        Defaults: {lowScorePct}% of athletes score Below Average &middot; {conversionPct}% convert
-                        on Academy+ outreach &middot; ${sessionPrice} per session &middot; ~{academySize} athletes per Elevate academy.
+                        {lowScorePct}% of athletes score Below Average &middot; {conversionPct}% convert on
+                        Academy+ outreach &middot; ${sessionPrice} per session &middot; {elevateAcademies} Elevate
+                        academies at ~{academySize} athletes each.
                     </p>
                 )}
                 {showAdvanced && (
-                    <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div className="mt-4 grid grid-cols-2 sm:grid-cols-5 gap-3">
                         <label className="flex flex-col gap-1">
                             <span className="text-[10px] text-gray-500 uppercase tracking-wider">Low-score share %</span>
                             <input
@@ -380,6 +349,15 @@ const PricingCalculator = () => {
                                 value={sessionPrice}
                                 onChange={(e) => setSessionPrice(Math.max(0, parseInt(e.target.value || '0', 10)))}
                                 className="bg-black border border-white/10 rounded-lg px-3 py-2 text-right text-sm font-semibold text-white tabular-nums focus:outline-none focus:border-amber-400"
+                            />
+                        </label>
+                        <label className="flex flex-col gap-1">
+                            <span className="text-[10px] text-gray-500 uppercase tracking-wider">Elevate academies</span>
+                            <input
+                                type="number" min={0} step={1}
+                                value={elevateAcademies}
+                                onChange={(e) => setElevateAcademies(Math.max(0, parseInt(e.target.value || '0', 10)))}
+                                className="bg-black border border-white/10 rounded-lg px-3 py-2 text-right text-sm font-semibold text-white tabular-nums focus:outline-none focus:border-emerald-400"
                             />
                         </label>
                         <label className="flex flex-col gap-1">
