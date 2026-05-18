@@ -1315,6 +1315,75 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                   </div>
               </section>
 
+              {/* THE MOAT - what an internal build can't ship */}
+              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-12 sm:mb-16">
+                  <div className="rounded-2xl border border-blue-500/30 bg-gradient-to-b from-blue-500/[0.06] to-transparent p-7 sm:p-10">
+                      <p className="text-[11px] font-semibold text-blue-300 uppercase tracking-widest mb-3">The five-year head start</p>
+                      <h3 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight leading-snug mb-5 max-w-3xl">
+                          What an internal build can't ship.
+                      </h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+                          <div>
+                              <p className="text-3xl sm:text-4xl font-semibold text-blue-300 tracking-tight tabular-nums mb-1">5 yrs</p>
+                              <p className="text-sm text-white font-semibold mb-1">Calibrated scoring data</p>
+                              <p className="text-[12px] text-gray-500 leading-relaxed">Benchmarked against committed athletes. A clean-room build starts at zero on validation.</p>
+                          </div>
+                          <div>
+                              <p className="text-3xl sm:text-4xl font-semibold text-blue-300 tracking-tight tabular-nums mb-1">9</p>
+                              <p className="text-sm text-white font-semibold mb-1">Sports already in production</p>
+                              <p className="text-[12px] text-gray-500 leading-relaxed">Scoring engine, retest pipeline, position-specific library - all live. Not a build plan.</p>
+                          </div>
+                          <div>
+                              <p className="text-3xl sm:text-4xl font-semibold text-blue-300 tracking-tight tabular-nums mb-1">~6 mo</p>
+                              <p className="text-sm text-white font-semibold mb-1">Continuous validation loop</p>
+                              <p className="text-[12px] text-gray-500 leading-relaxed">Every retest sharpens the model. An internal build doesn't get that loop until it ships.</p>
+                          </div>
+                          <div>
+                              <p className="text-3xl sm:text-4xl font-semibold text-blue-300 tracking-tight tabular-nums mb-1">60d &middot; 18mo</p>
+                              <p className="text-sm text-white font-semibold mb-1">Integration vs. internal build</p>
+                              <p className="text-[12px] text-gray-500 leading-relaxed">By the time an in-house v1 ships, NTangible's on year 6 of data.</p>
+                          </div>
+                      </div>
+                      <p className="text-base sm:text-lg text-white leading-relaxed font-medium border-t border-blue-400/15 pt-5">
+                          You're not buying software. You're buying time and a five-year dataset.
+                      </p>
+                  </div>
+              </section>
+
+              {/* ALREADY IN MARKET - social proof + active conversations */}
+              <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
+                  <div className="rounded-2xl border border-emerald-500/30 bg-gradient-to-b from-emerald-500/[0.06] to-transparent p-7 sm:p-10">
+                      <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-3">Already in market</p>
+                      <h3 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight leading-snug mb-5 max-w-3xl">
+                          The assessment is shipping today &mdash; and others are moving on it.
+                      </h3>
+                      <p className="text-base text-gray-300 leading-relaxed mb-7 max-w-3xl">
+                          NTangible isn't vaporware looking for its first customer. The platform is live with
+                          established partners across youth sports, with additional conversations active across
+                          residential training campuses, athletic departments, and youth-sport organizations.
+                      </p>
+
+                      <p className="text-[11px] font-semibold text-emerald-300 uppercase tracking-widest mb-4">Active partners include</p>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+                          {[
+                              { name: 'Alliance' },
+                              { name: 'Future Stars Series' },
+                              { name: "Governor's Challenge" },
+                          ].map((p) => (
+                              <div key={p.name} className="rounded-lg border border-white/10 bg-black/30 px-4 py-3">
+                                  <p className="text-white text-sm font-semibold">{p.name}</p>
+                              </div>
+                          ))}
+                      </div>
+
+                      <p className="text-[12px] text-gray-500 leading-relaxed pt-4 border-t border-emerald-400/15">
+                          Plus active integration conversations with additional residential training campuses,
+                          college athletic departments, and youth sports organizations. First-mover position
+                          on the NCSA + SportsRecruits surface is open today.
+                      </p>
+                  </div>
+              </section>
+
               {/* HOW THIS STARTS - the explicit ask */}
               <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
                   <div className="rounded-3xl border border-amber-400/30 bg-gradient-to-b from-amber-400/[0.10] via-amber-400/[0.02] to-transparent p-7 sm:p-10">
