@@ -1,17 +1,16 @@
 export const config = { runtime: 'edge' };
 
 // Azure OpenAI chat completions endpoint.
-// Env vars expected:
-//   AZURE_OPENAI_ENDPOINT   - e.g. https://danconnerty-3920-resource.services.ai.azure.com
-//                             (the base resource URL, WITHOUT /api/projects/... suffix)
-//   AZURE_OPENAI_API_KEY    - resource API key
-//   AZURE_OPENAI_DEPLOYMENT - deployment name (e.g. NTangibleAzureDemoAPI)
-//   AZURE_OPENAI_API_VERSION (optional) - defaults to 2024-10-21
+// Only AZURE_OPENAI_API_KEY should come from Vercel env vars.
+// Do NOT set AZURE_OPENAI_ENDPOINT or AZURE_OPENAI_DEPLOYMENT in Vercel —
+// they caused broken URLs when misconfigured. Everything is hardcoded here.
 //
 // Azure OpenAI does automatic prompt caching on static prefixes >= 1024 tokens.
 // Keep the system prompt at the start of messages and stable across turns to benefit.
 
-const DEFAULT_API_VERSION = '2024-10-21';
+const HARDCODED_ENDPOINT = 'https://danconnerty-3920-resource.openai.azure.com';
+const HARDCODED_DEPLOYMENT = 'gpt-4o-mini';
+const HARDCODED_API_VERSION = '2024-10-21';
 
 interface ChatRequestBody {
   messages: Array<{ role: 'user' | 'assistant'; content: string }>;
@@ -25,24 +24,19 @@ export default async function handler(req: Request): Promise<Response> {
 
   const body = await req.json() as ChatRequestBody;
 
-  const endpoint = process.env.AZURE_OPENAI_ENDPOINT;
+  const endpoint = HARDCODED_ENDPOINT;
+  const deployment = HARDCODED_DEPLOYMENT;
+  const apiVersion = HARDCODED_API_VERSION;
   const apiKey = process.env.AZURE_OPENAI_API_KEY;
-  const deployment = process.env.AZURE_OPENAI_DEPLOYMENT;
-  const apiVersion = process.env.AZURE_OPENAI_API_VERSION ?? DEFAULT_API_VERSION;
 
-  if (!endpoint || !apiKey || !deployment) {
+  if (!apiKey) {
     return new Response(
-      JSON.stringify({
-        error: 'Azure OpenAI not configured. Set AZURE_OPENAI_ENDPOINT, AZURE_OPENAI_API_KEY, and AZURE_OPENAI_DEPLOYMENT.'
-      }),
+      JSON.stringify({ error: 'Azure OpenAI not configured. Set AZURE_OPENAI_API_KEY.' }),
       { status: 500 }
     );
   }
 
-  // Normalize endpoint - strip any trailing slash or AI Foundry project suffix.
-  const baseEndpoint = endpoint.replace(/\/+$/, '').replace(/\/api\/projects\/.*$/, '');
-
-  const url = `${baseEndpoint}/openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`;
+  const url = `${endpoint}/openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`;
 
   // OpenAI shape: system prompt is a message with role 'system' at the start.
   const messages = [
