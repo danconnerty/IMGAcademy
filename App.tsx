@@ -5,6 +5,7 @@ import LandingPage from './components/LandingPage';
 // Lazy-load everything that only renders after the user enters the demo, so the
 // landing page (the first paint on mobile) doesn't pay for the whole app bundle.
 // Each import factory is named so we can both lazy() it and preload() it.
+const loadRagChat = () => import('./components/RagChat');
 const loadHeader = () => import('./components/Header');
 const loadParticipantTable = () => import('./components/ParticipantTable');
 const loadCoachesNterpret = () => import('./components/CoachesNterpret');
@@ -19,6 +20,7 @@ const loadRosterAlignmentView = () => import('./components/RosterAlignmentView')
 const loadNTerpretProfilesView = () => import('./components/NTerpretProfilesView');
 const loadDevelopmentPlanView = () => import('./components/DevelopmentPlanView');
 
+const RagChat = lazy(loadRagChat);
 const Header = lazy(loadHeader);
 const ParticipantTable = lazy(loadParticipantTable);
 const CoachesNterpret = lazy(loadCoachesNterpret);
@@ -38,7 +40,7 @@ const DevelopmentPlanView = lazy(loadDevelopmentPlanView);
 export const preloadDashboard = () => {
   loadHeader(); loadParticipantTable(); loadCoachesNterpret(); loadMyProfile();
   loadFitScoreRubric(); loadClutchFactorGuide(); loadRecruitingView(); loadWalkthrough();
-  loadMasterDashboard(); loadMethodologyView(); loadRosterAlignmentView();
+  loadRagChat(); loadMasterDashboard(); loadMethodologyView(); loadRosterAlignmentView();
   loadNTerpretProfilesView(); loadDevelopmentPlanView();
 };
 
@@ -538,6 +540,7 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">
+      <Suspense fallback={null}><RagChat /></Suspense>
 
       {/* Walkthrough Demo Overlay */}
       {showWalkthrough && (
