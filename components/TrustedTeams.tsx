@@ -32,23 +32,20 @@ const TrustedTeams: React.FC = () => {
     const allLogos = [...logos, ...logos, ...logos];
 
     return (
-        <section className="w-full bg-black text-white py-12 md:py-16 border-y border-white/5 overflow-hidden relative min-h-[200px]">
-
-            {/* Tech Background Overlay */}
-            <div className="absolute inset-0 opacity-[0.1] pointer-events-none bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <section className="w-full bg-paper text-ink py-12 md:py-16 border-y border-line overflow-hidden relative min-h-[200px]">
 
             <div className="container mx-auto px-6 mb-10 text-center relative z-10">
                 <div className="inline-flex items-center gap-2 mb-2">
-                    <h2 className="text-sm md:text-base font-bold tracking-[0.2em] uppercase text-gray-400">
-                        BUILT FOR ELITE PROGRAMS
+                    <h2 className="font-mono text-[11px] md:text-xs font-medium tracking-[0.25em] uppercase text-gray-brand">
+                        Built for elite programs
                     </h2>
                 </div>
             </div>
 
             <div className="relative w-full overflow-hidden">
-                {/* Gradient Masks for sleek fade-in/out */}
-                <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-black via-black/80 to-transparent z-20 pointer-events-none"></div>
-                <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-black via-black/80 to-transparent z-20 pointer-events-none"></div>
+                {/* Hairline paper fade for a clean edge on the marquee */}
+                <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-paper via-paper/80 to-transparent z-20 pointer-events-none"></div>
+                <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-paper via-paper/80 to-transparent z-20 pointer-events-none"></div>
 
                 <div className="flex items-center gap-12 md:gap-20 animate-infinite-scroll w-max hover:[animation-play-state:paused]">
                     {allLogos.map((src, index) => (
@@ -62,7 +59,7 @@ const TrustedTeams: React.FC = () => {
                                 loading="lazy"
                                 width="160"
                                 height="64"
-                                className="max-w-full max-h-full object-contain opacity-40 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110 drop-shadow-lg"
+                                className="max-w-full max-h-full object-contain opacity-50 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110"
                             />
                         </div>
                     ))}

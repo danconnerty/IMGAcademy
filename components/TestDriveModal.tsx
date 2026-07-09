@@ -78,112 +78,112 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({ onClose }) => {
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/90 backdrop-blur-md animate-in fade-in duration-200">
-            <div className="w-full max-w-4xl bg-[#0f1115] border border-gray-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-                
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-ink/40 backdrop-blur-sm animate-in fade-in duration-200">
+            <div className="w-full max-w-4xl bg-white border border-line-strong rounded-card shadow-lift overflow-hidden flex flex-col max-h-[90vh]">
+
                 {/* Header */}
-                <div className="px-6 py-5 border-b border-gray-800 flex justify-between items-center bg-[#0f1115]">
+                <div className="px-6 py-5 border-b border-line flex justify-between items-center bg-white">
                     <div className="flex items-center gap-4">
                         {selectedSport && (
-                            <button 
+                            <button
                                 onClick={() => setSelectedSport(null)}
-                                className="text-gray-400 hover:text-white transition-colors"
+                                className="text-gray-brand hover:text-ink transition-colors"
                             >
-                                <ArrowLeft size={20} />
+                                <ArrowLeft size={20} strokeWidth={1.8} />
                             </button>
                         )}
                         <div>
-                            <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                                {selectedSport ? selectedSport.label : 'Select Sport'}
+                            <h2 className="text-xl font-semibold text-ink tracking-tightest flex items-center gap-2">
+                                {selectedSport ? selectedSport.label : 'Select sport'}
                             </h2>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-body">
                                 {selectedSport ? 'Available cognitive tests.' : 'Choose a sport to access testing links.'}
                             </p>
                         </div>
                     </div>
-                    <button onClick={onClose} className="text-gray-400 hover:text-white transition-colors">
-                        <X size={24} />
+                    <button onClick={onClose} className="text-gray-brand hover:text-ink transition-colors">
+                        <X size={24} strokeWidth={1.8} />
                     </button>
                 </div>
 
                 {/* Content */}
-                <div className="p-6 overflow-y-auto custom-scrollbar bg-[#0f1115]">
+                <div className="p-6 overflow-y-auto custom-scrollbar bg-white">
                     {!selectedSport ? (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             {SPORTS.map((sport) => (
                                 <button
                                     key={sport.id}
                                     onClick={() => setSelectedSport(sport)}
-                                    className="flex items-center justify-between p-4 bg-[#181b21] hover:bg-[#22262e] border border-gray-800 hover:border-blue-500/30 rounded-xl transition-all group text-left"
+                                    className="flex items-center justify-between p-4 nt-card nt-card-hover hover:border-ink transition-all group text-left"
                                 >
                                     <div className="flex items-center gap-3">
-                                        <div className="p-2 bg-gray-800 rounded-lg text-gray-400 group-hover:text-blue-400 group-hover:bg-blue-900/20 transition-colors">
-                                            <Activity size={18} />
-                                        </div>
-                                        <span className="font-semibold text-gray-200 group-hover:text-white transition-colors">
+                                        <span className="w-9 h-9 rounded-full border border-line-strong bg-white flex items-center justify-center text-ink transition-colors">
+                                            <Activity size={18} strokeWidth={1.8} />
+                                        </span>
+                                        <span className="font-semibold text-body group-hover:text-ink transition-colors">
                                             {sport.label}
                                         </span>
                                     </div>
-                                    <ChevronRight size={16} className="text-gray-600 group-hover:text-gray-300 transition-colors" />
+                                    <ChevronRight size={16} strokeWidth={1.8} className="text-gray-soft group-hover:text-ink transition-colors" />
                                 </button>
                             ))}
                         </div>
                     ) : (
                         <div className="space-y-4 max-w-3xl mx-auto">
-                            
+
                             {/* Requirement Banner */}
-                            <div className="p-4 bg-blue-900/10 border border-blue-900/30 rounded-xl flex gap-3">
+                            <div className="nt-callout flex gap-3">
                                 <div className="mt-0.5">
-                                    <Info size={18} className="text-blue-400" />
+                                    <Info size={18} strokeWidth={1.8} className="text-ink" />
                                 </div>
                                 <div>
-                                    <h4 className="text-sm font-bold text-blue-100 uppercase tracking-wide mb-1">Testing Requirement</h4>
-                                    <p className="text-sm text-blue-200/70 leading-relaxed">
-                                        To ensure a complete cognitive profile, the athlete must complete <span className="font-bold text-white">BOTH</span> the Clutch Factor™ and NTerpret™ assessments.
+                                    <h4 className="font-mono text-[11px] font-medium text-ink uppercase tracking-[0.16em] mb-1">Testing requirement</h4>
+                                    <p className="text-sm text-body leading-relaxed">
+                                        To ensure a complete cognitive profile, the athlete must complete <span className="font-semibold text-ink">both</span> the Clutch Factor™ and NTerpret™ assessments.
                                     </p>
                                 </div>
                             </div>
 
                             {/* Test Card 1 - Clutch */}
-                            <button 
+                            <button
                                 onClick={() => handleOpenTest('clutch')}
-                                className="w-full group relative p-6 bg-[#181b21] hover:bg-[#22262e] border border-gray-800 hover:border-blue-500/50 rounded-xl transition-all cursor-pointer text-left"
+                                className="w-full group relative p-6 nt-card nt-card-hover hover:border-ink transition-all cursor-pointer text-left"
                             >
                                 <div className="flex justify-between items-start mb-2">
                                     <div className="flex items-center gap-3">
-                                        <div className="p-2 bg-blue-900/20 rounded-lg text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-colors">
-                                            <Activity size={20} />
-                                        </div>
-                                        <h3 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">Clutch Factor™ Assessment</h3>
-                                        <span className="ml-2 px-2 py-0.5 bg-green-900/20 text-green-400 border border-green-900/30 text-[10px] font-bold uppercase rounded tracking-wider">
+                                        <span className="w-10 h-10 rounded-full border border-line-strong bg-white flex items-center justify-center text-ink transition-colors">
+                                            <Activity size={20} strokeWidth={1.8} />
+                                        </span>
+                                        <h3 className="text-lg font-semibold text-ink tracking-tightest group-hover:text-ink transition-colors">Clutch Factor™ Assessment</h3>
+                                        <span className="ml-2 px-2 py-0.5 bg-white border border-line-strong text-gray-brand font-mono text-[10px] font-medium uppercase rounded-card tracking-[0.12em]">
                                             Active
                                         </span>
                                     </div>
-                                    <ExternalLink size={18} className="text-gray-500 group-hover:text-white transition-colors" />
+                                    <ExternalLink size={18} strokeWidth={1.8} className="text-gray-soft group-hover:text-ink transition-colors" />
                                 </div>
-                                <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors pl-[52px]">
+                                <p className="text-sm text-body transition-colors pl-[56px]">
                                     Determine your clutch factor, and see if you have what it takes to perform in high leverage situations.
                                 </p>
                             </button>
 
                             {/* Test Card 2 - NTerpret */}
-                             <button 
+                             <button
                                 onClick={() => handleOpenTest('nterpret')}
-                                className="w-full group relative p-6 bg-[#181b21] hover:bg-[#22262e] border border-gray-800 hover:border-purple-500/50 rounded-xl transition-all cursor-pointer text-left"
+                                className="w-full group relative p-6 nt-card nt-card-hover hover:border-ink transition-all cursor-pointer text-left"
                             >
                                 <div className="flex justify-between items-start mb-2">
                                     <div className="flex items-center gap-3">
-                                        <div className="p-2 bg-purple-900/20 rounded-lg text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-colors">
-                                            <Brain size={20} />
-                                        </div>
-                                        <h3 className="text-lg font-bold text-white group-hover:text-purple-400 transition-colors">NTerpret Assessment</h3>
-                                        <span className="ml-2 px-2 py-0.5 bg-green-900/20 text-green-400 border border-green-900/30 text-[10px] font-bold uppercase rounded tracking-wider">
+                                        <span className="w-10 h-10 rounded-full border border-line-strong bg-white flex items-center justify-center text-ink transition-colors">
+                                            <Brain size={20} strokeWidth={1.8} />
+                                        </span>
+                                        <h3 className="text-lg font-semibold text-ink tracking-tightest group-hover:text-ink transition-colors">NTerpret™ Assessment</h3>
+                                        <span className="ml-2 px-2 py-0.5 bg-white border border-line-strong text-gray-brand font-mono text-[10px] font-medium uppercase rounded-card tracking-[0.12em]">
                                             Active
                                         </span>
                                     </div>
-                                    <ExternalLink size={18} className="text-gray-500 group-hover:text-white transition-colors" />
+                                    <ExternalLink size={18} strokeWidth={1.8} className="text-gray-soft group-hover:text-ink transition-colors" />
                                 </div>
-                                <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors pl-[52px]">
+                                <p className="text-sm text-body transition-colors pl-[56px]">
                                     The mental scouting report which determines how you learn, communicate, and specific motivations towards sports.
                                 </p>
                             </button>

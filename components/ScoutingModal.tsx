@@ -183,85 +183,85 @@ const ScoutingModal: React.FC<ScoutingModalProps> = ({ player, allPlayers, onClo
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6 sm:px-6 lg:px-8">
-      <div 
-        className="absolute inset-0 bg-gray-900/40 backdrop-blur-sm transition-opacity" 
+      <div
+        className="absolute inset-0 bg-ink/40 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       />
-      
-      <div className="relative w-full max-w-5xl bg-white rounded-lg shadow-xl flex flex-col max-h-[90vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-        
+
+      <div className="relative w-full max-w-5xl bg-white rounded-card border border-line-strong shadow-lift flex flex-col max-h-[90vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+
         {/* Header Section */}
         <div className="px-6 sm:px-8 pt-6 sm:pt-8 pb-4 sm:pb-6 bg-white flex-shrink-0">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-6 gap-4">
                 <div>
-                    <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 sm:mb-4">{player.name}</h1>
-                    <div className="space-y-1">
-                        <p className="text-sm text-gray-900"><span className="font-bold">Position</span> {player.position}</p>
-                        <p className="text-sm text-gray-900"><span className="font-bold">Level</span> {player.level}</p>
-                        <p className="text-sm text-gray-900 flex items-center gap-2 truncate max-w-xs sm:max-w-none">
-                            <span className="font-bold">Email</span> {details.email}
+                    <h1 className="text-2xl sm:text-3xl font-semibold text-ink tracking-tightest mb-2 sm:mb-4">{player.name}</h1>
+                    <div className="space-y-1.5">
+                        <p className="text-sm text-body flex items-center gap-2"><span className="font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-gray-brand w-16">Position</span> {player.position}</p>
+                        <p className="text-sm text-body flex items-center gap-2"><span className="font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-gray-brand w-16">Level</span> {player.level}</p>
+                        <p className="text-sm text-body flex items-center gap-2 truncate max-w-xs sm:max-w-none">
+                            <span className="font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-gray-brand w-16 flex-shrink-0">Email</span> {details.email}
                         </p>
                     </div>
                 </div>
                 <div className="flex flex-wrap items-center gap-3">
-                     <button 
+                     <button
                         onClick={() => setActiveReport('clutch')}
-                        className="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold uppercase tracking-wider rounded transition-colors flex items-center gap-2"
+                        className="px-3 py-2 bg-white hover:border-ink border border-line-strong text-body hover:text-ink font-mono text-[10px] font-medium uppercase tracking-[0.16em] rounded-card transition-colors flex items-center gap-2"
                      >
-                        <FileText size={14} />
+                        <FileText size={14} strokeWidth={1.8} />
                         Clutch Report
                      </button>
-                     <button 
+                     <button
                         onClick={() => setActiveReport('nterpret')}
-                        className="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold uppercase tracking-wider rounded transition-colors flex items-center gap-2"
+                        className="px-3 py-2 bg-white hover:border-ink border border-line-strong text-body hover:text-ink font-mono text-[10px] font-medium uppercase tracking-[0.16em] rounded-card transition-colors flex items-center gap-2"
                      >
-                        <Brain size={14} />
+                        <Brain size={14} strokeWidth={1.8} />
                         NTerpret Report
                      </button>
-                     <button className="text-gray-400 hover:text-gray-600 ml-2 hidden sm:block">
-                        <Copy size={18} />
+                     <button className="text-gray-brand hover:text-ink ml-2 hidden sm:block transition-colors">
+                        <Copy size={18} strokeWidth={1.8} />
                      </button>
                 </div>
             </div>
 
             {/* Metrics Row - Stack on mobile, row on desktop */}
-            <div className="border border-gray-200 rounded-lg flex flex-wrap md:flex-nowrap divide-y md:divide-y-0 md:divide-x divide-gray-200">
+            <div className="border border-line-strong rounded-card flex flex-wrap md:flex-nowrap divide-y md:divide-y-0 md:divide-x divide-line">
                 <div className="w-1/2 md:flex-1 p-4">
-                    <p className="text-sm text-gray-500 mb-1">Clutch Factor</p>
-                    <p className="text-2xl sm:text-3xl font-normal text-gray-700">{player.clutchFactor}</p>
+                    <p className="font-mono text-[10px] font-medium text-gray-brand uppercase tracking-[0.16em] mb-1">Clutch Factor</p>
+                    <p className="text-2xl sm:text-3xl font-semibold text-ink tracking-tightest tabular-nums">{player.clutchFactor}</p>
                 </div>
                 <div className="w-1/2 md:flex-1 p-4">
-                    <p className="text-sm text-gray-500 mb-1">Alignment</p>
-                    <p className={`text-2xl sm:text-3xl font-normal ${player.fitScore !== undefined ? 'text-blue-600' : 'text-gray-300'}`}>
+                    <p className="font-mono text-[10px] font-medium text-gray-brand uppercase tracking-[0.16em] mb-1">Alignment</p>
+                    <p className={`text-2xl sm:text-3xl font-semibold tracking-tightest tabular-nums ${player.fitScore !== undefined ? 'text-ink' : 'text-gray-soft'}`}>
                         {player.fitScore !== undefined ? `${player.fitScore}%` : 'N/A'}
                     </p>
                 </div>
                 <div className="w-full md:flex-1 p-4">
-                    <p className="text-sm text-gray-500 mb-1">Scoring Range</p>
-                    <p className="text-2xl sm:text-3xl font-normal text-gray-700 leading-tight">{details.scoringRange}</p>
+                    <p className="font-mono text-[10px] font-medium text-gray-brand uppercase tracking-[0.16em] mb-1">Scoring Range</p>
+                    <p className="text-2xl sm:text-3xl font-semibold text-ink tracking-tightest leading-tight">{details.scoringRange}</p>
                 </div>
                 <div className="w-1/2 md:flex-1 p-4">
-                    <p className="text-sm text-gray-500 mb-1">Overall Rank</p>
-                    <p className="text-2xl sm:text-3xl font-normal text-gray-700">#{details.rankings.stats.overallRank}</p>
+                    <p className="font-mono text-[10px] font-medium text-gray-brand uppercase tracking-[0.16em] mb-1">Overall Rank</p>
+                    <p className="text-2xl sm:text-3xl font-semibold text-ink tracking-tightest tabular-nums">#{details.rankings.stats.overallRank}</p>
                 </div>
                 <div className="w-1/2 md:flex-1 p-4">
-                    <p className="text-sm text-gray-500 mb-1">Positional Rank</p>
-                    <p className="text-2xl sm:text-3xl font-normal text-gray-700">#{details.rankings.stats.posRank}</p>
+                    <p className="font-mono text-[10px] font-medium text-gray-brand uppercase tracking-[0.16em] mb-1">Positional Rank</p>
+                    <p className="text-2xl sm:text-3xl font-semibold text-ink tracking-tightest tabular-nums">#{details.rankings.stats.posRank}</p>
                 </div>
             </div>
         </div>
 
         {/* Tabs - Scrollable on mobile */}
-        <div className="px-6 sm:px-8 border-b border-gray-200 bg-white flex-shrink-0 overflow-x-auto scrollbar-hide">
+        <div className="px-6 sm:px-8 border-b border-line bg-white flex-shrink-0 overflow-x-auto scrollbar-hide">
              <div className="flex gap-8 min-w-max">
                 {(['Rankings', 'NSights', 'Exercises', 'NTerpret', 'Alignment'] as Tab[]).map((tab) => (
                     <button
                         key={tab}
                         onClick={() => setActiveTab(tab)}
-                        className={`py-3 text-sm font-medium border-b-2 transition-colors ${
-                            activeTab === tab 
-                            ? 'text-blue-600 border-blue-600' 
-                            : 'text-gray-500 border-transparent hover:text-gray-700'
+                        className={`py-3 font-mono text-[11px] uppercase tracking-[0.16em] border-b-2 transition-colors ${
+                            activeTab === tab
+                            ? 'text-ink border-ink'
+                            : 'text-gray-brand border-transparent hover:text-ink'
                         }`}
                     >
                         {tab}
@@ -276,19 +276,19 @@ const ScoutingModal: React.FC<ScoutingModalProps> = ({ player, allPlayers, onClo
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
                     {/* Overall */}
                     <div>
-                        <h3 className="text-sm font-bold text-gray-500 mb-4">Overall Leaderboard</h3>
+                        <h3 className="font-mono text-[11px] font-medium text-gray-brand uppercase tracking-[0.16em] mb-4">Overall leaderboard</h3>
                         <div className="space-y-4">
                             {details.rankings.overall.map((item) => (
-                                <div key={item.name} className={`flex items-center justify-between text-sm ${item.isMe ? 'bg-blue-50 -mx-2 px-2 py-2 rounded border border-blue-100' : ''}`}>
+                                <div key={item.name} className={`flex items-center justify-between text-sm ${item.isMe ? 'bg-chip -mx-2 px-2 py-2 rounded-card border border-line-strong' : ''}`}>
                                     <div className="flex items-center gap-3">
-                                        <span className="text-gray-500 w-4 font-mono">{item.rank}.</span>
-                                        <span className={`font-medium ${item.isMe ? 'text-blue-900' : 'text-gray-600'}`}>{item.name}</span>
+                                        <span className="text-gray-brand w-4 font-mono tabular-nums">{item.rank}.</span>
+                                        <span className={`font-medium ${item.isMe ? 'text-ink' : 'text-body'}`}>{item.name}</span>
                                     </div>
                                     <div className="flex items-center gap-3">
-                                        <span className={`font-mono font-medium ${item.isMe ? 'text-blue-700' : 'text-gray-900'}`}>{item.score}</span>
-                                        <div className="w-12 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                                            <div 
-                                                className={`h-full ${item.isMe ? 'bg-blue-600' : 'bg-gray-300'}`} 
+                                        <span className={`font-mono font-medium tabular-nums ${item.isMe ? 'text-ink' : 'text-ink'}`}>{item.score}</span>
+                                        <div className="w-12 h-1.5 bg-line rounded-full overflow-hidden">
+                                            <div
+                                                className={`h-full ${item.isMe ? 'bg-ink' : 'bg-line-strong'}`}
                                                 style={{ width: `${(item.score / 1000) * 100}%` }}
                                             ></div>
                                         </div>
@@ -300,19 +300,19 @@ const ScoutingModal: React.FC<ScoutingModalProps> = ({ player, allPlayers, onClo
 
                     {/* Position */}
                     <div>
-                         <h3 className="text-sm font-bold text-gray-500 mb-4">Position Leaders ({player.position})</h3>
+                         <h3 className="font-mono text-[11px] font-medium text-gray-brand uppercase tracking-[0.16em] mb-4">Position leaders ({player.position})</h3>
                          <div className="space-y-4">
                             {details.rankings.position.map((item) => (
-                                <div key={item.name} className={`flex items-center justify-between text-sm ${item.isMe ? 'bg-blue-50 -mx-2 px-2 py-2 rounded border border-blue-100' : ''}`}>
+                                <div key={item.name} className={`flex items-center justify-between text-sm ${item.isMe ? 'bg-chip -mx-2 px-2 py-2 rounded-card border border-line-strong' : ''}`}>
                                     <div className="flex items-center gap-3">
-                                        <span className="text-gray-500 w-4 font-mono">{item.rank}.</span>
-                                        <span className={`font-medium ${item.isMe ? 'text-blue-900' : 'text-gray-600'}`}>{item.name}</span>
+                                        <span className="text-gray-brand w-4 font-mono tabular-nums">{item.rank}.</span>
+                                        <span className={`font-medium ${item.isMe ? 'text-ink' : 'text-body'}`}>{item.name}</span>
                                     </div>
                                     <div className="flex items-center gap-3">
-                                        <span className={`font-mono font-medium ${item.isMe ? 'text-blue-700' : 'text-gray-900'}`}>{item.score}</span>
-                                        <div className="w-12 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                                            <div 
-                                                className={`h-full ${item.isMe ? 'bg-blue-600' : 'bg-gray-300'}`} 
+                                        <span className={`font-mono font-medium tabular-nums ${item.isMe ? 'text-ink' : 'text-ink'}`}>{item.score}</span>
+                                        <div className="w-12 h-1.5 bg-line rounded-full overflow-hidden">
+                                            <div
+                                                className={`h-full ${item.isMe ? 'bg-ink' : 'bg-line-strong'}`}
                                                 style={{ width: `${(item.score / 1000) * 100}%` }}
                                             ></div>
                                         </div>
@@ -324,19 +324,19 @@ const ScoutingModal: React.FC<ScoutingModalProps> = ({ player, allPlayers, onClo
 
                     {/* Graduation */}
                     <div>
-                         <h3 className="text-sm font-bold text-gray-500 mb-4">Class Leaders ({player.graduationYear})</h3>
+                         <h3 className="font-mono text-[11px] font-medium text-gray-brand uppercase tracking-[0.16em] mb-4">Class leaders ({player.graduationYear})</h3>
                           <div className="space-y-4">
                             {details.rankings.graduation.map((item) => (
-                                <div key={item.name} className={`flex items-center justify-between text-sm ${item.isMe ? 'bg-blue-50 -mx-2 px-2 py-2 rounded border border-blue-100' : ''}`}>
+                                <div key={item.name} className={`flex items-center justify-between text-sm ${item.isMe ? 'bg-chip -mx-2 px-2 py-2 rounded-card border border-line-strong' : ''}`}>
                                     <div className="flex items-center gap-3">
-                                        <span className="text-gray-500 w-4 font-mono">{item.rank}.</span>
-                                        <span className={`font-medium ${item.isMe ? 'text-blue-900' : 'text-gray-600'}`}>{item.name}</span>
+                                        <span className="text-gray-brand w-4 font-mono tabular-nums">{item.rank}.</span>
+                                        <span className={`font-medium ${item.isMe ? 'text-ink' : 'text-body'}`}>{item.name}</span>
                                     </div>
                                     <div className="flex items-center gap-3">
-                                        <span className={`font-mono font-medium ${item.isMe ? 'text-blue-700' : 'text-gray-900'}`}>{item.score}</span>
-                                        <div className="w-12 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                                            <div 
-                                                className={`h-full ${item.isMe ? 'bg-blue-600' : 'bg-gray-300'}`} 
+                                        <span className={`font-mono font-medium tabular-nums ${item.isMe ? 'text-ink' : 'text-ink'}`}>{item.score}</span>
+                                        <div className="w-12 h-1.5 bg-line rounded-full overflow-hidden">
+                                            <div
+                                                className={`h-full ${item.isMe ? 'bg-ink' : 'bg-line-strong'}`}
                                                 style={{ width: `${(item.score / 1000) * 100}%` }}
                                             ></div>
                                         </div>
@@ -354,45 +354,45 @@ const ScoutingModal: React.FC<ScoutingModalProps> = ({ player, allPlayers, onClo
                         <>
                              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                 {/* Validated Metrics Card */}
-                                <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm flex flex-col justify-between relative overflow-hidden">
+                                <div className="nt-card p-8 flex flex-col justify-between relative overflow-hidden">
                                     {/* Pulse graphic background effect */}
-                                    <div className="absolute top-8 right-8 text-gray-50 opacity-50">
+                                    <div className="absolute top-8 right-8 text-line opacity-60">
                                          <Activity size={120} strokeWidth={1} />
                                     </div>
 
                                     <div>
-                                        <p className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">Validated Metrics</p>
+                                        <p className="font-mono text-[11px] font-medium text-gray-brand uppercase tracking-[0.16em] mb-1">Validated metrics</p>
                                         <div className="flex items-baseline gap-1">
-                                            <span className="text-6xl font-bold text-gray-900 tracking-tight">{player.fitScore}%</span>
+                                            <span className="text-6xl font-semibold text-ink tracking-tightest tabular-nums">{player.fitScore}%</span>
                                         </div>
                                     </div>
 
                                     <div className="relative z-10 mt-8">
-                                         <p className={`text-sm font-bold uppercase tracking-widest mb-1 ${details.rubric.ratingColor.split(' ')[1]}`}>
+                                         <p className="font-mono text-[11px] font-medium text-ink uppercase tracking-[0.16em] mb-1">
                                              {details.rubric.rating}
                                          </p>
-                                         <p className="text-xs text-gray-400">Based on 10 psychometric dimensions</p>
+                                         <p className="text-xs text-gray-brand">Based on 10 psychometric dimensions</p>
                                     </div>
                                 </div>
 
                                 {/* Executive Summary Card */}
-                                <div className="md:col-span-2 bg-white p-8 rounded-xl border border-gray-200 shadow-sm flex flex-col justify-center">
+                                <div className="md:col-span-2 nt-card p-8 flex flex-col justify-center">
                                     <div className="flex items-center gap-2 mb-4">
-                                        <div className="p-1 bg-blue-100 text-blue-600 rounded">
-                                            <Activity size={14} />
-                                        </div>
-                                        <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Executive Summary</p>
+                                        <span className="w-7 h-7 rounded-full border border-line-strong bg-white flex items-center justify-center">
+                                            <Activity size={14} strokeWidth={1.8} className="text-ink" />
+                                        </span>
+                                        <p className="font-mono text-[11px] font-medium text-gray-brand uppercase tracking-[0.16em]">Executive summary</p>
                                     </div>
-                                    
-                                    <p className="text-lg text-gray-600 italic leading-relaxed mb-6 font-medium">
+
+                                    <p className="text-lg text-body italic leading-relaxed mb-6 font-medium">
                                         "{details.rubric.quote}"
                                     </p>
-                                    
+
                                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                         {details.rubric.bullets.map((bullet, idx) => (
                                             <div key={idx} className="flex gap-3">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 flex-shrink-0"></div>
-                                                <p className="text-xs text-gray-500 leading-relaxed">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-ink mt-2 flex-shrink-0"></div>
+                                                <p className="text-xs text-gray-brand leading-relaxed">
                                                     {bullet}
                                                 </p>
                                             </div>
@@ -402,33 +402,33 @@ const ScoutingModal: React.FC<ScoutingModalProps> = ({ player, allPlayers, onClo
                              </div>
 
                              {/* Projected Dynamic Table Row */}
-                             <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-                                 <div className="px-6 py-4 border-b border-gray-100 bg-white">
-                                     <h3 className="text-xs font-bold text-gray-900 uppercase tracking-widest">Projected Dynamic</h3>
+                             <div className="nt-card overflow-hidden">
+                                 <div className="px-6 py-4 border-b border-line bg-white">
+                                     <h3 className="font-mono text-[11px] font-medium text-ink uppercase tracking-[0.16em]">Projected dynamic</h3>
                                  </div>
                                  <div className="overflow-x-auto">
                                     <table className="w-full text-left">
                                         <thead>
-                                            <tr className="bg-gray-50/50 border-b border-gray-50">
-                                                <th className="px-6 py-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest w-32 whitespace-nowrap">Score Range</th>
-                                                <th className="px-6 py-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest w-32">Rating</th>
-                                                <th className="px-6 py-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest">Coach/Player Dynamic</th>
+                                            <tr className="bg-chip/40 border-b border-line">
+                                                <th className="px-6 py-4 font-mono text-[10px] font-medium text-gray-brand uppercase tracking-[0.16em] w-32 whitespace-nowrap">Score Range</th>
+                                                <th className="px-6 py-4 font-mono text-[10px] font-medium text-gray-brand uppercase tracking-[0.16em] w-32">Rating</th>
+                                                <th className="px-6 py-4 font-mono text-[10px] font-medium text-gray-brand uppercase tracking-[0.16em]">Coach/Player Dynamic</th>
                                                 <th className="px-6 py-4 w-10"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr className="bg-white">
-                                                <td className="px-6 py-6 text-sm font-bold text-gray-600 whitespace-nowrap align-top">{details.rubric.range}</td>
+                                                <td className="px-6 py-6 text-sm font-medium text-body whitespace-nowrap align-top tabular-nums">{details.rubric.range}</td>
                                                 <td className="px-6 py-6 align-top">
-                                                    <span className={`px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider border ${details.rubric.ratingColor}`}>
+                                                    <span className="px-2 py-1 rounded-card font-mono text-[10px] font-medium uppercase tracking-[0.12em] border border-line-strong bg-white text-ink">
                                                         {details.rubric.rating}
                                                     </span>
                                                 </td>
-                                                <td className="px-6 py-6 text-sm text-gray-600 leading-relaxed align-top">
+                                                <td className="px-6 py-6 text-sm text-body leading-relaxed align-top">
                                                     {details.rubric.desc}
                                                 </td>
-                                                <td className="px-6 py-6 align-top text-gray-300">
-                                                    <Info size={16} />
+                                                <td className="px-6 py-6 align-top text-gray-soft">
+                                                    <Info size={16} strokeWidth={1.8} />
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -437,7 +437,7 @@ const ScoutingModal: React.FC<ScoutingModalProps> = ({ player, allPlayers, onClo
                              </div>
                         </>
                     ) : (
-                         <div className="py-12 text-center text-gray-500 italic">
+                         <div className="py-12 text-center text-gray-brand italic">
                              No alignment data available for this player.
                          </div>
                     )}
@@ -448,31 +448,31 @@ const ScoutingModal: React.FC<ScoutingModalProps> = ({ player, allPlayers, onClo
                 <div className="max-w-4xl space-y-8">
                     {/* Summary Section */}
                     <div>
-                         <h3 className="text-base font-bold text-gray-900 mb-2">Summary</h3>
-                         <p className="text-sm text-gray-800 leading-relaxed">{details.psychReport.summary}</p>
+                         <h3 className="text-base font-semibold text-ink tracking-tightest mb-2">Summary</h3>
+                         <p className="text-sm text-body leading-relaxed">{details.psychReport.summary}</p>
                     </div>
 
                     {/* Practice Suggestion Section */}
                     <div>
-                         <h3 className="text-base font-bold text-gray-900 mb-2">Practice Suggestion</h3>
-                         <p className="text-sm text-gray-800 leading-relaxed">{details.psychReport.practice}</p>
+                         <h3 className="text-base font-semibold text-ink tracking-tightest mb-2">Practice suggestion</h3>
+                         <p className="text-sm text-body leading-relaxed">{details.psychReport.practice}</p>
                     </div>
 
                     {/* Approach Section */}
                     <div>
-                         <h3 className="text-base font-bold text-gray-900 mb-2">Approach</h3>
-                         <p className="text-sm text-gray-800 leading-relaxed">{details.psychReport.approach}</p>
+                         <h3 className="text-base font-semibold text-ink tracking-tightest mb-2">Approach</h3>
+                         <p className="text-sm text-body leading-relaxed">{details.psychReport.approach}</p>
                     </div>
 
                     {/* Coaching Suggestion Section */}
                     <div>
-                         <h3 className="text-base font-bold text-gray-900 mb-2">Coaching Suggestion</h3>
-                         <p className="text-sm text-gray-800 leading-relaxed">{details.psychReport.coaching}</p>
+                         <h3 className="text-base font-semibold text-ink tracking-tightest mb-2">Coaching suggestion</h3>
+                         <p className="text-sm text-body leading-relaxed">{details.psychReport.coaching}</p>
                     </div>
 
-                    <div className="flex items-center gap-3 pt-6 border-t border-gray-100 mt-8">
-                         <div className="text-xs text-gray-400 italic flex items-center gap-2">
-                             <RefreshCw size={12} />
+                    <div className="flex items-center gap-3 pt-6 border-t border-line mt-8">
+                         <div className="font-mono text-[10px] text-gray-brand uppercase tracking-[0.12em] flex items-center gap-2">
+                             <RefreshCw size={12} strokeWidth={1.8} />
                              Analysis updated from latest session data
                          </div>
                     </div>
@@ -482,20 +482,20 @@ const ScoutingModal: React.FC<ScoutingModalProps> = ({ player, allPlayers, onClo
             {activeTab === 'Exercises' && (
                 <div className="max-w-4xl space-y-8">
                     <div className="mb-6">
-                        <p className="text-sm text-gray-500">Based on {player.name.split(',')[0]}'s assessment, these 2 drills are recommended to improve clutch performance.</p>
+                        <p className="text-sm text-body">Based on {player.name.split(',')[0]}'s assessment, these 2 drills are recommended to improve clutch performance.</p>
                     </div>
-                    <h4 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">Prescribed Development Plan</h4>
+                    <h4 className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-gray-brand mb-3">Prescribed development plan</h4>
                     {details.exercises.map((ex) => {
                         const videoUrl = DRILL_VIDEO_LINKS[ex.title.toLowerCase()];
 
                         return (
-                          <div key={ex.id} className="border border-gray-200 rounded-xl p-4 bg-white shadow-sm space-y-3">
+                          <div key={ex.id} className="nt-card p-4 space-y-3">
                               <div className="flex items-center justify-between gap-4">
                                 <div className="flex items-center gap-3">
-                                  <span className="h-10 w-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center"><Dumbbell size={18} /></span>
+                                  <span className="h-10 w-10 rounded-full border border-line-strong bg-white text-ink flex items-center justify-center"><Dumbbell size={18} strokeWidth={1.8} /></span>
                                   <div>
-                                    <p className="font-semibold text-base text-gray-900">{ex.title}</p>
-                                    <p className="text-gray-500 text-sm">{ex.breakdown.slice(0, 100)}...</p>
+                                    <p className="font-semibold text-base text-ink tracking-tightest">{ex.title}</p>
+                                    <p className="text-body text-sm">{ex.breakdown.slice(0, 100)}...</p>
                                   </div>
                                 </div>
                               </div>
@@ -504,7 +504,7 @@ const ScoutingModal: React.FC<ScoutingModalProps> = ({ player, allPlayers, onClo
                                   href={videoUrl}
                                   target="_blank"
                                   rel="noreferrer"
-                                  className="group relative block overflow-hidden rounded-lg border border-gray-200"
+                                  className="group relative block overflow-hidden rounded-card border border-line-strong"
                                   aria-label={`Open ${ex.title} drill video on YouTube`}
                                 >
                                   <img
@@ -512,10 +512,10 @@ const ScoutingModal: React.FC<ScoutingModalProps> = ({ player, allPlayers, onClo
                                     alt={`${ex.title} YouTube drill video thumbnail`}
                                     className="h-36 w-full object-cover transition duration-300 group-hover:scale-[1.02]"
                                   />
-                                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
+                                  <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-ink/10" />
                                   <div className="absolute inset-0 flex items-center justify-center">
-                                    <span className="rounded-full bg-red-600/90 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-lg">
-                                      ▶ Watch Drill on YouTube
+                                    <span className="rounded-pill bg-ink px-4 py-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-white">
+                                      Watch drill on YouTube →
                                     </span>
                                   </div>
                                 </a>
@@ -529,37 +529,37 @@ const ScoutingModal: React.FC<ScoutingModalProps> = ({ player, allPlayers, onClo
             {activeTab === 'NTerpret' && (
                 <div className="max-w-4xl space-y-8 pb-8">
                     <div>
-                        <h3 className="text-base font-bold text-gray-900 mb-2">Summary</h3>
-                        <p className="text-sm text-gray-800 leading-relaxed">{details.nterpret.summary}</p>
+                        <h3 className="text-base font-semibold text-ink tracking-tightest mb-2">Summary</h3>
+                        <p className="text-sm text-body leading-relaxed">{details.nterpret.summary}</p>
                     </div>
-                    
+
                     <div>
-                         <h3 className="text-base font-bold text-gray-900 mb-2">Coaching considerations</h3>
+                         <h3 className="text-base font-semibold text-ink tracking-tightest mb-2">Coaching considerations</h3>
                          <ul className="list-disc pl-5 space-y-2">
                             {details.nterpret.coachingConsiderations.map((note, idx) => (
-                                <li key={idx} className="text-sm text-gray-800 leading-relaxed">{note}</li>
+                                <li key={idx} className="text-sm text-body leading-relaxed">{note}</li>
                             ))}
                          </ul>
                     </div>
 
                     <div className="p-2 grid grid-cols-1 xl:grid-cols-3 gap-4">
-                        <div className="border border-gray-200 rounded-lg p-6 text-center">
-                          <Mic size={18} className="mx-auto text-gray-500" />
-                          <p className="text-[10px] mt-4 uppercase tracking-wider text-gray-400 font-bold">Communication Style</p>
-                          <p className="text-2xl mt-1 font-semibold text-gray-900">{details.nterpret.commStyle.name}</p>
-                          <p className="text-sm text-gray-500 mt-4">{details.nterpret.commStyle.description}</p>
+                        <div className="nt-card p-6 text-center">
+                          <Mic size={18} strokeWidth={1.8} className="mx-auto text-ink" />
+                          <p className="font-mono text-[10px] mt-4 uppercase tracking-[0.16em] text-gray-brand font-medium">Communication Style</p>
+                          <p className="text-2xl mt-1 font-semibold text-ink tracking-tightest">{details.nterpret.commStyle.name}</p>
+                          <p className="text-sm text-body mt-4">{details.nterpret.commStyle.description}</p>
                         </div>
-                        <div className="border border-gray-200 rounded-lg p-6 text-center">
-                          <GraduationCap size={18} className="mx-auto text-gray-500" />
-                          <p className="text-[10px] mt-4 uppercase tracking-wider text-gray-400 font-bold">Learning Style</p>
-                          <p className="text-2xl mt-1 font-semibold text-gray-900">{details.nterpret.learningStyle.name}</p>
-                          <p className="text-sm text-gray-500 mt-4">{details.nterpret.learningStyle.description}</p>
+                        <div className="nt-card p-6 text-center">
+                          <GraduationCap size={18} strokeWidth={1.8} className="mx-auto text-ink" />
+                          <p className="font-mono text-[10px] mt-4 uppercase tracking-[0.16em] text-gray-brand font-medium">Learning Style</p>
+                          <p className="text-2xl mt-1 font-semibold text-ink tracking-tightest">{details.nterpret.learningStyle.name}</p>
+                          <p className="text-sm text-body mt-4">{details.nterpret.learningStyle.description}</p>
                         </div>
-                        <div className="border border-gray-200 rounded-lg p-6 text-center">
-                          <Rocket size={18} className="mx-auto text-gray-500" />
-                          <p className="text-[10px] mt-4 uppercase tracking-wider text-gray-400 font-bold">Motivation Anchor</p>
-                          <p className="text-2xl mt-1 font-semibold text-gray-900">{details.nterpret.motivation.name}</p>
-                          <p className="text-sm text-gray-500 mt-4">{details.nterpret.motivation.description}</p>
+                        <div className="nt-card p-6 text-center">
+                          <Rocket size={18} strokeWidth={1.8} className="mx-auto text-ink" />
+                          <p className="font-mono text-[10px] mt-4 uppercase tracking-[0.16em] text-gray-brand font-medium">Motivation Anchor</p>
+                          <p className="text-2xl mt-1 font-semibold text-ink tracking-tightest">{details.nterpret.motivation.name}</p>
+                          <p className="text-sm text-body mt-4">{details.nterpret.motivation.description}</p>
                         </div>
                     </div>
                 </div>
@@ -567,10 +567,10 @@ const ScoutingModal: React.FC<ScoutingModalProps> = ({ player, allPlayers, onClo
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-gray-200 bg-white flex justify-end flex-shrink-0">
-             <button 
+        <div className="p-4 border-t border-line bg-white flex justify-end flex-shrink-0">
+             <button
                 onClick={onClose}
-                className="px-6 py-2 bg-gray-600 hover:bg-gray-700 text-white font-medium rounded text-sm transition-colors"
+                className="nt-btn-primary !py-2.5 !px-6"
              >
                 Close
              </button>

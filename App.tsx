@@ -48,7 +48,7 @@ export const preloadDashboard = () => {
 // almost never renders in practice - and when it does, the dashboard chrome
 // stays mounted around it (Suspense is scoped inside main, not the whole tree).
 const ViewFallback: React.FC = () => (
-  <div className="fixed top-16 left-0 right-0 h-0.5 bg-blue-500/60 animate-pulse z-[60]" />
+  <div className="fixed top-16 left-0 right-0 h-0.5 bg-ink/50 animate-pulse z-[60]" />
 );
 import { ViewType, Player, UserProfile, HomeTab } from './types';
 import { MOCK_TEAMS } from './mockTeams';
@@ -250,16 +250,16 @@ const App: React.FC = () => {
 
   const FilterSection = ({ title, options, selected, onSelect }: { title: string, options: string[], selected: string, onSelect: (val: string) => void }) => (
     <div className="mb-8">
-      <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">{title}</h3>
+      <h3 className="font-mono text-[11px] font-medium text-gray-brand uppercase tracking-[0.25em] mb-3">{title}</h3>
       <div className="flex flex-wrap gap-2">
         {options.map((opt) => (
           <button
             key={opt}
             onClick={() => onSelect(opt)}
-            className={`px-3 py-2 rounded-lg text-[11px] font-bold transition-all border ${
-              selected === opt 
-                ? 'bg-black text-white border-black shadow-sm' 
-                : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400 hover:bg-gray-50'
+            className={`px-3 py-2 rounded-card font-mono text-[11px] tracking-[0.08em] uppercase transition-all border ${
+              selected === opt
+                ? 'bg-ink text-white border-ink'
+                : 'bg-white text-body border-line-strong hover:border-ink'
             }`}
           >
             {opt}
@@ -269,17 +269,15 @@ const App: React.FC = () => {
     </div>
   );
 
-  const StatCard = ({ label, value, subtext, icon: Icon, colorClass }: { label: string, value: string | number, subtext: string, icon: any, colorClass: string }) => (
-    <div className="bg-white p-4 sm:p-5 rounded-xl border border-gray-200 shadow-sm flex-1 min-w-[200px]">
+  const StatCard = ({ label, value, subtext, icon: Icon }: { label: string, value: string | number, subtext: string, icon: any, colorClass?: string }) => (
+    <div className="nt-card nt-card-hover p-4 sm:p-5 flex-1 min-w-[200px]">
         <div className="flex justify-between items-start mb-4">
-            <div className={`p-2 rounded-lg ${colorClass} bg-opacity-10`}>
-                <Icon size={20} className={colorClass.replace('bg-', 'text-')} />
-            </div>
+            <Icon size={20} strokeWidth={1.8} className="text-gray-soft" />
         </div>
         <div>
-            <h4 className="text-2xl sm:text-3xl font-light text-gray-900 tracking-tight mb-1 break-words">{value}</h4>
-            <p className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">{label}</p>
-            <p className="text-[10px] text-gray-400">{subtext}</p>
+            <h4 className="text-2xl sm:text-3xl font-semibold text-ink tracking-tightest tabular-nums mb-2 break-words">{value}</h4>
+            <p className="font-mono text-[11px] font-medium text-gray-brand uppercase tracking-[0.16em] mb-1">{label}</p>
+            <p className="font-mono text-[10px] text-gray-soft uppercase tracking-[0.12em]">{subtext}</p>
         </div>
     </div>
   );
@@ -344,29 +342,29 @@ const App: React.FC = () => {
           <>
             <div className="mb-8 flex flex-col gap-6">
               <div>
-                <button 
+                <button
                   onClick={() => { setCurrentView('master'); setHasSelectedTeam(false); }}
-                  className="flex items-center gap-2 text-xs font-bold text-gray-400 hover:text-gray-900 uppercase tracking-widest mb-4 transition-colors"
+                  className="flex items-center gap-2 font-mono text-[11px] font-medium text-gray-brand hover:text-ink uppercase tracking-[0.16em] mb-4 transition-colors"
                 >
-                  <ArrowLeft size={14} />
+                  <ArrowLeft size={14} strokeWidth={1.8} />
                   Back to Dashboard
                 </button>
-                <h1 className="text-2xl sm:text-3xl font-normal text-gray-900 tracking-tight capitalize">
+                <h1 className="text-3xl sm:text-4xl font-semibold text-ink tracking-tightest capitalize">
                     {selectedTeamName.toLowerCase()}
                 </h1>
-                <p className="text-gray-500 text-sm mt-1">2025 Pre-Season Roster Assessment</p>
+                <p className="text-body text-sm mt-2">2025 Pre-Season Roster Assessment</p>
               </div>
 
-              <div className="grid grid-cols-2 sm:flex sm:items-center gap-3 sm:gap-4 border-b border-gray-200 pb-4">
+              <div className="grid grid-cols-2 sm:flex sm:items-center gap-3 sm:gap-4 border-b border-line pb-4">
                 <button
                   onClick={() => setHomeTab('roster')}
-                  className={`px-4 sm:px-5 py-3 border text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-colors rounded-lg ${homeTab === 'roster' ? 'bg-white border-gray-900 text-gray-900' : 'bg-transparent border-transparent text-gray-500 hover:text-gray-800'}`}
+                  className={`px-4 sm:px-5 py-3 border font-mono text-[11px] uppercase tracking-[0.16em] transition-colors rounded-card ${homeTab === 'roster' ? 'bg-white border-ink text-ink' : 'bg-transparent border-transparent text-gray-brand hover:text-ink'}`}
                 >
                   Current Roster
                 </button>
                 <button
                   onClick={() => setHomeTab('recruits')}
-                  className={`px-4 sm:px-5 py-3 border text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-colors rounded-lg ${homeTab === 'recruits' ? 'bg-white border-gray-900 text-gray-900' : 'bg-transparent border-transparent text-gray-500 hover:text-gray-800'}`}
+                  className={`px-4 sm:px-5 py-3 border font-mono text-[11px] uppercase tracking-[0.16em] transition-colors rounded-card ${homeTab === 'recruits' ? 'bg-white border-ink text-ink' : 'bg-transparent border-transparent text-gray-brand hover:text-ink'}`}
                 >
                   Recruits
                 </button>
@@ -420,19 +418,19 @@ const App: React.FC = () => {
               <div className="flex flex-col lg:flex-row gap-8">
                 {/* Sidebar Filters */}
                 <aside className="w-full lg:w-64 flex-shrink-0">
-                  <div className="bg-white p-4 sm:p-6 rounded-2xl border border-gray-200 shadow-sm lg:sticky lg:top-24">
+                  <div className="nt-card p-4 sm:p-6 lg:sticky lg:top-24">
                     <div className="flex items-center justify-between mb-6">
-                      <h2 className="text-sm font-bold text-gray-900 uppercase tracking-tight">Filters</h2>
+                      <h2 className="font-mono text-[11px] font-medium text-ink uppercase tracking-[0.16em]">Filters</h2>
                       <div className="flex items-center gap-3">
-                        <button 
+                        <button
                           onClick={() => { setSelectedPosition('All'); setSelectedLevel('All'); setSelectedGradYear('All'); }}
-                          className="text-[10px] text-blue-600 font-bold uppercase hover:underline"
+                          className="font-mono text-[10px] text-gray-brand uppercase tracking-[0.12em] hover:text-ink transition-colors"
                         >
                           Reset
                         </button>
                         <button
                           onClick={() => setIsMobileFiltersOpen(prev => !prev)}
-                          className="lg:hidden text-[10px] text-gray-500 font-bold uppercase border border-gray-200 rounded-md px-2 py-1"
+                          className="lg:hidden font-mono text-[10px] text-gray-brand uppercase tracking-[0.12em] border border-line-strong rounded-card px-2 py-1"
                         >
                           {isMobileFiltersOpen ? 'Hide' : 'Show'}
                         </button>
@@ -464,36 +462,36 @@ const App: React.FC = () => {
                       />
 
                       {/* Guides */}
-                      <div className="mt-6 pt-6 border-t border-gray-100 space-y-3">
+                      <div className="mt-6 pt-6 border-t border-line space-y-3">
                           <button
                             onClick={() => setIsClutchGuideOpen(true)}
-                            className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors text-left"
+                            className="w-full flex items-center gap-3 px-3 py-2 rounded-card hover:bg-chip transition-colors text-left"
                           >
-                            <span className="w-8 h-8 rounded-full border border-gray-200 bg-white flex items-center justify-center">
-                              <Zap size={14} className="text-gray-500" />
+                            <span className="w-8 h-8 rounded-full border border-line-strong bg-white flex items-center justify-center">
+                              <Zap size={14} strokeWidth={1.8} className="text-ink" />
                             </span>
                             <div>
-                              <p className="text-xs font-bold text-gray-800 uppercase tracking-wide">Clutch Factor</p>
-                              <p className="text-[11px] text-gray-500 uppercase tracking-wide">Guide</p>
+                              <p className="font-mono text-[11px] font-medium text-ink uppercase tracking-[0.12em]">Clutch Factor</p>
+                              <p className="font-mono text-[10px] text-gray-brand uppercase tracking-[0.12em]">Guide</p>
                             </div>
                           </button>
 
                           <button
                             onClick={() => setIsRubricOpen(true)}
-                            className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors text-left"
+                            className="w-full flex items-center gap-3 px-3 py-2 rounded-card hover:bg-chip transition-colors text-left"
                           >
-                            <span className="w-8 h-8 rounded-full border border-gray-200 bg-white flex items-center justify-center">
-                              <Activity size={14} className="text-gray-500" />
+                            <span className="w-8 h-8 rounded-full border border-line-strong bg-white flex items-center justify-center">
+                              <Activity size={14} strokeWidth={1.8} className="text-ink" />
                             </span>
                             <div>
-                              <p className="text-xs font-bold text-gray-800 uppercase tracking-wide">Alignment Score</p>
-                              <p className="text-[11px] text-gray-500 uppercase tracking-wide">Rubric</p>
+                              <p className="font-mono text-[11px] font-medium text-ink uppercase tracking-[0.12em]">Alignment Score</p>
+                              <p className="font-mono text-[10px] text-gray-brand uppercase tracking-[0.12em]">Rubric</p>
                             </div>
                           </button>
                       </div>
 
-                      <div className="mt-8 pt-6 border-t border-gray-100 space-y-4">
-                        <p className="text-[10px] text-gray-400 leading-relaxed italic">
+                      <div className="mt-8 pt-6 border-t border-line space-y-4">
+                        <p className="text-[11px] text-gray-brand leading-relaxed">
                             Filters apply to the table view only. Aggregate stats above reflect the entire active roster.
                         </p>
                       </div>
@@ -539,7 +537,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50">
+    <div className="min-h-screen flex flex-col bg-paper text-ink">
       <Suspense fallback={null}><RagChat /></Suspense>
 
       {/* Walkthrough Demo Overlay */}
@@ -573,17 +571,17 @@ const App: React.FC = () => {
 
        {isRubricOpen && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center px-4 py-6 sm:px-6 lg:px-8">
-            <div 
-                className="absolute inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" 
+            <div
+                className="absolute inset-0 bg-ink/40 backdrop-blur-sm transition-opacity"
                 onClick={() => setIsRubricOpen(false)}
             />
-            <div className="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden transform transition-all animate-in fade-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
+            <div className="relative w-full max-w-4xl bg-white rounded-card border border-line-strong shadow-lift overflow-hidden transform transition-all animate-in fade-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
                  <div className="sticky top-0 right-0 z-10 flex justify-end p-4 bg-white/0 pointer-events-none">
-                    <button 
+                    <button
                         onClick={() => setIsRubricOpen(false)}
-                        className="pointer-events-auto p-2 bg-white rounded-full shadow-md text-gray-400 hover:text-gray-900 transition-colors border border-gray-100"
+                        className="pointer-events-auto p-2 bg-white rounded-full text-gray-brand hover:text-ink transition-colors border border-line-strong"
                     >
-                        <X size={20} />
+                        <X size={20} strokeWidth={1.8} />
                     </button>
                 </div>
                 <div className="p-1 pt-0 -mt-10">
@@ -599,14 +597,14 @@ const App: React.FC = () => {
         <ClutchFactorGuide onClose={() => setIsClutchGuideOpen(false)} />
       )}
 
-            <footer className="py-8 flex flex-col items-center gap-3 border-t border-gray-200 bg-white">
+            <footer className="py-10 flex flex-col items-center gap-3 border-t border-line bg-white">
         <div className="flex items-center gap-3">
-          <span className="text-[10px] text-gray-400 tracking-[0.25em] uppercase font-bold">In partnership with</span>
+          <span className="font-mono text-[10px] text-gray-brand tracking-[0.25em] uppercase">In partnership with</span>
           <img src="/IMG.png" alt="IMG Academy" className="h-8 w-auto object-contain" />
         </div>
-        <div className="flex items-center gap-2 text-[11px] text-gray-400 tracking-widest uppercase font-bold">
+        <div className="flex items-center gap-2 font-mono text-[11px] text-gray-brand tracking-[0.16em] uppercase">
           <span>{customOrgName}</span>
-          <span className="text-gray-300">|</span>
+          <span className="text-line-strong">·</span>
           <span>© 2026</span>
         </div>
       </footer>

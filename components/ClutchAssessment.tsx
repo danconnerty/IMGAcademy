@@ -18,12 +18,13 @@ const DEFAULT_DATE = 'December 19 2025';
 
 const MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
 
+// Ink on Paper: the share card is monochrome. Every tier draws in ink, no glow.
 const TIERS_CANVAS: Record<string, { accent: string; glow: string; bgS: string; bgF: string }> = {
-  ELITE:            { accent: '#F59E0B', glow: 'rgba(245,158,11,0.22)',  bgS: 'rgba(245,158,11,0.10)',  bgF: 'rgba(245,158,11,0.02)' },
-  GREAT:            { accent: '#10B981', glow: 'rgba(16,185,129,0.20)',  bgS: 'rgba(16,185,129,0.08)',  bgF: 'rgba(16,185,129,0.02)' },
-  'ABOVE AVERAGE':  { accent: '#06B6D4', glow: 'rgba(6,182,212,0.18)',   bgS: 'rgba(6,182,212,0.07)',   bgF: 'rgba(6,182,212,0.01)' },
-  AVERAGE:          { accent: '#9CA3AF', glow: 'rgba(156,163,175,0.15)', bgS: 'rgba(156,163,175,0.05)', bgF: 'rgba(156,163,175,0.01)' },
-  'BELOW AVERAGE':  { accent: '#818CF8', glow: 'rgba(129,140,248,0.18)', bgS: 'rgba(129,140,248,0.07)', bgF: 'rgba(129,140,248,0.01)' },
+  ELITE:            { accent: '#0E0E0E', glow: 'rgba(14,14,14,0)', bgS: 'rgba(14,14,14,0.05)', bgF: 'rgba(14,14,14,0.01)' },
+  GREAT:            { accent: '#0E0E0E', glow: 'rgba(14,14,14,0)', bgS: 'rgba(14,14,14,0.05)', bgF: 'rgba(14,14,14,0.01)' },
+  'ABOVE AVERAGE':  { accent: '#0E0E0E', glow: 'rgba(14,14,14,0)', bgS: 'rgba(14,14,14,0.05)', bgF: 'rgba(14,14,14,0.01)' },
+  AVERAGE:          { accent: '#0E0E0E', glow: 'rgba(14,14,14,0)', bgS: 'rgba(14,14,14,0.05)', bgF: 'rgba(14,14,14,0.01)' },
+  'BELOW AVERAGE':  { accent: '#0E0E0E', glow: 'rgba(14,14,14,0)', bgS: 'rgba(14,14,14,0.05)', bgF: 'rgba(14,14,14,0.01)' },
 };
 
 const EXTERNAL_CSS: { id: string; href: string }[] = [
@@ -119,12 +120,12 @@ function drawUserPhotoFrame(
   } else {
     ctx.save();
     const bg = ctx.createRadialGradient(cx, cy, 0, cx, cy, size * 0.6);
-    bg.addColorStop(0, 'rgba(245,158,11,0.10)');
-    bg.addColorStop(1, 'rgba(0,0,0,0)');
+    bg.addColorStop(0, 'rgba(14,14,14,0.05)');
+    bg.addColorStop(1, 'rgba(247,246,243,0)');
     ctx.fillStyle = bg;
     ctx.fillRect(x, y, size, size);
 
-    ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+    ctx.strokeStyle = 'rgba(14,14,14,0.22)';
     ctx.lineWidth = 1.2;
     const cs = Math.max(8, size * 0.04);
     ctx.beginPath();
@@ -132,7 +133,7 @@ function drawUserPhotoFrame(
     ctx.moveTo(cx, cy - cs); ctx.lineTo(cx, cy + cs);
     ctx.stroke();
 
-    ctx.fillStyle = 'rgba(255,255,255,0.22)';
+    ctx.fillStyle = 'rgba(14,14,14,0.35)';
     ctx.font = '500 ' + Math.max(8, Math.round(size * 0.045)) + 'px "Rajdhani", Arial, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
@@ -141,7 +142,7 @@ function drawUserPhotoFrame(
   }
 
   ctx.save();
-  ctx.strokeStyle = 'rgba(255,255,255,0.10)';
+  ctx.strokeStyle = 'rgba(14,14,14,0.12)';
   ctx.lineWidth = 1;
   ctx.strokeRect(x + 0.5, y + 0.5, size - 1, size - 1);
 
@@ -183,18 +184,18 @@ function renderSquareCanvas(
   ctx.scale(S, S);
   const t = TIERS_CANVAS[D.tier] || TIERS_CANVAS.AVERAGE;
 
-  ctx.fillStyle = '#050505';
+  ctx.fillStyle = '#F7F6F3';
   ctx.fillRect(0, 0, W, H);
 
   const dg = ctx.createLinearGradient(0, 0, W * 0.55, H * 0.55);
-  dg.addColorStop(0, t.bgS); dg.addColorStop(0.4, t.bgF); dg.addColorStop(1, 'rgba(5,5,5,0)');
+  dg.addColorStop(0, t.bgS); dg.addColorStop(0.4, t.bgF); dg.addColorStop(1, 'rgba(247,246,243,0)');
   ctx.fillStyle = dg; ctx.fillRect(0, 0, W, H);
 
   const pg = ctx.createRadialGradient(W * 0.88, H * 0.9, 0, W * 0.88, H * 0.9, 260);
-  pg.addColorStop(0, 'rgba(139,92,246,0.06)'); pg.addColorStop(1, 'rgba(5,5,5,0)');
+  pg.addColorStop(0, 'rgba(14,14,14,0.03)'); pg.addColorStop(1, 'rgba(247,246,243,0)');
   ctx.fillStyle = pg; ctx.fillRect(0, 0, W, H);
 
-  ctx.fillStyle = 'rgba(255,255,255,0.02)';
+  ctx.fillStyle = 'rgba(14,14,14,0.05)';
   for (let gx = 40; gx < W; gx += 40) {
     for (let gy = 40; gy < H - 90; gy += 40) {
       ctx.beginPath();
@@ -204,13 +205,13 @@ function renderSquareCanvas(
   }
 
   const topL = ctx.createLinearGradient(0, 0, W, 0);
-  topL.addColorStop(0, 'rgba(0,0,0,0)');
+  topL.addColorStop(0, 'rgba(247,246,243,0)');
   topL.addColorStop(0.2, t.accent); topL.addColorStop(0.8, t.accent);
-  topL.addColorStop(1, 'rgba(0,0,0,0)');
+  topL.addColorStop(1, 'rgba(247,246,243,0)');
   ctx.strokeStyle = topL; ctx.lineWidth = 2;
   ctx.beginPath(); ctx.moveTo(0, 1); ctx.lineTo(W, 1); ctx.stroke();
 
-  ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+  ctx.strokeStyle = 'rgba(14,14,14,0.12)';
   ctx.lineWidth = 1;
   ctx.strokeRect(0.5, 0.5, W - 1, H - 1);
 
@@ -220,12 +221,13 @@ function renderSquareCanvas(
   if (ntangibleLogo && ntangibleLogo.naturalWidth && ntangibleLogo.naturalHeight) {
     const nlh = 18;
     const nlw = Math.round(nlh * (ntangibleLogo.naturalWidth / ntangibleLogo.naturalHeight));
-    ctx.globalAlpha = 0.95;
+    // The wordmark asset is white; invert it to ink for the paper card.
+    ctx.filter = 'invert(1)';
     ctx.drawImage(ntangibleLogo, curX, Math.round(headerY - nlh / 2), nlw, nlh);
-    ctx.globalAlpha = 1;
+    ctx.filter = 'none';
     curX += nlw + 12;
     // Thin vertical divider
-    ctx.strokeStyle = 'rgba(255,255,255,0.20)';
+    ctx.strokeStyle = 'rgba(14,14,14,0.20)';
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(curX, headerY - 12);
@@ -241,11 +243,11 @@ function renderSquareCanvas(
     ctx.globalAlpha = 1;
   }
   ctx.font = '600 11px "Rajdhani", Arial, sans-serif';
-  ctx.fillStyle = '#4B5563';
+  ctx.fillStyle = '#6F6C64';
   ctx.textBaseline = 'middle';
   spDrawR(ctx, 'CLUTCH FACTOR™', W - 44, 52, 2);
 
-  ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+  ctx.strokeStyle = 'rgba(14,14,14,0.08)';
   ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(44, 86); ctx.lineTo(W - 44, 86); ctx.stroke();
 
@@ -254,7 +256,7 @@ function renderSquareCanvas(
   const scoreY = 460;
   ctx.shadowColor = t.glow;
   ctx.shadowBlur = 60;
-  ctx.fillStyle = '#FFFFFF';
+  ctx.fillStyle = '#0E0E0E';
   ctx.font = 'bold 150px "Oswald", Impact, "Arial Black", sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
@@ -264,7 +266,7 @@ function renderSquareCanvas(
 
   const sepY = 555;
   const sepG = ctx.createLinearGradient(W / 2 - 90, sepY, W / 2 + 90, sepY);
-  sepG.addColorStop(0, 'rgba(0,0,0,0)'); sepG.addColorStop(0.5, t.accent); sepG.addColorStop(1, 'rgba(0,0,0,0)');
+  sepG.addColorStop(0, 'rgba(247,246,243,0)'); sepG.addColorStop(0.5, t.accent); sepG.addColorStop(1, 'rgba(247,246,243,0)');
   ctx.strokeStyle = sepG; ctx.lineWidth = 1.5;
   ctx.beginPath(); ctx.moveTo(W / 2 - 90, sepY); ctx.lineTo(W / 2 + 90, sepY); ctx.stroke();
 
@@ -285,7 +287,7 @@ function renderSquareCanvas(
   }
 
   const nameY = !showTier ? sepY + 64 : (words.length === 1 ? sepY + 104 : sepY + 118);
-  ctx.fillStyle = 'rgba(255,255,255,0.90)';
+  ctx.fillStyle = '#0E0E0E';
   ctx.font = 'bold 44px "Oswald", Impact, "Arial Black", sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'alphabetic';
@@ -293,7 +295,7 @@ function renderSquareCanvas(
 
   const stubY = 708;
   ctx.setLineDash([3, 8]);
-  ctx.strokeStyle = 'rgba(255,255,255,0.10)';
+  ctx.strokeStyle = 'rgba(14,14,14,0.15)';
   ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(0, stubY); ctx.lineTo(W, stubY); ctx.stroke();
   ctx.setLineDash([]);
@@ -305,15 +307,15 @@ function renderSquareCanvas(
   ctx.textAlign = 'left';
   ctx.textBaseline = 'middle';
   ctx.fillText('✓', 36, stubMid);
-  ctx.fillStyle = 'rgba(255,255,255,0.32)';
+  ctx.fillStyle = '#6F6C64';
   ctx.font = '500 10px "Rajdhani", Arial, sans-serif';
   ctx.fillText(' NTANGIBLE VERIFIED', 50, stubMid);
 
-  ctx.fillStyle = 'rgba(255,255,255,0.22)';
+  ctx.fillStyle = '#9A968E';
   ctx.font = '500 10px "Rajdhani", Arial, sans-serif';
   spDrawC(ctx, 'ASSESSED ' + D.assessed + '  ·  VALID THRU ' + D.validThru, W / 2, stubMid, 1.2);
 
-  ctx.fillStyle = 'rgba(255,255,255,0.20)';
+  ctx.fillStyle = '#9A968E';
   ctx.font = '500 10px "Rajdhani", Arial, sans-serif';
   ctx.textAlign = 'right';
   ctx.fillText(genReportId(D.score, D.first, D.last, now.getFullYear(), now.getMonth()), W - 36, stubMid);
@@ -339,18 +341,18 @@ function renderStoryCanvas(
   ctx.scale(S, S);
   const t = TIERS_CANVAS[D.tier] || TIERS_CANVAS.AVERAGE;
 
-  ctx.fillStyle = '#050505';
+  ctx.fillStyle = '#F7F6F3';
   ctx.fillRect(0, 0, W, H);
 
   const dg = ctx.createLinearGradient(0, 0, W * 0.55, H * 0.5);
-  dg.addColorStop(0, t.bgS); dg.addColorStop(0.45, t.bgF); dg.addColorStop(1, 'rgba(5,5,5,0)');
+  dg.addColorStop(0, t.bgS); dg.addColorStop(0.45, t.bgF); dg.addColorStop(1, 'rgba(247,246,243,0)');
   ctx.fillStyle = dg; ctx.fillRect(0, 0, W, H);
 
   const pg = ctx.createRadialGradient(W * 0.9, H * 0.9, 0, W * 0.9, H * 0.9, 360);
-  pg.addColorStop(0, 'rgba(139,92,246,0.06)'); pg.addColorStop(1, 'rgba(5,5,5,0)');
+  pg.addColorStop(0, 'rgba(14,14,14,0.03)'); pg.addColorStop(1, 'rgba(247,246,243,0)');
   ctx.fillStyle = pg; ctx.fillRect(0, 0, W, H);
 
-  ctx.fillStyle = 'rgba(255,255,255,0.02)';
+  ctx.fillStyle = 'rgba(14,14,14,0.05)';
   for (let gx = 32; gx < W; gx += 32) {
     for (let gy = 32; gy < H - 120; gy += 32) {
       ctx.beginPath();
@@ -360,13 +362,13 @@ function renderStoryCanvas(
   }
 
   const topL = ctx.createLinearGradient(0, 0, W, 0);
-  topL.addColorStop(0, 'rgba(0,0,0,0)');
+  topL.addColorStop(0, 'rgba(247,246,243,0)');
   topL.addColorStop(0.2, t.accent); topL.addColorStop(0.8, t.accent);
-  topL.addColorStop(1, 'rgba(0,0,0,0)');
+  topL.addColorStop(1, 'rgba(247,246,243,0)');
   ctx.strokeStyle = topL; ctx.lineWidth = 2;
   ctx.beginPath(); ctx.moveTo(0, 1); ctx.lineTo(W, 1); ctx.stroke();
 
-  ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+  ctx.strokeStyle = 'rgba(14,14,14,0.12)';
   ctx.lineWidth = 1;
   ctx.strokeRect(0.5, 0.5, W - 1, H - 1);
 
@@ -375,11 +377,12 @@ function renderStoryCanvas(
   if (ntangibleLogo && ntangibleLogo.naturalWidth && ntangibleLogo.naturalHeight) {
     const nlh = 15;
     const nlw = Math.round(nlh * (ntangibleLogo.naturalWidth / ntangibleLogo.naturalHeight));
-    ctx.globalAlpha = 0.95;
+    // The wordmark asset is white; invert it to ink for the paper card.
+    ctx.filter = 'invert(1)';
     ctx.drawImage(ntangibleLogo, curX, Math.round(headerY - nlh / 2), nlw, nlh);
-    ctx.globalAlpha = 1;
+    ctx.filter = 'none';
     curX += nlw + 10;
-    ctx.strokeStyle = 'rgba(255,255,255,0.20)';
+    ctx.strokeStyle = 'rgba(14,14,14,0.20)';
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(curX, headerY - 10);
@@ -395,11 +398,11 @@ function renderStoryCanvas(
     ctx.globalAlpha = 1;
   }
   ctx.font = '600 10px "Rajdhani", Arial, sans-serif';
-  ctx.fillStyle = '#4B5563';
+  ctx.fillStyle = '#6F6C64';
   ctx.textBaseline = 'middle';
   spDrawR(ctx, 'CLUTCH FACTOR™', W - 34, headerY, 1.5);
 
-  ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+  ctx.strokeStyle = 'rgba(14,14,14,0.08)';
   ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(34, 88); ctx.lineTo(W - 34, 88); ctx.stroke();
 
@@ -408,7 +411,7 @@ function renderStoryCanvas(
   const scoreY = 530;
   ctx.shadowColor = t.glow;
   ctx.shadowBlur = 60;
-  ctx.fillStyle = '#FFFFFF';
+  ctx.fillStyle = '#0E0E0E';
   ctx.font = 'bold 140px "Oswald", Impact, "Arial Black", sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
@@ -418,7 +421,7 @@ function renderStoryCanvas(
 
   const sepY = 625;
   const sepG = ctx.createLinearGradient(W / 2 - 82, sepY, W / 2 + 82, sepY);
-  sepG.addColorStop(0, 'rgba(0,0,0,0)'); sepG.addColorStop(0.5, t.accent); sepG.addColorStop(1, 'rgba(0,0,0,0)');
+  sepG.addColorStop(0, 'rgba(247,246,243,0)'); sepG.addColorStop(0.5, t.accent); sepG.addColorStop(1, 'rgba(247,246,243,0)');
   ctx.strokeStyle = sepG; ctx.lineWidth = 1.5;
   ctx.beginPath(); ctx.moveTo(W / 2 - 82, sepY); ctx.lineTo(W / 2 + 82, sepY); ctx.stroke();
 
@@ -439,7 +442,7 @@ function renderStoryCanvas(
   }
 
   const nameY = !showTier ? sepY + 64 : (words.length === 1 ? sepY + 104 : sepY + 118);
-  ctx.fillStyle = 'rgba(255,255,255,0.90)';
+  ctx.fillStyle = '#0E0E0E';
   ctx.font = 'bold 42px "Oswald", Impact, "Arial Black", sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'alphabetic';
@@ -447,7 +450,7 @@ function renderStoryCanvas(
 
   const stubY = H - 94;
   ctx.setLineDash([3, 8]);
-  ctx.strokeStyle = 'rgba(255,255,255,0.10)';
+  ctx.strokeStyle = 'rgba(14,14,14,0.15)';
   ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(0, stubY); ctx.lineTo(W, stubY); ctx.stroke();
   ctx.setLineDash([]);
@@ -458,15 +461,15 @@ function renderStoryCanvas(
   ctx.textAlign = 'left';
   ctx.textBaseline = 'middle';
   ctx.fillText('✓', 28, stubMid);
-  ctx.fillStyle = 'rgba(255,255,255,0.32)';
+  ctx.fillStyle = '#6F6C64';
   ctx.font = '500 10px "Rajdhani", Arial, sans-serif';
   ctx.fillText(' NTANGIBLE VERIFIED', 42, stubMid);
 
-  ctx.fillStyle = 'rgba(255,255,255,0.22)';
+  ctx.fillStyle = '#9A968E';
   ctx.font = '500 10px "Rajdhani", Arial, sans-serif';
   spDrawC(ctx, 'ASSESSED ' + D.assessed + '  ·  VALID THRU ' + D.validThru, W / 2, stubMid, 1.1);
 
-  ctx.fillStyle = 'rgba(255,255,255,0.30)';
+  ctx.fillStyle = '#9A968E';
   ctx.font = '500 10px "Rajdhani", Arial, sans-serif';
   ctx.textAlign = 'right';
   ctx.fillText(genReportId(D.score, D.first, D.last, now.getFullYear(), now.getMonth()), W - 28, stubMid);
@@ -474,61 +477,65 @@ function renderStoryCanvas(
 
 const COMPONENT_STYLES = `
   .cf-report {
-    --bg-color: #050505;
-    --surface: #0A0A0A;
-    --surface-highlight: #141414;
-    --primary: #FFFFFF;
-    --primary-glow: #E5E7EB;
-    --accent: #F59E0B;
-    --success: #10B981;
-    --danger: #EF4444;
-    --purple: #8B5CF6;
+    --bg-color: #F7F6F3;
+    --surface: #FFFFFF;
+    --surface-highlight: #FFFFFF;
+    --primary: #0E0E0E;
+    --primary-glow: #0E0E0E;
+    --accent: #0E0E0E;
+    --success: #0E0E0E;
+    --danger: #0E0E0E;
+    --purple: #0E0E0E;
+    --line: #E6E3DD;
+    --line-strong: #D8D4CC;
     --font-sans: 'Inter', sans-serif;
-    --font-display: 'Oswald', sans-serif;
-    --font-tech: 'Rajdhani', sans-serif;
+    --font-display: 'Inter', sans-serif;
+    --font-tech: 'Roboto Mono', monospace;
     background-color: var(--bg-color);
-    color: #E5E7EB;
+    color: #42403B;
     font-family: var(--font-sans);
     background-image:
-      radial-gradient(at 10% 10%, rgba(255,255,255,0.03) 0px, transparent 60%),
-      radial-gradient(at 90% 10%, rgba(100,100,100,0.05) 0px, transparent 60%),
-      radial-gradient(at 50% 90%, rgba(168,85,247,0.02) 0px, transparent 60%);
+      linear-gradient(to right, var(--line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+    background-size: 56px 40px;
     scroll-behavior: smooth;
   }
-  .cf-report .font-display { font-family: var(--font-display); }
+  .cf-report .font-display { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; }
   .cf-report .font-tech { font-family: var(--font-tech); }
   .cf-report .text-accent { color: var(--accent); }
-  .cf-report .text-purple { color: var(--purple); }
-  .cf-report .text-success { color: var(--success) !important; }
-  .cf-report .text-danger { color: var(--danger) !important; }
+  .cf-report .text-purple { color: var(--primary); }
+  .cf-report .text-success { color: var(--primary) !important; }
+  .cf-report .text-danger { color: var(--primary) !important; }
   .cf-report .bg-accent { background-color: var(--accent); }
   .cf-report .bg-surface { background-color: var(--surface); }
 
+  /* Square all Bootstrap-rounded surfaces to the 2px card radius (pills excepted). */
+  .cf-report .rounded-3, .cf-report .rounded-4 { border-radius: 2px !important; }
+
   .cf-report .glass-panel {
-    background: rgba(10, 10, 10, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    box-shadow: none;
   }
   .cf-report .glass-card {
-    background: rgba(20, 20, 20, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .cf-report .glass-card:hover {
-    background: rgba(30, 30, 30, 0.6);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 10px 30px -10px rgba(255, 255, 255, 0.1);
+    background: var(--surface);
+    border-color: var(--primary);
+    box-shadow: 0 10px 28px rgba(14, 14, 14, 0.08);
+    transform: translateY(-3px);
   }
-  .cf-report .hover-scale { transition: all 0.2s ease-in-out; }
-  .cf-report .hover-scale:hover { transform: translateY(-2px); filter: brightness(1.15); }
+  .cf-report .hover-scale { transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1); }
+  .cf-report .hover-scale:hover { transform: translateY(-3px); }
 
-  .cf-report .hero-text-glow { text-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
+  .cf-report .hero-text-glow { text-shadow: none; }
 
   .cf-report .tracking-widest { letter-spacing: 0.1em; }
-  .cf-report .tracking-tighter { letter-spacing: -0.05em; }
-  .cf-report .tracking-tech { letter-spacing: 0.3em; }
+  .cf-report .tracking-tighter { letter-spacing: -0.02em; }
+  .cf-report .tracking-tech { letter-spacing: 0.25em; }
   .cf-report .text-10px { font-size: 10px; }
   .cf-report .text-11px { font-size: 11px; }
   .cf-report .text-12px { font-size: 12px; }
@@ -537,16 +544,18 @@ const COMPONENT_STYLES = `
   .cf-report .leading-07 { line-height: 0.7; }
   .cf-report .opacity-80 { opacity: 0.8; }
   .cf-report .opacity-90 { opacity: 0.9; }
-  .cf-report .border-white-10 { border-color: rgba(255,255,255,0.1); }
-  .cf-report .bg-white-5 { background-color: rgba(255,255,255,0.05); }
-  .cf-report .bg-white-10 { background-color: rgba(255,255,255,0.1); }
-  .cf-report .text-gray-300 { color: #d1d5db; }
-  .cf-report .text-gray-400 { color: #9ca3af; }
-  .cf-report .text-gray-500 { color: #6b7280; }
+  .cf-report .border-white-10 { border-color: var(--line-strong); }
+  .cf-report .bg-white-5 { background-color: #FFFFFF; }
+  .cf-report .bg-white-10 { background-color: var(--line-strong); }
+  .cf-report .text-white { color: #0E0E0E !important; }
+  .cf-report .text-gray-200 { color: #0E0E0E; }
+  .cf-report .text-gray-300 { color: #42403B; }
+  .cf-report .text-gray-400 { color: #6F6C64; }
+  .cf-report .text-gray-500 { color: #9A968E; }
   .cf-report .divider-gradient {
     height: 1px;
     width: 8rem;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+    background: var(--line-strong);
     margin: 2rem auto;
   }
   .cf-report .performance-hud {
@@ -555,47 +564,22 @@ const COMPONENT_STYLES = `
     z-index: 1030;
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    background: rgba(5, 5, 5, 0.82);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(247, 246, 243, 0.85);
+    border-bottom: 1px solid var(--line);
   }
   .cf-report .hud-pill {
-    border: 1px solid rgba(255,255,255,0.15);
-    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line-strong);
+    background: #FFFFFF;
     border-radius: 999px;
     padding: 0.35rem 0.75rem;
   }
-  .cf-report .ambient-left {
-    position: fixed;
-    top: 5rem; left: 2.5rem;
-    width: 24rem; height: 24rem;
-    background: rgba(255,255,255,0.05);
-    border-radius: 50%;
-    filter: blur(120px);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .cf-report .ambient-right {
-    position: fixed;
-    bottom: 2.5rem; right: 2.5rem;
-    width: 31rem; height: 31rem;
-    background: rgba(168,85,247,0.05);
-    border-radius: 50%;
-    filter: blur(120px);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .cf-report .hero-grid-bg {
-    position: absolute;
-    inset: 0;
-    background-image: url("${HERO_GRID_SVG}");
-    opacity: 0.2;
-    filter: grayscale(1);
-    pointer-events: none;
-  }
+  .cf-report .ambient-left { display: none; }
+  .cf-report .ambient-right { display: none; }
+  .cf-report .hero-grid-bg { display: none; }
   @keyframes cf-pulse-amber {
-    0%   { box-shadow: 0 0 0 0   rgba(245,158,11,0.6), 0 0 30px rgba(245,158,11,0.2); }
-    65%  { box-shadow: 0 0 0 18px rgba(245,158,11,0),   0 0 30px rgba(245,158,11,0.2); }
-    100% { box-shadow: 0 0 0 0   rgba(245,158,11,0),    0 0 30px rgba(245,158,11,0.2); }
+    0%   { box-shadow: 0 0 0 0   rgba(14,14,14,0.35); }
+    65%  { box-shadow: 0 0 0 18px rgba(14,14,14,0); }
+    100% { box-shadow: 0 0 0 0   rgba(14,14,14,0); }
   }
 `;
 
@@ -810,7 +794,7 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
 
   return (
     <div
-      className="cf-report min-vh-100 text-white"
+      className="cf-report min-vh-100"
       style={{
         position: 'fixed',
         inset: 0,
@@ -847,16 +831,16 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
               <button
                 type="button"
                 onClick={() => downloadCanvas('square')}
-                className="btn btn-sm text-10px font-tech fw-bold text-uppercase tracking-tech text-accent bg-transparent"
-                style={{ border: '1px solid rgba(245,158,11,0.35)' }}
+                className="btn btn-sm text-10px font-tech fw-medium text-uppercase tracking-tech text-ink bg-transparent"
+                style={{ border: '1px solid var(--line-strong)' }}
               >
                 Download Post 1080&times;1080
               </button>
               <button
                 type="button"
                 onClick={() => downloadCanvas('story')}
-                className="btn btn-sm text-10px font-tech fw-bold text-uppercase tracking-tech text-purple bg-transparent"
-                style={{ border: '1px solid rgba(168,85,247,0.35)' }}
+                className="btn btn-sm text-10px font-tech fw-medium text-uppercase tracking-tech text-ink bg-transparent"
+                style={{ border: '1px solid var(--line-strong)' }}
               >
                 Download Story 1080&times;1920
               </button>
@@ -875,13 +859,13 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
             top: '3.5rem',
             right: '1.25rem',
             zIndex: 1040,
-            border: '1px solid rgba(255,255,255,0.25)',
-            backgroundColor: 'rgba(10,10,10,0.7)',
+            border: '1.5px solid #0E0E0E',
+            backgroundColor: 'rgba(247,246,243,0.85)',
             backdropFilter: 'blur(10px)',
             WebkitBackdropFilter: 'blur(10px)',
-            color: '#fff',
-            fontFamily: "'Rajdhani', sans-serif",
-            fontWeight: 700,
+            color: '#0E0E0E',
+            fontFamily: "'Roboto Mono', monospace",
+            fontWeight: 500,
             textTransform: 'uppercase',
             letterSpacing: '0.2em',
             fontSize: '0.7rem',
@@ -889,7 +873,7 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
             borderRadius: 999,
           }}
         >
-          <ArrowLeft size={12} /> Exit Report
+          <ArrowLeft size={12} strokeWidth={1.8} /> Exit Report
         </button>
       )}
 
@@ -902,7 +886,7 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
             <img
               src="/NTangiblelogowhite.PNG"
               alt="NTangible"
-              style={{ height: '1.6rem', width: 'auto' }}
+              style={{ height: '1.6rem', width: 'auto', filter: 'invert(1)' }}
             />
             <span
               aria-hidden="true"
@@ -910,34 +894,34 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                 display: 'inline-block',
                 width: 1,
                 height: '2.25rem',
-                background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.35), transparent)',
+                background: '#D8D4CC',
               }}
             />
             <img
               src="/IMG.png"
               alt="IMG Academy"
-              style={{ height: '3rem', width: 'auto', filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.45))' }}
+              style={{ height: '3rem', width: 'auto' }}
             />
           </div>
 
           <div className="d-flex flex-wrap justify-content-center align-items-center gap-2 mb-5">
-            <div className="d-inline-flex align-items-center px-3 py-1 rounded-pill" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.10)' }}>
+            <div className="d-inline-flex align-items-center px-3 py-1 rounded-pill" style={{ background: '#FFFFFF', border: '1px solid var(--line-strong)' }}>
               <span
-                className="rounded-circle bg-white me-2"
-                style={{ width: '0.5rem', height: '0.5rem' }}
+                className="rounded-circle me-2"
+                style={{ width: '0.5rem', height: '0.5rem', backgroundColor: '#0E0E0E' }}
               />
-              <span className="text-10px font-tech fw-bold text-gray-400 tracking-tech text-uppercase">
+              <span className="text-10px font-tech fw-medium text-gray-400 tracking-tech text-uppercase">
                 Analysis Complete // {assessedDate}
               </span>
             </div>
           </div>
 
           <h1
-            className="font-display fw-bold text-uppercase tracking-tighter mb-4 leading-09"
+            className="font-display text-uppercase tracking-tighter mb-4 leading-09"
             style={{ fontSize: 'clamp(4rem, 10vw, 10rem)' }}
           >
-            <span className="d-block text-white">{firstName}</span>
-            <span className="d-block text-white opacity-90 mt-2">{lastName}</span>
+            <span className="d-block text-ink">{firstName}</span>
+            <span className="d-block text-ink opacity-90 mt-2">{lastName}</span>
           </h1>
 
           <div className="divider-gradient" />
@@ -957,7 +941,7 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                 </h2>
                 <div className="position-relative d-flex flex-column align-items-center">
                   <span
-                    className="leading-07 font-display fw-bold text-white tracking-tighter"
+                    className="leading-07 font-display text-ink tracking-tighter tabular-nums"
                     style={{ fontSize: 'clamp(8rem, 15vw, 14rem)' }}
                   >
                     {score}
@@ -980,17 +964,16 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                       style={{
                         width: 4,
                         height: '2rem',
-                        background: 'linear-gradient(to bottom, #fde047, #f59e0b)',
-                        boxShadow: '0 0 15px rgba(251,191,36,0.5)',
+                        background: '#0E0E0E',
                       }}
                     />
-                    <h3 className="fs-4 font-display fw-bold text-white text-uppercase tracking-widest mb-0">
+                    <h3 className="fs-4 font-display text-ink text-uppercase tracking-widest mb-0">
                       THE NTANGIBLE EDGE: THE PREDICTIVE POWER OF YOUR SCORE
                     </h3>
                   </div>
                   <p
                     className="text-14px text-gray-400 fw-light"
-                    style={{ lineHeight: 1.6, borderLeft: '1px solid rgba(255,255,255,0.1)', paddingLeft: '1rem' }}
+                    style={{ lineHeight: 1.6, borderLeft: '1px solid var(--line-strong)', paddingLeft: '1rem' }}
                   >
                     Your Clutch Factor&trade; is not a personality test. It is a biological and neurological measurement of how you process information under high-leverage constraints. Here is what the data says about your specific tier:
                   </p>
@@ -1003,13 +986,13 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                     style={
                       tierKey === 'elite'
                         ? {
-                            backgroundColor: 'rgba(245,158,11,0.05)',
-                            border: '1px solid rgba(245,158,11,0.4)',
-                            boxShadow: '0 0 20px rgba(245,158,11,0.1)',
+                            backgroundColor: '#EDEBE5',
+                            border: '1px solid #0E0E0E',
+                            boxShadow: 'none',
                           }
                         : {
-                            backgroundColor: 'rgba(255,255,255,0.05)',
-                            border: '1px solid rgba(255,255,255,0.1)',
+                            backgroundColor: '#FFFFFF',
+                            border: '1px solid #D8D4CC',
                           }
                     }
                   >
@@ -1019,20 +1002,20 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                     />
                     <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 mb-2">
                       <div className="d-flex align-items-center gap-3">
-                        <span className="text-accent fw-bold fs-5 tracking-tighter">800+</span>
-                        <span className="text-white font-display fw-bold text-uppercase tracking-widest text-14px">ELITE</span>
+                        <span className="text-ink fw-bold fs-5 tracking-tighter tabular-nums">800+</span>
+                        <span className="text-ink font-display text-uppercase tracking-widest text-14px">ELITE</span>
                       </div>
                       {tierKey === 'elite' && (
-                        <span className="bg-accent text-dark text-10px fw-bold px-2 py-1 rounded text-uppercase tracking-tighter">
+                        <span className="text-10px fw-bold px-2 py-1 rounded text-uppercase tracking-tighter" style={{ backgroundColor: '#0E0E0E', color: '#fff' }}>
                           You Are Here
                         </span>
                       )}
                     </div>
-                    <p className="text-11px mb-2 fw-medium" style={{ color: 'rgba(245,158,11,0.9)' }}>
-                      <span className="text-white fw-bold">The Stat:</span> 73% of NCAA athletes scoring in this range achieve All-American or All-Conference honors.
+                    <p className="text-11px mb-2 fw-medium" style={{ color: '#42403B' }}>
+                      <span className="text-ink fw-bold">The Stat:</span> 73% of NCAA athletes scoring in this range achieve All-American or All-Conference honors.
                     </p>
                     <p className="text-12px text-gray-300 mb-0" style={{ lineHeight: 1.4 }}>
-                      <span className="text-white fw-bold">The Meaning:</span> You possess elite situational awareness and emotional regulation. You are wired to accelerate when the pressure peaks, making you a premium asset for high-stakes moments.
+                      <span className="text-ink fw-bold">The Meaning:</span> You possess elite situational awareness and emotional regulation. You are wired to accelerate when the pressure peaks, making you a premium asset for high-stakes moments.
                     </p>
                   </div>
 
@@ -1042,30 +1025,29 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                     style={
                       tierKey === 'great'
                         ? {
-                            backgroundColor: 'rgba(245,158,11,0.05)',
-                            border: '1px solid rgba(245,158,11,0.4)',
-                            boxShadow: '0 0 20px rgba(245,158,11,0.1)',
+                            backgroundColor: '#EDEBE5',
+                            border: '1px solid #0E0E0E',
+                            boxShadow: 'none',
                           }
                         : {
-                            backgroundColor: 'rgba(255,255,255,0.05)',
-                            border: '1px solid rgba(255,255,255,0.1)',
-                            borderLeftColor: 'rgba(16,185,129,0.3)',
+                            backgroundColor: '#FFFFFF',
+                            border: '1px solid #D8D4CC',
                           }
                     }
                   >
                     <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 mb-2">
                       <div className="d-flex align-items-center gap-3">
-                        <span className="text-success fw-bold fs-5 tracking-tighter">750 - 799</span>
-                        <span className="text-gray-300 font-display fw-bold text-uppercase tracking-widest text-14px">GREAT</span>
+                        <span className="text-ink fw-bold fs-5 tracking-tighter tabular-nums">750 - 799</span>
+                        <span className="text-gray-300 font-display text-uppercase tracking-widest text-14px">GREAT</span>
                       </div>
                       {tierKey === 'great' && (
-                        <span className="bg-accent text-dark text-10px fw-bold px-2 py-1 rounded text-uppercase tracking-tighter">
+                        <span className="text-10px fw-bold px-2 py-1 rounded text-uppercase tracking-tighter" style={{ backgroundColor: '#0E0E0E', color: '#fff' }}>
                           You Are Here
                         </span>
                       )}
                     </div>
-                    <p className="text-11px mb-2 fw-medium" style={{ color: 'rgba(16,185,129,0.8)' }}>
-                      <span className="text-white fw-bold">The Stat:</span> High school athletes scoring 750+ are 2x more likely to commit to a Division 1 program.
+                    <p className="text-11px mb-2 fw-medium" style={{ color: '#42403B' }}>
+                      <span className="text-ink fw-bold">The Stat:</span> High school athletes scoring 750+ are 2x more likely to commit to a Division 1 program.
                     </p>
                     <p className="text-12px text-gray-400 mb-0" style={{ lineHeight: 1.4 }}>
                       <span className="text-gray-200 fw-bold">The Meaning:</span> You have the internal stability and decision-making speed that elite college recruiters demand. You are officially in the &lsquo;D1 Standard&rsquo; zone.
@@ -1078,30 +1060,29 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                     style={
                       tierKey === 'above-average'
                         ? {
-                            backgroundColor: 'rgba(245,158,11,0.05)',
-                            border: '1px solid rgba(245,158,11,0.4)',
-                            boxShadow: '0 0 20px rgba(245,158,11,0.1)',
+                            backgroundColor: '#EDEBE5',
+                            border: '1px solid #0E0E0E',
+                            boxShadow: 'none',
                           }
                         : {
-                            backgroundColor: 'rgba(255,255,255,0.05)',
-                            border: '1px solid rgba(255,255,255,0.1)',
-                            borderLeftColor: 'rgba(16,185,129,0.3)',
+                            backgroundColor: '#FFFFFF',
+                            border: '1px solid #D8D4CC',
                           }
                     }
                   >
                     <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 mb-2">
                       <div className="d-flex align-items-center gap-3">
-                        <span className="text-success fw-bold fs-5 tracking-tighter">725 - 749</span>
-                        <span className="text-gray-300 font-display fw-bold text-uppercase tracking-widest text-14px">ABOVE AVERAGE</span>
+                        <span className="text-ink fw-bold fs-5 tracking-tighter tabular-nums">725 - 749</span>
+                        <span className="text-gray-300 font-display text-uppercase tracking-widest text-14px">ABOVE AVERAGE</span>
                       </div>
                       {tierKey === 'above-average' && (
-                        <span className="bg-accent text-dark text-10px fw-bold px-2 py-1 rounded text-uppercase tracking-tighter">
+                        <span className="text-10px fw-bold px-2 py-1 rounded text-uppercase tracking-tighter" style={{ backgroundColor: '#0E0E0E', color: '#fff' }}>
                           You Are Here
                         </span>
                       )}
                     </div>
-                    <p className="text-11px mb-2 fw-medium" style={{ color: 'rgba(16,185,129,0.8)' }}>
-                      <span className="text-white fw-bold">The Benchmark:</span> This is where most collegiate starters and high school prospects land. You are outperforming the majority of elite developmental talent.
+                    <p className="text-11px mb-2 fw-medium" style={{ color: '#42403B' }}>
+                      <span className="text-ink fw-bold">The Benchmark:</span> This is where most collegiate starters and high school prospects land. You are outperforming the majority of elite developmental talent.
                     </p>
                     <p className="text-12px text-gray-400 mb-0" style={{ lineHeight: 1.4 }}>
                       <span className="text-gray-200 fw-bold">The Meaning:</span> You handle pressure well and are on the cusp of top-tier recruit status. Fine-tuning your mental game with targeted exercises will push you into the 750+ bracket.
@@ -1114,30 +1095,29 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                     style={
                       tierKey === 'average'
                         ? {
-                            backgroundColor: 'rgba(245,158,11,0.05)',
-                            border: '1px solid rgba(245,158,11,0.4)',
-                            boxShadow: '0 0 20px rgba(245,158,11,0.1)',
+                            backgroundColor: '#EDEBE5',
+                            border: '1px solid #0E0E0E',
+                            boxShadow: 'none',
                           }
                         : {
-                            backgroundColor: 'rgba(255,255,255,0.05)',
-                            border: '1px solid rgba(255,255,255,0.1)',
-                            borderLeftColor: 'rgba(255,255,255,0.15)',
+                            backgroundColor: '#FFFFFF',
+                            border: '1px solid #D8D4CC',
                           }
                     }
                   >
                     <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 mb-2">
                       <div className="d-flex align-items-center gap-3">
-                        <span className="text-white fw-bold fs-5 tracking-tighter">651 - 724</span>
-                        <span className="text-gray-400 font-display fw-bold text-uppercase tracking-widest text-14px">AVERAGE</span>
+                        <span className="text-ink fw-bold fs-5 tracking-tighter tabular-nums">651 - 724</span>
+                        <span className="text-gray-400 font-display text-uppercase tracking-widest text-14px">AVERAGE</span>
                       </div>
                       {tierKey === 'average' && (
-                        <span className="bg-accent text-dark text-10px fw-bold px-2 py-1 rounded text-uppercase tracking-tighter">
+                        <span className="text-10px fw-bold px-2 py-1 rounded text-uppercase tracking-tighter" style={{ backgroundColor: '#0E0E0E', color: '#fff' }}>
                           You Are Here
                         </span>
                       )}
                     </div>
                     <p className="text-11px text-gray-500 mb-2 fw-medium">
-                      <span className="text-white fw-bold">The Benchmark:</span> The national high school average across sports tested is 668.
+                      <span className="text-ink fw-bold">The Benchmark:</span> The national high school average across sports tested is 668.
                     </p>
                     <p className="text-12px text-gray-400 mb-0" style={{ lineHeight: 1.4 }}>
                       <span className="text-gray-200 fw-bold">The Meaning:</span> You are performing at the national baseline. You have the foundation, but consistency under stress is your current ceiling. Closing this gap is the fastest way to separate yourself from the pack.
@@ -1150,26 +1130,25 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                     style={
                       tierKey === 'below-average'
                         ? {
-                            backgroundColor: 'rgba(245,158,11,0.05)',
-                            border: '1px solid rgba(245,158,11,0.4)',
-                            boxShadow: '0 0 20px rgba(245,158,11,0.1)',
+                            backgroundColor: '#EDEBE5',
+                            border: '1px solid #0E0E0E',
+                            boxShadow: 'none',
                           }
                         : {
-                            backgroundColor: 'rgba(255,255,255,0.05)',
-                            border: '1px solid rgba(255,255,255,0.1)',
-                            borderLeftColor: 'rgba(251,146,60,0.3)',
+                            backgroundColor: '#FFFFFF',
+                            border: '1px solid #D8D4CC',
                           }
                     }
                   >
                     <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 mb-2">
                       <div className="d-flex align-items-center gap-3">
-                        <span className="fw-bold fs-5 tracking-tighter" style={{ color: '#fb923c' }}>
+                        <span className="fw-bold fs-5 tracking-tighter tabular-nums" style={{ color: '#0E0E0E' }}>
                           650 &amp; UNDER
                         </span>
-                        <span className="text-gray-500 font-display fw-bold text-uppercase tracking-widest text-14px">BELOW AVERAGE</span>
+                        <span className="text-gray-500 font-display text-uppercase tracking-widest text-14px">BELOW AVERAGE</span>
                       </div>
                       {tierKey === 'below-average' && (
-                        <span className="bg-accent text-dark text-10px fw-bold px-2 py-1 rounded text-uppercase tracking-tighter">
+                        <span className="text-10px fw-bold px-2 py-1 rounded text-uppercase tracking-tighter" style={{ backgroundColor: '#0E0E0E', color: '#fff' }}>
                           You Are Here
                         </span>
                       )}
@@ -1187,23 +1166,11 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
         {/* Your Assessment Explained */}
         <section
           className="glass-panel rounded-4 p-4 p-md-5 position-relative overflow-hidden mb-5"
-          style={{ borderColor: 'rgba(168,85,247,0.2)' }}
+          style={{ borderColor: '#D8D4CC' }}
         >
           <div
-            className="position-absolute top-0 start-0 w-100 h-100"
-            style={{ background: 'linear-gradient(to bottom right, rgba(88,28,135,0.15), transparent, transparent)', pointerEvents: 'none' }}
-          />
-          <div
             className="position-absolute top-0 start-0 w-100"
-            style={{ height: 1, background: 'linear-gradient(to right, transparent, rgba(168,85,247,0.5), transparent)', pointerEvents: 'none' }}
-          />
-          <div
-            className="position-absolute rounded-circle"
-            style={{ top: '-8rem', left: '-8rem', width: '16rem', height: '16rem', backgroundColor: '#8B5CF6', opacity: 0.07, filter: 'blur(80px)', pointerEvents: 'none' }}
-          />
-          <div
-            className="position-absolute rounded-circle"
-            style={{ bottom: '-8rem', right: '-8rem', width: '16rem', height: '16rem', backgroundColor: '#8B5CF6', opacity: 0.07, filter: 'blur(80px)', pointerEvents: 'none' }}
+            style={{ height: 1, background: '#D8D4CC', pointerEvents: 'none' }}
           />
 
           <div className="position-relative" style={{ zIndex: 1 }}>
@@ -1213,11 +1180,10 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                 style={{
                   width: 4,
                   height: '2rem',
-                  background: 'linear-gradient(to bottom, #c084fc, #7e22ce)',
-                  boxShadow: '0 0 12px rgba(168,85,247,0.5)',
+                  background: '#0E0E0E',
                 }}
               />
-              <h2 className="fs-3 font-display fw-bold text-white text-uppercase tracking-widest mb-0">
+              <h2 className="fs-3 font-display text-ink text-uppercase tracking-widest mb-0">
                 Your Assessment Explained
               </h2>
             </div>
@@ -1226,15 +1192,11 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
               {/* What We Measure */}
               <div className="col-md-6">
                 <div className="bg-white-5 border border-white-10 rounded-4 p-4 p-md-5 position-relative overflow-hidden h-100">
-                  <div
-                    className="position-absolute rounded-circle"
-                    style={{ top: '-2.5rem', right: '-2.5rem', width: '10rem', height: '10rem', backgroundColor: '#8B5CF6', opacity: 0.05, filter: 'blur(40px)', pointerEvents: 'none' }}
-                  />
                   <div className="d-flex align-items-center gap-3 mb-4">
-                    <span className="material-symbols-outlined text-purple" style={{ fontSize: '2rem' }}>
+                    <span className="material-symbols-outlined text-ink" style={{ fontSize: '2rem' }}>
                       psychology
                     </span>
-                    <h3 className="fs-5 font-display fw-bold text-white text-uppercase tracking-widest mb-0">What We Measure</h3>
+                    <h3 className="fs-5 font-display text-ink text-uppercase tracking-widest mb-0">What We Measure</h3>
                   </div>
                   <p className="text-14px text-gray-400 fw-light mb-0" style={{ lineHeight: 1.6 }}>
                     The Clutch Factor&trade; evaluates your cognitive processing speed, emotional regulation, and decision-making accuracy under simulated high-stakes pressure. It identifies whether your performance elevates, stabilizes, or degrades when the game is on the line.
@@ -1245,15 +1207,11 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
               {/* How to Use This */}
               <div className="col-md-6">
                 <div className="bg-white-5 border border-white-10 rounded-4 p-4 p-md-5 position-relative overflow-hidden h-100">
-                  <div
-                    className="position-absolute rounded-circle"
-                    style={{ top: '-2.5rem', right: '-2.5rem', width: '10rem', height: '10rem', backgroundColor: '#F59E0B', opacity: 0.05, filter: 'blur(40px)', pointerEvents: 'none' }}
-                  />
                   <div className="d-flex align-items-center gap-3 mb-4">
-                    <span className="material-symbols-outlined text-accent" style={{ fontSize: '2rem' }}>
+                    <span className="material-symbols-outlined text-ink" style={{ fontSize: '2rem' }}>
                       trending_up
                     </span>
-                    <h3 className="fs-5 font-display fw-bold text-white text-uppercase tracking-widest mb-0">How to Use This</h3>
+                    <h3 className="fs-5 font-display text-ink text-uppercase tracking-widest mb-0">How to Use This</h3>
                   </div>
                   <p className="text-14px text-gray-400 fw-light mb-0" style={{ lineHeight: 1.6 }}>
                     Use this score as a baseline. Elite athletes train their minds just like their bodies. Identify your tier, understand your current limitations, and use targeted mental conditioning to push your Clutch Factor&trade; into the next bracket.
@@ -1267,19 +1225,11 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
         {/* The Big Picture + Video */}
         <section
           className="position-relative rounded-4 overflow-hidden p-4 p-md-5 mb-5"
-          style={{ border: '1px solid rgba(168,85,247,0.2)' }}
+          style={{ border: '1px solid #D8D4CC', backgroundColor: '#FFFFFF' }}
         >
           <div
-            className="position-absolute top-0 start-0 w-100 h-100"
-            style={{ background: 'linear-gradient(to bottom right, rgba(88,28,135,0.3), #000, #000)' }}
-          />
-          <div
             className="position-absolute top-0 start-0 w-100"
-            style={{ height: 1, background: 'linear-gradient(to right, transparent, rgba(168,85,247,0.6), transparent)' }}
-          />
-          <div
-            className="position-absolute bottom-0 start-0 w-100"
-            style={{ height: 1, background: 'linear-gradient(to right, transparent, rgba(168,85,247,0.3), transparent)' }}
+            style={{ height: 1, background: '#D8D4CC' }}
           />
 
           <div className="position-relative" style={{ zIndex: 1 }}>
@@ -1291,18 +1241,17 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                     style={{
                       width: 4,
                       height: '3rem',
-                      background: 'linear-gradient(to bottom, #c084fc, #7e22ce)',
-                      boxShadow: '0 0 12px rgba(168,85,247,0.5)',
+                      background: '#0E0E0E',
                     }}
                   />
                   <div>
                     <p
-                      className="text-12px font-tech fw-bold text-uppercase tracking-tech mb-1"
-                      style={{ color: '#c084fc' }}
+                      className="text-12px font-tech fw-medium text-uppercase tracking-tech mb-1"
+                      style={{ color: '#6F6C64' }}
                     >
                       The Big Picture
                     </p>
-                    <h2 className="fs-2 font-display fw-bold text-white text-uppercase tracking-widest mb-0">
+                    <h2 className="fs-2 font-display text-ink text-uppercase tracking-widest mb-0">
                       A Note On Your Score
                     </h2>
                   </div>
@@ -1311,7 +1260,7 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                   Your Clutch Factor is not the be-all, end-all; it is just one piece of your complete athletic profile. A lower score does not mean you are a bad player. It simply indicates that your physical skills are currently much more developed than your mental skills.
                 </p>
                 <p className="text-gray-300 fw-light fs-5 mb-0" style={{ lineHeight: 1.6 }}>
-                  Your clutch abilities are <strong className="text-white fw-bold">highly trainable</strong>. By engaging with the targeted personalized exercises below, you can bridge that gap and actively build the mental mechanics required to match your physical talent.
+                  Your clutch abilities are <strong className="text-ink fw-bold">highly trainable</strong>. By engaging with the targeted personalized exercises below, you can bridge that gap and actively build the mental mechanics required to match your physical talent.
                 </p>
               </div>
 
@@ -1325,11 +1274,10 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                       maxWidth: 320,
                       aspectRatio: '9 / 16',
                       cursor: videoLoaded ? 'default' : 'pointer',
-                      background: '#0d0b06',
-                      borderRadius: 18,
-                      border: '1px solid rgba(245,158,11,0.24)',
-                      boxShadow:
-                        'inset 0 1px 0 rgba(255,255,255,0.07), 0 32px 80px rgba(0,0,0,0.88), 0 0 48px rgba(245,158,11,0.06)',
+                      background: '#FFFFFF',
+                      borderRadius: 2,
+                      border: '1px solid #D8D4CC',
+                      boxShadow: '0 10px 28px rgba(14,14,14,0.08)',
                       transition: 'border-color .3s, box-shadow .3s, transform .35s',
                     }}
                   >
@@ -1365,7 +1313,7 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                             height: 1,
                             zIndex: 6,
                             background:
-                              'linear-gradient(to right, transparent 5%, rgba(245,158,11,0.5) 40%, rgba(245,158,11,0.5) 60%, transparent 95%)',
+                              'linear-gradient(to right, transparent 5%, rgba(255,255,255,0.5) 40%, rgba(255,255,255,0.5) 60%, transparent 95%)',
                             pointerEvents: 'none',
                           }}
                         />
@@ -1415,18 +1363,17 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                background: 'rgba(10,8,3,0.58)',
-                                border: '1.5px solid rgba(245,158,11,0.88)',
+                                background: 'rgba(255,255,255,0.92)',
+                                border: '1.5px solid #0E0E0E',
                                 backdropFilter: 'blur(14px)',
                                 WebkitBackdropFilter: 'blur(14px)',
-                                boxShadow: '0 0 36px rgba(245,158,11,0.18), 0 12px 36px rgba(0,0,0,0.6)',
+                                boxShadow: '0 12px 36px rgba(0,0,0,0.35)',
                               }}
                             >
                               <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                                 <polygon
                                   points="10,5 10,23 25,14"
-                                  fill="rgba(255,255,255,0.97)"
-                                  style={{ filter: 'drop-shadow(0 1px 6px rgba(0,0,0,0.85))' }}
+                                  fill="#0E0E0E"
                                 />
                               </svg>
                             </div>
@@ -1461,9 +1408,9 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                                 fontSize: '.5rem',
                                 letterSpacing: '.18em',
                                 textTransform: 'uppercase',
-                                color: 'rgba(245,158,11,0.92)',
+                                color: 'rgba(255,255,255,0.92)',
                                 fontWeight: 700,
-                                fontFamily: "'Rajdhani', sans-serif",
+                                fontFamily: "'Roboto Mono', monospace",
                               }}
                             >
                               Clutch Factor Report
@@ -1475,11 +1422,11 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                                 textTransform: 'uppercase',
                                 padding: '.14rem .42rem',
                                 borderRadius: 4,
-                                background: 'rgba(245,158,11,0.11)',
-                                border: '1px solid rgba(245,158,11,0.42)',
-                                color: 'rgba(245,158,11,0.96)',
+                                background: 'rgba(255,255,255,0.14)',
+                                border: '1px solid rgba(255,255,255,0.42)',
+                                color: 'rgba(255,255,255,0.96)',
                                 fontWeight: 800,
-                                fontFamily: "'Rajdhani', sans-serif",
+                                fontFamily: "'Roboto Mono', monospace",
                               }}
                             >
                               HD 1080p
@@ -1507,18 +1454,14 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
 
         {/* Suggested Exercises */}
         <section
-          className="position-relative py-5 px-3 px-lg-5 rounded-4 overflow-hidden shadow-lg mb-5"
-          style={{ border: '1px solid rgba(245,158,11,0.2)', marginLeft: 0, marginRight: 0 }}
+          className="position-relative py-5 px-3 px-lg-5 rounded-4 overflow-hidden mb-5"
+          style={{ border: '1px solid #D8D4CC', backgroundColor: '#FFFFFF', marginLeft: 0, marginRight: 0 }}
         >
           <div
-            className="position-absolute top-0 start-0 w-100 h-100 opacity-90"
-            style={{ background: 'linear-gradient(to bottom, #1a1505, #000)', zIndex: 0 }}
-          />
-          <div
-            className="position-absolute top-0 start-0 w-100 opacity-70"
+            className="position-absolute top-0 start-0 w-100"
             style={{
               height: 1,
-              background: 'linear-gradient(to right, transparent, var(--accent), transparent)',
+              background: '#D8D4CC',
             }}
           />
 
@@ -1530,22 +1473,21 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                   style={{
                     width: 6,
                     height: '2.5rem',
-                    background: 'linear-gradient(to bottom, #fde047, #f59e0b)',
-                    boxShadow: '0 0 15px rgba(251,191,36,0.5)',
+                    background: '#0E0E0E',
                   }}
                 />
                 <h2
-                  className="font-display fw-bold text-white text-uppercase tracking-widest mb-0"
-                  style={{ fontSize: 'clamp(2rem, 5vw, 2.5rem)', textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}
+                  className="font-display text-ink text-uppercase tracking-widest mb-0"
+                  style={{ fontSize: 'clamp(2rem, 5vw, 2.5rem)' }}
                 >
                   Suggested Exercises
                 </h2>
               </div>
               <div
                 className="d-none d-md-flex align-items-center gap-2 px-3 py-1 rounded-pill"
-                style={{ backgroundColor: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.3)' }}
+                style={{ backgroundColor: '#FFFFFF', border: '1px solid #D8D4CC' }}
               >
-                <span className="text-12px font-tech fw-bold text-accent text-uppercase tracking-tech">
+                <span className="text-12px font-tech fw-medium text-ink text-uppercase tracking-tech">
                   Priority Focus
                 </span>
               </div>
@@ -1558,27 +1500,27 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                   className="position-relative rounded-4 h-100"
                   style={{
                     padding: 1,
-                    background: 'linear-gradient(to bottom, #1c1c1c, #0f0f0f)',
-                    border: '1px solid rgba(245,158,11,0.4)',
+                    background: '#D8D4CC',
+                    border: '1px solid #D8D4CC',
                   }}
                 >
                   <div
                     className="h-100 rounded-3 p-4 p-md-5 d-flex flex-column position-relative overflow-hidden"
-                    style={{ backgroundColor: '#111' }}
+                    style={{ backgroundColor: '#FFFFFF' }}
                   >
                     <div
-                      className="position-absolute top-0 start-0 w-100 opacity-50"
+                      className="position-absolute top-0 start-0 w-100"
                       style={{
-                        height: 4,
-                        background: 'linear-gradient(to right, transparent, rgba(245,158,11,0.5), transparent)',
+                        height: 2,
+                        background: '#0E0E0E',
                       }}
                     />
                     <div className="d-flex align-items-start justify-content-between mb-4 position-relative" style={{ zIndex: 1 }}>
-                      <span className="font-display fw-bold" style={{ fontSize: '4rem', color: 'rgba(255,255,255,0.05)' }}>
+                      <span className="font-display fw-bold tabular-nums" style={{ fontSize: '4rem', color: 'rgba(14,14,14,0.08)' }}>
                         01
                       </span>
                     </div>
-                    <h3 className="fs-4 font-display fw-bold text-white mb-3 text-uppercase tracking-widest">
+                    <h3 className="fs-4 font-display text-ink mb-3 text-uppercase tracking-widest">
                       Focus Interval Training
                     </h3>
                     <div className="flex-grow-1 d-flex flex-column gap-4">
@@ -1586,14 +1528,13 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                         Practice focusing on a single task or image for a set amount of time, gradually increasing duration. This drill helps improve your concentration and ability to stay present during high-pressure situations, which is essential for maintaining focus during critical moments like pitching.
                       </p>
                       <div
-                        className="rounded-3 p-3 shadow-sm"
+                        className="rounded-3 p-3"
                         style={{
-                          backgroundColor: '#18120a',
-                          border: '1px solid rgba(245,158,11,0.5)',
-                          boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.05)',
+                          backgroundColor: '#F7F6F3',
+                          border: '1px solid #D8D4CC',
                         }}
                       >
-                        <p className="text-12px text-accent font-tech fw-bold text-uppercase tracking-tech mb-2">
+                        <p className="text-12px text-ink font-tech fw-medium text-uppercase tracking-tech mb-2">
                           Drill Video
                         </p>
                         <a
@@ -1601,7 +1542,7 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                           target="_blank"
                           rel="noreferrer"
                           className="d-block rounded-3 overflow-hidden position-relative text-decoration-none hover-scale"
-                          style={{ border: '1px solid rgba(253,230,138,0.2)' }}
+                          style={{ border: '1px solid #D8D4CC' }}
                         >
                           <img
                             alt="Focus Interval Training drill video thumbnail"
@@ -1615,8 +1556,8 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                           />
                           <div className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
                             <div
-                              className="d-inline-flex align-items-center gap-2 rounded-pill text-white px-4 py-2 shadow"
-                              style={{ backgroundColor: 'rgba(226,61,50,0.95)', border: '1px solid rgba(255,255,255,0.2)' }}
+                              className="d-inline-flex align-items-center gap-2 rounded-pill px-4 py-2 shadow"
+                              style={{ backgroundColor: '#0E0E0E', border: '1px solid rgba(255,255,255,0.2)', color: '#fff' }}
                             >
                               <span className="material-symbols-outlined">play_arrow</span>
                               <span className="text-12px fw-bold tracking-widest text-uppercase">Watch on YouTube</span>
@@ -1627,10 +1568,10 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                       <button
                         type="button"
                         onClick={() => setActiveDrill('focus-interval')}
-                        className="w-100 d-inline-flex align-items-center justify-content-center gap-2 rounded-3 py-2 px-3 text-12px font-tech fw-bold text-uppercase tracking-widest text-accent hover-scale"
+                        className="w-100 d-inline-flex align-items-center justify-content-center gap-2 rounded-3 py-2 px-3 text-12px font-tech fw-medium text-uppercase tracking-widest text-ink hover-scale"
                         style={{
-                          border: '1px solid rgba(245,158,11,0.4)',
-                          backgroundColor: 'rgba(245,158,11,0.1)',
+                          border: '1px solid #D8D4CC',
+                          backgroundColor: '#F7F6F3',
                         }}
                       >
                         <span className="material-symbols-outlined fs-5">info</span>
@@ -1647,39 +1588,27 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                   className="position-relative rounded-4 h-100"
                   style={{
                     padding: 1,
-                    background: 'linear-gradient(to bottom, #1c1c1c, #0f0f0f)',
-                    border: '1px solid rgba(168,85,247,0.4)',
+                    background: '#D8D4CC',
+                    border: '1px solid #D8D4CC',
                   }}
                 >
                   <div
                     className="h-100 rounded-3 p-4 p-md-5 d-flex flex-column position-relative overflow-hidden"
-                    style={{ backgroundColor: '#111' }}
+                    style={{ backgroundColor: '#FFFFFF' }}
                   >
                     <div
-                      className="position-absolute top-0 end-0"
+                      className="position-absolute top-0 start-0 w-100"
                       style={{
-                        width: '8rem',
-                        height: '8rem',
-                        backgroundColor: 'rgba(168,85,247,0.05)',
-                        marginRight: '-1rem',
-                        marginTop: '-1rem',
-                        filter: 'blur(20px)',
-                        borderBottomLeftRadius: '9999px',
-                      }}
-                    />
-                    <div
-                      className="position-absolute top-0 start-0 w-100 opacity-50"
-                      style={{
-                        height: 4,
-                        background: 'linear-gradient(to right, transparent, rgba(168,85,247,0.5), transparent)',
+                        height: 2,
+                        background: '#0E0E0E',
                       }}
                     />
                     <div className="d-flex align-items-start justify-content-between mb-4 position-relative" style={{ zIndex: 1 }}>
-                      <span className="font-display fw-bold" style={{ fontSize: '4rem', color: 'rgba(255,255,255,0.05)' }}>
+                      <span className="font-display fw-bold tabular-nums" style={{ fontSize: '4rem', color: 'rgba(14,14,14,0.08)' }}>
                         02
                       </span>
                     </div>
-                    <h3 className="fs-4 font-display fw-bold text-white mb-3 text-uppercase tracking-widest">
+                    <h3 className="fs-4 font-display text-ink mb-3 text-uppercase tracking-widest">
                       Confidence Scripting
                     </h3>
                     <div className="flex-grow-1 d-flex flex-column gap-4">
@@ -1687,14 +1616,13 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                         Write and rehearse short, first-person confidence statements tied to pressure moments (for example, stepping onto the mound with runners on base). Repeat the script before and during practice to reinforce composure, trust your preparation, and keep your self-talk constructive under pressure.
                       </p>
                       <div
-                        className="rounded-3 p-3 shadow-sm"
+                        className="rounded-3 p-3"
                         style={{
-                          backgroundColor: '#130f1f',
-                          border: '1px solid rgba(168,85,247,0.5)',
-                          boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.05)',
+                          backgroundColor: '#F7F6F3',
+                          border: '1px solid #D8D4CC',
                         }}
                       >
-                        <p className="text-12px text-purple font-tech fw-bold text-uppercase tracking-tech mb-2">
+                        <p className="text-12px text-ink font-tech fw-medium text-uppercase tracking-tech mb-2">
                           Drill Video
                         </p>
                         <a
@@ -1702,7 +1630,7 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                           target="_blank"
                           rel="noreferrer"
                           className="d-block rounded-3 overflow-hidden position-relative text-decoration-none hover-scale"
-                          style={{ border: '1px solid rgba(216,180,254,0.2)' }}
+                          style={{ border: '1px solid #D8D4CC' }}
                         >
                           <img
                             alt="Confidence Scripting drill video thumbnail"
@@ -1716,8 +1644,8 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                           />
                           <div className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
                             <div
-                              className="d-inline-flex align-items-center gap-2 rounded-pill text-white px-4 py-2 shadow"
-                              style={{ backgroundColor: 'rgba(226,61,50,0.95)', border: '1px solid rgba(255,255,255,0.2)' }}
+                              className="d-inline-flex align-items-center gap-2 rounded-pill px-4 py-2 shadow"
+                              style={{ backgroundColor: '#0E0E0E', border: '1px solid rgba(255,255,255,0.2)', color: '#fff' }}
                             >
                               <span className="material-symbols-outlined">play_arrow</span>
                               <span className="text-12px fw-bold tracking-widest text-uppercase">Watch on YouTube</span>
@@ -1728,10 +1656,10 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                       <button
                         type="button"
                         onClick={() => setActiveDrill('confidence-scripting')}
-                        className="w-100 d-inline-flex align-items-center justify-content-center gap-2 rounded-3 py-2 px-3 text-12px font-tech fw-bold text-uppercase tracking-widest text-purple hover-scale"
+                        className="w-100 d-inline-flex align-items-center justify-content-center gap-2 rounded-3 py-2 px-3 text-12px font-tech fw-medium text-uppercase tracking-widest text-ink hover-scale"
                         style={{
-                          border: '1px solid rgba(168,85,247,0.4)',
-                          backgroundColor: 'rgba(168,85,247,0.1)',
+                          border: '1px solid #D8D4CC',
+                          backgroundColor: '#F7F6F3',
                         }}
                       >
                         <span className="material-symbols-outlined fs-5">info</span>
@@ -1747,24 +1675,10 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
 
         {/* Your Playbook */}
         <section className="glass-panel rounded-4 p-4 p-md-5 position-relative overflow-hidden mb-5">
-          <div
-            className="position-absolute rounded-circle"
-            style={{
-              top: 0,
-              right: 0,
-              width: '16rem',
-              height: '16rem',
-              backgroundColor: '#F59E0B',
-              opacity: 0.05,
-              filter: 'blur(100px)',
-              pointerEvents: 'none',
-            }}
-          />
-
           <div className="position-relative d-flex flex-column gap-4 mb-5" style={{ zIndex: 1 }}>
             <div className="d-flex align-items-center gap-3">
               <div className="bg-accent rounded-pill" style={{ width: 4, height: '2rem' }} />
-              <h2 className="fs-3 font-display fw-bold text-white text-uppercase tracking-widest mb-0">
+              <h2 className="fs-3 font-display text-ink text-uppercase tracking-widest mb-0">
                 YOUR PLAYBOOK: HOW TO USE CLUTCH FACTOR DATA
               </h2>
             </div>
@@ -1785,13 +1699,13 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                   style={{
                     width: '3rem',
                     height: '3rem',
-                    backgroundColor: 'rgba(245,158,11,0.1)',
-                    border: '1px solid rgba(245,158,11,0.2)',
+                    backgroundColor: '#F7F6F3',
+                    border: '1px solid #D8D4CC',
                   }}
                 >
-                  <span className="material-symbols-outlined text-accent">campaign</span>
+                  <span className="material-symbols-outlined text-ink">campaign</span>
                 </div>
-                <h3 className="fs-5 font-display fw-bold text-white text-uppercase mb-0">The Recruiting Bio</h3>
+                <h3 className="fs-5 font-display text-ink text-uppercase mb-0">The Recruiting Bio</h3>
                 <p className="text-14px text-gray-400 fw-light mb-0" style={{ lineHeight: 1.6 }}>
                   Treat this score like your SAT for sports. Add your verified Clutch Factor&trade; score to your X (Twitter) bio, Instagram profile, and directly onto the opening frame of your Hudl highlight reel.
                 </p>
@@ -1806,13 +1720,13 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                   style={{
                     width: '3rem',
                     height: '3rem',
-                    backgroundColor: 'rgba(245,158,11,0.1)',
-                    border: '1px solid rgba(245,158,11,0.2)',
+                    backgroundColor: '#F7F6F3',
+                    border: '1px solid #D8D4CC',
                   }}
                 >
-                  <span className="material-symbols-outlined text-accent">mail</span>
+                  <span className="material-symbols-outlined text-ink">mail</span>
                 </div>
-                <h3 className="fs-5 font-display fw-bold text-white text-uppercase mb-0">The Coach Outreach</h3>
+                <h3 className="fs-5 font-display text-ink text-uppercase mb-0">The Coach Outreach</h3>
                 <p className="text-14px text-gray-400 fw-light mb-0" style={{ lineHeight: 1.6 }}>
                   College coaches are terrified of the transfer portal and want athletes who won&rsquo;t fold under pressure. Attach this PDF to your recruiting emails to mathematically prove you have the mental makeup for their program.
                 </p>
@@ -1827,13 +1741,13 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                   style={{
                     width: '3rem',
                     height: '3rem',
-                    backgroundColor: 'rgba(245,158,11,0.1)',
-                    border: '1px solid rgba(245,158,11,0.2)',
+                    backgroundColor: '#F7F6F3',
+                    border: '1px solid #D8D4CC',
                   }}
                 >
-                  <span className="material-symbols-outlined text-accent">shield</span>
+                  <span className="material-symbols-outlined text-ink">shield</span>
                 </div>
-                <h3 className="fs-5 font-display fw-bold text-white text-uppercase mb-0">The Negotiation Advantage</h3>
+                <h3 className="fs-5 font-display text-ink text-uppercase mb-0">The Negotiation Advantage</h3>
                 <p className="text-14px text-gray-400 fw-light mb-0" style={{ lineHeight: 1.6 }}>
                   Brands want reliable ambassadors. Use your &ldquo;Elite&rdquo; or &ldquo;Great&rdquo; classification in Free Agency/NIL sponsorship pitches to prove you are mature, resilient, and built to handle the spotlight.
                 </p>
@@ -1846,7 +1760,7 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
         <section className="mb-5">
           <div className="d-flex align-items-center gap-3 mb-4">
             <div className="bg-accent rounded-pill" style={{ width: 4, height: '2rem' }} />
-            <h2 className="fs-3 font-display fw-bold text-white text-uppercase tracking-widest mb-0">
+            <h2 className="fs-3 font-display text-ink text-uppercase tracking-widest mb-0">
               SHARE YOUR SCORE
             </h2>
           </div>
@@ -1861,10 +1775,10 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                       <button
                         type="button"
                         onClick={() => setActivePreview('square')}
-                        className={`btn btn-sm text-10px font-tech fw-bold text-uppercase tracking-tech text-accent bg-transparent${
+                        className={`btn btn-sm text-10px font-tech fw-medium text-uppercase tracking-tech text-ink bg-transparent${
                           activePreview === 'square' ? ' active' : ''
                         }`}
-                        style={{ border: '1px solid rgba(245,158,11,0.35)' }}
+                        style={{ border: '1px solid var(--line-strong)' }}
                       >
                         Square
                       </button>
@@ -1873,10 +1787,10 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                       <button
                         type="button"
                         onClick={() => setActivePreview('story')}
-                        className={`btn btn-sm text-10px font-tech fw-bold text-uppercase tracking-tech text-purple bg-transparent${
+                        className={`btn btn-sm text-10px font-tech fw-medium text-uppercase tracking-tech text-ink bg-transparent${
                           activePreview === 'story' ? ' active' : ''
                         }`}
-                        style={{ border: '1px solid rgba(168,85,247,0.35)' }}
+                        style={{ border: '1px solid var(--line-strong)' }}
                       >
                         Story
                       </button>
@@ -1898,7 +1812,7 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
             <div className="col-lg-6">
               <div className="glass-card rounded-4 p-4 p-md-5 h-100 d-flex flex-column justify-content-center gap-4">
                 <div>
-                  <h3 className="fs-4 font-display fw-bold text-white text-uppercase tracking-widest mb-1">
+                  <h3 className="fs-4 font-display text-ink text-uppercase tracking-widest mb-1">
                     Share Your Score
                   </h3>
                   <p className="text-10px text-gray-500 font-tech text-uppercase tracking-tech mb-0">
@@ -1921,10 +1835,11 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                   />
                   <label
                     htmlFor="cf-photo-upload-input"
-                    className="w-100 d-inline-flex align-items-center justify-content-center gap-2 rounded-3 py-3 px-4 text-12px font-tech fw-bold text-uppercase tracking-tech text-white mb-0 hover-scale"
+                    className="w-100 d-inline-flex align-items-center justify-content-center gap-2 rounded-3 py-3 px-4 text-12px font-tech fw-bold text-uppercase tracking-tech mb-0 hover-scale"
                     style={{
-                      border: '1px solid rgba(255,255,255,0.25)',
-                      backgroundColor: 'rgba(255,255,255,0.04)',
+                      border: '1.5px solid #0E0E0E',
+                      backgroundColor: '#0E0E0E',
+                      color: '#fff',
                       cursor: 'pointer',
                     }}
                   >
@@ -1936,8 +1851,8 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                       <button
                         type="button"
                         onClick={handleRecrop}
-                        className="flex-grow-1 d-inline-flex align-items-center justify-content-center gap-2 rounded-3 py-2 px-3 text-10px font-tech fw-bold text-uppercase tracking-tech text-white bg-transparent"
-                        style={{ border: '1px solid rgba(255,255,255,0.2)' }}
+                        className="flex-grow-1 d-inline-flex align-items-center justify-content-center gap-2 rounded-3 py-2 px-3 text-10px font-tech fw-medium text-uppercase tracking-tech text-ink bg-transparent"
+                        style={{ border: '1px solid #D8D4CC' }}
                       >
                         <span className="material-symbols-outlined fs-6">crop</span>
                         Re-crop
@@ -1945,8 +1860,8 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                       <button
                         type="button"
                         onClick={handleClearPhoto}
-                        className="flex-grow-1 d-inline-flex align-items-center justify-content-center gap-2 rounded-3 py-2 px-3 text-10px font-tech fw-bold text-uppercase tracking-tech text-gray-400 bg-transparent"
-                        style={{ border: '1px solid rgba(255,255,255,0.15)' }}
+                        className="flex-grow-1 d-inline-flex align-items-center justify-content-center gap-2 rounded-3 py-2 px-3 text-10px font-tech fw-medium text-uppercase tracking-tech text-gray-400 bg-transparent"
+                        style={{ border: '1px solid #D8D4CC' }}
                       >
                         <span className="material-symbols-outlined fs-6">close</span>
                         Remove
@@ -1958,8 +1873,8 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                 <button
                   type="button"
                   onClick={() => downloadCanvas('square')}
-                  className="w-100 d-inline-flex align-items-center justify-content-center gap-2 rounded-3 py-3 px-4 text-12px font-tech fw-bold text-uppercase tracking-tech text-accent hover-scale"
-                  style={{ border: '1px solid rgba(245,158,11,0.3)', backgroundColor: 'rgba(245,158,11,0.1)' }}
+                  className="w-100 d-inline-flex align-items-center justify-content-center gap-2 rounded-3 py-3 px-4 text-12px font-tech fw-medium text-uppercase tracking-tech text-ink hover-scale"
+                  style={{ border: '1px solid #D8D4CC', backgroundColor: '#F7F6F3' }}
                 >
                   <span className="material-symbols-outlined fs-5">download</span>
                   Download Post 1080&times;1080 PNG
@@ -1967,8 +1882,8 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                 <button
                   type="button"
                   onClick={() => downloadCanvas('story')}
-                  className="w-100 d-inline-flex align-items-center justify-content-center gap-2 rounded-3 py-3 px-4 text-12px font-tech fw-bold text-uppercase tracking-tech text-purple hover-scale"
-                  style={{ border: '1px solid rgba(168,85,247,0.3)', backgroundColor: 'rgba(168,85,247,0.1)' }}
+                  className="w-100 d-inline-flex align-items-center justify-content-center gap-2 rounded-3 py-3 px-4 text-12px font-tech fw-medium text-uppercase tracking-tech text-ink hover-scale"
+                  style={{ border: '1px solid #D8D4CC', backgroundColor: '#F7F6F3' }}
                 >
                   <span className="material-symbols-outlined fs-5">download</span>
                   Download Story 1080&times;1920 PNG
@@ -1985,11 +1900,11 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                 <div className="d-flex flex-column gap-3">
                   <div
                     className="rounded-3 p-3"
-                    style={{ backgroundColor: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.1)' }}
+                    style={{ backgroundColor: '#F7F6F3', border: '1px solid #D8D4CC' }}
                   >
                     <div className="d-flex align-items-center gap-2 mb-2">
                       <span className="material-symbols-outlined text-accent fs-5">share</span>
-                      <h4 className="text-12px text-white font-tech fw-bold text-uppercase tracking-tech mb-0">
+                      <h4 className="text-12px text-ink font-tech fw-medium text-uppercase tracking-tech mb-0">
                         Social Media
                       </h4>
                     </div>
@@ -2000,11 +1915,11 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
 
                   <div
                     className="rounded-3 p-3"
-                    style={{ backgroundColor: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.1)' }}
+                    style={{ backgroundColor: '#F7F6F3', border: '1px solid #D8D4CC' }}
                   >
                     <div className="d-flex align-items-center gap-2 mb-2">
                       <span className="material-symbols-outlined text-accent fs-5">mail</span>
-                      <h4 className="text-12px text-white font-tech fw-bold text-uppercase tracking-tech mb-0">
+                      <h4 className="text-12px text-ink font-tech fw-medium text-uppercase tracking-tech mb-0">
                         College Coaches
                       </h4>
                     </div>
@@ -2015,11 +1930,11 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
 
                   <div
                     className="rounded-3 p-3"
-                    style={{ backgroundColor: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.1)' }}
+                    style={{ backgroundColor: '#F7F6F3', border: '1px solid #D8D4CC' }}
                   >
                     <div className="d-flex align-items-center gap-2 mb-2">
                       <span className="material-symbols-outlined text-accent fs-5">movie</span>
-                      <h4 className="text-12px text-white font-tech fw-bold text-uppercase tracking-tech mb-0">
+                      <h4 className="text-12px text-ink font-tech fw-medium text-uppercase tracking-tech mb-0">
                         Highlight Reels
                       </h4>
                     </div>
@@ -2037,7 +1952,7 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
         <div className="text-center py-4">
           <p
             className="font-monospace text-uppercase mb-0"
-            style={{ fontSize: '.6rem', color: '#374151', letterSpacing: '0.1em' }}
+            style={{ fontSize: '.6rem', color: '#9A968E', letterSpacing: '0.1em' }}
           >
             © NTANGIBLE, INC. ALL RIGHTS RESERVED
           </p>
@@ -2052,7 +1967,7 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
             style={{
               position: 'fixed',
               inset: 0,
-              backgroundColor: 'rgba(0,0,0,0.65)',
+              backgroundColor: 'rgba(14,14,14,0.4)',
               zIndex: 1050,
             }}
           />
@@ -2071,22 +1986,22 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
             }}
           >
             <div
-              className="modal-content text-white"
+              className="modal-content text-ink"
               style={{
-                backgroundColor: '#0d0d0d',
-                border: '1px solid rgba(255,255,255,0.2)',
-                boxShadow: '0 20px 80px rgba(0,0,0,0.65)',
+                backgroundColor: '#FFFFFF',
+                border: '1px solid #D8D4CC',
+                boxShadow: '0 10px 28px rgba(14,14,14,0.08)',
                 width: '100%',
                 maxWidth: 800,
                 maxHeight: 'calc(100vh - 2rem)',
                 overflowY: 'auto',
-                borderRadius: '0.5rem',
+                borderRadius: '2px',
                 pointerEvents: 'auto',
               }}
             >
               <div
                 className="d-flex align-items-center justify-content-between p-3 p-md-4"
-                style={{ borderBottom: '1px solid rgba(255,255,255,0.15)' }}
+                style={{ borderBottom: '1px solid #E6E3DD' }}
               >
                 <h5 className="font-display fw-bold text-uppercase tracking-widest mb-0">
                   {activeDrill === 'focus-interval'
@@ -2097,8 +2012,8 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                   type="button"
                   onClick={() => setActiveDrill(null)}
                   aria-label="Close"
-                  className="btn btn-sm text-white bg-transparent"
-                  style={{ border: '1px solid rgba(255,255,255,0.25)' }}
+                  className="btn btn-sm text-ink bg-transparent"
+                  style={{ border: '1px solid #D8D4CC' }}
                 >
                   <span className="material-symbols-outlined fs-6 align-middle">close</span>
                 </button>
@@ -2133,10 +2048,10 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                     </div>
                     <div
                       className="rounded-3 p-3"
-                      style={{ backgroundColor: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.3)' }}
+                      style={{ backgroundColor: '#EDEBE5', border: '1px solid #0E0E0E' }}
                     >
-                      <p className="text-14px mb-0" style={{ color: '#fef3c7', lineHeight: 1.6 }}>
-                        💡 <span className="fw-bold text-white">Game Day Tip:</span> Your equipment is your anchor! Pick a specific spot on your gear (like a logo on your shoe or the grip of your stick). During breaks in the action, staring at that spot is the ultimate way to quickly tune out the crowd and reset.
+                      <p className="text-14px mb-0" style={{ color: '#42403B', lineHeight: 1.6 }}>
+                        <span className="fw-bold text-ink">Game Day Tip:</span> Your equipment is your anchor! Pick a specific spot on your gear (like a logo on your shoe or the grip of your stick). During breaks in the action, staring at that spot is the ultimate way to quickly tune out the crowd and reset.
                       </p>
                     </div>
                   </>
@@ -2166,10 +2081,10 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                     </div>
                     <div
                       className="rounded-3 p-3"
-                      style={{ backgroundColor: 'rgba(168,85,247,0.1)', border: '1px solid rgba(168,85,247,0.3)' }}
+                      style={{ backgroundColor: '#EDEBE5', border: '1px solid #0E0E0E' }}
                     >
-                      <p className="text-14px mb-0" style={{ color: '#f3e8ff', lineHeight: 1.6 }}>
-                        💡 <span className="fw-bold text-white">Game Day Tip:</span> Write your short script somewhere you will see it right before the action starts! Put a piece of tape on your stick or racket, write it on your water bottle, or stick it inside your locker so your phrases are always front and center.
+                      <p className="text-14px mb-0" style={{ color: '#42403B', lineHeight: 1.6 }}>
+                        <span className="fw-bold text-ink">Game Day Tip:</span> Write your short script somewhere you will see it right before the action starts! Put a piece of tape on your stick or racket, write it on your water bottle, or stick it inside your locker so your phrases are always front and center.
                       </p>
                     </div>
                   </>
@@ -2188,7 +2103,7 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
             style={{
               position: 'fixed',
               inset: 0,
-              backgroundColor: 'rgba(0,0,0,0.65)',
+              backgroundColor: 'rgba(14,14,14,0.4)',
               zIndex: 1060,
             }}
           />
@@ -2207,30 +2122,30 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
             }}
           >
             <div
-              className="modal-content text-white"
+              className="modal-content text-ink"
               style={{
-                backgroundColor: '#0d0d0d',
-                border: '1px solid rgba(255,255,255,0.2)',
-                boxShadow: '0 20px 80px rgba(0,0,0,0.65)',
+                backgroundColor: '#FFFFFF',
+                border: '1px solid #D8D4CC',
+                boxShadow: '0 10px 28px rgba(14,14,14,0.08)',
                 width: '100%',
                 maxWidth: 800,
                 maxHeight: 'calc(100vh - 2rem)',
                 overflowY: 'auto',
-                borderRadius: '0.5rem',
+                borderRadius: '2px',
                 pointerEvents: 'auto',
               }}
             >
               <div
                 className="d-flex align-items-center justify-content-between p-3 p-md-4"
-                style={{ borderBottom: '1px solid rgba(255,255,255,0.15)' }}
+                style={{ borderBottom: '1px solid #E6E3DD' }}
               >
                 <h5 className="font-display fw-bold text-uppercase tracking-widest mb-0">Crop Your Photo</h5>
                 <button
                   type="button"
                   onClick={() => setCropSrc(null)}
                   aria-label="Close"
-                  className="btn btn-sm text-white bg-transparent"
-                  style={{ border: '1px solid rgba(255,255,255,0.25)' }}
+                  className="btn btn-sm text-ink bg-transparent"
+                  style={{ border: '1px solid #D8D4CC' }}
                 >
                   <span className="material-symbols-outlined fs-6 align-middle">close</span>
                 </button>
@@ -2242,8 +2157,8 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                 <div
                   style={{
                     maxHeight: '60vh',
-                    backgroundColor: '#000',
-                    borderRadius: '.5rem',
+                    backgroundColor: '#F7F6F3',
+                    borderRadius: '2px',
                     overflow: 'hidden',
                   }}
                 >
@@ -2258,32 +2173,32 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                   <button
                     type="button"
                     onClick={() => handleCropAction('zoom-in')}
-                    className="btn btn-sm text-10px font-tech fw-bold text-uppercase tracking-tech text-white bg-transparent"
-                    style={{ border: '1px solid rgba(255,255,255,0.2)' }}
+                    className="btn btn-sm text-10px font-tech fw-medium text-uppercase tracking-tech text-ink bg-transparent"
+                    style={{ border: '1px solid #D8D4CC' }}
                   >
                     <span className="material-symbols-outlined fs-6 align-middle">zoom_in</span> Zoom In
                   </button>
                   <button
                     type="button"
                     onClick={() => handleCropAction('zoom-out')}
-                    className="btn btn-sm text-10px font-tech fw-bold text-uppercase tracking-tech text-white bg-transparent"
-                    style={{ border: '1px solid rgba(255,255,255,0.2)' }}
+                    className="btn btn-sm text-10px font-tech fw-medium text-uppercase tracking-tech text-ink bg-transparent"
+                    style={{ border: '1px solid #D8D4CC' }}
                   >
                     <span className="material-symbols-outlined fs-6 align-middle">zoom_out</span> Zoom Out
                   </button>
                   <button
                     type="button"
                     onClick={() => handleCropAction('rotate-left')}
-                    className="btn btn-sm text-10px font-tech fw-bold text-uppercase tracking-tech text-white bg-transparent"
-                    style={{ border: '1px solid rgba(255,255,255,0.2)' }}
+                    className="btn btn-sm text-10px font-tech fw-medium text-uppercase tracking-tech text-ink bg-transparent"
+                    style={{ border: '1px solid #D8D4CC' }}
                   >
                     <span className="material-symbols-outlined fs-6 align-middle">rotate_left</span> Rotate
                   </button>
                   <button
                     type="button"
                     onClick={() => handleCropAction('reset')}
-                    className="btn btn-sm text-10px font-tech fw-bold text-uppercase tracking-tech text-white bg-transparent"
-                    style={{ border: '1px solid rgba(255,255,255,0.2)' }}
+                    className="btn btn-sm text-10px font-tech fw-medium text-uppercase tracking-tech text-ink bg-transparent"
+                    style={{ border: '1px solid #D8D4CC' }}
                   >
                     <span className="material-symbols-outlined fs-6 align-middle">restart_alt</span> Reset
                   </button>
@@ -2291,21 +2206,21 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
               </div>
               <div
                 className="d-flex justify-content-end gap-2 p-3 p-md-4"
-                style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}
+                style={{ borderTop: '1px solid #E6E3DD' }}
               >
                 <button
                   type="button"
                   onClick={() => setCropSrc(null)}
-                  className="btn btn-sm text-12px font-tech fw-bold text-uppercase tracking-tech text-gray-400 bg-transparent"
-                  style={{ border: '1px solid rgba(255,255,255,0.15)' }}
+                  className="btn btn-sm text-12px font-tech fw-medium text-uppercase tracking-tech text-gray-400 bg-transparent"
+                  style={{ border: '1px solid #D8D4CC' }}
                 >
                   Cancel
                 </button>
                 <button
                   type="button"
                   onClick={handleCropApply}
-                  className="btn btn-sm text-12px font-tech fw-bold text-uppercase tracking-tech text-accent bg-transparent"
-                  style={{ border: '1px solid rgba(245,158,11,0.35)', backgroundColor: 'rgba(245,158,11,0.1)' }}
+                  className="btn btn-sm text-12px font-tech fw-medium text-uppercase tracking-tech bg-transparent"
+                  style={{ border: '1.5px solid #0E0E0E', backgroundColor: '#0E0E0E', color: '#fff' }}
                 >
                   <span className="material-symbols-outlined fs-6 align-middle">check</span> Apply Crop
                 </button>

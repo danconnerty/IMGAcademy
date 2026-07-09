@@ -61,44 +61,44 @@ const RagChat: React.FC = () => {
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-black hover:bg-gray-800 text-white rounded-full shadow-lg flex items-center justify-center transition-colors"
+          className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-ink hover:opacity-90 text-white rounded-full shadow-lift flex items-center justify-center transition-opacity"
           title="Ask the NTangible Assistant"
         >
-          <MessageCircle size={24} />
+          <MessageCircle size={24} strokeWidth={1.8} />
         </button>
       )}
 
       {/* Chat window */}
       {open && (
-        <div className={`fixed z-50 bg-white shadow-2xl flex flex-col overflow-hidden transition-all duration-200 ${
+        <div className={`fixed z-50 bg-white border border-line-strong shadow-lift flex flex-col overflow-hidden transition-all duration-200 ${
           fullscreen
-            ? 'inset-4 rounded-2xl'
-            : 'bottom-6 right-6 w-96 h-[520px] rounded-2xl'
+            ? 'inset-4 rounded-card'
+            : 'bottom-6 right-6 w-96 h-[520px] rounded-card'
         }`}>
           {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 bg-black">
-            <p className="text-white font-semibold text-sm tracking-wide font-mono">NTangible Assistant</p>
+          <div className="flex items-center justify-between px-4 py-3 bg-ink">
+            <p className="text-white font-mono text-[11px] font-medium uppercase tracking-[0.16em]">NTangible Assistant</p>
             <div className="flex items-center gap-2">
               <button
                 onClick={reset}
-                className="bg-white text-black text-xs font-semibold px-3 py-1.5 rounded-md hover:bg-gray-100 transition-colors"
+                className="bg-white text-ink font-mono text-[10px] font-medium uppercase tracking-[0.14em] px-3 py-1.5 rounded-pill hover:bg-chip transition-colors"
                 title="New chat"
               >
-                New Chat
+                New chat
               </button>
               <button
                 onClick={() => setFullscreen(f => !f)}
-                className="bg-white text-black p-1.5 rounded-md hover:bg-gray-100 transition-colors"
+                className="bg-white text-ink p-1.5 rounded-card hover:bg-chip transition-colors"
                 title={fullscreen ? 'Exit fullscreen' : 'Fullscreen'}
               >
-                {fullscreen ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
+                {fullscreen ? <Minimize2 size={14} strokeWidth={1.8} /> : <Maximize2 size={14} strokeWidth={1.8} />}
               </button>
               <button
                 onClick={() => { setOpen(false); setFullscreen(false); }}
-                className="bg-white text-black p-1.5 rounded-md hover:bg-gray-100 transition-colors"
+                className="bg-white text-ink p-1.5 rounded-card hover:bg-chip transition-colors"
                 title="Close"
               >
-                <X size={14} />
+                <X size={14} strokeWidth={1.8} />
               </button>
             </div>
           </div>
@@ -106,15 +106,15 @@ const RagChat: React.FC = () => {
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-white">
             {messages.length === 0 && (
-              <div className="text-gray-600 text-sm mt-2">
-                <p className="text-center text-gray-400 text-xs uppercase tracking-widest mb-4">Try one of these</p>
+              <div className="text-body text-sm mt-2">
+                <p className="text-center font-mono text-[11px] text-gray-brand uppercase tracking-[0.16em] mb-4">Try one of these</p>
                 <div className="space-y-2">
                   {STARTER_QUESTIONS.map((q, i) => (
                     <button
                       key={i}
                       onClick={() => ask(q)}
                       disabled={loading}
-                      className="w-full text-left px-3 py-2 rounded-lg bg-gray-50 hover:bg-gray-100 border border-gray-200 hover:border-gray-400 text-gray-800 text-sm transition-colors"
+                      className="w-full text-left px-3 py-2 rounded-card bg-white hover:bg-chip border border-line-strong hover:border-ink text-body hover:text-ink text-sm transition-colors"
                     >
                       {q}
                     </button>
@@ -124,10 +124,10 @@ const RagChat: React.FC = () => {
             )}
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`rounded-xl px-3 py-2 text-sm ${
+                <div className={`rounded-bubble px-3 py-2 text-sm ${
                   m.role === 'user'
-                    ? 'max-w-[80%] bg-black text-white'
-                    : 'max-w-full bg-gray-100 text-gray-900 border border-gray-200'
+                    ? 'max-w-[80%] bg-ink text-white rounded-br-card'
+                    : 'max-w-full bg-chip text-ink border border-line rounded-bl-card'
                 }`}>
                   {m.role === 'user' ? m.content : (
                     <ReactMarkdown
@@ -136,10 +136,10 @@ const RagChat: React.FC = () => {
                         h1: ({children}) => <p className="font-bold text-base mb-1">{children}</p>,
                         h2: ({children}) => <p className="font-bold text-sm mb-1">{children}</p>,
                         h3: ({children}) => <p className="font-semibold text-sm mb-1">{children}</p>,
-                        strong: ({children}) => <strong className="font-semibold text-black">{children}</strong>,
+                        strong: ({children}) => <strong className="font-semibold text-ink">{children}</strong>,
                         ul: ({children}) => <ul className="list-disc pl-4 space-y-0.5 my-1">{children}</ul>,
                         ol: ({children}) => <ol className="list-decimal pl-4 space-y-0.5 my-1">{children}</ol>,
-                        li: ({children}) => <li className="text-gray-900">{children}</li>,
+                        li: ({children}) => <li className="text-ink">{children}</li>,
                         p: ({children}) => <p className="mb-1.5 last:mb-0">{children}</p>,
                         table: ({node}) => {
                           const extractText = (n: any): string => {
@@ -162,11 +162,11 @@ const RagChat: React.FC = () => {
                           return (
                             <div className="my-2 space-y-2">
                               {rows.map((cells: string[], ri: number) => (
-                                <div key={ri} className="bg-white rounded-lg p-2.5 border border-gray-200">
+                                <div key={ri} className="bg-white rounded-card p-2.5 border border-line-strong">
                                   {headers.map((h: string, ci: number) => (
                                     <div key={ci} className="flex justify-between items-baseline py-0.5">
-                                      <span className="text-gray-500 text-xs">{h}</span>
-                                      <span className="text-gray-900 text-xs font-medium ml-2 text-right">{cells[ci] ?? ''}</span>
+                                      <span className="text-gray-brand text-xs">{h}</span>
+                                      <span className="text-ink text-xs font-medium ml-2 text-right tabular-nums">{cells[ci] ?? ''}</span>
                                     </div>
                                   ))}
                                 </div>
@@ -179,7 +179,7 @@ const RagChat: React.FC = () => {
                         tr: () => null,
                         th: () => null,
                         td: () => null,
-                        code: ({children}) => <code className="bg-gray-200 px-1 rounded text-xs">{children}</code>,
+                        code: ({children}) => <code className="bg-chip px-1 rounded-card text-xs">{children}</code>,
                       }}
                     >{m.content}</ReactMarkdown>
                   )}
@@ -188,8 +188,8 @@ const RagChat: React.FC = () => {
             ))}
             {loading && (
               <div className="flex justify-start">
-                <div className="bg-gray-100 border border-gray-200 rounded-xl px-3 py-2">
-                  <Loader size={16} className="text-gray-500 animate-spin" />
+                <div className="bg-chip border border-line rounded-bubble rounded-bl-card px-3 py-2">
+                  <Loader size={16} strokeWidth={1.8} className="text-gray-brand animate-spin" />
                 </div>
               </div>
             )}
@@ -197,19 +197,19 @@ const RagChat: React.FC = () => {
           </div>
 
           {/* Input */}
-          <div className="p-3 bg-white flex gap-2 items-center">
+          <div className="px-4 py-3 bg-white border-t border-line flex gap-3 items-center">
             <input
               ref={inputRef}
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && !e.shiftKey && send()}
               placeholder="Ask a question..."
-              className="flex-1 bg-white text-gray-900 text-sm rounded-lg px-3 py-2.5 border border-gray-300 focus:outline-none focus:border-gray-500 placeholder-gray-400"
+              className="nt-input flex-1"
             />
             <button
               onClick={send}
               disabled={!input.trim() || loading}
-              className="bg-black hover:bg-gray-800 disabled:opacity-40 text-white text-sm font-semibold rounded-lg px-4 py-2.5 transition-colors"
+              className="bg-ink hover:opacity-90 disabled:opacity-40 text-white text-sm font-semibold rounded-pill px-5 py-2 transition-opacity"
             >
               Send
             </button>

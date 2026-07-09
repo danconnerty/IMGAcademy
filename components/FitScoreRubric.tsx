@@ -19,7 +19,7 @@ export const RUBRIC_DATA: RubricLevel[] = [
       max: 100,
       range: "75% - 100%",
       rating: "EXCEPTIONAL",
-      ratingColor: "bg-emerald-50 text-emerald-700 border-emerald-100",
+      ratingColor: "bg-ink text-white border-ink",
       desc: "This player processes the game exactly like the coach. In high-pressure moments, they will instinctively make the decision the coach would have called. They require minimal verbal instruction because the intent is implicitly understood.",
       quote: "A symbiotic relationship where intent is implicitly understood. The athlete operates as an on-field extension of the coaching philosophy.",
       bullets: [
@@ -33,7 +33,7 @@ export const RUBRIC_DATA: RubricLevel[] = [
       max: 74.9,
       range: "62.5% - 74%",
       rating: "STRONG",
-      ratingColor: "bg-blue-50 text-blue-700 border-blue-100",
+      ratingColor: "bg-chip text-ink border-line-strong",
       desc: "This player agrees with the coach's goals but may see a different path to get there. They will execute the system, but they will ask questions in the film room. This friction is healthy; it prevents the coach from becoming stale without breaking the system.",
       quote: "A productive partnership driven by healthy friction. The athlete executes the system but constantly stress-tests the logic behind it.",
       bullets: [
@@ -47,7 +47,7 @@ export const RUBRIC_DATA: RubricLevel[] = [
       max: 62.4,
       range: "50% - 62%",
       rating: "CONDITIONAL",
-      ratingColor: "bg-amber-50 text-amber-700 border-amber-100",
+      ratingColor: "bg-chip text-ink border-line-strong",
       desc: "This is a transactional fit. The player does not naturally \"get\" the coach's philosophy. The relationship requires constant maintenance (clear rules, explicit rewards). If playing time drops or the team loses, the disconnect in values will surface as conflict.",
       quote: "This relationship requires constant maintenance. While goals may align, the path to achieving them differs significantly, necessitating clear rules and explicit rewards.",
       bullets: [
@@ -61,7 +61,7 @@ export const RUBRIC_DATA: RubricLevel[] = [
       max: 49.9,
       range: "37.5% - 49%",
       rating: "DEVELOPMENTAL",
-      ratingColor: "bg-orange-50 text-orange-700 border-orange-100",
+      ratingColor: "bg-white text-body border-line-strong",
       desc: "This player fundamentally sees the game differently than the coach (e.g., a \"Freestyler\" playing for a \"System Coach\"). To make this work, the coach must compromise their standard operating procedure. You are not just recruiting a player; you are signing up for a management challenge.",
       quote: "A management challenge requiring structural compromise. The athlete's natural instincts often conflict with the system's demands.",
       bullets: [
@@ -75,7 +75,7 @@ export const RUBRIC_DATA: RubricLevel[] = [
       max: 37.4,
       range: "0% - 37%",
       rating: "POOR",
-      ratingColor: "bg-rose-50 text-rose-700 border-rose-100",
+      ratingColor: "bg-white text-gray-brand border-line",
       desc: "The player's instincts are the exact inverse of the coach's demands. Every instruction will feel like a constraint to the player. The coach will view the player as \"uncoachable,\" and the player will view the coach as \"controlling.\" This is a roster spot wasted on internal conflict.",
       quote: "Fundamental incompatibility. The athlete views the coaching style as a constraint rather than a support system.",
       bullets: [
@@ -96,47 +96,47 @@ const FitScoreRubric: React.FC<FitScoreRubricProps> = ({ score, isModal = false 
     ? RUBRIC_DATA.filter(r => score >= r.min && score <= r.max)
     : RUBRIC_DATA;
 
-  const containerClasses = isModal 
-    ? "w-full bg-white overflow-hidden" 
-    : "w-full bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden";
-  
+  const containerClasses = isModal
+    ? "w-full bg-white overflow-hidden"
+    : "w-full nt-card overflow-hidden";
+
   const headerPadding = isModal ? "px-8 pt-8 pb-6" : "px-6 py-4";
   const cellPadding = isModal ? "px-8" : "px-6";
 
   return (
     <div className={containerClasses}>
-      <div className={`${headerPadding} border-b border-gray-100 flex items-center justify-between bg-white`}>
-          <h3 className="text-sm font-bold text-gray-900 uppercase tracking-widest">
+      <div className={`${headerPadding} border-b border-line flex items-center justify-between bg-white`}>
+          <h3 className="font-mono text-[11px] font-medium text-ink uppercase tracking-[0.16em]">
             {score !== undefined ? 'Projected Dynamic' : 'Alignment Score Rubric'}
           </h3>
-          {score !== undefined && <Info size={16} className="text-gray-400" />}
+          {score !== undefined && <Info size={16} strokeWidth={1.8} className="text-gray-soft" />}
       </div>
       <div className="overflow-x-auto">
         <table className="w-full text-left">
           <thead>
-            <tr className="border-b border-gray-100 bg-gray-50/50">
-              <th className={`py-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest w-32 whitespace-nowrap ${cellPadding}`}>Score Range</th>
-              <th className={`py-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest w-32 ${cellPadding}`}>Rating</th>
-              <th className={`py-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest ${cellPadding}`}>Coach/Player Dynamic</th>
+            <tr className="border-b border-line bg-chip/40">
+              <th className={`py-4 font-mono text-[10px] font-medium text-gray-brand uppercase tracking-[0.16em] w-32 whitespace-nowrap ${cellPadding}`}>Score Range</th>
+              <th className={`py-4 font-mono text-[10px] font-medium text-gray-brand uppercase tracking-[0.16em] w-32 ${cellPadding}`}>Rating</th>
+              <th className={`py-4 font-mono text-[10px] font-medium text-gray-brand uppercase tracking-[0.16em] ${cellPadding}`}>Coach/Player Dynamic</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-50">
+          <tbody className="divide-y divide-line">
             {displayRows.map((row, idx) => (
-              <tr key={idx} className={score !== undefined ? "bg-blue-50/30" : "hover:bg-gray-50 transition-colors"}>
-                <td className={`py-6 text-xs font-bold text-gray-500 whitespace-nowrap align-top ${cellPadding}`}>{row.range}</td>
+              <tr key={idx} className={score !== undefined ? "bg-chip/40" : "hover:bg-chip transition-colors"}>
+                <td className={`py-6 font-mono text-xs font-medium text-ink tabular-nums whitespace-nowrap align-top ${cellPadding}`}>{row.range}</td>
                 <td className={`py-6 align-top ${cellPadding}`}>
-                  <span className={`px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider border ${row.ratingColor}`}>
+                  <span className={`px-2 py-1 rounded-card font-mono text-[10px] font-medium uppercase tracking-[0.12em] border ${row.ratingColor}`}>
                     {row.rating}
                   </span>
                 </td>
-                <td className={`py-6 text-xs text-gray-600 leading-relaxed align-top ${cellPadding}`}>
+                <td className={`py-6 text-xs text-body leading-relaxed align-top ${cellPadding}`}>
                   {row.desc}
                 </td>
               </tr>
             ))}
              {displayRows.length === 0 && (
                 <tr>
-                    <td colSpan={3} className={`py-6 text-xs text-gray-500 text-center ${cellPadding}`}>
+                    <td colSpan={3} className={`py-6 text-xs text-gray-brand text-center ${cellPadding}`}>
                         Score data unavailable for this range.
                     </td>
                 </tr>
