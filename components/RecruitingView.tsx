@@ -20,9 +20,9 @@ type RecruitCommitment = Exclude<PipelineFilter, 'all'>;
 
 const getSignifier = (player: Player) => {
   const fit = player.fitScore ?? 0;
-  if (fit >= 62.5 && player.clutchFactor >= 750) return { label: 'Top Profile', className: 'bg-emerald-100 text-emerald-700 border-emerald-200' };
-  if (fit < 62.5 && player.clutchFactor < 750) return { label: 'At-Risk', className: 'bg-rose-100 text-rose-700 border-rose-200' };
-  return { label: 'Conditional', className: 'bg-amber-100 text-amber-700 border-amber-200' };
+  if (fit >= 62.5 && player.clutchFactor >= 750) return { label: 'Top Profile', className: 'bg-ink text-white border-ink' };
+  if (fit < 62.5 && player.clutchFactor < 750) return { label: 'At-Risk', className: 'bg-white text-rose-700 border-rose-200' };
+  return { label: 'Conditional', className: 'bg-chip text-gray-brand border-line-strong' };
 };
 
 const getRecruitCommitment = (player: Player): RecruitCommitment | undefined => player.recruitCommitment;
@@ -153,42 +153,42 @@ const RecruitingView: React.FC<RecruitingViewProps> = ({
   return (
     <div className="w-full animate-in fade-in duration-300">
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-5 font-semibold text-gray-900">Recruiting</h1>
+        <h1 className="text-5 font-semibold tracking-tightest text-ink">Recruiting</h1>
         <button
           onClick={() => setIsInviteModalOpen(true)}
-          className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors"
+          className="nt-btn-primary !py-2.5"
         >
-          <Plus size={16} />
+          <Plus size={16} strokeWidth={1.8} />
           Send invite
         </button>
       </div>
 
-      <div className="border-b border-gray-200 mb-6 flex items-center gap-6">
-        <button onClick={() => setMainTab('active')} className={`pb-3 text-sm font-semibold ${mainTab === 'active' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500'}`}>Active Pipeline</button>
-        <button onClick={() => setMainTab('archived')} className={`pb-3 text-sm font-semibold ${mainTab === 'archived' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500'}`}>Archived</button>
+      <div className="border-b border-line mb-6 flex items-center gap-6">
+        <button onClick={() => setMainTab('active')} className={`pb-3 font-mono text-[11px] uppercase tracking-[0.22em] ${mainTab === 'active' ? 'text-ink border-b-2 border-ink' : 'text-gray-brand hover:text-ink'}`}>Active pipeline</button>
+        <button onClick={() => setMainTab('archived')} className={`pb-3 font-mono text-[11px] uppercase tracking-[0.22em] ${mainTab === 'archived' ? 'text-ink border-b-2 border-ink' : 'text-gray-brand hover:text-ink'}`}>Archived</button>
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-xl p-4">
+      <div className="nt-card p-4">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <div className="flex items-center gap-2 flex-wrap">
             {(['all', 'signed', 'offered', 'uncommitted'] as PipelineFilter[]).map((filter) => (
               <button
                 key={filter}
                 onClick={() => setPipelineFilter(filter)}
-                className={`px-3 py-1.5 text-xs rounded-md border ${pipelineFilter === filter ? 'bg-white border-gray-300 text-gray-900 font-semibold' : 'bg-slate-100 border-transparent text-gray-600'}`}
+                className={`px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.12em] rounded-pill border transition-colors ${pipelineFilter === filter ? 'bg-ink border-ink text-white' : 'bg-white border-line-strong text-gray-brand hover:text-ink hover:border-ink'}`}
               >
-                {filter === 'all' ? 'All Recruits' : filter.charAt(0).toUpperCase() + filter.slice(1)}
+                {filter === 'all' ? 'All recruits' : filter.charAt(0).toUpperCase() + filter.slice(1)}
                 {mainTab === 'active' && (
-                  <span className="ml-1.5 text-gray-400">({activeTabCounts[filter]})</span>
+                  <span className={`ml-1.5 tabular-nums ${pipelineFilter === filter ? 'text-white/70' : 'text-gray-soft'}`}>({activeTabCounts[filter]})</span>
                 )}
               </button>
             ))}
-            <span className="text-gray-300">|</span>
+            <span className="text-line-strong" aria-hidden="true">·</span>
             {(['completed', 'pending'] as CompletionFilter[]).map((filter) => (
               <button
                 key={filter}
                 onClick={() => setCompletionFilter(filter)}
-                className={`px-3 py-1.5 text-xs rounded-md border ${completionFilter === filter ? 'bg-white border-gray-300 text-gray-900 font-semibold' : 'bg-slate-100 border-transparent text-gray-600'}`}
+                className={`px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.12em] rounded-pill border transition-colors ${completionFilter === filter ? 'bg-ink border-ink text-white' : 'bg-white border-line-strong text-gray-brand hover:text-ink hover:border-ink'}`}
               >
                 {filter.charAt(0).toUpperCase() + filter.slice(1)}
               </button>
@@ -196,93 +196,93 @@ const RecruitingView: React.FC<RecruitingViewProps> = ({
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="text-[11px] uppercase font-semibold tracking-wide text-gray-500">Grad Year</span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-gray-brand">Grad year</span>
             <div className="relative">
-              <select value={gradYearFilter} onChange={(e) => setGradYearFilter(e.target.value)} className="appearance-none border border-gray-200 rounded-md px-3 py-1.5 pr-8 text-sm bg-white">
+              <select value={gradYearFilter} onChange={(e) => setGradYearFilter(e.target.value)} className="appearance-none border border-line-strong rounded-card px-3 py-1.5 pr-8 text-sm bg-white text-ink">
                 <option value="all">All</option>
                 <option value="2025">2025</option>
                 <option value="2026">2026</option>
                 <option value="2027">2027</option>
                 <option value="2028">2028</option>
               </select>
-              <ChevronDown size={14} className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
+              <ChevronDown size={14} strokeWidth={1.8} className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-brand pointer-events-none" />
             </div>
           </div>
         </div>
 
         <div className="relative mt-4 mb-5">
-          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-          <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search recruits..." className="w-full border border-gray-100 bg-slate-50 rounded-md py-2.5 pl-9 pr-3 text-sm" />
+          <Search size={16} strokeWidth={1.8} className="absolute left-0 top-1/2 -translate-y-1/2 text-gray-soft" />
+          <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search recruits..." className="nt-input pl-7" />
         </div>
 
-        <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-          {mainTab === 'active' ? 'Recruiting Pipeline' : 'Archived Database'}
-          <span className="text-gray-400 font-normal ml-2">({tableRows.length})</span>
+        <h2 className="text-2xl font-semibold tracking-tightest text-ink mb-3">
+          {mainTab === 'active' ? 'Recruiting pipeline' : 'Archived database'}
+          <span className="text-gray-soft font-normal ml-2 tabular-nums">({tableRows.length})</span>
         </h2>
 
         <div className="overflow-x-auto">
           <table className="w-full min-w-[1000px] text-sm">
             <thead>
-              <tr className="text-left text-xs text-gray-600 border-b border-gray-200">
-                <th className="py-3 font-semibold">Name ↕</th>
-                <th className="py-3 font-semibold">Position ↕</th>
-                <th className="py-3 font-semibold">Graduation ↕</th>
-                <th className="py-3 font-semibold">Alignment ↕</th>
-                <th className="py-3 font-semibold">Clutch Factor ↓</th>
-                <th className="py-3 font-semibold">Actions</th>
+              <tr className="text-left font-mono text-[11px] uppercase tracking-[0.12em] text-gray-brand border-b border-line">
+                <th className="py-3 font-medium">Name ↕</th>
+                <th className="py-3 font-medium">Position ↕</th>
+                <th className="py-3 font-medium">Graduation ↕</th>
+                <th className="py-3 font-medium">Alignment ↕</th>
+                <th className="py-3 font-medium">Clutch Factor ↓</th>
+                <th className="py-3 font-medium">Actions</th>
               </tr>
             </thead>
             <tbody>
               {tableRows.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="text-center py-12 text-gray-500">No recruits found in this view</td>
+                  <td colSpan={6} className="text-center py-12 text-gray-brand">No recruits found in this view</td>
                 </tr>
               ) : (
                 tableRows.map((player) => {
                   const signifier = getSignifier(player);
                   const commitment = getRecruitCommitment(player);
                   return (
-                    <tr key={player.id} className="border-b border-gray-100">
+                    <tr key={player.id} className="border-b border-line hover:bg-chip transition-colors">
                       <td className="py-3">
                         <div className="flex items-center gap-2">
-                          <input type="checkbox" className="rounded border-gray-300" />
+                          <input type="checkbox" className="rounded-card border-line-strong accent-ink" />
                           <button
                             onClick={() => setSelectedPlayerId(player.id)}
-                            className="text-blue-600 hover:underline font-semibold"
+                            className="text-ink hover:underline font-semibold"
                           >
                             {player.name}
                           </button>
-                          <span className={`text-[10px] border px-2 py-0.5 rounded-full font-semibold ${signifier.className}`}>{signifier.label}</span>
+                          <span className={`font-mono text-[10px] uppercase tracking-[0.1em] border px-2 py-0.5 rounded-pill ${signifier.className}`}>{signifier.label}</span>
                           <div className="relative">
                             <select
                               value={commitment ?? ''}
                               onChange={(e) => handleCommitmentChange(player.id, e.target.value as RecruitCommitment | '')}
-                              className="appearance-none text-xs border border-gray-200 rounded-md px-2 py-1 pr-6 bg-slate-50"
+                              className="appearance-none text-xs border border-line-strong rounded-card px-2 py-1 pr-6 bg-white text-ink"
                             >
                               <option value=""> </option>
                               <option value="signed">Signed</option>
                               <option value="offered">Offered</option>
                               <option value="uncommitted">Uncommitted</option>
                             </select>
-                            <ChevronDown size={12} className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
+                            <ChevronDown size={12} strokeWidth={1.8} className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-brand pointer-events-none" />
                           </div>
                         </div>
                       </td>
-                      <td className="py-3 text-gray-700">{player.position}</td>
-                      <td className="py-3 text-gray-500">{player.graduationYear ?? '-'}</td>
-                      <td className="py-3 font-semibold text-gray-700">{Math.round(player.fitScore ?? 0)}%</td>
-                      <td className="py-3 font-semibold text-gray-700">{player.clutchFactor}</td>
+                      <td className="py-3 text-body">{player.position}</td>
+                      <td className="py-3 text-gray-brand tabular-nums">{player.graduationYear ?? '-'}</td>
+                      <td className="py-3 font-mono font-semibold tabular-nums text-ink">{Math.round(player.fitScore ?? 0)}%</td>
+                      <td className="py-3 font-mono font-semibold tabular-nums text-ink">{player.clutchFactor}</td>
                       <td className="py-3">
                         <div className="flex items-center gap-3">
-                          <button onClick={() => setSelectedPlayerId(player.id)} className="text-xs text-blue-600 border border-blue-300 rounded px-2 py-0.5 hover:bg-blue-50">Player View</button>
-                          <button onClick={() => onOpenAlignmentForPlayer?.(player.sport, player.id)} className="text-xs text-indigo-600 border border-indigo-300 rounded px-2 py-0.5 hover:bg-indigo-50">Alignment</button>
+                          <button onClick={() => setSelectedPlayerId(player.id)} className="font-mono text-[10px] uppercase tracking-[0.1em] text-ink border border-line-strong rounded-pill px-2.5 py-1 hover:border-ink hover:bg-chip transition-colors">Player view</button>
+                          <button onClick={() => onOpenAlignmentForPlayer?.(player.sport, player.id)} className="font-mono text-[10px] uppercase tracking-[0.1em] text-ink border border-line-strong rounded-pill px-2.5 py-1 hover:border-ink hover:bg-chip transition-colors">Alignment</button>
                           {mainTab === 'active' ? (
-                            <button onClick={() => setArchiveCandidate(player)} className="text-gray-500 hover:text-rose-600" title="Archive athlete">
-                              <Trash2 size={14} />
+                            <button onClick={() => setArchiveCandidate(player)} className="text-gray-brand hover:text-ink transition-colors" title="Archive athlete">
+                              <Trash2 size={14} strokeWidth={1.8} />
                             </button>
                           ) : (
-                            <button onClick={() => setRestoreCandidate(player)} className="text-gray-500 hover:text-emerald-600" title="Restore athlete">
-                              <RotateCcw size={14} />
+                            <button onClick={() => setRestoreCandidate(player)} className="text-gray-brand hover:text-ink transition-colors" title="Restore athlete">
+                              <RotateCcw size={14} strokeWidth={1.8} />
                             </button>
                           )}
                         </div>
@@ -298,15 +298,15 @@ const RecruitingView: React.FC<RecruitingViewProps> = ({
 
       {archiveCandidate && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center px-4">
-          <div className="absolute inset-0 bg-black/45" onClick={() => setArchiveCandidate(null)} />
-          <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl border border-gray-100 p-6">
-            <h3 className="text-xl font-semibold text-gray-900">Archive athlete?</h3>
-            <p className="text-sm text-gray-600 mt-2">
-              Do you want to archive <span className="font-semibold">{archiveCandidate.name}</span>? You can restore this athlete later from the Archived view.
+          <div className="absolute inset-0 bg-ink/40 backdrop-blur-sm" onClick={() => setArchiveCandidate(null)} />
+          <div className="relative w-full max-w-md bg-white rounded-card shadow-lift border border-line-strong p-6">
+            <h3 className="text-xl font-semibold tracking-tightest text-ink">Archive athlete?</h3>
+            <p className="text-sm text-body mt-2">
+              Do you want to archive <span className="font-semibold text-ink">{archiveCandidate.name}</span>? You can restore this athlete later from the Archived view.
             </p>
             <div className="mt-6 flex justify-end gap-3">
-              <button onClick={() => setArchiveCandidate(null)} className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700">Cancel</button>
-              <button onClick={() => handleArchiveRecruit(archiveCandidate.id)} className="px-4 py-2 rounded-lg bg-indigo-600 text-white font-semibold">Yes, archive</button>
+              <button onClick={() => setArchiveCandidate(null)} className="nt-btn-ghost !py-2 !px-4">Cancel</button>
+              <button onClick={() => handleArchiveRecruit(archiveCandidate.id)} className="nt-btn-primary !py-2 !px-4">Yes, archive</button>
             </div>
           </div>
         </div>
@@ -314,15 +314,15 @@ const RecruitingView: React.FC<RecruitingViewProps> = ({
 
       {restoreCandidate && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center px-4">
-          <div className="absolute inset-0 bg-black/45" onClick={() => setRestoreCandidate(null)} />
-          <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl border border-gray-100 p-6">
-            <h3 className="text-xl font-semibold text-gray-900">Restore athlete?</h3>
-            <p className="text-sm text-gray-600 mt-2">
-              Do you want to restore <span className="font-semibold">{restoreCandidate.name}</span> to the active recruiting pipeline?
+          <div className="absolute inset-0 bg-ink/40 backdrop-blur-sm" onClick={() => setRestoreCandidate(null)} />
+          <div className="relative w-full max-w-md bg-white rounded-card shadow-lift border border-line-strong p-6">
+            <h3 className="text-xl font-semibold tracking-tightest text-ink">Restore athlete?</h3>
+            <p className="text-sm text-body mt-2">
+              Do you want to restore <span className="font-semibold text-ink">{restoreCandidate.name}</span> to the active recruiting pipeline?
             </p>
             <div className="mt-6 flex justify-end gap-3">
-              <button onClick={() => setRestoreCandidate(null)} className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700">Cancel</button>
-              <button onClick={() => { handleRestoreRecruit(restoreCandidate.id); setRestoreCandidate(null); }} className="px-4 py-2 rounded-lg bg-indigo-600 text-white font-semibold">Yes, restore</button>
+              <button onClick={() => setRestoreCandidate(null)} className="nt-btn-ghost !py-2 !px-4">Cancel</button>
+              <button onClick={() => { handleRestoreRecruit(restoreCandidate.id); setRestoreCandidate(null); }} className="nt-btn-primary !py-2 !px-4">Yes, restore</button>
             </div>
           </div>
         </div>
@@ -339,71 +339,71 @@ const RecruitingView: React.FC<RecruitingViewProps> = ({
 
       {isInviteModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
-          <div className="absolute inset-0 bg-black/45" onClick={handleCloseModal} />
-          <div className="relative w-full max-w-3xl bg-white rounded-[22px] shadow-2xl overflow-hidden">
-            <div className="px-8 py-6 border-b border-gray-200 flex items-center justify-between">
-              <h3 className="text-5 font-medium text-gray-800">Invite new player</h3>
-              <button onClick={handleCloseModal} className="text-gray-400 hover:text-gray-700"><X size={36} strokeWidth={1.5} /></button>
+          <div className="absolute inset-0 bg-ink/40 backdrop-blur-sm" onClick={handleCloseModal} />
+          <div className="relative w-full max-w-3xl bg-white rounded-card border border-line-strong shadow-lift overflow-hidden">
+            <div className="px-8 py-6 border-b border-line flex items-center justify-between">
+              <h3 className="text-5 font-semibold tracking-tightest text-ink">Invite new player</h3>
+              <button onClick={handleCloseModal} className="text-gray-brand hover:text-ink transition-colors"><X size={36} strokeWidth={1.5} /></button>
             </div>
 
-            <div className="flex items-end border-b border-gray-200 px-8 pt-5">
-              <button onClick={() => setInviteTab('single')} className={`px-8 py-3 rounded-t-lg border ${inviteTab === 'single' ? 'border-gray-300 border-b-white bg-white text-gray-900' : 'border-transparent text-gray-500'}`}>Single Invite</button>
-              <button onClick={() => setInviteTab('bulk')} className={`px-8 py-3 rounded-t-lg border ${inviteTab === 'bulk' ? 'border-gray-300 border-b-white bg-white text-gray-900' : 'border-transparent text-gray-500'}`}>Bulk Upload</button>
+            <div className="flex items-end border-b border-line px-8 pt-5">
+              <button onClick={() => setInviteTab('single')} className={`px-8 py-3 font-mono text-[11px] uppercase tracking-[0.16em] border-b-2 ${inviteTab === 'single' ? 'border-ink text-ink' : 'border-transparent text-gray-brand hover:text-ink'}`}>Single invite</button>
+              <button onClick={() => setInviteTab('bulk')} className={`px-8 py-3 font-mono text-[11px] uppercase tracking-[0.16em] border-b-2 ${inviteTab === 'bulk' ? 'border-ink text-ink' : 'border-transparent text-gray-brand hover:text-ink'}`}>Bulk upload</button>
             </div>
 
             {inviteTab === 'single' ? (
               <div className="p-8">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xl font-semibold text-gray-600 mb-2">First name</label>
-                    <input value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="First Name" className="w-full border border-gray-200 bg-slate-50 rounded-xl px-4 py-3 text-3.5" />
+                    <label className="block font-mono text-[11px] uppercase tracking-[0.16em] text-gray-brand mb-2">First name</label>
+                    <input value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="First name" className="nt-input" />
                   </div>
                   <div>
-                    <label className="block text-xl font-semibold text-gray-600 mb-2">Last name</label>
-                    <input value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Last Name" className="w-full border border-gray-200 bg-slate-50 rounded-xl px-4 py-3 text-3.5" />
+                    <label className="block font-mono text-[11px] uppercase tracking-[0.16em] text-gray-brand mb-2">Last name</label>
+                    <input value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Last name" className="nt-input" />
                   </div>
                 </div>
 
-                <div className="mt-5">
-                  <label className="block text-xl font-semibold text-gray-600 mb-2">Email</label>
-                  <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email@example.com" className="w-full border border-gray-200 bg-slate-50 rounded-xl px-4 py-3 text-3.5" />
+                <div className="mt-6">
+                  <label className="block font-mono text-[11px] uppercase tracking-[0.16em] text-gray-brand mb-2">Email</label>
+                  <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email@example.com" className="nt-input" />
                 </div>
 
-                <div className="mt-5">
-                  <label className="block text-xl font-semibold text-gray-600 mb-2">Sport</label>
+                <div className="mt-6">
+                  <label className="block font-mono text-[11px] uppercase tracking-[0.16em] text-gray-brand mb-2">Sport</label>
                   <div className="relative">
                     <select
                       value={inviteSport}
                       onChange={(e) => setInviteSport(e.target.value)}
                       disabled={!hasSelectedTeam}
-                      className={`w-full appearance-none border rounded-xl px-4 py-3 pr-10 text-4 ${hasSelectedTeam ? 'border-indigo-200 bg-white' : 'border-gray-200 bg-gray-100 text-gray-500 cursor-not-allowed'}`}
+                      className={`w-full appearance-none border-b bg-transparent px-0 py-2 pr-10 text-[15px] ${hasSelectedTeam ? 'border-line-strong text-ink focus:border-ink outline-none' : 'border-line text-gray-soft cursor-not-allowed'}`}
                     >
                       <option value="">{hasSelectedTeam ? 'Select sport...' : 'Select a team in header first'}</option>
                       {MOCK_TEAMS.map((team) => (
                         <option key={team.id} value={team.id}>{team.name}</option>
                       ))}
                     </select>
-                    <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
+                    <ChevronDown size={18} strokeWidth={1.8} className="absolute right-1 top-1/2 -translate-y-1/2 text-gray-brand pointer-events-none" />
                   </div>
                 </div>
 
-                <div className="mt-7 pt-5 border-t border-gray-200 flex justify-end gap-3">
-                  <button onClick={handleCloseModal} className="px-8 py-3 rounded-xl bg-gray-100 border border-gray-300 text-gray-800 font-medium">Cancel</button>
-                  <button onClick={handleSubmitInvite} disabled={!firstName || !lastName || !email || !inviteSport} className="px-8 py-3 rounded-xl bg-indigo-600 text-white font-semibold disabled:opacity-40">Send Invite</button>
+                <div className="mt-8 pt-5 border-t border-line flex justify-end gap-3">
+                  <button onClick={handleCloseModal} className="nt-btn-ghost !py-2.5 !px-6">Cancel</button>
+                  <button onClick={handleSubmitInvite} disabled={!firstName || !lastName || !email || !inviteSport} className="nt-btn-primary !py-2.5 !px-6 disabled:opacity-40">Send invite</button>
                 </div>
               </div>
             ) : (
               <div className="p-8">
-                <div className="border-2 border-dashed border-gray-200 rounded-2xl h-64 flex flex-col items-center justify-center text-center text-gray-500">
-                  <Upload size={34} className="mb-3 text-gray-400" />
-                  <p className="text-2xl font-semibold text-gray-800">Click to upload CSV</p>
-                  <p className="text-xl">or drag and drop file here</p>
+                <div className="border border-dashed border-line-strong rounded-card h-64 flex flex-col items-center justify-center text-center text-gray-brand">
+                  <Upload size={34} strokeWidth={1.8} className="mb-3 text-gray-soft" />
+                  <p className="text-2xl font-semibold tracking-tightest text-ink">Click to upload CSV</p>
+                  <p className="text-base text-body">or drag and drop file here</p>
                 </div>
                 <div className="mt-8 flex items-center justify-between">
-                  <button className="inline-flex items-center gap-2 text-blue-500 text-2xl"><Download size={18} /> Download template</button>
+                  <button className="nt-btn-link"><Download size={16} strokeWidth={1.8} /> Download template</button>
                   <div className="flex items-center gap-3">
-                    <button onClick={handleCloseModal} className="px-8 py-3 rounded-xl bg-gray-500 text-white font-medium">Cancel</button>
-                    <button className="px-8 py-3 rounded-xl bg-indigo-600 text-white font-semibold">Upload</button>
+                    <button onClick={handleCloseModal} className="nt-btn-ghost !py-2.5 !px-6">Cancel</button>
+                    <button className="nt-btn-primary !py-2.5 !px-6">Upload</button>
                   </div>
                 </div>
               </div>
