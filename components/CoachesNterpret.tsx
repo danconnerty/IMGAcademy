@@ -68,41 +68,39 @@ const QUESTIONS = [
 const CoachesNterpret: React.FC = () => {
   return (
     <div className="w-full max-w-7xl mx-auto animate-in fade-in duration-300">
-      <div className="mb-10 border-b border-gray-200 pb-8">
-        <div className="flex items-center gap-3 mb-2">
-          <div className="bg-black text-white p-2 rounded-lg">
-            <Brain size={24} />
-          </div>
-          <h1 className="text-3xl font-light text-gray-900 tracking-tight">COACHES <span className="font-bold">NTERPRET</span></h1>
+      <div className="mb-10 border-b border-line pb-8">
+        <div className="flex items-center gap-3 mb-3">
+          <Brain size={26} strokeWidth={1.8} className="text-ink" />
+          <h1 className="text-3xl font-semibold text-ink tracking-tightest">Coaches <span className="font-semibold">NTerpret</span><span className="align-super text-sm">™</span></h1>
         </div>
-        <p className="text-gray-500 max-w-2xl leading-relaxed">
+        <p className="text-body max-w-2xl leading-relaxed">
           Your coaching philosophy profile. This data is used to calculate alignment scores with prospective recruits.
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {QUESTIONS.map((q) => (
-          <div key={q.id} className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
-            <div className="absolute top-0 right-0 p-4 opacity-5 font-black text-6xl text-gray-300 group-hover:opacity-10 transition-opacity select-none">
+          <div key={q.id} className="nt-card nt-card-hover p-8 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 p-4 opacity-[0.04] font-semibold text-6xl text-ink tabular-nums group-hover:opacity-[0.07] transition-opacity select-none">
               {q.id}
             </div>
-            
+
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-4">
-                <span className="text-xs font-bold bg-blue-50 text-blue-600 px-2 py-1 rounded uppercase tracking-wider">
+                <span className="font-mono text-[11px] font-medium bg-chip text-ink px-2 py-1 rounded-card uppercase tracking-[0.16em] tabular-nums">
                   {q.id}
                 </span>
-                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest">
+                <h3 className="font-mono text-[11px] font-medium text-gray-brand uppercase tracking-[0.16em]">
                   {q.topic}
                 </h3>
               </div>
-              
-              <h4 className="text-lg font-medium text-gray-900 mb-6 min-h-[56px]">
+
+              <h4 className="text-lg font-medium text-ink mb-6 min-h-[56px] leading-snug">
                 {q.question}
               </h4>
-              
-              <div className="bg-gray-50 p-5 rounded-lg border-l-4 border-blue-500">
-                <p className="text-sm font-semibold text-gray-700 leading-relaxed italic">
+
+              <div className="bg-chip p-5 rounded-card border-l-2 border-ink">
+                <p className="text-sm font-medium text-body leading-relaxed italic">
                   "{q.answer}"
                 </p>
               </div>
@@ -110,14 +108,14 @@ const CoachesNterpret: React.FC = () => {
           </div>
         ))}
       </div>
-      
-      <div className="mt-12 mb-20 p-6 bg-gray-900 text-white rounded-xl flex justify-between items-center">
+
+      <div className="mt-12 mb-20 nt-card p-6 flex justify-between items-center">
         <div>
-          <h3 className="font-bold text-lg mb-1">Profile Status: Active</h3>
-          <p className="text-gray-400 text-sm">Last updated: October 24, 2024</p>
+          <p className="font-mono text-[11px] font-medium text-gray-brand uppercase tracking-[0.16em] mb-2">Profile status · Active</p>
+          <p className="text-gray-brand text-sm">Last updated: October 24, 2024</p>
         </div>
-        <button className="px-6 py-2 bg-white text-black font-bold text-sm rounded hover:bg-gray-100 transition-colors uppercase tracking-widest">
-          Edit Profile
+        <button className="nt-btn-primary">
+          Edit profile
         </button>
       </div>
     </div>

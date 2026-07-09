@@ -21,70 +21,69 @@ const HERO_GRID_SVG = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0
 
 const COMPONENT_STYLES = `
   .np-report {
-    --color-bg: #050505;
-    --color-surface: #0A0A0A;
-    --color-highlight: #141414;
-    --color-accent: #F59E0B;
-    --color-success: #10B981;
-    --color-purple: #8B5CF6;
-    --color-danger: #EF4444;
-    background-color: var(--color-bg);
-    color: #E5E7EB;
-    font-family: 'Inter', sans-serif;
-    background-image:
-      radial-gradient(at 10% 10%, rgba(255,255,255,0.03) 0px, transparent 60%),
-      radial-gradient(at 90% 10%, rgba(100,100,100,0.05) 0px, transparent 60%),
-      radial-gradient(at 50% 90%, rgba(16,185,129,0.02) 0px, transparent 60%);
+    --nt-paper: #F7F6F3;
+    --nt-ink: #0E0E0E;
+    --nt-body: #42403B;
+    --nt-gray-brand: #6F6C64;
+    --nt-gray-soft: #9A968E;
+    --nt-chip: #EDEBE5;
+    --nt-line: #E6E3DD;
+    --nt-line-strong: #D8D4CC;
+    background-color: var(--nt-paper);
+    color: var(--nt-body);
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
-  .np-report .font-display { font-family: 'Oswald', sans-serif; }
-  .np-report .font-tech    { font-family: 'Rajdhani', sans-serif; }
-  .np-report .fw-black     { font-weight: 900; }
-  .np-report .lh-tight     { line-height: 0.85; }
+  .np-report .font-display { font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: -0.02em; }
+  .np-report .font-tech    { font-family: 'Roboto Mono', 'SF Mono', ui-monospace, Menlo, monospace; font-variant-numeric: tabular-nums; }
+  .np-report .font-monospace { font-family: 'Roboto Mono', 'SF Mono', ui-monospace, Menlo, monospace !important; font-variant-numeric: tabular-nums; }
+  .np-report .fw-black     { font-weight: 600; }
+  .np-report .lh-tight     { line-height: 0.95; }
   .np-report .lh-relaxed   { line-height: 1.6; }
   .np-report .text-xxs     { font-size: 0.65rem; }
   .np-report .ls-wide      { letter-spacing: 0.1em; }
-  .np-report .ls-wider     { letter-spacing: 0.2em; }
-  .np-report .ls-widest    { letter-spacing: 0.35em; }
-  .np-report .ls-tight     { letter-spacing: -0.03em; }
-  .np-report .hero-text-glow { text-shadow: 0 0 20px rgba(255,255,255,0.3); }
+  .np-report .ls-wider     { letter-spacing: 0.16em; }
+  .np-report .ls-widest    { letter-spacing: 0.25em; }
+  .np-report .ls-tight     { letter-spacing: -0.02em; }
+  .np-report .hero-text-glow { text-shadow: none; }
+
+  /* Bootstrap text-color overrides, scoped to the report */
+  .np-report .text-white { color: var(--nt-ink) !important; }
+  .np-report .text-secondary { color: var(--nt-gray-brand) !important; }
 
   .np-report .text-gradient-primary {
-    background: linear-gradient(to right, #FFFFFF, #9CA3AF);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    background: none;
+    color: var(--nt-ink);
+    -webkit-text-fill-color: currentColor;
   }
 
   .np-report .glass-panel {
-    background: rgba(10,10,10,0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.08);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    background: #FFFFFF;
+    border: 1px solid var(--nt-line-strong);
+    box-shadow: none;
   }
   .np-report .glass-card {
-    background: rgba(20,20,20,0.4);
-    border: 1px solid rgba(255,255,255,0.05);
+    background: #FFFFFF;
+    border: 1px solid var(--nt-line-strong);
   }
 
-  .np-report .accent-bar       { width: 4px; height: 32px; border-radius: 4px; background: var(--color-accent); flex-shrink: 0; }
-  .np-report .accent-bar-white { width: 4px; height: 32px; border-radius: 4px; background: #fff; flex-shrink: 0; }
+  .np-report .accent-bar       { width: 3px; height: 28px; border-radius: 2px; background: var(--nt-ink); flex-shrink: 0; }
+  .np-report .accent-bar-white { width: 3px; height: 28px; border-radius: 2px; background: var(--nt-ink); flex-shrink: 0; }
 
-  .np-report .section-heading { font-size: 1.75rem; }
+  .np-report .section-heading { font-size: 1.6rem; letter-spacing: -0.02em; }
 
   .np-report .hero-section {
-    min-height: 50vh;
-    border-radius: 1rem;
+    min-height: 40vh;
+    border-radius: 2px;
     position: relative;
     overflow: hidden;
   }
-  .np-report .hero-name { font-size: clamp(3.5rem, 10vw, 6rem); }
+  .np-report .hero-name { font-size: clamp(3rem, 9vw, 5rem); letter-spacing: -0.02em; }
   .np-report .hero-grid-bg {
     position: absolute;
     inset: 0;
     background-image: url("${HERO_GRID_SVG}");
-    opacity: 0.2;
-    filter: grayscale(1);
+    display: none;
     pointer-events: none;
   }
   .np-report .hero-line-top {
@@ -92,7 +91,7 @@ const COMPONENT_STYLES = `
     top: 0; left: 50%;
     transform: translateX(-50%);
     width: 100%; max-width: 48rem; height: 1px;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+    background: var(--nt-line-strong);
   }
 
   .np-report .badge-analysis {
@@ -101,72 +100,47 @@ const COMPONENT_STYLES = `
     gap: 0.5rem;
     padding: 0.375rem 1rem;
     border-radius: 999px;
-    border: 1px solid rgba(16,185,129,0.3);
-    background: rgba(16,185,129,0.1);
-    color: #10B981;
-    box-shadow: 0 0 15px rgba(16,185,129,0.15);
-    backdrop-filter: blur(4px);
+    border: 1px solid var(--nt-line-strong);
+    background: #FFFFFF;
+    color: var(--nt-ink);
+    box-shadow: none;
   }
 
   .np-report .gradient-divider {
     height: 1px;
-    background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.3), rgba(255,255,255,0));
+    background: var(--nt-line-strong);
   }
   .np-report .summary-rainbow {
-    height: 4px;
-    border-radius: 999px;
-    background: linear-gradient(to right, #fff, #a855f7, #F59E0B);
-    opacity: 0.6;
+    height: 2px;
+    border-radius: 0;
+    background: var(--nt-line-strong);
+    opacity: 1;
   }
 
-  .np-report .border-white-5  { border-color: rgba(255,255,255,0.05) !important; }
-  .np-report .border-white-10 { border-color: rgba(255,255,255,0.1) !important; }
-  .np-report .bg-surface { background-color: var(--color-surface) !important; }
+  .np-report .border-white-5  { border-color: var(--nt-line) !important; }
+  .np-report .border-white-10 { border-color: var(--nt-line-strong) !important; }
+  .np-report .bg-surface { background-color: #FFFFFF !important; }
   .np-report .pe-none { pointer-events: none; }
   .np-report .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-size: 1.5rem; line-height: 1; }
 
-  .np-report .ambient-left {
-    position: fixed;
-    top: 5rem; left: 2.5rem;
-    width: 24rem; height: 24rem;
-    background: rgba(255,255,255,0.05);
-    border-radius: 50%;
-    filter: blur(120px);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .np-report .ambient-right {
-    position: fixed;
-    bottom: 2.5rem; right: 2.5rem;
-    width: 31rem; height: 31rem;
-    background: rgba(139,92,246,0.05);
-    border-radius: 50%;
-    filter: blur(120px);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  @keyframes np-pulse-violet {
-    0%   { box-shadow: 0 0 0 0   rgba(168,85,247,0.6), 0 0 30px rgba(168,85,247,0.2); }
-    65%  { box-shadow: 0 0 0 18px rgba(168,85,247,0),   0 0 30px rgba(168,85,247,0.2); }
-    100% { box-shadow: 0 0 0 0   rgba(168,85,247,0),    0 0 30px rgba(168,85,247,0.2); }
-  }
+  .np-report .ambient-left { display: none; }
+  .np-report .ambient-right { display: none; }
 
   .np-report .attr-card {
-    background: rgba(10,10,10,0.5);
-    border: 1px solid rgba(255,255,255,0.05);
+    background: #FFFFFF;
+    border: 1px solid var(--nt-line-strong);
     padding: 2rem;
     position: relative;
   }
-  .np-report .attr-card-first  { border-radius: 1rem 1rem 0 0; }
-  .np-report .attr-card-last   { border-radius: 0 0 1rem 1rem; }
+  .np-report .attr-card-first  { border-radius: 2px 2px 0 0; }
+  .np-report .attr-card-last   { border-radius: 0 0 2px 2px; }
   @media (min-width: 992px) {
-    .np-report .attr-card-first  { border-radius: 1rem 0 0 1rem; border-right: none; }
+    .np-report .attr-card-first  { border-radius: 2px 0 0 2px; border-right: none; }
     .np-report .attr-card-middle { border-radius: 0; border-right: none; }
-    .np-report .attr-card-last   { border-radius: 0 1rem 1rem 0; }
+    .np-report .attr-card-last   { border-radius: 0 2px 2px 0; }
   }
   .np-report .attr-icon-wrap {
-    width: 4rem; height: 4rem;
+    width: 3.5rem; height: 3.5rem;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     margin: 0 auto 1.5rem;
@@ -205,7 +179,7 @@ const COMPONENT_STYLES = `
     left: 50%;
     transform: translateX(-50%);
     width: 1px;
-    background: rgba(255,255,255,0.2);
+    background: var(--nt-line-strong);
   }
   .np-report .growth-dot {
     position: absolute;
@@ -216,37 +190,31 @@ const COMPONENT_STYLES = `
   }
   .np-report .growth-dot-top {
     top: 25%;
-    border: 2px solid rgba(255,255,255,0.55);
-    background: rgba(255,255,255,0.18);
-    box-shadow: 0 0 18px rgba(255,255,255,0.35);
+    border: 2px solid var(--nt-ink);
+    background: #FFFFFF;
+    box-shadow: none;
   }
   .np-report .growth-dot-bottom {
     top: 75%;
-    border: 2px solid rgba(255,210,80,0.9);
-    background: rgba(255,210,80,0.15);
-    box-shadow: 0 0 16px rgba(255,210,80,0.45);
+    border: 2px solid var(--nt-ink);
+    background: var(--nt-ink);
+    box-shadow: none;
   }
 
   .np-report .hack-card {
     position: relative;
-    border-radius: 1rem;
+    border-radius: 2px;
     overflow: hidden;
     min-height: 240px;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%);
+    border: 1px solid var(--nt-line-strong);
+    background: #FFFFFF;
   }
-  .np-report .hack-card-glow {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at top right, rgba(255,255,0,0.18), transparent 55%);
-    opacity: 0.7;
-    pointer-events: none;
-  }
+  .np-report .hack-card-glow { display: none; }
   .np-report .hack-card-border {
     position: absolute;
     left: 0; top: 0;
-    height: 100%; width: 4px;
-    background: linear-gradient(to bottom, #FDE047, rgba(253,224,71,0.8), transparent);
+    height: 100%; width: 3px;
+    background: var(--nt-ink);
   }
   .np-report .hack-card-body {
     position: relative;
@@ -258,16 +226,16 @@ const COMPONENT_STYLES = `
   }
 
   .np-report .playbook-sub {
-    border-radius: 0.75rem;
+    border-radius: 2px;
     padding: 1rem;
   }
   .np-report .playbook-coach {
-    border: 1px solid rgba(52,211,153,0.3);
-    background: rgba(52,211,153,0.1);
+    border: 1px solid var(--nt-line-strong);
+    background: var(--nt-chip);
   }
   .np-report .playbook-support {
-    border: 1px solid rgba(96,165,250,0.3);
-    background: rgba(96,165,250,0.1);
+    border: 1px solid var(--nt-line-strong);
+    background: var(--nt-chip);
   }
 `;
 
@@ -326,21 +294,21 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
             top: '1.25rem',
             right: '1.25rem',
             zIndex: 1040,
-            border: '1px solid rgba(255,255,255,0.25)',
-            backgroundColor: 'rgba(10,10,10,0.7)',
+            border: '1px solid #D8D4CC',
+            backgroundColor: 'rgba(255,255,255,0.9)',
             backdropFilter: 'blur(10px)',
             WebkitBackdropFilter: 'blur(10px)',
-            color: '#fff',
-            fontFamily: "'Rajdhani', sans-serif",
-            fontWeight: 700,
+            color: '#0E0E0E',
+            fontFamily: "'Roboto Mono', 'SF Mono', ui-monospace, Menlo, monospace",
+            fontWeight: 500,
             textTransform: 'uppercase',
-            letterSpacing: '0.2em',
+            letterSpacing: '0.16em',
             fontSize: '0.7rem',
             padding: '0.45rem 0.9rem',
             borderRadius: 999,
           }}
         >
-          <ArrowLeft size={12} /> Exit Report
+          <ArrowLeft size={12} strokeWidth={1.8} /> Exit Report
         </button>
       )}
 
@@ -351,15 +319,6 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
 
         {/* Hero */}
         <section className="hero-section glass-panel d-flex flex-column justify-content-center align-items-center text-center p-4 p-md-5 mb-5">
-          <div
-            className="position-absolute"
-            style={{
-              inset: 0,
-              background: 'linear-gradient(to bottom, rgba(255,255,255,0.05), transparent, transparent)',
-              opacity: 0.3,
-              pointerEvents: 'none',
-            }}
-          />
           <div className="hero-line-top" />
           <div className="hero-grid-bg" />
 
@@ -368,7 +327,7 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
               <img
                 src="/NTangiblelogowhite.PNG"
                 alt="NTangible"
-                style={{ height: '1.6rem', width: 'auto' }}
+                style={{ height: '1.6rem', width: 'auto', filter: 'invert(1)' }}
               />
               <span
                 aria-hidden="true"
@@ -376,13 +335,13 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
                   display: 'inline-block',
                   width: 1,
                   height: '2.25rem',
-                  background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.35), transparent)',
+                  background: '#D8D4CC',
                 }}
               />
               <img
                 src="/IMG.png"
                 alt="IMG Academy"
-                style={{ height: '3rem', filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.45))' }}
+                style={{ height: '3rem' }}
               />
             </div>
 
@@ -392,7 +351,7 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
                   check_circle
                 </span>
                 <span
-                  className="font-monospace fw-bold text-uppercase ls-widest"
+                  className="font-monospace fw-medium text-uppercase ls-widest"
                   style={{ fontSize: '.7rem' }}
                 >
                   Analysis Complete
@@ -400,18 +359,18 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
               </div>
             </div>
 
-            <h1 className="font-display fw-black text-uppercase lh-tight hero-name mb-0">
-              <span className="d-block text-white">{firstName}</span>
+            <h1 className="font-display fw-black lh-tight hero-name mb-0">
+              <span className="d-block text-ink">{firstName}</span>
               <span className="d-block text-gradient-primary hero-text-glow mt-2">{lastName}</span>
             </h1>
 
             <div className="gradient-divider mx-auto my-4" style={{ width: '6rem' }} />
 
             <p
-              className="font-tech text-uppercase text-secondary ls-widest fw-light mb-0"
-              style={{ fontSize: '1rem' }}
+              className="font-tech text-uppercase ls-widest fw-normal mb-0"
+              style={{ fontSize: '.8rem', color: '#6F6C64' }}
             >
-              NTERPRET / MENTAL SCOUTING REPORT
+              NTerpret&trade; / Mental Scouting Report
             </p>
           </div>
         </section>
@@ -420,30 +379,21 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
         <section className="mb-5">
           <div className="d-flex align-items-center gap-3 mb-4">
             <div className="accent-bar" />
-            <h2 className="font-display fw-bold text-white text-uppercase ls-wide section-heading mb-0">
-              Quick Report Walkthrough
+            <h2 className="font-display fw-bold text-ink ls-tight section-heading mb-0">
+              Quick report walkthrough
             </h2>
           </div>
 
           <div className="row g-4 align-items-stretch">
             {/* Video card */}
             <div className="col-12 col-xl-7">
-              <article className="glass-card rounded-4 p-4 p-md-5 h-100 position-relative overflow-hidden">
-                <div
-                  className="position-absolute"
-                  style={{
-                    inset: 0,
-                    background: 'linear-gradient(to bottom, rgba(255,255,255,0.05), transparent)',
-                    opacity: 0.3,
-                    pointerEvents: 'none',
-                  }}
-                />
+              <article className="glass-card rounded-card p-4 p-md-5 h-100 position-relative overflow-hidden">
                 <div className="position-relative" style={{ zIndex: 1 }}>
                   <h3
-                    className="font-display text-uppercase ls-wide text-white mb-4"
-                    style={{ fontSize: '1rem' }}
+                    className="font-mono text-uppercase ls-wider mb-4"
+                    style={{ fontSize: '.7rem', color: '#6F6C64' }}
                   >
-                    Video Overview
+                    Video overview
                   </h3>
 
                   <div className="d-flex justify-content-center">
@@ -455,11 +405,10 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
                         maxWidth: 320,
                         aspectRatio: '9 / 16',
                         cursor: videoLoaded ? 'default' : 'pointer',
-                        background: '#0a0810',
-                        borderRadius: 18,
-                        border: '1px solid rgba(168,85,247,0.24)',
-                        boxShadow:
-                          'inset 0 1px 0 rgba(255,255,255,0.07), 0 32px 80px rgba(0,0,0,0.88), 0 0 48px rgba(168,85,247,0.06)',
+                        background: '#EDEBE5',
+                        borderRadius: 2,
+                        border: '1px solid #D8D4CC',
+                        boxShadow: 'none',
                         transition: 'border-color .3s, box-shadow .3s, transform .35s',
                       }}
                     >
@@ -495,7 +444,7 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
                               height: 1,
                               zIndex: 6,
                               background:
-                                'linear-gradient(to right, transparent 5%, rgba(168,85,247,0.55) 40%, rgba(168,85,247,0.55) 60%, transparent 95%)',
+                                'linear-gradient(to right, transparent 5%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0.6) 60%, transparent 95%)',
                               pointerEvents: 'none',
                             }}
                           />
@@ -536,7 +485,7 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
                             className="position-absolute w-100 d-flex flex-column align-items-center"
                             style={{ top: '44%', left: 0, transform: 'translateY(-50%)', zIndex: 4, gap: '.75rem' }}
                           >
-                            <div style={{ borderRadius: '50%', animation: 'np-pulse-violet 2.6s ease-out infinite' }}>
+                            <div style={{ borderRadius: '50%' }}>
                               <div
                                 style={{
                                   width: 72,
@@ -545,18 +494,17 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
                                   display: 'flex',
                                   alignItems: 'center',
                                   justifyContent: 'center',
-                                  background: 'rgba(5,3,12,0.58)',
-                                  border: '1.5px solid rgba(168,85,247,0.88)',
+                                  background: 'rgba(255,255,255,0.92)',
+                                  border: '1.5px solid #0E0E0E',
                                   backdropFilter: 'blur(14px)',
                                   WebkitBackdropFilter: 'blur(14px)',
-                                  boxShadow: '0 0 36px rgba(168,85,247,0.2), 0 12px 36px rgba(0,0,0,0.6)',
+                                  boxShadow: '0 12px 36px rgba(0,0,0,0.45)',
                                 }}
                               >
                                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                                   <polygon
                                     points="10,5 10,23 25,14"
-                                    fill="rgba(255,255,255,0.97)"
-                                    style={{ filter: 'drop-shadow(0 1px 6px rgba(0,0,0,0.85))' }}
+                                    fill="#0E0E0E"
                                   />
                                 </svg>
                               </div>
@@ -566,8 +514,9 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
                                 fontSize: '.47rem',
                                 letterSpacing: '.36em',
                                 textTransform: 'uppercase',
-                                color: 'rgba(255,255,255,0.52)',
-                                fontWeight: 700,
+                                color: 'rgba(255,255,255,0.85)',
+                                fontWeight: 500,
+                                fontFamily: "'Roboto Mono', 'SF Mono', ui-monospace, Menlo, monospace",
                                 textShadow: '0 1px 10px rgba(0,0,0,1)',
                               }}
                             >
@@ -591,9 +540,9 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
                                   fontSize: '.5rem',
                                   letterSpacing: '.18em',
                                   textTransform: 'uppercase',
-                                  color: 'rgba(168,85,247,0.92)',
-                                  fontWeight: 700,
-                                  fontFamily: "'Rajdhani', sans-serif",
+                                  color: 'rgba(255,255,255,0.92)',
+                                  fontWeight: 500,
+                                  fontFamily: "'Roboto Mono', 'SF Mono', ui-monospace, Menlo, monospace",
                                 }}
                               >
                                 NTerpret Report
@@ -604,12 +553,12 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
                                   letterSpacing: '.06em',
                                   textTransform: 'uppercase',
                                   padding: '.14rem .42rem',
-                                  borderRadius: 4,
-                                  background: 'rgba(168,85,247,0.11)',
-                                  border: '1px solid rgba(168,85,247,0.42)',
-                                  color: 'rgba(168,85,247,0.96)',
-                                  fontWeight: 800,
-                                  fontFamily: "'Rajdhani', sans-serif",
+                                  borderRadius: 2,
+                                  background: 'rgba(255,255,255,0.12)',
+                                  border: '1px solid rgba(255,255,255,0.5)',
+                                  color: 'rgba(255,255,255,0.96)',
+                                  fontWeight: 500,
+                                  fontFamily: "'Roboto Mono', 'SF Mono', ui-monospace, Menlo, monospace",
                                 }}
                               >
                                 HD 1080p
@@ -618,7 +567,7 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
                             <div
                               style={{
                                 fontSize: '.58rem',
-                                color: 'rgba(255,255,255,0.32)',
+                                color: 'rgba(255,255,255,0.55)',
                                 fontWeight: 500,
                                 letterSpacing: '.05em',
                               }}
@@ -630,7 +579,7 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
                       )}
                     </div>
                   </div>
-                  <p className="text-secondary mt-3 mb-0 lh-relaxed" style={{ fontSize: '.875rem' }}>
+                  <p className="mt-3 mb-0 lh-relaxed" style={{ fontSize: '.875rem', color: '#42403B' }}>
                     This brief walkthrough highlights what the report includes and how coaches, players, and families should use it.
                   </p>
                 </div>
@@ -639,27 +588,27 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
 
             {/* Summary card */}
             <div className="col-12 col-xl-5">
-              <article className="glass-card rounded-4 p-4 p-md-5 h-100">
+              <article className="glass-card rounded-card p-4 p-md-5 h-100">
                 <h3
-                  className="font-display text-uppercase ls-wide text-white mb-3"
-                  style={{ fontSize: '1rem' }}
+                  className="font-mono text-uppercase ls-wider mb-3"
+                  style={{ fontSize: '.7rem', color: '#6F6C64' }}
                 >
-                  Summary Insights
+                  Summary insights
                 </h3>
                 <div
                   className="d-inline-flex align-items-center gap-2 border border-white-10 rounded-pill px-3 py-1 mb-4"
-                  style={{ background: 'rgba(0,0,0,0.2)', opacity: 0.7 }}
+                  style={{ background: '#FFFFFF' }}
                 >
-                  <span className="material-symbols-outlined text-secondary" style={{ fontSize: '1rem' }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: '1rem', color: '#6F6C64' }}>
                     calendar_today
                   </span>
-                  <span className="font-monospace text-secondary" style={{ fontSize: '.65rem' }}>
+                  <span className="font-monospace" style={{ fontSize: '.65rem', color: '#6F6C64' }}>
                     GENERATED: {generatedDate}
                   </span>
                 </div>
                 <p
-                  className="text-secondary lh-relaxed fw-light mb-4"
-                  style={{ fontSize: '.875rem' }}
+                  className="lh-relaxed fw-normal mb-4"
+                  style={{ fontSize: '.875rem', color: '#42403B' }}
                 >
                   You perform best when you know your role and feel like you belong. When your role is unclear you say you &ldquo;mentally begin to spiral.&rdquo; You respond strongly to coaches who show they care and believe in you - that belief makes you try to exceed expectations. You want frequent feedback, prefer to have skills shown to you and then do them while being watched, and you open up slowly because you&rsquo;re shy and need time to build trust.
                 </p>
@@ -676,45 +625,36 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
             <div className="col-12 col-lg-4">
               <div className="attr-card attr-card-first h-100">
                 <div
-                  className="position-absolute"
-                  style={{
-                    inset: 0,
-                    background: 'linear-gradient(to bottom, rgba(255,255,255,0.05), transparent)',
-                    opacity: 0.5,
-                    pointerEvents: 'none',
-                  }}
-                />
-                <div
                   className="position-relative d-flex flex-column align-items-center text-center"
                   style={{ zIndex: 1 }}
                 >
                   <div
                     className="attr-icon-wrap"
-                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}
+                    style={{ background: '#FFFFFF', border: '1px solid #D8D4CC' }}
                   >
-                    <span className="material-symbols-outlined text-secondary" style={{ fontSize: '1.75rem' }}>
+                    <span className="material-symbols-outlined" style={{ fontSize: '1.6rem', color: '#0E0E0E' }}>
                       forum
                     </span>
                   </div>
                   <p
-                    className="font-tech fw-bold text-uppercase ls-widest text-secondary mb-2"
-                    style={{ fontSize: '.7rem' }}
+                    className="font-mono fw-medium text-uppercase ls-widest mb-2"
+                    style={{ fontSize: '.7rem', color: '#6F6C64' }}
                   >
                     Communication Style
                   </p>
-                  <div className="divider-line" style={{ background: 'rgba(255,255,255,0.3)' }} />
-                  <h3 className="font-display text-white mb-2" style={{ fontSize: '1.2rem' }}>
+                  <div className="divider-line" style={{ background: '#D8D4CC' }} />
+                  <h3 className="font-display text-ink ls-tight mb-2" style={{ fontSize: '1.2rem' }}>
                     Supportive
                   </h3>
                   <p
-                    className="text-secondary fw-light lh-relaxed mb-4"
-                    style={{ fontSize: '.875rem' }}
+                    className="fw-normal lh-relaxed mb-4"
+                    style={{ fontSize: '.875rem', color: '#42403B' }}
                   >
                     You typically share cautiously and respond best to caring, belief, and kindness. You open up after a relationship is built and do best when feedback is delivered with trust and encouragement.
                   </p>
                   <p
-                    className="text-secondary fw-light pt-3 mb-0"
-                    style={{ fontSize: '.75rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}
+                    className="fw-normal pt-3 mb-0"
+                    style={{ fontSize: '.75rem', color: '#6F6C64', borderTop: '1px solid #E6E3DD' }}
                   >
                     Athletes with a Supportive communication style thrive in environments built on trust, encouragement, and connection. They respond best when direction is paired with belief - when a coach&rsquo;s words reinforce that they are valued and capable.
                   </p>
@@ -726,48 +666,39 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
             <div className="col-12 col-lg-4">
               <div className="attr-card attr-card-middle h-100">
                 <div
-                  className="position-absolute"
-                  style={{
-                    inset: 0,
-                    background: 'linear-gradient(to bottom, rgba(139,92,246,0.05), transparent)',
-                    opacity: 0.5,
-                    pointerEvents: 'none',
-                  }}
-                />
-                <div
                   className="position-relative d-flex flex-column align-items-center text-center"
                   style={{ zIndex: 1 }}
                 >
                   <div
                     className="attr-icon-wrap"
-                    style={{ background: 'rgba(139,92,246,0.1)', border: '1px solid rgba(139,92,246,0.2)' }}
+                    style={{ background: '#FFFFFF', border: '1px solid #D8D4CC' }}
                   >
                     <span
                       className="material-symbols-outlined"
-                      style={{ color: '#c084fc', fontSize: '1.75rem' }}
+                      style={{ color: '#0E0E0E', fontSize: '1.6rem' }}
                     >
                       psychology
                     </span>
                   </div>
                   <p
-                    className="font-tech fw-bold text-uppercase ls-widest text-secondary mb-2"
-                    style={{ fontSize: '.7rem' }}
+                    className="font-mono fw-medium text-uppercase ls-widest mb-2"
+                    style={{ fontSize: '.7rem', color: '#6F6C64' }}
                   >
                     Learning Style
                   </p>
-                  <div className="divider-line" style={{ background: 'rgba(139,92,246,0.5)' }} />
-                  <h3 className="font-display text-white mb-2" style={{ fontSize: '1.2rem' }}>
+                  <div className="divider-line" style={{ background: '#D8D4CC' }} />
+                  <h3 className="font-display text-ink ls-tight mb-2" style={{ fontSize: '1.2rem' }}>
                     Kinesthetic
                   </h3>
                   <p
-                    className="text-secondary fw-light lh-relaxed mb-4"
-                    style={{ fontSize: '.875rem' }}
+                    className="fw-normal lh-relaxed mb-4"
+                    style={{ fontSize: '.875rem', color: '#42403B' }}
                   >
                     You learn fastest by doing - you want skills shown to you and then to try them while someone watches. Hands-on reps with coach observation and immediate, specific feedback help you improve fastest.
                   </p>
                   <p
-                    className="text-secondary fw-light pt-3 mb-0"
-                    style={{ fontSize: '.75rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}
+                    className="fw-normal pt-3 mb-0"
+                    style={{ fontSize: '.75rem', color: '#6F6C64', borderTop: '1px solid #E6E3DD' }}
                   >
                     Kinesthetic learners learn through experience - by physically doing, not by watching or hearing. They need to feel the skill in motion before it truly sticks. In practice, repetition, muscle memory, and live scenarios drive their development.
                   </p>
@@ -779,48 +710,39 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
             <div className="col-12 col-lg-4">
               <div className="attr-card attr-card-last h-100">
                 <div
-                  className="position-absolute"
-                  style={{
-                    inset: 0,
-                    background: 'linear-gradient(to bottom, rgba(16,185,129,0.05), transparent)',
-                    opacity: 0.5,
-                    pointerEvents: 'none',
-                  }}
-                />
-                <div
                   className="position-relative d-flex flex-column align-items-center text-center"
                   style={{ zIndex: 1 }}
                 >
                   <div
                     className="attr-icon-wrap"
-                    style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.2)' }}
+                    style={{ background: '#FFFFFF', border: '1px solid #D8D4CC' }}
                   >
                     <span
                       className="material-symbols-outlined"
-                      style={{ color: '#34d399', fontSize: '1.75rem' }}
+                      style={{ color: '#0E0E0E', fontSize: '1.6rem' }}
                     >
                       anchor
                     </span>
                   </div>
                   <p
-                    className="font-tech fw-bold text-uppercase ls-widest text-secondary mb-2"
-                    style={{ fontSize: '.7rem' }}
+                    className="font-mono fw-medium text-uppercase ls-widest mb-2"
+                    style={{ fontSize: '.7rem', color: '#6F6C64' }}
                   >
                     Motivational Anchor
                   </p>
-                  <div className="divider-line" style={{ background: 'rgba(16,185,129,0.5)' }} />
-                  <h3 className="font-display text-white mb-2" style={{ fontSize: '1.2rem' }}>
+                  <div className="divider-line" style={{ background: '#D8D4CC' }} />
+                  <h3 className="font-display text-ink ls-tight mb-2" style={{ fontSize: '1.2rem' }}>
                     Team Commitment
                   </h3>
                   <p
-                    className="text-secondary fw-light lh-relaxed mb-4"
-                    style={{ fontSize: '.875rem' }}
+                    className="fw-normal lh-relaxed mb-4"
+                    style={{ fontSize: '.875rem', color: '#42403B' }}
                   >
                     Belonging and harmony motivate you. You want a team where people get along and support each other - that sense of connection makes you feel secure and pushes you to perform for the group.
                   </p>
                   <p
-                    className="text-secondary fw-light pt-3 mb-0"
-                    style={{ fontSize: '.75rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}
+                    className="fw-normal pt-3 mb-0"
+                    style={{ fontSize: '.75rem', color: '#6F6C64', borderTop: '1px solid #E6E3DD' }}
                   >
                     Athletes anchored by Team Commitment are driven by loyalty, trust, and the collective purpose of the group. Their best performances come when they feel their role directly impacts team success.
                   </p>
@@ -831,20 +753,11 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
         </section>
 
         {/* Growth Areas */}
-        <section className="glass-panel rounded-4 p-4 p-md-5 mb-5 position-relative overflow-hidden">
-          <div
-            className="position-absolute pe-none"
-            style={{
-              inset: 0,
-              background:
-                'radial-gradient(circle at 16% 22%, rgba(255,255,255,0.04), transparent 48%), radial-gradient(circle at 82% 78%, rgba(255,255,0,0.07), transparent 42%)',
-            }}
-          />
-
+        <section className="glass-panel rounded-card p-4 p-md-5 mb-5 position-relative overflow-hidden">
           <div className="position-relative d-flex align-items-center gap-3 mb-5" style={{ zIndex: 1 }}>
             <div className="accent-bar" />
-            <h2 className="font-display fw-bold text-white text-uppercase ls-wide section-heading mb-0">
-              Growth Areas
+            <h2 className="font-display fw-bold text-ink ls-tight section-heading mb-0">
+              Growth areas
             </h2>
           </div>
 
@@ -853,14 +766,14 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
               {/* Growth Area 01 */}
               <div className="growth-area-1 text-center text-lg-end">
                 <p
-                  className="font-tech text-uppercase ls-widest mb-2"
-                  style={{ fontSize: '.65rem', color: 'rgba(254,240,138,0.85)' }}
+                  className="font-mono text-uppercase ls-widest mb-2"
+                  style={{ fontSize: '.65rem', color: '#6F6C64' }}
                 >
                   Growth Area 01
                 </p>
                 <p
-                  className="text-white lh-relaxed fw-light mb-0"
-                  style={{ fontSize: '1rem', opacity: 0.9 }}
+                  className="lh-relaxed fw-normal mb-0"
+                  style={{ fontSize: '1rem', color: '#42403B' }}
                 >
                   Unclear roles or perceived punishment trigger insecurity. Building a short routine to re-center and clarify your immediate responsibilities will cut that spiral short.
                 </p>
@@ -878,14 +791,14 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
               {/* Growth Area 02 */}
               <div className="growth-area-2 text-center text-lg-start">
                 <p
-                  className="font-tech text-uppercase ls-widest mb-2"
-                  style={{ fontSize: '.65rem', color: 'rgba(254,240,138,0.85)' }}
+                  className="font-mono text-uppercase ls-widest mb-2"
+                  style={{ fontSize: '.65rem', color: '#6F6C64' }}
                 >
                   Growth Area 02
                 </p>
                 <p
-                  className="text-white lh-relaxed fw-light mb-0"
-                  style={{ fontSize: '1rem', opacity: 0.9 }}
+                  className="lh-relaxed fw-normal mb-0"
+                  style={{ fontSize: '1rem', color: '#42403B' }}
                 >
                   Faster trust and adaptation to new coaching: you take &lsquo;2–3 weeks&rsquo; to trust a new coach. Shortening that period with proactive communication and small early wins would speed tactical adaptation and connection.
                 </p>
@@ -898,8 +811,8 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
         <section className="mb-5">
           <div className="d-flex align-items-center gap-3 mb-4">
             <div className="accent-bar" />
-            <h2 className="font-display fw-bold text-white text-uppercase ls-wide section-heading mb-0">
-              Performance Hacks
+            <h2 className="font-display fw-bold text-ink ls-tight section-heading mb-0">
+              Performance hacks
             </h2>
           </div>
 
@@ -912,16 +825,16 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
                 <div className="hack-card-body">
                   <div className="d-flex align-items-center justify-content-between mb-4">
                     <span
-                      className="font-tech text-uppercase ls-widest text-secondary"
-                      style={{ fontSize: '.65rem' }}
+                      className="font-mono text-uppercase ls-widest"
+                      style={{ fontSize: '.65rem', color: '#6F6C64' }}
                     >
                       Pre-Game
                     </span>
-                    <span className="material-symbols-outlined" style={{ color: 'rgba(253,224,71,0.8)' }}>
+                    <span className="material-symbols-outlined" style={{ color: '#0E0E0E' }}>
                       bolt
                     </span>
                   </div>
-                  <p className="text-white lh-relaxed fw-light flex-grow-1 mb-0">
+                  <p className="lh-relaxed fw-normal flex-grow-1 mb-0" style={{ color: '#42403B' }}>
                     Use a 3-word role cue before kickoff (example: &lsquo;control, connect, press&rsquo;) to lock in your responsibilities and speed up decision-making.
                   </p>
                 </div>
@@ -936,16 +849,16 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
                 <div className="hack-card-body">
                   <div className="d-flex align-items-center justify-content-between mb-4">
                     <span
-                      className="font-tech text-uppercase ls-widest text-secondary"
-                      style={{ fontSize: '.65rem' }}
+                      className="font-mono text-uppercase ls-widest"
+                      style={{ fontSize: '.65rem', color: '#6F6C64' }}
                     >
                       Post-Game
                     </span>
-                    <span className="material-symbols-outlined" style={{ color: 'rgba(253,224,71,0.8)' }}>
+                    <span className="material-symbols-outlined" style={{ color: '#0E0E0E' }}>
                       replay
                     </span>
                   </div>
-                  <p className="text-white lh-relaxed fw-light flex-grow-1 mb-0">
+                  <p className="lh-relaxed fw-normal flex-grow-1 mb-0" style={{ color: '#42403B' }}>
                     After the final whistle, run a 10-second reset: one deep breath, one honest reflection on what went well, and one clear intention to carry into your next game - keeps momentum positive and deliberate.
                   </p>
                 </div>
@@ -960,16 +873,16 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
                 <div className="hack-card-body">
                   <div className="d-flex align-items-center justify-content-between mb-4">
                     <span
-                      className="font-tech text-uppercase ls-widest text-secondary"
-                      style={{ fontSize: '.65rem' }}
+                      className="font-mono text-uppercase ls-widest"
+                      style={{ fontSize: '.65rem', color: '#6F6C64' }}
                     >
                       Practice
                     </span>
-                    <span className="material-symbols-outlined" style={{ color: 'rgba(253,224,71,0.8)' }}>
+                    <span className="material-symbols-outlined" style={{ color: '#0E0E0E' }}>
                       model_training
                     </span>
                   </div>
-                  <p className="text-white lh-relaxed fw-light flex-grow-1 mb-0">
+                  <p className="lh-relaxed fw-normal flex-grow-1 mb-0" style={{ color: '#42403B' }}>
                     Implement a short practice checklist: 2 things I want to reinforce + 1 specific skill to drill - focuses repetition on what matters and builds confidence through intentional reps.
                   </p>
                 </div>
@@ -982,16 +895,16 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
         <section className="mb-5">
           <div className="d-flex align-items-center gap-3 mb-3">
             <div className="accent-bar-white" />
-            <h2 className="font-display fw-bold text-white text-uppercase ls-wide section-heading mb-0">
-              Coach + Support Circle Performance Playbook
+            <h2 className="font-display fw-bold text-ink ls-tight section-heading mb-0">
+              Coach + support circle performance playbook
             </h2>
           </div>
-          <p className="text-secondary fw-light mb-4" style={{ fontSize: '.875rem' }}>
+          <p className="fw-normal mb-4" style={{ fontSize: '.875rem', color: '#6F6C64' }}>
             Applied pregame and postgame notes based on this athlete&rsquo;s selected styles:{' '}
-            <span className="text-white">Supportive</span> communication,{' '}
-            <span className="text-white">Kinesthetic</span> learning, and{' '}
-            <span className="text-white">Team Commitment</span> motivation.{' '}
-            <span className="text-secondary" style={{ opacity: 0.6 }}>
+            <span className="text-ink">Supportive</span> communication,{' '}
+            <span className="text-ink">Kinesthetic</span> learning, and{' '}
+            <span className="text-ink">Team Commitment</span> motivation.{' '}
+            <span style={{ color: '#9A968E' }}>
               Support circle = parent, significant other, or partner.
             </span>
           </p>
@@ -999,49 +912,49 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
           <div className="row g-4">
             {/* Communication Style Playbook */}
             <div className="col-12 col-lg-4">
-              <article className="glass-card rounded-4 p-4 border border-white-10 h-100">
+              <article className="glass-card rounded-card p-4 border border-white-10 h-100">
                 <p
-                  className="font-tech text-uppercase ls-widest text-secondary mb-2"
-                  style={{ fontSize: '.65rem' }}
+                  className="font-mono text-uppercase ls-widest mb-2"
+                  style={{ fontSize: '.65rem', color: '#6F6C64' }}
                 >
                   Communication Style
                 </p>
-                <h3 className="font-display text-white mb-4" style={{ fontSize: '1.2rem' }}>
+                <h3 className="font-display text-ink ls-tight mb-4" style={{ fontSize: '1.2rem' }}>
                   Supportive
                 </h3>
                 <div className="d-flex flex-column gap-3">
                   <div className="playbook-sub playbook-coach">
                     <p
-                      className="text-uppercase ls-wider mb-2"
-                      style={{ fontSize: '.7rem', color: '#6ee7b7' }}
+                      className="font-mono text-uppercase ls-wider mb-2"
+                      style={{ fontSize: '.7rem', color: '#6F6C64' }}
                     >
                       Coach
                     </p>
-                    <ul className="mb-0 ps-4" style={{ fontSize: '.875rem', color: '#f3f4f6' }}>
+                    <ul className="mb-0 ps-4" style={{ fontSize: '.875rem', color: '#42403B' }}>
                       <li>
-                        <span className="fw-semibold" style={{ color: '#6ee7b7' }}>Pregame:</span>{' '}
+                        <span className="fw-semibold" style={{ color: '#0E0E0E' }}>Pregame:</span>{' '}
                         Lead with belief and one clear role cue so confidence is stable before first rep.
                       </li>
                       <li className="mt-1">
-                        <span className="fw-semibold" style={{ color: '#6ee7b7' }}>Postgame:</span>{' '}
+                        <span className="fw-semibold" style={{ color: '#0E0E0E' }}>Postgame:</span>{' '}
                         Start with belonging and effort, then give one specific next-step adjustment.
                       </li>
                     </ul>
                   </div>
                   <div className="playbook-sub playbook-support">
                     <p
-                      className="text-uppercase ls-wider mb-2"
-                      style={{ fontSize: '.7rem', color: '#93c5fd' }}
+                      className="font-mono text-uppercase ls-wider mb-2"
+                      style={{ fontSize: '.7rem', color: '#6F6C64' }}
                     >
                       Support Circle
                     </p>
-                    <ul className="mb-0 ps-4" style={{ fontSize: '.875rem', color: '#f3f4f6' }}>
+                    <ul className="mb-0 ps-4" style={{ fontSize: '.875rem', color: '#42403B' }}>
                       <li>
-                        <span className="fw-semibold" style={{ color: '#93c5fd' }}>Pregame:</span>{' '}
+                        <span className="fw-semibold" style={{ color: '#0E0E0E' }}>Pregame:</span>{' '}
                         Keep communication calm and brief: confidence statement + one process cue.
                       </li>
                       <li className="mt-1">
-                        <span className="fw-semibold" style={{ color: '#93c5fd' }}>Postgame:</span>{' '}
+                        <span className="fw-semibold" style={{ color: '#0E0E0E' }}>Postgame:</span>{' '}
                         Ask timing first (&ldquo;Now or later?&rdquo;), then use process questions instead of blame.
                       </li>
                     </ul>
@@ -1052,49 +965,49 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
 
             {/* Learning Style Playbook */}
             <div className="col-12 col-lg-4">
-              <article className="glass-card rounded-4 p-4 border border-white-10 h-100">
+              <article className="glass-card rounded-card p-4 border border-white-10 h-100">
                 <p
-                  className="font-tech text-uppercase ls-widest text-secondary mb-2"
-                  style={{ fontSize: '.65rem' }}
+                  className="font-mono text-uppercase ls-widest mb-2"
+                  style={{ fontSize: '.65rem', color: '#6F6C64' }}
                 >
                   Learning Style
                 </p>
-                <h3 className="font-display text-white mb-4" style={{ fontSize: '1.2rem' }}>
+                <h3 className="font-display text-ink ls-tight mb-4" style={{ fontSize: '1.2rem' }}>
                   Kinesthetic
                 </h3>
                 <div className="d-flex flex-column gap-3">
                   <div className="playbook-sub playbook-coach">
                     <p
-                      className="text-uppercase ls-wider mb-2"
-                      style={{ fontSize: '.7rem', color: '#6ee7b7' }}
+                      className="font-mono text-uppercase ls-wider mb-2"
+                      style={{ fontSize: '.7rem', color: '#6F6C64' }}
                     >
                       Coach
                     </p>
-                    <ul className="mb-0 ps-4" style={{ fontSize: '.875rem', color: '#f3f4f6' }}>
+                    <ul className="mb-0 ps-4" style={{ fontSize: '.875rem', color: '#42403B' }}>
                       <li>
-                        <span className="fw-semibold" style={{ color: '#6ee7b7' }}>Pregame:</span>{' '}
+                        <span className="fw-semibold" style={{ color: '#0E0E0E' }}>Pregame:</span>{' '}
                         Use demo → quick rep progression with one body cue before first live sequence.
                       </li>
                       <li className="mt-1">
-                        <span className="fw-semibold" style={{ color: '#6ee7b7' }}>Postgame:</span>{' '}
+                        <span className="fw-semibold" style={{ color: '#0E0E0E' }}>Postgame:</span>{' '}
                         Debrief with one rep-based fix that can be physically rehearsed next practice.
                       </li>
                     </ul>
                   </div>
                   <div className="playbook-sub playbook-support">
                     <p
-                      className="text-uppercase ls-wider mb-2"
-                      style={{ fontSize: '.7rem', color: '#93c5fd' }}
+                      className="font-mono text-uppercase ls-wider mb-2"
+                      style={{ fontSize: '.7rem', color: '#6F6C64' }}
                     >
                       Support Circle
                     </p>
-                    <ul className="mb-0 ps-4" style={{ fontSize: '.875rem', color: '#f3f4f6' }}>
+                    <ul className="mb-0 ps-4" style={{ fontSize: '.875rem', color: '#42403B' }}>
                       <li>
-                        <span className="fw-semibold" style={{ color: '#93c5fd' }}>Pregame:</span>{' '}
+                        <span className="fw-semibold" style={{ color: '#0E0E0E' }}>Pregame:</span>{' '}
                         Keep prep movement-based (walkthrough + breath/posture cue), not long verbal talks.
                       </li>
                       <li className="mt-1">
-                        <span className="fw-semibold" style={{ color: '#93c5fd' }}>Postgame:</span>{' '}
+                        <span className="fw-semibold" style={{ color: '#0E0E0E' }}>Postgame:</span>{' '}
                         Close with two effective actions and one physical reset cue to limit rumination.
                       </li>
                     </ul>
@@ -1105,49 +1018,49 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
 
             {/* Motivational Anchor Playbook */}
             <div className="col-12 col-lg-4">
-              <article className="glass-card rounded-4 p-4 border border-white-10 h-100">
+              <article className="glass-card rounded-card p-4 border border-white-10 h-100">
                 <p
-                  className="font-tech text-uppercase ls-widest text-secondary mb-2"
-                  style={{ fontSize: '.65rem' }}
+                  className="font-mono text-uppercase ls-widest mb-2"
+                  style={{ fontSize: '.65rem', color: '#6F6C64' }}
                 >
                   Motivational Anchor
                 </p>
-                <h3 className="font-display text-white mb-4" style={{ fontSize: '1.2rem' }}>
+                <h3 className="font-display text-ink ls-tight mb-4" style={{ fontSize: '1.2rem' }}>
                   Team Commitment
                 </h3>
                 <div className="d-flex flex-column gap-3">
                   <div className="playbook-sub playbook-coach">
                     <p
-                      className="text-uppercase ls-wider mb-2"
-                      style={{ fontSize: '.7rem', color: '#6ee7b7' }}
+                      className="font-mono text-uppercase ls-wider mb-2"
+                      style={{ fontSize: '.7rem', color: '#6F6C64' }}
                     >
                       Coach
                     </p>
-                    <ul className="mb-0 ps-4" style={{ fontSize: '.875rem', color: '#f3f4f6' }}>
+                    <ul className="mb-0 ps-4" style={{ fontSize: '.875rem', color: '#42403B' }}>
                       <li>
-                        <span className="fw-semibold" style={{ color: '#6ee7b7' }}>Pregame:</span>{' '}
+                        <span className="fw-semibold" style={{ color: '#0E0E0E' }}>Pregame:</span>{' '}
                         Define team-role impact clearly so purpose and belonging are locked in early.
                       </li>
                       <li className="mt-1">
-                        <span className="fw-semibold" style={{ color: '#6ee7b7' }}>Postgame:</span>{' '}
+                        <span className="fw-semibold" style={{ color: '#0E0E0E' }}>Postgame:</span>{' '}
                         Evaluate contribution and trust behaviors before outcome stats.
                       </li>
                     </ul>
                   </div>
                   <div className="playbook-sub playbook-support">
                     <p
-                      className="text-uppercase ls-wider mb-2"
-                      style={{ fontSize: '.7rem', color: '#93c5fd' }}
+                      className="font-mono text-uppercase ls-wider mb-2"
+                      style={{ fontSize: '.7rem', color: '#6F6C64' }}
                     >
                       Support Circle
                     </p>
-                    <ul className="mb-0 ps-4" style={{ fontSize: '.875rem', color: '#f3f4f6' }}>
+                    <ul className="mb-0 ps-4" style={{ fontSize: '.875rem', color: '#42403B' }}>
                       <li>
-                        <span className="fw-semibold" style={{ color: '#93c5fd' }}>Pregame:</span>{' '}
+                        <span className="fw-semibold" style={{ color: '#0E0E0E' }}>Pregame:</span>{' '}
                         Reinforce mission language (&ldquo;How will you help the group today?&rdquo;), not comparison.
                       </li>
                       <li className="mt-1">
-                        <span className="fw-semibold" style={{ color: '#93c5fd' }}>Postgame:</span>{' '}
+                        <span className="fw-semibold" style={{ color: '#0E0E0E' }}>Postgame:</span>{' '}
                         Debrief team impact and close with a belonging statement to protect confidence.
                       </li>
                     </ul>
@@ -1162,7 +1075,7 @@ const NTerpretAssessment: React.FC<NTerpretAssessmentProps> = ({
         <div className="text-center py-4">
           <p
             className="font-monospace text-uppercase ls-widest mb-0"
-            style={{ fontSize: '.6rem', color: '#374151', letterSpacing: '0.35em' }}
+            style={{ fontSize: '.6rem', color: '#9A968E', letterSpacing: '0.25em' }}
           >
             © NTANGIBLE, INC. ALL RIGHTS RESERVED
           </p>
