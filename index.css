@@ -2,15 +2,217 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ==========================================================================
+   NTangible Design System — Ink on Paper (light brand, the default)
+   Tokens + base classes reverse-engineered from ntangible.co
+   ========================================================================== */
+
+:root {
+  --nt-paper: #F7F6F3;
+  --nt-ink: #0E0E0E;
+  --nt-white: #FFFFFF;
+  --nt-body: #42403B;
+  --nt-gray-brand: #6F6C64;
+  --nt-gray-soft: #9A968E;
+  --nt-chip: #EDEBE5;
+  --nt-placeholder: #C9C5BC;
+  --nt-line: #E6E3DD;
+  --nt-line-strong: #D8D4CC;
+
+  --nt-font-sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --nt-font-mono: 'Roboto Mono', 'SF Mono', ui-monospace, Menlo, monospace;
+
+  --nt-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* NControl (dark inset) */
+  --nc-bg: #000000;
+  --nc-blue-400: #60A5FA;
+  --nc-blue-600: #2563EB;
+  --nc-gold: #EAB308;
+}
+
 html,
 body,
 #root {
-  background-color: #050505;
+  background-color: var(--nt-paper);
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  color: #f8fafc;
+  font-family: var(--nt-font-sans);
+  color: var(--nt-ink);
   -webkit-text-size-adjust: 100%;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--nt-ink);
+  color: #fff;
+}
+
+/* --- Type helpers --- */
+.nt-kicker {
+  font-family: var(--nt-font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--nt-gray-brand);
+}
+.font-mono { font-variant-numeric: tabular-nums; }
+.nt-tnum { font-variant-numeric: tabular-nums; }
+.text-balance { text-wrap: balance; }
+
+/* --- The stat-grid: the brand's only texture (a faint hairline lattice) --- */
+.nt-stat-grid {
+  background-image:
+    linear-gradient(to right, var(--nt-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--nt-line) 1px, transparent 1px);
+  background-size: 56px 40px;
+}
+.nt-page {
+  position: relative;
+  background-color: var(--nt-paper);
+  background-image:
+    linear-gradient(to right, var(--nt-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--nt-line) 1px, transparent 1px);
+  background-size: 56px 40px;
+}
+.nt-stat-grid-fixed { background-attachment: fixed; }
+
+/* --- Card --- */
+.nt-card {
+  background: var(--nt-white);
+  border: 1px solid var(--nt-line-strong);
+  border-radius: 2px;
+}
+.nt-card-hover {
+  transition: transform 0.25s var(--nt-ease), box-shadow 0.25s var(--nt-ease);
+}
+.nt-card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(14, 14, 14, 0.08);
+}
+.nt-card-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--nt-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--nt-gray-brand);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--nt-line);
+}
+
+/* --- Corner brackets (hero cards) --- */
+.nt-bracket { position: relative; }
+.nt-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--nt-ink);
+  border-style: solid;
+  border-width: 0;
+  transition: width 0.25s var(--nt-ease), height 0.25s var(--nt-ease);
+  pointer-events: none;
+}
+.nt-bracket:hover .nt-corner { width: 22px; height: 22px; }
+.nt-corner.tl { top: -1px; left: -1px; border-top-width: 2px; border-left-width: 2px; }
+.nt-corner.tr { top: -1px; right: -1px; border-top-width: 2px; border-right-width: 2px; }
+.nt-corner.bl { bottom: -1px; left: -1px; border-bottom-width: 2px; border-left-width: 2px; }
+.nt-corner.br { bottom: -1px; right: -1px; border-bottom-width: 2px; border-right-width: 2px; }
+
+/* --- Buttons --- */
+.nt-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--nt-ink);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 24px;
+  border-radius: 40px;
+  border: 1.5px solid var(--nt-ink);
+  transition: transform 0.2s var(--nt-ease), opacity 0.2s var(--nt-ease);
+  cursor: pointer;
+}
+.nt-btn-primary:hover { opacity: 0.88; }
+.nt-btn-primary:active { transform: scale(0.97); }
+
+.nt-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--nt-ink);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 24px;
+  border-radius: 40px;
+  border: 1.5px solid var(--nt-ink);
+  transition: background 0.2s var(--nt-ease), color 0.2s var(--nt-ease), transform 0.2s var(--nt-ease);
+  cursor: pointer;
+}
+.nt-btn-ghost:hover { background: var(--nt-ink); color: #fff; }
+.nt-btn-ghost:active { transform: scale(0.97); }
+
+.nt-btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--nt-font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--nt-ink);
+  border-bottom: 1px solid var(--nt-ink);
+  padding-bottom: 2px;
+  cursor: pointer;
+}
+.nt-arrow { transition: transform 0.25s var(--nt-ease); }
+.nt-btn-primary:hover .nt-arrow,
+.nt-btn-ghost:hover .nt-arrow,
+.nt-btn-link:hover .nt-arrow { transform: translateX(4px); }
+
+/* --- Input (underline only) --- */
+.nt-input {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--nt-line-strong);
+  padding: 8px 0;
+  font-size: 15px;
+  color: var(--nt-ink);
+  outline: none;
+  transition: border-color 0.2s var(--nt-ease);
+}
+.nt-input::placeholder { color: var(--nt-placeholder); }
+.nt-input:focus { border-bottom-color: var(--nt-ink); }
+
+/* --- Callout (ink-framed key line) --- */
+.nt-callout {
+  border: 1px solid var(--nt-ink);
+  border-radius: 2px;
+  padding: 20px 24px;
+  background: var(--nt-white);
+}
+
+/* --- Dividers --- */
+.nt-rule { border: 0; border-top: 1px solid var(--nt-line); }
+.nt-rule-strong { border: 0; border-top: 1px solid var(--nt-line-strong); }
+
+/* --- Focus ring: ink, never blue --- */
+.nt-focus:focus-visible {
+  outline: 2px solid var(--nt-ink);
+  outline-offset: 2px;
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
