@@ -34,21 +34,21 @@ const COHORT_CONFIG: Record<CohortKey, {
     subtitle: 'High Clutch / Low Alignment · Alignment < 62.5% · Clutch ≥ 750',
     border: 'border-line-strong',
     bar: 'bg-ink',
-    badge: 'bg-chip text-gray-brand border-line-strong'
+    badge: 'bg-chip text-body border-line-strong'
   },
   culture: {
     title: 'Culture Carriers',
     subtitle: 'Low Clutch / High Alignment · Alignment ≥ 62.5% · Clutch < 750',
     border: 'border-line-strong',
     bar: 'bg-ink',
-    badge: 'bg-chip text-gray-brand border-line-strong'
+    badge: 'bg-chip text-body border-line-strong'
   },
   'at-risk': {
     title: 'At Risk',
     subtitle: 'Low Clutch / Low Alignment · Alignment < 62.5% · Clutch < 750',
     border: 'border-line-strong',
     bar: 'bg-line-strong',
-    badge: 'bg-chip text-gray-brand border-line-strong'
+    badge: 'bg-chip text-body border-line-strong'
   }
 };
 
@@ -95,7 +95,7 @@ const getSignifier = (player: Player) => {
   if (fit < 62.5 && player.clutchFactor < 750) {
     return { label: 'At-Risk', className: 'bg-white text-ink border-ink' };
   }
-  return { label: 'Conditional', className: 'bg-chip text-gray-brand border-line-strong' };
+  return { label: 'Conditional', className: 'bg-chip text-body border-line-strong' };
 };
 
 

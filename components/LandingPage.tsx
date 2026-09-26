@@ -242,18 +242,15 @@ const PricingCalculator = () => {
                         step={5000}
                         value={clamped}
                         onChange={(e) => setProfiles(parseInt(e.target.value, 10))}
-                        className="w-full h-1.5 bg-line-strong rounded-full appearance-none cursor-pointer accent-ink"
-                        style={{
-                            background: `linear-gradient(to right, #0E0E0E 0%, #0E0E0E ${(clamped / MAX_PROFILES) * 100}%, #D8D4CC ${(clamped / MAX_PROFILES) * 100}%, #D8D4CC 100%)`
-                        }}
+                        className="nt-range w-full"
                     />
                     <div className="flex flex-wrap items-center gap-2 mt-4">
                         {[50_000, 100_000, 250_000, 500_000, 1_000_000].map(n => (
                             <button
                                 key={n}
                                 onClick={() => setProfiles(n)}
-                                className={`px-3 py-1.5 rounded-card text-xs font-medium transition-colors tabular-nums ${
-                                    clamped === n ? 'bg-ink text-white' : 'text-gray-brand hover:text-ink hover:bg-chip'
+                                className={`px-3.5 py-1.5 rounded-pill border font-mono text-[11px] font-medium tracking-[0.08em] transition-colors duration-150 ease-nt tabular-nums ${
+                                    clamped === n ? 'bg-ink text-white border-ink' : 'bg-white text-body border-line-strong hover:border-ink hover:text-ink'
                                 }`}
                             >
                                 {fmtCompact(n)}
@@ -1073,7 +1070,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               label: 'Standard cycle',
                               title: 'The annual-recurring baseline',
                               body: "Bundled into the profile. Every athlete retests on the 6-month mark, no opt-in required. Each retest refreshes the Clutch Factor on the NCSA profile and re-routes the score against Academy+ tiers.",
-                              chip: 'text-gray-brand border-line-strong bg-chip',
+                              chip: 'text-body border-line-strong bg-chip',
                               bar: 'bg-ink',
                           },
                           {
@@ -1081,7 +1078,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               label: 'On-demand retake',
                               title: 'Pay to improve the score early',
                               body: "Athletes can purchase an out-of-cycle retake any time they want to push a higher number to coaches. A new revenue line on top of the subscription, owned entirely by IMG.",
-                              chip: 'text-gray-brand border-line-strong bg-chip',
+                              chip: 'text-body border-line-strong bg-chip',
                               bar: 'bg-ink/60',
                           },
                           {
@@ -1089,7 +1086,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               label: 'Intervention retest',
                               title: 'Prove Academy+ worked',
                               body: "After an Academy+ session block, athletes can retest early - inside the 6-month window - to validate the score lift. Closes the loop on coaching ROI and bundles naturally with the Academy+ SKU.",
-                              chip: 'text-gray-brand border-line-strong bg-chip',
+                              chip: 'text-body border-line-strong bg-chip',
                               bar: 'bg-line-strong',
                           },
                       ].map((m) => (
@@ -1128,7 +1125,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               label: 'Showcase',
                               barClass: 'bg-ink',
                               ringClass: 'border-line-strong bg-white',
-                              tagClass: 'text-gray-brand border-line-strong bg-chip',
+                              tagClass: 'text-body border-line-strong bg-chip',
                               headline: 'Surface to college coaches.',
                               detail: "Promoted in the Coach Dashboard and Clutch Factor Leaderboard - the proof points Academy+ marketing leans on.",
                           },
@@ -1138,7 +1135,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               label: 'Workshop nudge',
                               barClass: 'bg-ink/60',
                               ringClass: 'border-line-strong bg-white',
-                              tagClass: 'text-gray-brand border-line-strong bg-chip',
+                              tagClass: 'text-body border-line-strong bg-chip',
                               headline: 'Route into Academy+ group workshops.',
                               detail: "Automated in-app and email nudge surfaces a group workshop or self-guided module - low-ticket entry into the Academy+ catalog.",
                           },
@@ -1148,7 +1145,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                               label: '1-on-1 session offer',
                               barClass: 'bg-line-strong',
                               ringClass: 'border-line-strong bg-white',
-                              tagClass: 'text-gray-brand border-line-strong bg-chip',
+                              tagClass: 'text-body border-line-strong bg-chip',
                               headline: 'Direct to Academy+ 1-on-1 sports psychology.',
                               detail: "The family already sees the gap on their dashboard - Academy+ offers a $85-$100 1-on-1 session with a clear before/after tied to the next retest.",
                           },
@@ -1498,17 +1495,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
     <div className={`min-h-screen bg-paper text-ink relative font-sans selection:bg-ink selection:text-white flex flex-col scroll-smooth ${showClutchReport || showNterpretReport ? 'h-screen overflow-hidden' : 'overflow-y-auto overflow-x-hidden'}`}>
 
       <style>{`
-        @keyframes lpTabFade {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .lp-tab-panel { animation: lpTabFade 0.35s ease-out; }
+        .lp-tab-panel { animation: nt-fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
         .lp-no-scrollbar::-webkit-scrollbar { display: none; }
         .lp-no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
 
       {/* Background texture - faint hairline stat-grid */}
-      <div className="fixed inset-0 z-0 pointer-events-none nt-stat-grid opacity-50"></div>
+      <div className="fixed inset-0 z-0 pointer-events-none nt-stat-grid"></div>
 
       {/* Header / Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 w-full px-4 sm:px-6 h-16 flex items-center justify-between backdrop-blur-md border-b border-line bg-paper/85">
@@ -1526,7 +1519,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
       </nav>
 
       {/* Main Content Container */}
-      <div className="relative z-10 w-full pt-28 sm:pt-32 pb-20">
+      <div className="relative z-10 w-full pt-28 sm:pt-32">
 
           {/* HERO SECTION */}
           <section className="max-w-5xl mx-auto px-4 sm:px-6 mb-16 sm:mb-20 text-center relative">
@@ -1556,14 +1549,14 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10 max-w-md sm:max-w-none mx-auto">
                  <button
                     onClick={() => setShowTestDrive(true)}
-                    className="nt-btn-primary w-full sm:w-auto justify-center"
+                    className="nt-btn-primary nt-btn-hero w-full sm:w-auto"
                  >
                     Try the assessment <ArrowRight size={16} strokeWidth={1.8} className="nt-arrow" />
                  </button>
 
                  <button
                     onClick={() => setShowBooking(true)}
-                    className="nt-btn-ghost w-full sm:w-auto justify-center"
+                    className="nt-btn-ghost nt-btn-hero w-full sm:w-auto"
                  >
                     Send questions
                  </button>
@@ -1629,18 +1622,18 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
               >
                   <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
                       <div className="overflow-x-auto lp-no-scrollbar">
-                          <div className="inline-flex items-center gap-1 sm:gap-1.5 p-1.5 rounded-card border border-line-strong bg-white">
+                          <div className="inline-flex items-center gap-1 sm:gap-1.5 p-1.5 rounded-pill border border-line-strong bg-white">
                               {TABS.map((t, i) => (
                                   <button
                                       key={t.id}
                                       onClick={() => handleTabChange(t.id)}
-                                      className={`group shrink-0 inline-flex items-center gap-2 px-3.5 sm:px-5 py-2.5 rounded-card text-[13px] sm:text-sm font-semibold transition-all whitespace-nowrap ${
+                                      className={`group shrink-0 inline-flex items-center gap-2 px-3.5 sm:px-5 py-2.5 rounded-pill text-[13px] sm:text-sm font-semibold transition-colors duration-150 ease-nt whitespace-nowrap ${
                                           activeTab === t.id
                                               ? 'bg-ink text-white'
-                                              : 'text-gray-brand hover:text-ink hover:bg-chip'
+                                              : 'text-body hover:text-ink hover:bg-chip'
                                       }`}
                                   >
-                                      <span className={`font-mono text-[11px] font-medium tabular-nums ${activeTab === t.id ? 'text-white/60' : 'text-gray-soft group-hover:text-gray-brand'}`}>
+                                      <span className={`font-mono text-[11px] font-medium tabular-nums ${activeTab === t.id ? 'text-white/60' : 'text-gray-brand group-hover:text-ink'}`}>
                                           {String(i + 1).padStart(2, '0')}
                                       </span>
                                       {t.label}
@@ -1663,26 +1656,26 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
               </div>
           </div>
 
-          {/* FINAL CTA */}
-          <section className="max-w-5xl mx-auto px-4 sm:px-6 mb-24 sm:mb-32">
-              <div className="border-t border-line pt-16 sm:pt-20 text-center">
-                  <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-ink tracking-tightest leading-[1.05] mb-5">
+          {/* FINAL CTA - the page's one ink chapter break */}
+          <section className="nt-ink-section py-20 md:py-28">
+              <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+                  <h2 className="text-4xl sm:text-5xl font-semibold text-paper tracking-tightest leading-[1.05] mb-5">
                       Ready when you are.
                   </h2>
-                  <p className="text-lg text-body max-w-2xl mx-auto leading-relaxed mb-10">
+                  <p className="text-lg text-paper/80 max-w-2xl mx-auto leading-relaxed mb-10">
                       Questions, comments, or ready to move to the Letter of Intent? Drop us a line and we'll
                       send the next step within 24 hours.
                   </p>
                   <div className="flex flex-col sm:flex-row justify-center gap-3 max-w-md sm:max-w-none mx-auto">
                       <button
                           onClick={() => setShowBooking(true)}
-                          className="nt-btn-primary justify-center"
+                          className="nt-btn-primary-inverse nt-btn-hero"
                       >
                           Continue the conversation <ArrowRight size={16} strokeWidth={1.8} className="nt-arrow" />
                       </button>
                       <button
                           onClick={() => setShowReportModal(true)}
-                          className="nt-btn-ghost justify-center"
+                          className="nt-btn-ghost-inverse nt-btn-hero"
                       >
                           See a sample profile
                       </button>

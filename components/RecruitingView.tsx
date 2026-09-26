@@ -21,8 +21,8 @@ type RecruitCommitment = Exclude<PipelineFilter, 'all'>;
 const getSignifier = (player: Player) => {
   const fit = player.fitScore ?? 0;
   if (fit >= 62.5 && player.clutchFactor >= 750) return { label: 'Top Profile', className: 'bg-ink text-white border-ink' };
-  if (fit < 62.5 && player.clutchFactor < 750) return { label: 'At-Risk', className: 'bg-white text-rose-700 border-rose-200' };
-  return { label: 'Conditional', className: 'bg-chip text-gray-brand border-line-strong' };
+  if (fit < 62.5 && player.clutchFactor < 750) return { label: 'At-Risk', className: 'bg-white text-ink border-ink' };
+  return { label: 'Conditional', className: 'bg-chip text-body border-line-strong' };
 };
 
 const getRecruitCommitment = (player: Player): RecruitCommitment | undefined => player.recruitCommitment;
@@ -179,7 +179,7 @@ const RecruitingView: React.FC<RecruitingViewProps> = ({
               >
                 {filter === 'all' ? 'All recruits' : filter.charAt(0).toUpperCase() + filter.slice(1)}
                 {mainTab === 'active' && (
-                  <span className={`ml-1.5 tabular-nums ${pipelineFilter === filter ? 'text-white/70' : 'text-gray-soft'}`}>({activeTabCounts[filter]})</span>
+                  <span className={`ml-1.5 tabular-nums ${pipelineFilter === filter ? 'text-white/70' : 'text-gray-brand'}`}>({activeTabCounts[filter]})</span>
                 )}
               </button>
             ))}
@@ -217,7 +217,7 @@ const RecruitingView: React.FC<RecruitingViewProps> = ({
 
         <h2 className="text-2xl font-semibold tracking-tightest text-ink mb-3">
           {mainTab === 'active' ? 'Recruiting pipeline' : 'Archived database'}
-          <span className="text-gray-soft font-normal ml-2 tabular-nums">({tableRows.length})</span>
+          <span className="text-gray-brand font-normal ml-2 tabular-nums">({tableRows.length})</span>
         </h2>
 
         <div className="overflow-x-auto">

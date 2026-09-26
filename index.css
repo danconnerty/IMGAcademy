@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 /* ==========================================================================
-   NTangible Design System — Ink on Paper (light brand, the default)
-   Tokens + base classes reverse-engineered from ntangible.co
+   NTangible Design System - Ink on Paper (light brand, the default)
+   Synced with the NTangible Design System (tokens.json + bundle.css,
+   source danconnerty/NTangible-Website, synced 2026-09-24).
    ========================================================================== */
 
 :root {
@@ -18,17 +19,13 @@
   --nt-placeholder: #C9C5BC;
   --nt-line: #E6E3DD;
   --nt-line-strong: #D8D4CC;
+  --nt-ink-grid: rgba(247, 246, 243, 0.05);
 
   --nt-font-sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --nt-font-mono: 'Roboto Mono', 'SF Mono', ui-monospace, Menlo, monospace;
+  --nt-font-mono: 'Roboto Mono', 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
 
+  /* House easing */
   --nt-ease: cubic-bezier(0.22, 1, 0.36, 1);
-
-  /* NControl (dark inset) */
-  --nc-bg: #000000;
-  --nc-blue-400: #60A5FA;
-  --nc-blue-600: #2563EB;
-  --nc-gold: #EAB308;
 }
 
 html,
@@ -48,17 +45,44 @@ body {
 
 ::selection {
   background: var(--nt-ink);
-  color: #fff;
+  color: var(--nt-white);
 }
 
-/* --- Type helpers --- */
+/* Focus ring: ink, never blue. Paper inside an ink section. */
+:focus-visible {
+  outline: 2px solid var(--nt-ink);
+  outline-offset: 2px;
+}
+
+/* Headlines balance their wrapping. */
+h1, h2 { text-wrap: balance; }
+
+/* --- Page shell: paper ground, the stat lattice, body-coloured Inter --- */
+.nt-page {
+  position: relative;
+  background-color: var(--nt-paper);
+  background-image:
+    linear-gradient(to right, var(--nt-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--nt-line) 1px, transparent 1px);
+  background-size: 56px 40px;
+  color: var(--nt-body);
+  font-family: var(--nt-font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Mono layer: the ONLY uppercase in the system --- */
 .nt-kicker {
   font-family: var(--nt-font-mono);
-  font-size: 11px;
+  font-size: 0.6875rem; /* 11px */
+  line-height: 1.4;
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--nt-gray-brand);
+}
+.nt-mono {
+  font-family: var(--nt-font-mono);
+  font-variant-numeric: tabular-nums;
 }
 .font-mono { font-variant-numeric: tabular-nums; }
 .nt-tnum { font-variant-numeric: tabular-nums; }
@@ -71,43 +95,121 @@ body {
     linear-gradient(to bottom, var(--nt-line) 1px, transparent 1px);
   background-size: 56px 40px;
 }
-.nt-page {
-  position: relative;
-  background-color: var(--nt-paper);
-  background-image:
-    linear-gradient(to right, var(--nt-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--nt-line) 1px, transparent 1px);
-  background-size: 56px 40px;
-}
 .nt-stat-grid-fixed { background-attachment: fixed; }
 
-/* --- Card --- */
+/* --- Buttons: pills. Inter 600 15px, 150ms, opacity .88 / scale .97 --- */
+.nt-btn-primary,
+.nt-btn-ghost,
+.nt-btn-primary-inverse,
+.nt-btn-ghost-inverse {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 40px;
+  font-family: var(--nt-font-sans);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: opacity 0.15s var(--nt-ease), background 0.15s var(--nt-ease), color 0.15s var(--nt-ease), transform 0.15s var(--nt-ease);
+}
+.nt-btn-primary,
+.nt-btn-primary-inverse { padding: 0.75rem 1.5rem; border: none; }
+.nt-btn-ghost,
+.nt-btn-ghost-inverse { padding: calc(0.75rem - 1.5px) calc(1.5rem - 1.5px); background: transparent; }
+
+.nt-btn-primary { background: var(--nt-ink); color: var(--nt-white); }
+.nt-btn-ghost { color: var(--nt-ink); border: 1.5px solid var(--nt-ink); }
+.nt-btn-primary-inverse { background: var(--nt-paper); color: var(--nt-ink); }
+.nt-btn-ghost-inverse { color: var(--nt-paper); border: 1.5px solid var(--nt-paper); }
+
+.nt-btn-primary:hover,
+.nt-btn-primary-inverse:hover { opacity: 0.88; }
+.nt-btn-ghost:hover { background: var(--nt-ink); color: var(--nt-white); }
+.nt-btn-ghost-inverse:hover { background: var(--nt-paper); color: var(--nt-ink); }
+.nt-btn-primary:active,
+.nt-btn-ghost:active,
+.nt-btn-primary-inverse:active,
+.nt-btn-ghost-inverse:active { transform: scale(0.97); }
+.nt-btn-primary:disabled,
+.nt-btn-ghost:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+/* Hero CTAs: 16px x 32px, 16px label. */
+.nt-btn-hero { padding: 1rem 2rem; font-size: 1rem; }
+.nt-btn-ghost.nt-btn-hero,
+.nt-btn-ghost-inverse.nt-btn-hero { padding: calc(1rem - 1.5px) calc(2rem - 1.5px); }
+
+/* Link: mono uppercase with a 1px ink underline. */
+.nt-btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--nt-font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--nt-ink);
+  border-bottom: 1px solid var(--nt-ink);
+  padding-bottom: 2px;
+  cursor: pointer;
+  transition: opacity 0.15s var(--nt-ease);
+}
+.nt-btn-link:hover { opacity: 0.6; }
+
+/* Trailing arrow nudges 4px right on hover. */
+.nt-arrow { transition: transform 0.15s var(--nt-ease); }
+.group:hover .nt-arrow,
+.nt-btn-primary:hover .nt-arrow,
+.nt-btn-ghost:hover .nt-arrow,
+.nt-btn-primary-inverse:hover .nt-arrow,
+.nt-btn-ghost-inverse:hover .nt-arrow,
+.nt-btn-link:hover .nt-arrow { transform: translateX(4px); }
+
+/* --- Ink chapter break: the one inverted section per page --- */
+.nt-ink-section {
+  background-color: var(--nt-ink);
+  background-image:
+    linear-gradient(to right, var(--nt-ink-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--nt-ink-grid) 1px, transparent 1px);
+  background-size: 56px 40px;
+  color: var(--nt-paper);
+}
+.nt-ink-section .nt-kicker { color: var(--nt-gray-soft); }
+.nt-ink-section ::selection { background: var(--nt-paper); color: var(--nt-ink); }
+.nt-ink-section :focus-visible { outline-color: var(--nt-paper); }
+
+/* --- Card: white, 1px line-strong border, 2px radius. No resting shadow --- */
 .nt-card {
   background: var(--nt-white);
   border: 1px solid var(--nt-line-strong);
   border-radius: 2px;
 }
 .nt-card-hover {
-  transition: transform 0.25s var(--nt-ease), box-shadow 0.25s var(--nt-ease);
+  transition: box-shadow 0.25s var(--nt-ease), transform 0.25s var(--nt-ease), border-color 0.25s var(--nt-ease);
 }
 .nt-card-hover:hover {
-  transform: translateY(-3px);
   box-shadow: 0 10px 28px rgba(14, 14, 14, 0.08);
+  transform: translateY(-3px);
 }
+
+/* Mono caption bar across the top of a card. */
 .nt-card-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--nt-line);
   font-family: var(--nt-font-mono);
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--nt-gray-brand);
-  padding: 10px 16px;
-  border-bottom: 1px solid var(--nt-line);
 }
 
-/* --- Corner brackets (hero cards) --- */
+/* --- Corner brackets (hero cards): 2px ink, grow 14 -> 22px on hover --- */
 .nt-bracket { position: relative; }
 .nt-corner {
   position: absolute;
@@ -125,94 +227,106 @@ body {
 .nt-corner.bl { bottom: -1px; left: -1px; border-bottom-width: 2px; border-left-width: 2px; }
 .nt-corner.br { bottom: -1px; right: -1px; border-bottom-width: 2px; border-right-width: 2px; }
 
-/* --- Buttons --- */
-.nt-btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--nt-ink);
-  color: #fff;
-  font-weight: 600;
-  font-size: 14px;
-  padding: 12px 24px;
-  border-radius: 40px;
-  border: 1.5px solid var(--nt-ink);
-  transition: transform 0.2s var(--nt-ease), opacity 0.2s var(--nt-ease);
-  cursor: pointer;
+/* --- Callout: ink-framed box for the single most important line --- */
+.nt-callout {
+  border: 1px solid var(--nt-ink);
+  border-radius: 2px;
+  padding: 1.25rem 1.5rem;
+  background: var(--nt-white);
 }
-.nt-btn-primary:hover { opacity: 0.88; }
-.nt-btn-primary:active { transform: scale(0.97); }
 
-.nt-btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  color: var(--nt-ink);
-  font-weight: 600;
-  font-size: 14px;
-  padding: 12px 24px;
-  border-radius: 40px;
-  border: 1.5px solid var(--nt-ink);
-  transition: background 0.2s var(--nt-ease), color 0.2s var(--nt-ease), transform 0.2s var(--nt-ease);
-  cursor: pointer;
+/* --- Tile grid: white tiles over line-strong so 1px gaps read as rules --- */
+.nt-tile-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--nt-line-strong);
+  border: 1px solid var(--nt-line-strong);
 }
-.nt-btn-ghost:hover { background: var(--nt-ink); color: #fff; }
-.nt-btn-ghost:active { transform: scale(0.97); }
-
-.nt-btn-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--nt-font-mono);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--nt-ink);
-  border-bottom: 1px solid var(--nt-ink);
-  padding-bottom: 2px;
-  cursor: pointer;
+.nt-tile {
+  background: var(--nt-white);
+  padding: 1.75rem;
+  transition: box-shadow 0.25s var(--nt-ease), transform 0.25s var(--nt-ease), background 0.2s var(--nt-ease);
 }
-.nt-arrow { transition: transform 0.25s var(--nt-ease); }
-.nt-btn-primary:hover .nt-arrow,
-.nt-btn-ghost:hover .nt-arrow,
-.nt-btn-link:hover .nt-arrow { transform: translateX(4px); }
+.nt-tile:hover {
+  box-shadow: 0 10px 28px rgba(14, 14, 14, 0.08);
+  transform: translateY(-3px);
+  position: relative;
+  z-index: 1;
+}
 
-/* --- Input (underline only) --- */
+/* --- Input: underline only, ink on focus. No boxes --- */
 .nt-input {
   width: 100%;
   background: transparent;
   border: 0;
   border-bottom: 1px solid var(--nt-line-strong);
-  padding: 8px 0;
-  font-size: 15px;
+  border-radius: 0;
+  padding: 0.6rem 0;
+  font-family: var(--nt-font-sans);
+  font-size: 0.9375rem;
   color: var(--nt-ink);
   outline: none;
-  transition: border-color 0.2s var(--nt-ease);
+  transition: border-color 0.15s var(--nt-ease);
 }
 .nt-input::placeholder { color: var(--nt-placeholder); }
-.nt-input:focus { border-bottom-color: var(--nt-ink); }
+.nt-input:focus { outline: none; border-bottom-color: var(--nt-ink); }
 
-/* --- Callout (ink-framed key line) --- */
-.nt-callout {
-  border: 1px solid var(--nt-ink);
-  border-radius: 2px;
-  padding: 20px 24px;
-  background: var(--nt-white);
+/* --- Range: ink thumb with a white ring on a 2px line-strong track --- */
+.nt-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2px;
+  background: var(--nt-line-strong);
+  border-radius: 0;
+  cursor: pointer;
+  outline: none;
+}
+.nt-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--nt-ink);
+  border: 2px solid var(--nt-white);
+  box-shadow: 0 0 0 1px var(--nt-ink);
+  cursor: pointer;
+}
+.nt-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--nt-ink);
+  border: 2px solid var(--nt-white);
+  box-shadow: 0 0 0 1px var(--nt-ink);
+  cursor: pointer;
+}
+.nt-range::-moz-range-track {
+  height: 2px;
+  background: var(--nt-line-strong);
 }
 
 /* --- Dividers --- */
-.nt-rule { border: 0; border-top: 1px solid var(--nt-line); }
-.nt-rule-strong { border: 0; border-top: 1px solid var(--nt-line-strong); }
+.nt-rule { height: 1px; background: var(--nt-line); border: 0; }
+.nt-rule-strong { height: 1px; background: var(--nt-line-strong); border: 0; }
 
-/* --- Focus ring: ink, never blue --- */
-.nt-focus:focus-visible {
-  outline: 2px solid var(--nt-ink);
-  outline-offset: 2px;
+/* --- Live status: 6px ink dot + mono label --- */
+.nt-live-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--nt-ink);
 }
+
+/* --- Entrance: editorial fade-up, 16px, 0.55s --- */
+@keyframes nt-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.nt-fade-up { animation: nt-fade-up 0.55s var(--nt-ease) both; }
 
 /* --- Reduced motion --- */
 @media (prefers-reduced-motion: reduce) {
-  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
 }

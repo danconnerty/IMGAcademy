@@ -14,7 +14,7 @@ const getSignifier = (player: Player) => {
   const fit = player.fitScore ?? 0;
   if (fit >= 62.5 && player.clutchFactor >= 750) return { label: 'Top Profile', className: 'bg-ink text-white border-ink' };
   if (fit < 62.5 && player.clutchFactor < 750) return { label: 'At-Risk', className: 'bg-white text-ink border-ink' };
-  return { label: 'Conditional', className: 'bg-chip text-gray-brand border-line-strong' };
+  return { label: 'Conditional', className: 'bg-chip text-body border-line-strong' };
 };
 
 const getYouTubeEmbedUrl = (url?: string): string | null => {
@@ -115,7 +115,7 @@ const DevelopmentPlanView: React.FC<Props> = ({ teamName, players, positions }) 
                     <button key={player.id} onClick={() => setSelectedPlayerId(player.id)} className={`w-full text-left p-3 border rounded-card transition-colors ${selectedPlayer?.id === player.id ? 'border-ink bg-chip' : 'border-transparent bg-white hover:bg-chip'}`}>
                       <div className="flex items-center justify-between gap-2">
                         <div className="flex items-center gap-3">
-                          <span className="h-8 w-8 rounded-full bg-chip text-gray-brand text-xs font-semibold flex items-center justify-center">{player.name.slice(0, 1)}</span>
+                          <span className="h-8 w-8 rounded-full bg-chip text-body text-xs font-semibold flex items-center justify-center">{player.name.slice(0, 1)}</span>
                           <div>
                             <p className="text-sm font-semibold text-ink">{player.name}</p>
                             <p className="text-xs text-gray-brand">{player.position} · {player.graduationYear}</p>

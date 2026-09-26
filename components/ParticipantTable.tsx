@@ -93,9 +93,9 @@ const ParticipantTable: React.FC<ParticipantTableProps> = ({
       return { label: 'Top Profile', className: 'bg-ink text-white border-ink' };
     }
     if (fitScore < 62.5 && player.clutchFactor < 750) {
-      return { label: 'At-Risk', className: 'bg-white text-rose-700 border-rose-200' };
+      return { label: 'At-Risk', className: 'bg-white text-ink border-ink' };
     }
-    return { label: 'Conditional', className: 'bg-chip text-gray-brand border-line-strong' };
+    return { label: 'Conditional', className: 'bg-chip text-body border-line-strong' };
   };
 
 
@@ -117,12 +117,12 @@ const ParticipantTable: React.FC<ParticipantTableProps> = ({
               <p className="mt-1 text-body">Reliable under pressure and aligned with staff intent. Consider leadership responsibilities.</p>
             </div>
             <div className="rounded-card border border-line-strong bg-white p-3">
-              <span className="inline-block px-2 py-0.5 rounded-pill border bg-chip text-gray-brand border-line-strong font-mono text-[10px] uppercase tracking-[0.1em]">Conditional</span>
+              <span className="inline-block px-2 py-0.5 rounded-pill border bg-chip text-body border-line-strong font-mono text-[10px] uppercase tracking-[0.1em]">Conditional</span>
               <p className="mt-2 text-gray-brand">One metric is high while the other needs development</p>
               <p className="mt-1 text-body">Strong upside with targeted coaching. Pair role clarity with a defined development plan.</p>
             </div>
             <div className="rounded-card border border-line-strong bg-white p-3">
-              <span className="inline-block px-2 py-0.5 rounded-pill border bg-white text-rose-700 border-rose-200 font-mono text-[10px] uppercase tracking-[0.1em]">At-Risk</span>
+              <span className="inline-block px-2 py-0.5 rounded-pill border bg-white text-ink border-ink font-mono text-[10px] uppercase tracking-[0.1em]">At-Risk</span>
               <p className="mt-2 text-gray-brand">Alignment &lt; 62.5% and Clutch &lt; 750</p>
               <p className="mt-1 text-body">Higher friction and performance volatility. Increase communication cadence and accountability checkpoints.</p>
             </div>

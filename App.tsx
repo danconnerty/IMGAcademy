@@ -256,7 +256,7 @@ const App: React.FC = () => {
           <button
             key={opt}
             onClick={() => onSelect(opt)}
-            className={`px-3 py-2 rounded-card font-mono text-[11px] tracking-[0.08em] uppercase transition-all border ${
+            className={`px-3 py-2 rounded-pill font-mono text-[11px] tracking-[0.08em] uppercase transition-all border ${
               selected === opt
                 ? 'bg-ink text-white border-ink'
                 : 'bg-white text-body border-line-strong hover:border-ink'
@@ -269,7 +269,7 @@ const App: React.FC = () => {
     </div>
   );
 
-  const StatCard = ({ label, value, subtext, icon: Icon }: { label: string, value: string | number, subtext: string, icon: any, colorClass?: string }) => (
+  const StatCard = ({ label, value, subtext, icon: Icon }: { label: string, value: string | number, subtext: string, icon: any }) => (
     <div className="nt-card nt-card-hover p-4 sm:p-5 flex-1 min-w-[200px]">
         <div className="flex justify-between items-start mb-4">
             <Icon size={20} strokeWidth={1.8} className="text-gray-soft" />
@@ -277,7 +277,7 @@ const App: React.FC = () => {
         <div>
             <h4 className="text-2xl sm:text-3xl font-semibold text-ink tracking-tightest tabular-nums mb-2 break-words">{value}</h4>
             <p className="font-mono text-[11px] font-medium text-gray-brand uppercase tracking-[0.16em] mb-1">{label}</p>
-            <p className="font-mono text-[10px] text-gray-soft uppercase tracking-[0.12em]">{subtext}</p>
+            <p className="font-mono text-[10px] text-gray-brand uppercase tracking-[0.12em]">{subtext}</p>
         </div>
     </div>
   );
@@ -358,13 +358,13 @@ const App: React.FC = () => {
               <div className="grid grid-cols-2 sm:flex sm:items-center gap-3 sm:gap-4 border-b border-line pb-4">
                 <button
                   onClick={() => setHomeTab('roster')}
-                  className={`px-4 sm:px-5 py-3 border font-mono text-[11px] uppercase tracking-[0.16em] transition-colors rounded-card ${homeTab === 'roster' ? 'bg-white border-ink text-ink' : 'bg-transparent border-transparent text-gray-brand hover:text-ink'}`}
+                  className={`px-4 sm:px-5 py-3 border font-mono text-[11px] uppercase tracking-[0.16em] transition-colors rounded-pill ${homeTab === 'roster' ? 'bg-white border-ink text-ink' : 'bg-transparent border-transparent text-gray-brand hover:text-ink'}`}
                 >
                   Current Roster
                 </button>
                 <button
                   onClick={() => setHomeTab('recruits')}
-                  className={`px-4 sm:px-5 py-3 border font-mono text-[11px] uppercase tracking-[0.16em] transition-colors rounded-card ${homeTab === 'recruits' ? 'bg-white border-ink text-ink' : 'bg-transparent border-transparent text-gray-brand hover:text-ink'}`}
+                  className={`px-4 sm:px-5 py-3 border font-mono text-[11px] uppercase tracking-[0.16em] transition-colors rounded-pill ${homeTab === 'recruits' ? 'bg-white border-ink text-ink' : 'bg-transparent border-transparent text-gray-brand hover:text-ink'}`}
                 >
                   Recruits
                 </button>
@@ -378,28 +378,24 @@ const App: React.FC = () => {
                       value={displayedStats.avgClutch}
                       subtext="Roster Average"
                       icon={Users}
-                      colorClass="text-blue-600 bg-blue-600"
                     />
                     <StatCard 
                       label="Team Alignment" 
                       value={`${displayedStats.avgFit}%`} 
                       subtext="Roster Average"
                       icon={Target}
-                      colorClass="text-emerald-600 bg-emerald-600"
                     />
                     <StatCard 
                       label="Top Unit" 
                       value={displayedStats.topUnit?.unit || '-'}
                       subtext={`Avg Clutch: ${displayedStats.topUnit?.avgClutch ?? '-'}   Avg Fit: ${displayedStats.topUnit ? `${displayedStats.topUnit.avgFit}%` : '-'}`}
                       icon={ShieldCheck}
-                      colorClass="text-purple-600 bg-purple-600"
                     />
                     <StatCard 
                       label="Bottom Unit" 
                       value={displayedStats.bottomUnit?.unit || '-'}
                       subtext={`Avg Clutch: ${displayedStats.bottomUnit?.avgClutch ?? '-'}   Avg Fit: ${displayedStats.bottomUnit ? `${displayedStats.bottomUnit.avgFit}%` : '-'}`}
                       icon={ShieldAlert}
-                      colorClass="text-rose-500 bg-rose-500"
                     />
                 </div>
               )}
@@ -430,7 +426,7 @@ const App: React.FC = () => {
                         </button>
                         <button
                           onClick={() => setIsMobileFiltersOpen(prev => !prev)}
-                          className="lg:hidden font-mono text-[10px] text-gray-brand uppercase tracking-[0.12em] border border-line-strong rounded-card px-2 py-1"
+                          className="lg:hidden font-mono text-[10px] text-gray-brand uppercase tracking-[0.12em] border border-line-strong rounded-pill px-2 py-1"
                         >
                           {isMobileFiltersOpen ? 'Hide' : 'Show'}
                         </button>
