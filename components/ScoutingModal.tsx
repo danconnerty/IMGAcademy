@@ -206,14 +206,14 @@ const ScoutingModal: React.FC<ScoutingModalProps> = ({ player, allPlayers, onClo
                 <div className="flex flex-wrap items-center gap-3">
                      <button
                         onClick={() => setActiveReport('clutch')}
-                        className="px-3 py-2 bg-white hover:border-ink border border-line-strong text-body hover:text-ink font-mono text-[10px] font-medium uppercase tracking-[0.16em] rounded-card transition-colors flex items-center gap-2"
+                        className="px-3 py-2 bg-white hover:border-ink border border-line-strong text-body hover:text-ink font-mono text-[10px] font-medium uppercase tracking-[0.16em] rounded-pill transition-colors flex items-center gap-2"
                      >
                         <FileText size={14} strokeWidth={1.8} />
                         Clutch Report
                      </button>
                      <button
                         onClick={() => setActiveReport('nterpret')}
-                        className="px-3 py-2 bg-white hover:border-ink border border-line-strong text-body hover:text-ink font-mono text-[10px] font-medium uppercase tracking-[0.16em] rounded-card transition-colors flex items-center gap-2"
+                        className="px-3 py-2 bg-white hover:border-ink border border-line-strong text-body hover:text-ink font-mono text-[10px] font-medium uppercase tracking-[0.16em] rounded-pill transition-colors flex items-center gap-2"
                      >
                         <Brain size={14} strokeWidth={1.8} />
                         NTerpret Report
@@ -232,7 +232,7 @@ const ScoutingModal: React.FC<ScoutingModalProps> = ({ player, allPlayers, onClo
                 </div>
                 <div className="w-1/2 md:flex-1 p-4">
                     <p className="font-mono text-[10px] font-medium text-gray-brand uppercase tracking-[0.16em] mb-1">Alignment</p>
-                    <p className={`text-2xl sm:text-3xl font-semibold tracking-tightest tabular-nums ${player.fitScore !== undefined ? 'text-ink' : 'text-gray-soft'}`}>
+                    <p className={`text-2xl sm:text-3xl font-semibold tracking-tightest tabular-nums ${player.fitScore !== undefined ? 'text-ink' : 'text-gray-brand'}`}>
                         {player.fitScore !== undefined ? `${player.fitScore}%` : 'N/A'}
                     </p>
                 </div>

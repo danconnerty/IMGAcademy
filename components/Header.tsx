@@ -222,7 +222,7 @@ const Header: React.FC<HeaderProps> = ({ currentView, onViewChange, onStartWalkt
                 {teams?.map(team => (
                   <button key={team.id} onClick={() => handleTeamSelect(team.id)} className="w-full text-left py-3 px-4 rounded-card bg-white border border-line-strong text-body hover:border-ink hover:text-ink transition-colors flex justify-between items-center">
                     <span className="font-medium">{team.name}</span>
-                    <span className="font-mono text-[11px] bg-chip px-2 py-1 rounded-card text-gray-brand tabular-nums">{team.playerCount}</span>
+                    <span className="font-mono text-[11px] bg-chip px-2 py-1 rounded-pill text-body tabular-nums">{team.playerCount}</span>
                   </button>
                 ))}
               </div>

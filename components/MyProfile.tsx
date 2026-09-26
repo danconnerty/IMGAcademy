@@ -302,7 +302,7 @@ const MyProfile: React.FC<MyProfileProps> = ({ profile, onSave }) => {
 
                         <div className="p-6 space-y-5">
                             {passwordError && (
-                                <div className="p-3 bg-white text-red-600 text-xs font-medium rounded-card border border-red-200">
+                                <div className="p-3 bg-white text-ink text-xs font-medium rounded-card border border-ink">
                                     {passwordError}
                                 </div>
                             )}

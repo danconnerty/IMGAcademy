@@ -27,26 +27,12 @@ export default {
           DEFAULT: '#E6E3DD',
           strong: '#D8D4CC',
         },
-        // --- NControl (dark brand — brand blue scale, used for dark insets) ---
-        brand: {
-          400: '#60A5FA',
-          500: '#3B82F6',
-          600: '#2563EB',
-          700: '#1D4ED8',
-          800: '#1E40AF',
-          900: '#1E3A8A',
-          950: '#172554',
-        },
-        nc: {
-          bg: '#000000',
-          panel: '#0a0a0b',
-          gold: '#EAB308',
-        },
+        'ink-grid': 'rgba(247, 246, 243, 0.05)',
       },
       fontFamily: {
         nt: ['Inter', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
         sans: ['Inter', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
-        mono: ['Roboto Mono', 'SF Mono', 'ui-monospace', 'Menlo', 'monospace'],
+        mono: ['Roboto Mono', 'SF Mono', 'ui-monospace', 'Menlo', 'Consolas', 'monospace'],
       },
       letterSpacing: {
         tightest: '-0.02em',
@@ -56,19 +42,17 @@ export default {
         card: '2px',
         bubble: '16px',
       },
+      // The ONE shadow in Ink on Paper: hover lift, paired with translateY(-3px).
       boxShadow: {
         lift: '0 10px 28px rgba(14,14,14,0.08)',
-        'glow-sm': '0 0 12px rgba(37,99,235,0.35)',
-        'glow': '0 0 24px rgba(37,99,235,0.35)',
-        'glow-lg': '0 0 48px rgba(37,99,235,0.35)',
       },
       transitionTimingFunction: {
         nt: 'cubic-bezier(0.22, 1, 0.36, 1)',
-        nc: 'cubic-bezier(0.16, 1, 0.3, 1)',
       },
       maxWidth: {
         frame: '64rem',
         prose: '48rem',
+        lead: '42rem',
         chat: '42rem',
       },
     },
