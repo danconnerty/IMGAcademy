@@ -1047,7 +1047,7 @@ const ClutchAssessment: React.FC<ClutchAssessmentProps> = ({
                       )}
                     </div>
                     <p className="text-11px mb-2 fw-medium" style={{ color: '#42403B' }}>
-                      <span className="text-ink fw-bold">The Stat:</span> High school athletes scoring 750+ are 2x more likely to commit to a Division 1 program.
+                      <span className="text-ink fw-bold">The Stat:</span> High school baseball players scoring 750+ at national showcases reached NCAA Division I at twice the rate of those below 750: 49% vs. 23% across 309 players (The D1 Signal, NTangible white paper, Oct 2026).
                     </p>
                     <p className="text-12px text-gray-400 mb-0" style={{ lineHeight: 1.4 }}>
                       <span className="text-gray-200 fw-bold">The Meaning:</span> You have the internal stability and decision-making speed that elite college recruiters demand. You are officially in the &lsquo;D1 Standard&rsquo; zone.

@@ -507,8 +507,8 @@ const RecruitingCorrelations: React.FC = () => (
             <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-line">
                 <div className="p-6 sm:p-7">
                     <p className="text-3xl sm:text-4xl font-semibold text-ink tracking-tightest mb-2 tabular-nums">2&times;</p>
-                    <p className="text-ink text-sm sm:text-base font-semibold mb-1">More likely to commit D1</p>
-                    <p className="text-gray-brand text-sm leading-relaxed">Athletes scoring above 750 on the Clutch Factor commit to Division I programs at twice the rate of athletes below the threshold.</p>
+                    <p className="text-ink text-sm sm:text-base font-semibold mb-1">The D1 rate at 750+</p>
+                    <p className="text-gray-brand text-sm leading-relaxed">High school baseball players scoring 750+ at national showcases reached NCAA Division I at twice the rate of those below 750: 49% vs. 23% across 309 players (The D1 Signal, NTangible white paper, Oct 2026).</p>
                 </div>
                 <div className="p-6 sm:p-7">
                     <p className="text-3xl sm:text-4xl font-semibold text-ink tracking-tightest mb-2 tabular-nums">73%</p>
