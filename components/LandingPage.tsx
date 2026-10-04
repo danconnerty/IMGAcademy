@@ -508,7 +508,7 @@ const RecruitingCorrelations: React.FC = () => (
                 <div className="p-6 sm:p-7">
                     <p className="text-3xl sm:text-4xl font-semibold text-ink tracking-tightest mb-2 tabular-nums">2&times;</p>
                     <p className="text-ink text-sm sm:text-base font-semibold mb-1">The D1 rate at 750+</p>
-                    <p className="text-gray-brand text-sm leading-relaxed">High school baseball players scoring 750+ at national showcases reached NCAA Division I at twice the rate of those below 750: 49% vs. 23% across 309 players (The D1 Signal, NTangible white paper, Oct 2026).</p>
+                    <p className="text-gray-brand text-sm leading-relaxed">High school baseball players scoring 750+ at national showcases reached NCAA Division I at twice the rate of those below 750: 49% vs. 23% (<a href="https://ntangible.co/research" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>The D1 Signal</a>, NTangible white paper, Oct 2026).</p>
                 </div>
                 <div className="p-6 sm:p-7">
                     <p className="text-3xl sm:text-4xl font-semibold text-ink tracking-tightest mb-2 tabular-nums">73%</p>
