@@ -7,6 +7,8 @@ const SPORTS = [
     { id: 'mbb', label: 'Basketball (Mens)' },
     { id: 'wbb', label: 'Basketball (Womens)' },
     { id: 'football', label: 'Football' },
+    { id: 'mgolf', label: 'Golf (Mens)' },
+    { id: 'wgolf', label: 'Golf (Womens)' },
     { id: 'hockey', label: 'Hockey' },
     { id: 'mvb', label: 'Indoor Volleyball (Mens)' },
     { id: 'wvb', label: 'Indoor Volleyball (Womens)' },
@@ -15,7 +17,7 @@ const SPORTS = [
     { id: 'wsoc', label: 'Soccer (Womens)' },
 ];
 
-const SPORT_LINKS: Record<string, { clutch: string; nterpret: string }> = {
+const SPORT_LINKS: Record<string, { clutch: string; nterpret?: string }> = {
     baseball: {
         clutch: 'https://portal.ntangible.co/register/baseballdemo',
         nterpret: 'https://portal.ntangible.co/express/TestGroupBaseball'
@@ -31,6 +33,13 @@ const SPORT_LINKS: Record<string, { clutch: string; nterpret: string }> = {
     football: {
         clutch: 'https://portal.ntangible.co/register/footballdemo',
         nterpret: 'https://portal.ntangible.co/express/FootballDemo'
+    },
+    // Golf: Clutch Factor™ only for now, so the NTerpret™ card is hidden.
+    mgolf: {
+        clutch: 'https://portal.ntangible.co/register/8963c8054d013cc8d22c709a'
+    },
+    wgolf: {
+        clutch: 'https://portal.ntangible.co/register/531bea6fd7b3dd4fac63673a'
     },
     hockey: {
         clutch: 'https://portal.ntangible.co/register/hockeydemo',
@@ -132,17 +141,19 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({ onClose }) => {
                         <div className="space-y-4 max-w-3xl mx-auto">
 
                             {/* Requirement Banner */}
-                            <div className="nt-callout flex gap-3">
-                                <div className="mt-0.5">
-                                    <Info size={18} strokeWidth={1.8} className="text-ink" />
+                            {SPORT_LINKS[selectedSport.id]?.nterpret && (
+                                <div className="nt-callout flex gap-3">
+                                    <div className="mt-0.5">
+                                        <Info size={18} strokeWidth={1.8} className="text-ink" />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-mono text-[11px] font-medium text-ink uppercase tracking-[0.16em] mb-1">Testing requirement</h4>
+                                        <p className="text-sm text-body leading-relaxed">
+                                            To ensure a complete cognitive profile, the athlete must complete <span className="font-semibold text-ink">both</span> the Clutch Factor™ and NTerpret™ assessments.
+                                        </p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 className="font-mono text-[11px] font-medium text-ink uppercase tracking-[0.16em] mb-1">Testing requirement</h4>
-                                    <p className="text-sm text-body leading-relaxed">
-                                        To ensure a complete cognitive profile, the athlete must complete <span className="font-semibold text-ink">both</span> the Clutch Factor™ and NTerpret™ assessments.
-                                    </p>
-                                </div>
-                            </div>
+                            )}
 
                             {/* Test Card 1 - Clutch */}
                             <button
@@ -167,26 +178,28 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({ onClose }) => {
                             </button>
 
                             {/* Test Card 2 - NTerpret */}
-                             <button
-                                onClick={() => handleOpenTest('nterpret')}
-                                className="w-full group relative p-6 nt-card nt-card-hover hover:border-ink transition-all cursor-pointer text-left"
-                            >
-                                <div className="flex justify-between items-start mb-2">
-                                    <div className="flex items-center gap-3">
-                                        <span className="w-10 h-10 rounded-full border border-line-strong bg-white flex items-center justify-center text-ink transition-colors">
-                                            <Brain size={20} strokeWidth={1.8} />
-                                        </span>
-                                        <h3 className="text-lg font-semibold text-ink tracking-tightest group-hover:text-ink transition-colors">NTerpret™ Assessment</h3>
-                                        <span className="ml-2 px-2 py-0.5 bg-white border border-line-strong text-gray-brand font-mono text-[10px] font-medium uppercase rounded-card tracking-[0.12em]">
-                                            Active
-                                        </span>
+                             {SPORT_LINKS[selectedSport.id]?.nterpret && (
+                                 <button
+                                    onClick={() => handleOpenTest('nterpret')}
+                                    className="w-full group relative p-6 nt-card nt-card-hover hover:border-ink transition-all cursor-pointer text-left"
+                                >
+                                    <div className="flex justify-between items-start mb-2">
+                                        <div className="flex items-center gap-3">
+                                            <span className="w-10 h-10 rounded-full border border-line-strong bg-white flex items-center justify-center text-ink transition-colors">
+                                                <Brain size={20} strokeWidth={1.8} />
+                                            </span>
+                                            <h3 className="text-lg font-semibold text-ink tracking-tightest group-hover:text-ink transition-colors">NTerpret™ Assessment</h3>
+                                            <span className="ml-2 px-2 py-0.5 bg-white border border-line-strong text-gray-brand font-mono text-[10px] font-medium uppercase rounded-card tracking-[0.12em]">
+                                                Active
+                                            </span>
+                                        </div>
+                                        <ExternalLink size={18} strokeWidth={1.8} className="text-gray-soft group-hover:text-ink transition-colors" />
                                     </div>
-                                    <ExternalLink size={18} strokeWidth={1.8} className="text-gray-soft group-hover:text-ink transition-colors" />
-                                </div>
-                                <p className="text-sm text-body transition-colors pl-[56px]">
-                                    The mental scouting report which determines how you learn, communicate, and specific motivations towards sports.
-                                </p>
-                            </button>
+                                    <p className="text-sm text-body transition-colors pl-[56px]">
+                                        The mental scouting report which determines how you learn, communicate, and specific motivations towards sports.
+                                    </p>
+                                </button>
+                             )}
                         </div>
                     )}
                 </div>
