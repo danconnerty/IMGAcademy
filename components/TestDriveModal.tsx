@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { X, ChevronRight, Activity, ArrowLeft, ExternalLink, Info, Brain } from 'lucide-react';
+import { X, ChevronRight, Activity, ArrowLeft, ExternalLink } from 'lucide-react';
 
 const SPORTS = [
     { id: 'baseball', label: 'Baseball' },
@@ -17,54 +17,19 @@ const SPORTS = [
     { id: 'wsoc', label: 'Soccer (Womens)' },
 ];
 
-const SPORT_LINKS: Record<string, { clutch: string; nterpret?: string }> = {
-    baseball: {
-        clutch: 'https://portal.ntangible.co/register/baseballdemo',
-        nterpret: 'https://portal.ntangible.co/express/TestGroupBaseball'
-    },
-    mbb: {
-        clutch: 'https://portal.ntangible.co/register/demobasketball',
-        nterpret: 'https://portal.ntangible.co/express/MBasketballdemo'
-    },
-    wbb: {
-        clutch: 'https://portal.ntangible.co/register/wbasketballdemo',
-        nterpret: 'https://portal.ntangible.co/express/WBasketballDemo'
-    },
-    football: {
-        clutch: 'https://portal.ntangible.co/register/footballdemo',
-        nterpret: 'https://portal.ntangible.co/express/FootballDemo'
-    },
-    // Golf: Clutch Factor™ only for now, so the NTerpret™ card is hidden.
-    mgolf: {
-        clutch: 'https://portal.ntangible.co/register/8963c8054d013cc8d22c709a'
-    },
-    wgolf: {
-        clutch: 'https://portal.ntangible.co/register/531bea6fd7b3dd4fac63673a'
-    },
-    hockey: {
-        clutch: 'https://portal.ntangible.co/register/hockeydemo',
-        nterpret: 'https://portal.ntangible.co/express/hockeydemo'
-    },
-    mvb: {
-        clutch: 'https://portal.ntangible.co/register/mvolleyballdemo',
-        nterpret: 'https://portal.ntangible.co/express/MVolleyballDemo'
-    },
-    wvb: {
-        clutch: 'https://portal.ntangible.co/register/wvolleyballdemo',
-        nterpret: 'https://portal.ntangible.co/express/WVolleyballDemo'
-    },
-    softball: {
-        clutch: 'https://portal.ntangible.co/register/softballdemo',
-        nterpret: 'https://portal.ntangible.co/express/softballdemo'
-    },
-    msoc: {
-        clutch: 'https://portal.ntangible.co/register/msoccerdemo',
-        nterpret: 'https://portal.ntangible.co/express/MSoccerDemo'
-    },
-    wsoc: {
-        clutch: 'https://portal.ntangible.co/register/wsoccerdemo',
-        nterpret: 'https://portal.ntangible.co/express/WSoccerDemo'
-    }
+const SPORT_LINKS: Record<string, string> = {
+    baseball: 'https://portal.ntangible.co/register/baseballdemo',
+    mbb: 'https://portal.ntangible.co/register/demobasketball',
+    wbb: 'https://portal.ntangible.co/register/wbasketballdemo',
+    football: 'https://portal.ntangible.co/register/footballdemo',
+    mgolf: 'https://portal.ntangible.co/register/8963c8054d013cc8d22c709a',
+    wgolf: 'https://portal.ntangible.co/register/531bea6fd7b3dd4fac63673a',
+    hockey: 'https://portal.ntangible.co/register/hockeydemo',
+    mvb: 'https://portal.ntangible.co/register/mvolleyballdemo',
+    wvb: 'https://portal.ntangible.co/register/wvolleyballdemo',
+    softball: 'https://portal.ntangible.co/register/softballdemo',
+    msoc: 'https://portal.ntangible.co/register/msoccerdemo',
+    wsoc: 'https://portal.ntangible.co/register/wsoccerdemo'
 };
 
 interface TestDriveModalProps {
@@ -74,12 +39,11 @@ interface TestDriveModalProps {
 export const TestDriveModal: React.FC<TestDriveModalProps> = ({ onClose }) => {
     const [selectedSport, setSelectedSport] = useState<{id: string, label: string} | null>(null);
 
-    const handleOpenTest = (testType: 'clutch' | 'nterpret') => {
+    const handleOpenTest = () => {
         if (!selectedSport) return;
         
-        const links = SPORT_LINKS[selectedSport.id];
-        if (links) {
-            const url = testType === 'clutch' ? links.clutch : links.nterpret;
+        const url = SPORT_LINKS[selectedSport.id];
+        if (url) {
             window.open(url, '_blank');
         } else {
             alert("Configuration error: Links not found for this sport.");
@@ -106,7 +70,7 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({ onClose }) => {
                                 {selectedSport ? selectedSport.label : 'Select sport'}
                             </h2>
                             <p className="text-sm text-body">
-                                {selectedSport ? 'Available cognitive tests.' : 'Choose a sport to access testing links.'}
+                                {selectedSport ? 'One assessment, two reports.' : 'Choose a sport to access testing links.'}
                             </p>
                         </div>
                     </div>
@@ -140,24 +104,9 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({ onClose }) => {
                     ) : (
                         <div className="space-y-4 max-w-3xl mx-auto">
 
-                            {/* Requirement Banner */}
-                            {SPORT_LINKS[selectedSport.id]?.nterpret && (
-                                <div className="nt-callout flex gap-3">
-                                    <div className="mt-0.5">
-                                        <Info size={18} strokeWidth={1.8} className="text-ink" />
-                                    </div>
-                                    <div>
-                                        <h4 className="font-mono text-[11px] font-medium text-ink uppercase tracking-[0.16em] mb-1">Testing requirement</h4>
-                                        <p className="text-sm text-body leading-relaxed">
-                                            To ensure a complete cognitive profile, the athlete must complete <span className="font-semibold text-ink">both</span> the Clutch Factor™ and NTerpret™ assessments.
-                                        </p>
-                                    </div>
-                                </div>
-                            )}
-
-                            {/* Test Card 1 - Clutch */}
+                            {/* Test Card - Clutch Factor + NTerpret */}
                             <button
-                                onClick={() => handleOpenTest('clutch')}
+                                onClick={handleOpenTest}
                                 className="w-full group relative p-6 nt-card nt-card-hover hover:border-ink transition-all cursor-pointer text-left"
                             >
                                 <div className="flex justify-between items-start mb-2">
@@ -165,7 +114,7 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({ onClose }) => {
                                         <span className="w-10 h-10 rounded-full border border-line-strong bg-white flex items-center justify-center text-ink transition-colors">
                                             <Activity size={20} strokeWidth={1.8} />
                                         </span>
-                                        <h3 className="text-lg font-semibold text-ink tracking-tightest group-hover:text-ink transition-colors">Clutch Factor™ Assessment</h3>
+                                        <h3 className="text-lg font-semibold text-ink tracking-tightest group-hover:text-ink transition-colors">Clutch Factor™ + NTerpret™ Assessment</h3>
                                         <span className="ml-2 px-2 py-0.5 bg-white border border-line-strong text-gray-brand font-mono text-[10px] font-medium uppercase rounded-card tracking-[0.12em]">
                                             Active
                                         </span>
@@ -173,33 +122,9 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({ onClose }) => {
                                     <ExternalLink size={18} strokeWidth={1.8} className="text-gray-soft group-hover:text-ink transition-colors" />
                                 </div>
                                 <p className="text-sm text-body transition-colors pl-[56px]">
-                                    Determine your clutch factor, and see if you have what it takes to perform in high leverage situations.
+                                    One assessment, two reports. Your Clutch Factor™ scores how you perform in high-leverage moments on a 1,000-point scale. Your NTerpret™ mental scouting report shows how you learn, communicate, and compete.
                                 </p>
                             </button>
-
-                            {/* Test Card 2 - NTerpret */}
-                             {SPORT_LINKS[selectedSport.id]?.nterpret && (
-                                 <button
-                                    onClick={() => handleOpenTest('nterpret')}
-                                    className="w-full group relative p-6 nt-card nt-card-hover hover:border-ink transition-all cursor-pointer text-left"
-                                >
-                                    <div className="flex justify-between items-start mb-2">
-                                        <div className="flex items-center gap-3">
-                                            <span className="w-10 h-10 rounded-full border border-line-strong bg-white flex items-center justify-center text-ink transition-colors">
-                                                <Brain size={20} strokeWidth={1.8} />
-                                            </span>
-                                            <h3 className="text-lg font-semibold text-ink tracking-tightest group-hover:text-ink transition-colors">NTerpret™ Assessment</h3>
-                                            <span className="ml-2 px-2 py-0.5 bg-white border border-line-strong text-gray-brand font-mono text-[10px] font-medium uppercase rounded-card tracking-[0.12em]">
-                                                Active
-                                            </span>
-                                        </div>
-                                        <ExternalLink size={18} strokeWidth={1.8} className="text-gray-soft group-hover:text-ink transition-colors" />
-                                    </div>
-                                    <p className="text-sm text-body transition-colors pl-[56px]">
-                                        The mental scouting report which determines how you learn, communicate, and specific motivations towards sports.
-                                    </p>
-                                </button>
-                             )}
                         </div>
                     )}
                 </div>
