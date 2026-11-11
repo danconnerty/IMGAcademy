@@ -12,7 +12,7 @@ const BookingModal = ({ onClose }: { onClose: () => void }) => (
             </div>
             <div className="w-full h-full bg-white">
                 <iframe
-                    src="https://calendly.com/ntangible/30min"
+                    src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3LjW05Oh31wfOjM-RObbAZ1bJvyab8zIrcm9zamfhpeK31Z9qIhp7FYDr-oKFLwkJqxrxYbzva"
                     width="100%"
                     height="100%"
                     frameBorder="0"
